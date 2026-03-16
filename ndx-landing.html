@@ -574,7 +574,7 @@
   .how-header { text-align: center; margin-bottom: 60px; }
   .how-steps {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2px;
     background: var(--border);
     border-radius: 16px;
@@ -599,6 +599,7 @@
   .step-number.teal { background: rgba(0,255,179,0.12); color: #00ffb3; border: 1px solid rgba(0,255,179,0.4); box-shadow: 0 0 16px rgba(0,255,179,0.2); }
   .step-number.purple { background: rgba(167,139,255,0.12); color: #a78bff; border: 1px solid rgba(167,139,255,0.4); box-shadow: 0 0 16px rgba(167,139,255,0.2); }
   .step-number.amber { background: rgba(255,170,51,0.12); color: #ffaa33; border: 1px solid rgba(255,170,51,0.4); box-shadow: 0 0 16px rgba(255,170,51,0.2); }
+  .step-number.pink { background: rgba(232,121,249,0.12); color: #e879f9; border: 1px solid rgba(232,121,249,0.4); box-shadow: 0 0 16px rgba(232,121,249,0.2); }
   .step-title {
     font-family: var(--font-display);
     font-size: 1.3rem;
@@ -1202,7 +1203,7 @@
 <div class="how-section" id="how">
   <div class="how-header">
     <div class="section-label" style="text-align:center;">How it works</div>
-    <h2 class="section-title" style="text-align:center;">A self-cleaning loop from<br>analysis to execution.</h2>
+    <h2 class="section-title" style="text-align:center;">A self-cleaning loop from<br>analysis to execution to visualization.</h2>
     <p class="section-body" style="text-align:center;margin:16px auto 0;">Run the loop once to get started. Run it again to stay current. The PRD reflects the codebase at every step — no manual tracking required.</p>
   </div>
   <div class="how-steps">
@@ -1222,9 +1223,9 @@
       <p class="step-body">hench picks the next task, builds a brief with full codebase context, and ships it — writing code, running tests, committing results. Mark complete. Pick the next. Repeat.</p>
     </div>
     <div class="how-step">
-      <div class="step-number" style="background:rgba(232,121,249,0.12);color:#e879f9;">4</div>
+      <div class="step-number pink">4</div>
       <div class="step-title">Visualize</div>
-      <p class="step-body">Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:#e879f9;">ndx serve</code> to launch the web dashboard — interactive zone maps, a live task tree with completion stats, and auto-refresh as data changes. Share it with your team or export a static build.</p>
+      <p class="step-body">Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:#e879f9;">n-dx start</code> to launch the web dashboard — interactive zone maps, a live task tree with completion stats, and auto-refresh as data changes. Share it with your team or export a static build.</p>
     </div>
   </div>
 
@@ -1263,7 +1264,7 @@
       <div><span class="t-purple">Epic: Dashboard          [▓▓░░░░░░░░] 20%</span></div>
       <div><span class="t-dim">Next: "OAuth provider integration"</span></div>
       <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx serve</span></div>
+      <div><span class="t-prompt">$ </span><span class="t-cmd">n-dx start</span></div>
       <div><span class="t-teal">Dashboard running at http://localhost:3117</span></div>
     </div>
   </div>
@@ -1332,7 +1333,7 @@
     <div class="persona-card">
       <div class="persona-label dev">For the practitioner</div>
       <h3 class="persona-title">Run it. Ship it.<br>Let the spec keep score.</h3>
-      <p class="persona-body">n-dx is CLI-first — point it at a directory, run two commands, and the loop starts. When you want to see the big picture, <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx serve</code> launches a web dashboard with interactive zone maps, a live task tree, and auto-refresh as data changes.</p>
+      <p class="persona-body">n-dx is CLI-first — point it at a directory, run two commands, and the loop starts. When you want to see the big picture, <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">n-dx start</code> launches a web dashboard with interactive zone maps, a live task tree, and auto-refresh as data changes.</p>
       <ul class="persona-points">
         <li>
           <div class="persona-check teal">✓</div>
