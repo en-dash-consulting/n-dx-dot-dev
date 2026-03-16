@@ -984,7 +984,7 @@
   <h1>Spec-driven development,<br><span class="gradient-text">closed loop.</span></h1>
 
   <p class="hero-sub">
-    n-dx connects codebase analysis, structured planning, and autonomous task execution into one repeatable loop. The PRD is the source of truth — every cycle begins with understanding what's in the code and ends with shipped work.
+    n-dx connects codebase analysis, structured planning, and autonomous task execution into one repeatable loop — CLI-first, with a web dashboard when you need it. The PRD is the source of truth — every cycle begins with understanding what's in the code and ends with shipped work.
   </p>
 
   <div class="hero-actions">
@@ -1115,6 +1115,11 @@
       <div class="step-title">Execute</div>
       <p class="step-body">hench picks the next task, builds a brief with full codebase context, and ships it — writing code, running tests, committing results. Mark complete. Pick the next. Repeat.</p>
     </div>
+    <div class="how-step">
+      <div class="step-number" style="background:rgba(232,121,249,0.12);color:#e879f9;">4</div>
+      <div class="step-title">Visualize</div>
+      <p class="step-body">Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:#e879f9;">ndx serve</code> to launch the web dashboard — interactive zone maps, a live task tree with completion stats, and auto-refresh as data changes. Share it with your team or export a static build.</p>
+    </div>
   </div>
 
   <div class="terminal-wrap">
@@ -1151,6 +1156,9 @@
       <div><span class="t-purple">Epic: Auth System        [▓▓▓▓░░░░░░] 40%</span></div>
       <div><span class="t-purple">Epic: Dashboard          [▓▓░░░░░░░░] 20%</span></div>
       <div><span class="t-dim">Next: "OAuth provider integration"</span></div>
+      <div>&nbsp;</div>
+      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx serve</span></div>
+      <div><span class="t-teal">Dashboard running at http://localhost:3117</span></div>
     </div>
   </div>
 </div>
@@ -1202,7 +1210,7 @@
     <div class="persona-card">
       <div class="persona-label dev">For the practitioner</div>
       <h3 class="persona-title">Run it. Ship it.<br>Let the spec keep score.</h3>
-      <p class="persona-body">n-dx is a CLI toolkit that fits into existing workflows. No new IDE, no GUI required. Point it at a directory, run two commands, and the loop starts. The PRD lives next to the code in version control.</p>
+      <p class="persona-body">n-dx is CLI-first — point it at a directory, run two commands, and the loop starts. When you want to see the big picture, <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx serve</code> launches a web dashboard with interactive zone maps, a live task tree, and auto-refresh as data changes.</p>
       <ul class="persona-points">
         <li>
           <div class="persona-check teal">✓</div>
@@ -1230,7 +1238,7 @@
     <div class="persona-card">
       <div class="persona-label leader">For the team lead</div>
       <h3 class="persona-title">Structured output.<br>Traceable progress.</h3>
-      <p class="persona-body">n-dx gives engineering teams a shared source of truth that doesn't require a separate planning tool. The PRD is generated from the codebase and stays in sync — automatically. Progress is visible without status meetings.</p>
+      <p class="persona-body">n-dx gives engineering teams a shared source of truth that doesn't require a separate planning tool. The PRD is generated from the codebase and stays in sync — automatically. The web dashboard makes progress visible to the whole team without status meetings.</p>
       <ul class="persona-points">
         <li>
           <div class="persona-check amber">✓</div>
