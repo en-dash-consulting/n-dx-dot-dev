@@ -82,7 +82,7 @@
   .nav-links a {
     color: var(--muted);
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 400;
     transition: color 0.2s;
   }
@@ -99,7 +99,7 @@
     border-radius: 8px;
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     text-decoration: none;
     cursor: pointer;
     border: none;
@@ -188,7 +188,7 @@
   }
   .hero h1 .accent { color: var(--teal); }
   .hero-sub {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
     color: var(--muted);
     max-width: 640px;
     line-height: 1.65;
@@ -207,7 +207,7 @@
   }
   .btn-large {
     padding: 13px 28px;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     border-radius: 10px;
   }
   .hero-loop {
@@ -286,7 +286,7 @@
     margin-bottom: 16px;
   }
   .section-body {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--muted);
     max-width: 600px;
     line-height: 1.7;
@@ -315,9 +315,7 @@
     display: flex;
     gap: 16px;
     align-items: flex-start;
-    transition: background 0.2s;
   }
-  .problem-card:hover { background: var(--card-hover); }
   .problem-icon {
     width: 64px; height: 64px;
     border-radius: 14px;
@@ -329,12 +327,12 @@
   .problem-text strong {
     display: block;
     font-weight: 500;
-    font-size: 0.925rem;
+    font-size: 1rem;
     margin-bottom: 4px;
     color: var(--white);
   }
   .problem-text span {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--muted);
     line-height: 1.5;
   }
@@ -364,7 +362,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    transition: all 0.25s;
     position: relative;
     overflow: hidden;
   }
@@ -374,17 +371,10 @@
     top: 0; left: 0; right: 0;
     height: 3px;
     opacity: 0.7;
-    transition: opacity 0.25s;
   }
   .package-card.sv::before { background: #00ffb3; box-shadow: 0 0 12px rgba(0,255,179,0.6); }
   .package-card.rex::before { background: #a78bff; box-shadow: 0 0 12px rgba(167,139,255,0.6); }
   .package-card.hench::before { background: #ffaa33; box-shadow: 0 0 12px rgba(255,170,51,0.6); }
-  .package-card:hover::before { opacity: 1; }
-  .package-card:hover {
-    background: var(--card-hover);
-    transform: translateY(-2px);
-    border-color: rgba(255,255,255,0.12);
-  }
   .package-header {
     display: flex;
     flex-direction: column;
@@ -419,7 +409,7 @@
   .package-role.rex { color: var(--purple); }
   .package-role.hench { color: var(--amber); }
   .package-desc {
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     color: var(--muted);
     line-height: 1.65;
   }
@@ -434,7 +424,7 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    font-size: 0.82rem;
+    font-size: 0.92rem;
     color: var(--muted);
     line-height: 1.5;
   }
@@ -501,7 +491,7 @@
     margin-bottom: 12px;
   }
   .step-body {
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     color: var(--muted);
     line-height: 1.65;
   }
@@ -542,7 +532,7 @@
   .t-teal { color: var(--teal); }
   .t-purple { color: var(--purple); }
   .t-amber { color: var(--amber); }
-  .t-dim { color: #3a4a70; }
+  .t-dim { color: #6b7ba0; }
 
   /* ── USE CASES ────────────────────────────────────────────────────── */
   .usecases-section { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
@@ -558,18 +548,11 @@
     border-left: 3px solid var(--teal);
     border-radius: 0 16px 16px 0;
     padding: 32px 32px 28px;
-    transition: all 0.25s;
     position: relative;
   }
   .usecase-card:nth-child(2) { border-left-color: var(--purple); }
   .usecase-card:nth-child(3) { border-left-color: var(--amber); }
   .usecase-card:nth-child(4) { border-left-color: #e879f9; }
-  .usecase-card:hover {
-    background: #111f40;
-    transform: translateY(-2px);
-    border-color: rgba(255,255,255,0.18);
-    border-left-width: 4px;
-  }
   .uc-icon {
     width: 48px;
     height: 48px;
@@ -598,7 +581,7 @@
     line-height: 1.3;
   }
   .uc-body {
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     color: #d8e4f8;
     line-height: 1.65;
     margin-bottom: 20px;
@@ -645,7 +628,7 @@
     line-height: 1.2;
   }
   .persona-body {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--muted);
     line-height: 1.7;
     margin-bottom: 24px;
@@ -660,7 +643,7 @@
     display: flex;
     gap: 12px;
     align-items: flex-start;
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     color: var(--white);
     line-height: 1.5;
   }
@@ -708,7 +691,7 @@
   .compare-table .row-label {
     color: var(--white);
     font-weight: 500;
-    font-size: 0.925rem;
+    font-size: 1rem;
   }
   .compare-table .ndx-col {
     color: var(--white);
@@ -792,12 +775,12 @@
     text-decoration: none;
   }
   .footer-meta {
-    font-size: 0.78rem;
+    font-size: 0.875rem;
     color: var(--muted);
   }
   .footer-links { display: flex; gap: 24px; }
   .footer-links a {
-    font-size: 0.78rem;
+    font-size: 0.875rem;
     color: var(--muted);
     text-decoration: none;
     transition: color 0.2s;
@@ -818,14 +801,66 @@
     footer { flex-direction: column; gap: 24px; text-align: center; }
     .compare-table { font-size: 0.75rem; }
     .hero { padding: 100px 24px 60px; }
+    .hero-cards { grid-template-columns: 1fr; }
+    .nav-cta { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 80px 16px 40px; }
+    section { padding: 48px 16px; }
+    .packages-section, .how-section, .usecases-section, .compare-section, .cta-section { padding: 48px 16px; }
+    nav { padding: 0 16px; }
+    .step-number { width: 48px; height: 48px; font-size: 1.4rem; border-radius: 10px; }
+    .terminal-wrap { max-width: 100%; }
+    .usecases-grid { grid-template-columns: 1fr; }
+    .persona-card { padding: 24px; }
+    .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .personas-section { padding: 48px 16px; }
+    footer { padding: 24px 16px; }
+  }
+
+  /* ── SKIP LINK ──────────────────────────────────────────────────── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 200;
+    padding: 8px 16px;
+    background: var(--teal);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* ── FOCUS STYLES ───────────────────────────────────────────────── */
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  /* ── REDUCED MOTION ─────────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" aria-label="Home">
     <div class="nav-logo-mark">
       <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <text x="1" y="14" font-family="serif" font-size="13" font-weight="bold" fill="#f0f4ff">dx</text>
@@ -833,7 +868,7 @@
     </div>
     <span class="nav-logo-text">n-dx</span>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" role="list">
     <li><a href="#packages">Packages</a></li>
     <li><a href="#how">Workflow</a></li>
     <li><a href="#usecases">Use Cases</a></li>
@@ -841,13 +876,15 @@
     <li><a href="#install" class="active">Get Started</a></li>
   </ul>
   <div class="nav-cta">
-    <a href="#" class="btn btn-ghost">GitHub ↗</a>
+    <a href="https://github.com/en-dash-consulting/n-dx" class="btn btn-ghost">GitHub ↗</a>
     <a href="#install" class="btn btn-primary">Get Started</a>
   </div>
 </nav>
 
+<main id="main-content">
+
 <!-- HERO -->
-<div class="hero">
+<div class="hero" role="banner">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
 
@@ -864,7 +901,7 @@
 
   <div class="hero-actions">
     <a href="#install" class="btn btn-primary btn-large">Get Started</a>
-    <a href="#" class="btn btn-ghost btn-large">View on GitHub ↗</a>
+    <a href="https://github.com/en-dash-consulting/n-dx" class="btn btn-ghost btn-large">View on GitHub ↗</a>
   </div>
 
     <div class="hero-cards">
@@ -883,7 +920,7 @@
         <li><span class="bullet-dot"></span>Louvain community detection for zones</li>
         <li><span class="bullet-dot"></span>AI-readable <code>CONTEXT.md</code> output</li>
       </ul>
-      <div class="package-cmd">ndx plan .</div>
+      <div class="package-cmd">ndx analyze .</div>
     </div>
   <div class="package-card rex">
       <div class="package-header">
@@ -900,7 +937,7 @@
         <li><span class="bullet-dot"></span>Dependency tracking &amp; validation</li>
         <li><span class="bullet-dot"></span>MCP server for Claude integration</li>
       </ul>
-      <div class="package-cmd" style="color:var(--purple)">ndx plan --accept .</div>
+      <div class="package-cmd" style="color:var(--purple)">ndx recommend .</div>
     </div>
   <div class="package-card hench">
       <div class="package-header">
@@ -947,14 +984,14 @@
         </div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon orange">🗺</div>
+        <div class="problem-icon orange"><span role="img" aria-label="Map">🗺</span></div>
         <div class="problem-text">
           <strong>Onboarding to an unfamiliar codebase</strong>
           <span>Understanding file inventory, import graphs, and architectural zones takes days without tooling. sourcevision produces a machine-readable map in minutes.</span>
         </div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon yellow">🔁</div>
+        <div class="problem-icon yellow"><span role="img" aria-label="Repeat">🔁</span></div>
         <div class="problem-text">
           <strong>No memory between AI work sessions</strong>
           <span>Without a shared source of truth, every AI session starts from scratch. rex maintains a structured PRD across every cycle, keeping state between runs.</span>
@@ -1005,9 +1042,11 @@
       <div><span class="t-teal">rex initialized</span></div>
       <div><span class="t-teal">hench initialized</span></div>
       <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx plan --accept .</span></div>
+      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx analyze .</span></div>
       <div><span class="t-dim">Analyzing codebase...</span></div>
       <div><span class="t-teal">142 files · 12 zones · 38 components</span></div>
+      <div>&nbsp;</div>
+      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx recommend .</span></div>
       <div><span class="t-teal">Generated 6 epics, 18 tasks</span></div>
       <div><span class="t-teal">PRD saved to .rex/prd.json</span></div>
       <div>&nbsp;</div>
@@ -1059,7 +1098,7 @@
       <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M24%208%20C34%208%2040%2015%2040%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%2240%2C24%2036%2C18%2044%2C18%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Cpath%20d%3D%22M24%2040%20C14%2040%208%2033%208%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%228%2C24%2012%2C30%204%2C30%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%225%22%20fill%3D%22%23e879f9%22%20opacity%3D%220.3%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%222.5%22%20fill%3D%22%23e879f9%22/%3E%0A%3C/svg%3E" alt="change management">
       <div class="uc-label">Ongoing change management</div>
       <div class="uc-title">Keep the plan in sync with a codebase that never stops changing.</div>
-      <p class="uc-body">Re-run <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--teal)">ndx plan</code> any time the codebase shifts. The PRD self-updates: completed items are marked, new work surfaces, dependencies are re-validated. The loop stays current without manual tracking.</p>
+      <p class="uc-body">Re-run <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--teal)">ndx recommend</code> any time the codebase shifts. The PRD self-updates: completed items are marked, new work surfaces, dependencies are re-validated. The loop stays current without manual tracking.</p>
     </div>
 
   </div>
@@ -1076,7 +1115,7 @@
       <ul class="persona-points">
         <li>
           <div class="persona-check teal">✓</div>
-          <span><code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx plan . && ndx work .</code> — the full workflow in two commands</span>
+          <span><code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx analyze . && ndx recommend . && ndx work .</code> — the full workflow in three commands</span>
         </li>
         <li>
           <div class="persona-check teal">✓</div>
@@ -1092,7 +1131,7 @@
         </li>
         <li>
           <div class="persona-check teal">✓</div>
-          <span>Natural language task input: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">rex add "user auth with OAuth"</code></span>
+          <span>Natural language task input: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx recommend --add "user auth with OAuth"</code></span>
         </li>
       </ul>
     </div>
@@ -1135,6 +1174,7 @@
     <h2 class="section-title">The only tool that owns<br>the full loop.</h2>
     <p class="section-body">Most AI development tools address one layer of the problem. n-dx connects all three — and keeps them in sync.</p>
   </div>
+  <div class="compare-table-wrap">
   <table class="compare-table">
     <thead>
       <tr>
@@ -1229,6 +1269,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
   <p style="margin-top:16px;font-size:0.75rem;color:var(--muted);font-family:var(--font-mono);">● Full &nbsp;◐ Partial &nbsp;○ No &nbsp;· Based on public documentation as of Q1 2026.</p>
 </div>
 
@@ -1242,17 +1283,19 @@
     </p>
     <div class="install-block">
       <span class="install-cmd">npx n-dx init .</span>
-      <button class="install-copy" onclick="navigator.clipboard.writeText('npx n-dx init .')">copy</button>
+      <button class="install-copy" aria-label="Copy install command" onclick="navigator.clipboard.writeText('npx n-dx init .')">copy</button>
     </div>
     <div class="cta-actions">
       <a href="#" class="btn btn-primary btn-large">Read the Docs</a>
-      <a href="#" class="btn btn-ghost btn-large">View on GitHub ↗</a>
+      <a href="https://github.com/en-dash-consulting/n-dx" class="btn btn-ghost btn-large">View on GitHub ↗</a>
     </div>
   </div>
 </div>
 
+</main>
+
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <a href="#" class="footer-logo">
     <span style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--white);">n-dx</span>
   </a>
@@ -1262,7 +1305,7 @@
     <img src="data:image/png;base64,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" alt="En Dash Consulting" style="height:40px;width:auto;border-radius:6px;">
   </div>
   <div class="footer-links">
-    <a href="#">GitHub</a>
+    <a href="https://github.com/en-dash-consulting/n-dx">GitHub</a>
     <a href="#">Docs</a>
     <a href="#">Changelog</a>
     <a href="#">En Dash</a>
