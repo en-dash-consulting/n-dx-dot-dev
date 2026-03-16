@@ -51,4 +51,4 @@ This repository contains the static marketing site for n-dx, hosted on GitHub Pa
 
 ## License
 
-MIT
+Elastic License 2.0
