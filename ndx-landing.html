@@ -13,6 +13,7 @@
 <title>n-dx — Spec-Driven Development, Automated</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="n-dx-logo.png">
 <style>
   :root {
     --navy: #0d1b3e;
@@ -70,12 +71,11 @@
   }
   .nav-logo-mark {
     width: 32px; height: 32px;
-    background: var(--navy-light);
     border-radius: 7px;
-    display: flex; align-items: center; justify-content: center;
-    border: 1px solid var(--border);
+    overflow: hidden;
+    flex-shrink: 0;
   }
-  .nav-logo-mark svg { width: 18px; height: 18px; }
+  .nav-logo-mark img { width: 100%; height: 100%; object-fit: cover; }
   .nav-logo-text {
     font-family: var(--font-display);
     font-weight: 700;
@@ -972,9 +972,7 @@
 <nav role="navigation" aria-label="Main navigation">
   <a href="#" class="nav-logo" aria-label="Home">
     <div class="nav-logo-mark">
-      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="1" y="14" font-family="serif" font-size="13" font-weight="bold" fill="#f0f4ff">dx</text>
-      </svg>
+      <img src="n-dx-logo.png" alt="" width="32" height="32">
     </div>
     <span class="nav-logo-text">n-dx</span>
   </a>
