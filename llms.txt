@@ -6,7 +6,7 @@ n-dx connects codebase analysis, structured planning, and autonomous task execut
 
 ## What is n-dx?
 
-n-dx is an open-source, vendor-neutral, CLI-first toolkit for spec-driven development. It consists of three packages:
+n-dx is an open-source, CLI-first toolkit for spec-driven development. Built for Claude Code and Codex — layer it on top of the AI coding tools you already use. It consists of three packages:
 
 - **sourcevision** (`ndx analyze .`) — Static analysis engine that maps a codebase into machine-readable context: file inventory, import graph, architectural zone detection via Louvain community detection, and React component catalog.
 - **rex** (`ndx recommend .`) — PRD management with hierarchical epics, features, tasks, and subtasks. Scans your project to generate proposals, tracks progress, and validates dependencies.
@@ -21,7 +21,7 @@ ndx recommend .
 ndx work .
 ```
 
-Requires Node.js 18+ and pnpm 10.x. Works with Claude API, Claude CLI, or Codex.
+Requires Node.js 18+ and pnpm 10.x. Works with Claude Code and Codex — log in on first run to connect your existing subscription.
 
 ## About this site
 
