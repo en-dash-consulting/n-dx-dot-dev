@@ -32,4 +32,4 @@ This repository contains the static HTML marketing site hosted at n-dx.dev via G
 - Source code: https://github.com/en-dash-consulting/n-dx
 - Website: https://n-dx.dev
 - Built by En Dash Consulting: https://endash.us
-- Contact: https://endash.us/blog/posts/what-is-an-en-dash?showContact=true&contactTitle=Re%3A+n-dx&contactSubtitle=Tell+us+about+your+project+or+ask+a+question&contactMessage=Hi%2C+I%27m+interested+in+learning+more+about+n-dx.%0A%0A
+- Contact: https://endash.us/toolkit?showContact=true&contactTitle=Re%3A+n-dx&contactSubtitle=Tell+us+about+your+project+or+ask+a+question&contactMessage=Hi%2C+I%27m+interested+in+learning+more+about+n-dx.%0A%0A
