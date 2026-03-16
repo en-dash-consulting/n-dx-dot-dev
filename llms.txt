@@ -1,0 +1,35 @@
+# n-dx.dev
+
+> Marketing site for n-dx, the spec-driven development toolkit by En Dash Consulting.
+
+n-dx connects codebase analysis, structured planning, and autonomous task execution into one repeatable loop. The PRD is the source of truth — every cycle begins with understanding what's in the code and ends with shipped work.
+
+## What is n-dx?
+
+n-dx is an open-source, vendor-neutral, CLI-first toolkit for spec-driven development. It consists of three packages:
+
+- **sourcevision** (`ndx analyze .`) — Static analysis engine that maps a codebase into machine-readable context: file inventory, import graph, architectural zone detection via Louvain community detection, and React component catalog.
+- **rex** (`ndx recommend .`) — PRD management with hierarchical epics, features, tasks, and subtasks. Scans your project to generate proposals, tracks progress, and validates dependencies.
+- **hench** (`ndx work .`) — Autonomous agent that picks the next task, builds a brief with full codebase context, and drives Claude in a tool-use loop. Records runs with full transcripts.
+
+## Quick start
+
+```
+npx n-dx init .
+ndx analyze .
+ndx recommend .
+ndx work .
+```
+
+Requires Node.js 18+ and pnpm 10.x. Works with Claude API, Claude CLI, or Codex.
+
+## About this site
+
+This repository contains the static HTML marketing site hosted at n-dx.dev via GitHub Pages. No build step — just HTML with inline CSS.
+
+## Links
+
+- Source code: https://github.com/en-dash-consulting/n-dx
+- Website: https://n-dx.dev
+- Built by En Dash Consulting: https://endash.us
+- Contact: https://endash.us/blog/posts/what-is-an-en-dash?showContact=true&contactTitle=Re%3A+n-dx&contactSubtitle=Tell+us+about+your+project+or+ask+a+question&contactMessage=Hi%2C+I%27m+interested+in+learning+more+about+n-dx.%0A%0A
