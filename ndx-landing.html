@@ -1240,7 +1240,10 @@
       <span style="font-family:var(--font-mono);font-size:0.68rem;color:var(--muted);opacity:0.5;">n-dx loop</span>
     </div>
     <div class="terminal-body">
-      <div><span class="t-prompt">$ </span><span class="t-cmd">npx n-dx init .</span></div>
+      <div><span class="t-prompt">$ </span><span class="t-cmd">npm i -g @n-dx/core</span></div>
+      <div><span class="t-dim">added 1 package in 4s</span></div>
+      <div>&nbsp;</div>
+      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx init .</span></div>
       <div><span class="t-teal">sourcevision initialized</span></div>
       <div><span class="t-teal">rex initialized</span></div>
       <div><span class="t-teal">hench initialized</span></div>
@@ -1249,11 +1252,11 @@
       <div><span class="t-dim">Analyzing codebase...</span></div>
       <div><span class="t-teal">142 files · 12 zones · 38 components</span></div>
       <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx recommend .</span></div>
+      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx recommend --accept .</span></div>
       <div><span class="t-teal">Generated 6 epics, 18 tasks</span></div>
       <div><span class="t-teal">PRD saved to .rex/prd.json</span></div>
       <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx work .</span></div>
+      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx work --auto .</span></div>
       <div><span class="t-dim">Picking next task...</span></div>
       <div><span class="t-amber">► "Add user authentication"</span></div>
       <div><span class="t-dim">Writing code · Running tests · Committing</span></div>
@@ -1316,7 +1319,7 @@
       <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M24%208%20C34%208%2040%2015%2040%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%2240%2C24%2036%2C18%2044%2C18%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Cpath%20d%3D%22M24%2040%20C14%2040%208%2033%208%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%228%2C24%2012%2C30%204%2C30%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%225%22%20fill%3D%22%23e879f9%22%20opacity%3D%220.3%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%222.5%22%20fill%3D%22%23e879f9%22/%3E%0A%3C/svg%3E" alt="change management">
       <div class="uc-label">Ongoing change management</div>
       <div class="uc-title">Keep the plan in sync with a codebase that never stops changing.</div>
-      <p class="uc-body">Re-run <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--teal)">ndx recommend</code> any time the codebase shifts. The PRD self-updates: completed items are marked, new work surfaces, dependencies are re-validated. The loop stays current without manual tracking.</p>
+      <p class="uc-body">Run <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--teal)">ndx self-heal 3 .</code> to automatically re-analyze, accept recommendations, execute tasks, and acknowledge completions — iterating N times. The PRD stays current without manual tracking.</p>
       <div class="uc-metric">
         <span>↩</span>
         <span class="uc-metric-placeholder">Metric: code rework reduction — coming soon</span>
@@ -1337,7 +1340,7 @@
       <ul class="persona-points">
         <li>
           <div class="persona-check teal">✓</div>
-          <span><code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx analyze . && ndx recommend . && ndx work .</code> — the full workflow in three commands</span>
+          <span><code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx analyze . && ndx recommend --accept . && ndx work --auto .</code> — the full workflow in three commands</span>
         </li>
         <li>
           <div class="persona-check teal">✓</div>
@@ -1353,7 +1356,7 @@
         </li>
         <li>
           <div class="persona-check teal">✓</div>
-          <span>Natural language task input: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx recommend --add "user auth with OAuth"</code></span>
+          <span>Natural language task input: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx add "user auth with OAuth" .</code></span>
         </li>
       </ul>
     </div>
@@ -1501,11 +1504,11 @@
     <div class="section-label" style="text-align:center;">Get started</div>
     <h2 class="section-title">One command to initialize.<br>Two to run the loop.</h2>
     <p class="section-body" style="text-align:center;margin:0 auto 40px;">
-      Requires Node.js 18+ and pnpm 10.x. Works with Claude Code and Codex — log in on first run to connect your existing subscription.
+      Requires Node.js 18+. Works with Claude Code and Codex — configure your LLM vendor on first run.
     </p>
     <div class="install-block">
-      <span class="install-cmd">npx n-dx init .</span>
-      <button class="install-copy" aria-label="Copy install command" onclick="navigator.clipboard.writeText('npx n-dx init .')">copy</button>
+      <span class="install-cmd">npm i -g @n-dx/core</span>
+      <button class="install-copy" aria-label="Copy install command" onclick="navigator.clipboard.writeText('npm i -g @n-dx/core')">copy</button>
     </div>
     <div class="cta-actions">
       <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Read the Docs</a>

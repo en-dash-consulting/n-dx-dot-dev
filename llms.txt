@@ -15,13 +15,14 @@ n-dx is an open-source, CLI-first toolkit for spec-driven development. Built for
 ## Quick start
 
 ```
-npx n-dx init .
+npm i -g @n-dx/core
+ndx init .
 ndx analyze .
-ndx recommend .
-ndx work .
+ndx recommend --accept .
+ndx work --auto .
 ```
 
-Requires Node.js 18+ and pnpm 10.x. Works with Claude Code and Codex — log in on first run to connect your existing subscription.
+Requires Node.js 18+. Works with Claude Code and Codex — configure your LLM vendor on first run.
 
 ## About this site
 

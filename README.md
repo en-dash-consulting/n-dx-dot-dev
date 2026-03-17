@@ -21,10 +21,11 @@ The PRD is the source of truth. Every cycle begins with understanding what's in 
 **Get started:**
 
 ```bash
-npx n-dx init .
+npm i -g @n-dx/core
+ndx init .
 ndx analyze .
-ndx recommend .
-ndx work .
+ndx recommend --accept .
+ndx work --auto .
 ```
 
 ## This repo
