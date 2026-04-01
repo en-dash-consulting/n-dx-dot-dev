@@ -189,6 +189,44 @@
     position: relative;
     overflow: hidden;
   }
+  .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+    max-width: 1100px;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+  .hero-mascot {
+    flex-shrink: 0;
+    animation: fadeUp 0.6s ease 0.15s both;
+  }
+  .hero-mascot img {
+    width: 260px;
+    height: auto;
+    filter: drop-shadow(0 0 40px rgba(45,212,160,0.2));
+  }
+  @media (max-width: 768px) {
+    .hero-content {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+    .hero-mascot img {
+      width: 180px;
+    }
+  }
+  @media (max-width: 480px) {
+    .hero-mascot img {
+      width: 140px;
+    }
+  }
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -982,15 +1020,23 @@
     Open-source · Built for Claude Code &amp; Codex · CLI-first
   </div>
 
-  <h1>Spec-driven development,<br><span class="gradient-text">closed loop.</span></h1>
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>Rule your code<br><span class="gradient-text">in the Age of AI.</span></h1>
 
-  <p class="hero-sub">
-    n-dx connects codebase analysis, structured planning, and autonomous task execution into one repeatable loop — CLI-first, with a web dashboard when you need it. The PRD is the source of truth — every cycle begins with understanding what's in the code and ends with shipped work.
-  </p>
+      <p class="hero-sub">
+        n-dx connects codebase analysis, structured planning, and autonomous task execution into one repeatable loop — CLI-first, with a web dashboard when you need it. The PRD is the source of truth — every cycle begins with understanding what's in the code and ends with shipped work.
+      </p>
 
-  <div class="hero-actions">
-    <a href="#install" class="btn btn-primary btn-large">Get Started</a>
-    <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">View on GitHub ↗</a>
+      <div class="hero-actions">
+        <a href="#install" class="btn btn-primary btn-large">Get Started</a>
+        <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="hero-mascot">
+      <img src="rex_mascot.png" alt="Rex — the n-dx mascot, a blue dinosaur with glasses holding a wrench and flashlight" width="260" height="385">
+    </div>
   </div>
 
     <div class="hero-cards">
