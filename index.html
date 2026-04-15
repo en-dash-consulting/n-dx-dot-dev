@@ -672,6 +672,11 @@
     display: block;
     margin-bottom: 16px;
   }
+  .uc-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
   .uc-label {
     font-family: var(--font-mono);
     font-size: 0.66rem;
@@ -1223,31 +1228,57 @@
   <div class="usecases-grid">
 
     <div class="usecase-card">
-      <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%228%22%20r%3D%225%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.9%22/%3E%0A%20%20%3Ccircle%20cx%3D%228%22%20cy%3D%2236%22%20r%3D%225%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.7%22/%3E%0A%20%20%3Ccircle%20cx%3D%2240%22%20cy%3D%2236%22%20r%3D%225%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.7%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2228%22%20r%3D%224%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.5%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2213%22%20x2%3D%2224%22%20y2%3D%2224%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221.5%22%20opacity%3D%220.5%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2213%22%20x2%3D%2210%22%20y2%3D%2231%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221.5%22%20opacity%3D%220.4%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2213%22%20x2%3D%2238%22%20y2%3D%2231%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221.5%22%20opacity%3D%220.4%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2232%22%20x2%3D%2211%22%20y2%3D%2234%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221%22%20opacity%3D%220.3%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2232%22%20x2%3D%2237%22%20y2%3D%2234%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221%22%20opacity%3D%220.3%22/%3E%0A%3C/svg%3E" alt="onboarding">
-      <div class="uc-label">Codebase onboarding</div>
-      <div class="uc-title">Understand an unfamiliar repo in minutes, not days.</div>
-      <p class="uc-body">sourcevision maps file inventory, import graphs, and architectural zones automatically. New contributors get a machine-readable picture of the full codebase on first run — without reading every file.</p>
+      <a href="https://github.com/en-dash-consulting/n-dx-internal/blob/7607552d177e27d93f9f1049a4292139812da757/docs/guide/onboarding.md" class="uc-link">
+        <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%228%22%20r%3D%225%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.9%22/%3E%0A%20%20%3Ccircle%20cx%3D%228%22%20cy%3D%2236%22%20r%3D%225%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.7%22/%3E%0A%20%20%3Ccircle%20cx%3D%2240%22%20cy%3D%2236%22%20r%3D%225%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.7%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2228%22%20r%3D%224%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.5%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2213%22%20x2%3D%2224%22%20y2%3D%2224%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221.5%22%20opacity%3D%220.5%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2213%22%20x2%3D%2210%22%20y2%3D%2231%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221.5%22%20opacity%3D%220.4%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2213%22%20x2%3D%2238%22%20y2%3D%2231%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221.5%22%20opacity%3D%220.4%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2232%22%20x2%3D%2211%22%20y2%3D%2234%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221%22%20opacity%3D%220.3%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2232%22%20x2%3D%2237%22%20y2%3D%2234%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221%22%20opacity%3D%220.3%22/%3E%0A%3C/svg%3E" alt="onboarding">
+        <div class="uc-label">Codebase onboarding</div>
+        <div class="uc-title">Understand an unfamiliar repo in minutes, not days.</div>
+        <p class="uc-body">sourcevision maps file inventory, import graphs, and architectural zones automatically. New contributors get a machine-readable picture of the full codebase on first run — without reading every file.</p>
+        <div class="uc-metric">
+          <span>⏱</span>
+          <span class="uc-metric-placeholder">Metric: avg. time-to-orientation — coming soon</span>
+        </div>
+      </a>
     </div>
 
     <div class="usecase-card">
-      <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Crect%20x%3D%2220%22%20y%3D%226%22%20width%3D%224%22%20height%3D%2222%22%20rx%3D%222%22%20fill%3D%22%23a78bff%22/%3E%0A%20%20%3Cpath%20d%3D%22M12%2028%20L36%2028%20L32%2042%20L16%2042%20Z%22%20fill%3D%22%23a78bff%22%20opacity%3D%220.8%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%2228%22%20x2%3D%2217%22%20y2%3D%2242%22%20stroke%3D%22%237755cc%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2228%22%20x2%3D%2224%22%20y2%3D%2242%22%20stroke%3D%22%237755cc%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Cline%20x1%3D%2230%22%20y1%3D%2228%22%20x2%3D%2231%22%20y2%3D%2242%22%20stroke%3D%22%237755cc%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Ccircle%20cx%3D%2236%22%20cy%3D%2210%22%20r%3D%222%22%20fill%3D%22%23ffaa33%22/%3E%0A%20%20%3Ccircle%20cx%3D%2240%22%20cy%3D%2218%22%20r%3D%221.5%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.7%22/%3E%0A%20%20%3Ccircle%20cx%3D%2233%22%20cy%3D%2217%22%20r%3D%221%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.6%22/%3E%0A%20%20%3Cline%20x1%3D%2234%22%20y1%3D%228%22%20x2%3D%2238%22%20y2%3D%2212%22%20stroke%3D%22%23ffaa33%22%20stroke-width%3D%221%22%20opacity%3D%220.5%22/%3E%0A%3C/svg%3E" alt="cleanup">
-      <div class="uc-label">Vibe-coded app cleanup</div>
-      <div class="uc-title">Bring structure to a codebase that was built for speed — position it to scale.</div>
-      <p class="uc-body">When a prototype becomes a product, code sprawl follows. n-dx detects patterns and anti-patterns across zones, generates a prioritized cleanup backlog in the PRD, and executes fixes autonomously with guardrails.</p>
+      <a href="https://github.com/en-dash-consulting/n-dx-internal/blob/7607552d177e27d93f9f1049a4292139812da757/docs/guide/vibe-cleanup.md" class="uc-link">
+        <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Crect%20x%3D%2220%22%20y%3D%226%22%20width%3D%224%22%20height%3D%2222%22%20rx%3D%222%22%20fill%3D%22%23a78bff%22/%3E%0A%20%20%3Cpath%20d%3D%22M12%2028%20L36%2028%20L32%2042%20L16%2042%20Z%22%20fill%3D%22%23a78bff%22%20opacity%3D%220.8%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%2228%22%20x2%3D%2217%22%20y2%3D%2242%22%20stroke%3D%22%237755cc%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2228%22%20x2%3D%2224%22%20y2%3D%2242%22%20stroke%3D%22%237755cc%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Cline%20x1%3D%2230%22%20y1%3D%2228%22%20x2%3D%2231%22%20y2%3D%2242%22%20stroke%3D%22%237755cc%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Ccircle%20cx%3D%2236%22%20cy%3D%2210%22%20r%3D%222%22%20fill%3D%22%23ffaa33%22/%3E%0A%20%20%3Ccircle%20cx%3D%2240%22%20cy%3D%2218%22%20r%3D%221.5%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.7%22/%3E%0A%20%20%3Ccircle%20cx%3D%2233%22%20cy%3D%2217%22%20r%3D%221%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.6%22/%3E%0A%20%20%3Cline%20x1%3D%2234%22%20y1%3D%228%22%20x2%3D%2238%22%20y2%3D%2212%22%20stroke%3D%22%23ffaa33%22%20stroke-width%3D%221%22%20opacity%3D%220.5%22/%3E%0A%3C/svg%3E" alt="cleanup">
+        <div class="uc-label">Vibe-coded app cleanup</div>
+        <div class="uc-title">Bring structure to a codebase that was built for speed — position it to scale.</div>
+        <p class="uc-body">When a prototype becomes a product, code sprawl follows. n-dx detects patterns and anti-patterns across zones, generates a prioritized cleanup backlog in the PRD, and executes fixes autonomously with guardrails.</p>
+        <div class="uc-metric">
+          <span>🔍</span>
+          <span class="uc-metric-placeholder">Metric: bugs discovered per KLOC — coming soon</span>
+        </div>
+      </a>
     </div>
 
     <div class="usecase-card">
-      <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Crect%20x%3D%2214%22%20y%3D%224%22%20width%3D%2220%22%20height%3D%2214%22%20rx%3D%223%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.9%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%229%22%20x2%3D%2230%22%20y2%3D%229%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%2213%22%20x2%3D%2227%22%20y2%3D%2213%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2218%22%20x2%3D%2224%22%20y2%3D%2226%22%20stroke%3D%22%23ffaa33%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Cline%20x1%3D%2214%22%20y1%3D%2226%22%20x2%3D%2234%22%20y2%3D%2226%22%20stroke%3D%22%23ffaa33%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Crect%20x%3D%226%22%20y%3D%2228%22%20width%3D%2214%22%20height%3D%2212%22%20rx%3D%222%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.6%22/%3E%0A%20%20%3Crect%20x%3D%2228%22%20y%3D%2228%22%20width%3D%2214%22%20height%3D%2212%22%20rx%3D%222%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.6%22/%3E%0A%20%20%3Cline%20x1%3D%229%22%20y1%3D%2232%22%20x2%3D%2217%22%20y2%3D%2232%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%20%20%3Cline%20x1%3D%229%22%20y1%3D%2235%22%20x2%3D%2215%22%20y2%3D%2235%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%20%20%3Cline%20x1%3D%2231%22%20y1%3D%2232%22%20x2%3D%2239%22%20y2%3D%2232%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%20%20%3Cline%20x1%3D%2231%22%20y1%3D%2235%22%20x2%3D%2237%22%20y2%3D%2235%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%3C/svg%3E" alt="spec-driven">
-      <div class="uc-label">Spec-driven development</div>
-      <div class="uc-title">Let the PRD drive execution, not just document it.</div>
-      <p class="uc-body">Describe what needs to be built in plain language. rex structures it into epics, features, acceptance criteria, and task dependencies. hench executes from that structure — every run traceable back to the spec.</p>
+      
+      <a href="https://github.com/en-dash-consulting/n-dx-internal/blob/7607552d177e27d93f9f1049a4292139812da757/docs/guide/spec-driven.md" class="uc-link">
+        <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Crect%20x%3D%2214%22%20y%3D%224%22%20width%3D%2220%22%20height%3D%2214%22%20rx%3D%223%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.9%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%229%22%20x2%3D%2230%22%20y2%3D%229%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%2213%22%20x2%3D%2227%22%20y2%3D%2213%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2218%22%20x2%3D%2224%22%20y2%3D%2226%22%20stroke%3D%22%23ffaa33%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Cline%20x1%3D%2214%22%20y1%3D%2226%22%20x2%3D%2234%22%20y2%3D%2226%22%20stroke%3D%22%23ffaa33%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Crect%20x%3D%226%22%20y%3D%2228%22%20width%3D%2214%22%20height%3D%2212%22%20rx%3D%222%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.6%22/%3E%0A%20%20%3Crect%20x%3D%2228%22%20y%3D%2228%22%20width%3D%2214%22%20height%3D%2212%22%20rx%3D%222%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.6%22/%3E%0A%20%20%3Cline%20x1%3D%229%22%20y1%3D%2232%22%20x2%3D%2217%22%20y2%3D%2232%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%20%20%3Cline%20x1%3D%229%22%20y1%3D%2235%22%20x2%3D%2215%22%20y2%3D%2235%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%20%20%3Cline%20x1%3D%2231%22%20y1%3D%2232%22%20x2%3D%2239%22%20y2%3D%2232%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%20%20%3Cline%20x1%3D%2231%22%20y1%3D%2235%22%20x2%3D%2237%22%20y2%3D%2235%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%3C/svg%3E" alt="spec-driven">
+        <div class="uc-label">Spec-driven development</div>
+        <div class="uc-title">Let the PRD drive execution, not just document it.</div>
+        <p class="uc-body">Describe what needs to be built in plain language. rex structures it into epics, features, acceptance criteria, and task dependencies. hench executes from that structure — every run traceable back to the spec.</p>
+        <div class="uc-metric">
+          <span>📋</span>
+          <span class="uc-metric-placeholder">Metric: % task applicability, time saved per task — coming soon</span>
+        </div>
+      </a>
     </div>
 
     <div class="usecase-card">
-      <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M24%208%20C34%208%2040%2015%2040%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%2240%2C24%2036%2C18%2044%2C18%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Cpath%20d%3D%22M24%2040%20C14%2040%208%2033%208%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%228%2C24%2012%2C30%204%2C30%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%225%22%20fill%3D%22%23e879f9%22%20opacity%3D%220.3%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%222.5%22%20fill%3D%22%23e879f9%22/%3E%0A%3C/svg%3E" alt="change management">
-      <div class="uc-label">Ongoing change management</div>
-      <div class="uc-title">Keep the plan in sync with a codebase that never stops changing.</div>
-      <p class="uc-body">Run <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--teal)">ndx self-heal 3 .</code> to automatically re-analyze, accept recommendations, execute tasks, and acknowledge completions — iterating N times. The PRD stays current without manual tracking.</p>
+      
+      <a href="https://github.com/en-dash-consulting/n-dx-internal/blob/7607552d177e27d93f9f1049a4292139812da757/docs/guide/overnight.md" class="uc-link">
+        <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M24%208%20C34%208%2040%2015%2040%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%2240%2C24%2036%2C18%2044%2C18%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Cpath%20d%3D%22M24%2040%20C14%2040%208%2033%208%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%228%2C24%2012%2C30%204%2C30%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%225%22%20fill%3D%22%23e879f9%22%20opacity%3D%220.3%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%222.5%22%20fill%3D%22%23e879f9%22/%3E%0A%3C/svg%3E" alt="change management">
+        <div class="uc-label">Ongoing change management</div>
+        <div class="uc-title">Keep the plan in sync with a codebase that never stops changing.</div>
+        <p class="uc-body">Run <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--teal)">ndx self-heal 3 .</code> to automatically re-analyze, accept recommendations, execute tasks, and acknowledge completions — iterating N times. The PRD stays current without manual tracking.</p>
+        <div class="uc-metric">
+          <span>↩</span>
+          <span class="uc-metric-placeholder">Metric: code rework reduction — coming soon</span>
+        </div>
+      </a>
     </div>
 
   </div>
