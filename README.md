@@ -41,6 +41,8 @@ This repository contains the static marketing site for n-dx, hosted on GitHub Pa
 
 - **`mwfb2026/index.html`** - Make Work Feel Better Challenge 2026 landing page
 - **`make-work-feel-better-hackathon-2026/index.html`** - Alias route that redirects to `/mwfb2026/`
+- **`hackathon/index.html`** - Short alias route that redirects to `/mwfb2026/`
+- **`make-work-feel-better/index.html`** - Campaign alias route that redirects to `/mwfb2026/`
 
 ### Stack
 
