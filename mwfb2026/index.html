@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GD4SJX7TSY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GD4SJX7TSY');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make Work Feel Better Challenge 2026 | n-dx</title>
+<meta name="description" content="A practical, remote, async n-dx challenge. Pick something real, try SourceVision, Rex, and Hench against it, and share what changed. Kickoff June 8, 2026.">
+<meta name="keywords" content="n-dx, Make Work Feel Better, hackathon, SourceVision, Rex, Hench, AI coding, PRD, autonomous development">
+<meta name="author" content="En Dash Consulting">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://n-dx.dev/mwfb2026/">
+<meta name="theme-color" content="#0d1b3e">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://n-dx.dev/mwfb2026/">
+<meta property="og:title" content="Make Work Feel Better Challenge 2026 | n-dx">
+<meta property="og:description" content="Remote, async challenge kickoff June 8. Pick something real, try n-dx against it, and share what changed.">
+<meta property="og:image" content="https://n-dx.dev/n-dx-logo.png">
+<meta property="og:image:width" content="300">
+<meta property="og:image:height" content="300">
+<meta property="og:image:alt" content="n-dx logo">
+<meta property="og:site_name" content="n-dx">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Make Work Feel Better Challenge 2026 | n-dx">
+<meta name="twitter:description" content="A practical, remote, async n-dx challenge. Pick something real, try it, and share what changed.">
+<meta name="twitter:image" content="https://n-dx.dev/n-dx-logo.png">
+<meta name="twitter:image:alt" content="n-dx logo">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@600;700;800;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../n-dx-logo.png">
+<link rel="apple-touch-icon" href="../n-dx-logo.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Make Work Feel Better Challenge, With n-dx",
+  "description": "A remote, async n-dx challenge. Pick something real, try n-dx against it, and share what changed.",
+  "url": "https://n-dx.dev/mwfb2026/",
+  "startDate": "2026-06-08T12:00:00-04:00",
+  "endDate": "2026-06-08T13:00:00-04:00",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "VirtualLocation",
+    "url": "https://www.linkedin.com/events/7462954736745627648/?viewAsMember=true"
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "En Dash Consulting",
+    "url": "https://endash.us"
+  },
+  "image": "https://n-dx.dev/n-dx-logo.png"
+}
+</script>
+
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --navy-mid: #132247;
+    --teal: #00ffb3;
+    --purple: #a78bff;
+    --amber: #ffaa33;
+    --white: #ffffff;
+    --ink: #edf2ff;
+    --muted: #dde6f8;
+    --muted-2: #aebbd6;
+    --border: rgba(255,255,255,0.12);
+    --card: rgba(255,255,255,0.055);
+    --card-strong: rgba(255,255,255,0.09);
+    --font-display: 'Montserrat', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  .skip-link {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1000;
+    transform: translateY(-150%);
+    background: var(--teal);
+    color: #03102d;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .skip-link:focus { transform: translateY(0); outline: 3px solid var(--white); }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 48px;
+    background: rgba(13,27,62,0.88);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+  .nav-logo img {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus-visible { color: var(--white); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:focus-visible { outline: 3px solid rgba(0,255,179,0.5); outline-offset: 3px; }
+  .btn-primary {
+    background: var(--teal);
+    color: #03102d;
+  }
+  .btn-primary:hover { background: #4affc8; }
+  .btn-ghost {
+    border-color: var(--border);
+    color: var(--white);
+    background: rgba(255,255,255,0.04);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.08); }
+  .btn-dark {
+    background: #071332;
+    border-color: rgba(255,255,255,0.18);
+    color: var(--white);
+  }
+  .btn-dark:hover { background: #0b1c45; }
+
+  .hero {
+    position: relative;
+    min-height: 88svh;
+    display: flex;
+    align-items: center;
+    padding: 112px 48px 56px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(13,27,62,0.96) 0%, rgba(13,27,62,0.88) 48%, rgba(13,27,62,0.56) 100%),
+      url("../rex_mascot.png") right 8% bottom -28px / auto 82% no-repeat,
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    background: linear-gradient(90deg, var(--teal), var(--purple), var(--amber));
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--teal);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 18px rgba(0,255,179,0.8);
+  }
+  h1 {
+    max-width: 760px;
+    margin-top: 18px;
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 72px;
+    line-height: 0.98;
+    font-weight: 900;
+  }
+  .hero-copy {
+    max-width: 690px;
+    margin-top: 26px;
+    color: var(--muted);
+    font-size: 22px;
+    line-height: 1.55;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    max-width: 900px;
+    margin-top: 46px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--border);
+  }
+  .meta-item {
+    min-height: 118px;
+    padding: 22px;
+    background: rgba(5,16,45,0.72);
+  }
+  .meta-label {
+    color: var(--muted-2);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  .meta-value {
+    display: block;
+    margin-top: 8px;
+    color: var(--white);
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  main section { padding: 88px 48px; }
+  .band { border-bottom: 1px solid var(--border); }
+  .band-alt {
+    background: var(--navy-mid);
+    border-bottom: 1px solid var(--border);
+  }
+  .section-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+  .section-kicker {
+    color: var(--teal);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h2 {
+    max-width: 780px;
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 44px;
+    line-height: 1.08;
+    font-weight: 800;
+  }
+  .section-lede {
+    max-width: 760px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 20px;
+  }
+
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 38px;
+    align-items: start;
+    margin-top: 42px;
+  }
+  .narrative {
+    color: var(--muted);
+    font-size: 20px;
+  }
+  .narrative p + p { margin-top: 18px; }
+  .quote-panel {
+    border-left: 4px solid var(--teal);
+    padding: 28px 30px;
+    background: rgba(0,255,179,0.08);
+  }
+  .quote-panel p {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+  .quote-panel span {
+    display: block;
+    margin-top: 16px;
+    color: var(--muted-2);
+    font-size: 15px;
+  }
+
+  .steps,
+  .awards,
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 42px;
+  }
+  .awards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .step-card,
+  .track-card,
+  .award-card,
+  .timeline-card {
+    min-height: 100%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+  }
+  .step-card,
+  .timeline-card {
+    padding: 26px;
+  }
+  .step-name {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 800;
+  }
+  .step-command {
+    display: inline-flex;
+    margin-top: 14px;
+    padding: 7px 9px;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.26);
+    color: var(--teal);
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+  .step-card p,
+  .timeline-card p {
+    margin-top: 16px;
+    color: var(--muted);
+  }
+
+  .tracks {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 42px;
+  }
+  .track-card {
+    padding: 22px;
+    background: var(--card-strong);
+  }
+  .track-card h3 {
+    color: var(--white);
+    font-size: 18px;
+    line-height: 1.25;
+  }
+  .track-card p {
+    margin-top: 10px;
+    color: var(--muted-2);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .award-card {
+    position: relative;
+    overflow: hidden;
+    padding: 28px;
+  }
+  .award-card::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 6px;
+    margin: -28px -28px 24px;
+  }
+  .award-card:nth-child(1)::before { background: var(--teal); }
+  .award-card:nth-child(2)::before { background: var(--purple); }
+  .award-card:nth-child(3)::before { background: var(--amber); }
+  .award-card:nth-child(4)::before { background: var(--white); }
+  .award-card h3 {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 25px;
+    line-height: 1.2;
+  }
+  .award-card p {
+    margin-top: 14px;
+    color: var(--muted);
+  }
+  .award-prize {
+    display: block;
+    margin-top: 18px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  .award-prize a {
+    color: var(--teal);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .date {
+    color: var(--teal);
+    font-family: var(--font-mono);
+    font-size: 15px;
+  }
+  .timeline-card h3 {
+    margin-top: 10px;
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 22px;
+  }
+
+  .source-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+  }
+  .source-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 15px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.04);
+  }
+  .source-link:hover,
+  .source-link:focus-visible {
+    color: var(--white);
+    border-color: rgba(255,255,255,0.26);
+  }
+
+  .cta-band {
+    background: linear-gradient(90deg, rgba(0,255,179,0.16), rgba(167,139,255,0.14), rgba(255,170,51,0.14));
+  }
+  .cta-panel {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .cta-panel h2 { font-size: 42px; }
+  .cta-actions {
+    display: grid;
+    gap: 12px;
+  }
+  .fine-print {
+    margin-top: 18px;
+    color: var(--muted-2);
+    font-size: 15px;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 30px 48px;
+    color: var(--muted-2);
+    background: #081636;
+  }
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .footer-logo img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .footer-links a {
+    color: var(--muted-2);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .footer-meta {
+    font-size: 0.875rem;
+    color: var(--muted-2);
+  }
+  .footer-links a:hover,
+  .footer-links a:focus-visible { color: var(--white); }
+
+  @media (max-width: 1040px) {
+    .tracks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tracks .track-card:last-child { grid-column: span 2; }
+    h1 { font-size: 58px; }
+  }
+  @media (max-width: 860px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero {
+      min-height: 86svh;
+      padding: 104px 24px 44px;
+    }
+    .hero::before {
+      background:
+        linear-gradient(180deg, rgba(13,27,62,0.96) 0%, rgba(13,27,62,0.88) 62%, rgba(13,27,62,0.68) 100%),
+        url("../rex_mascot.png") right -28px bottom -16px / auto 48% no-repeat,
+        linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+    }
+    h1 { font-size: 48px; }
+    .hero-copy { font-size: 20px; }
+    .hero-meta,
+    .challenge-grid,
+    .steps,
+    .awards,
+    .timeline,
+    .cta-panel {
+      grid-template-columns: 1fr;
+    }
+    .tracks,
+    .tracks .track-card:last-child {
+      grid-template-columns: 1fr;
+      grid-column: auto;
+    }
+    main section { padding: 68px 24px; }
+    h2 { font-size: 36px; }
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 28px 24px;
+    }
+  }
+  @media (max-width: 520px) {
+    body { font-size: 17px; }
+    .nav-logo span { display: none; }
+    .hero-actions,
+    .source-row {
+      flex-direction: column;
+    }
+    .btn,
+    .source-link {
+      width: 100%;
+    }
+    h1 { font-size: 39px; }
+    h2 { font-size: 31px; }
+    .quote-panel p { font-size: 23px; }
+    .meta-item { min-height: 106px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      transition: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<nav aria-label="Primary navigation">
+  <a class="nav-logo" href="../">
+    <img src="../n-dx-logo.png" alt="" width="32" height="32">
+    <span>n-dx</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#challenge">Challenge</a></li>
+    <li><a href="#loop">n-dx loop</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+  </ul>
+  <a class="btn btn-primary" href="https://www.linkedin.com/events/7462954736745627648/?viewAsMember=true" target="_blank" rel="noopener noreferrer">Kickoff</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Remote async challenge</div>
+    <h1>Make Work Feel Better Challenge</h1>
+    <p class="hero-copy">Pick something real, try n-dx against it, and share what changed. Bring a repo, a workflow, a planning problem, or a product idea that would make work feel better if it moved.</p>
+    <div class="hero-actions" aria-label="Primary actions">
+      <a class="btn btn-primary" href="https://www.linkedin.com/events/7462954736745627648/?viewAsMember=true" target="_blank" rel="noopener noreferrer">Sign up for the kickoff</a>
+      <a class="btn btn-ghost" href="https://github.com/en-dash-consulting/n-dx/discussions/221" target="_blank" rel="noopener noreferrer">Follow submissions</a>
+      <a class="btn btn-ghost" href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer">Try n-dx</a>
+    </div>
+    <div class="hero-meta" aria-label="Event summary">
+      <div class="meta-item">
+        <span class="meta-label">Kickoff</span>
+        <span class="meta-value">Monday, June 8, 2026<br>12:00 PM to 1:00 PM</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Submission window</span>
+        <span class="meta-value">June 8-12, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Format</span>
+        <span class="meta-value">Remote, async, practical</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <section class="band" id="challenge">
+    <div class="section-inner">
+      <div class="section-kicker">The point</div>
+      <h2>A hackathon for practical experiments, not polished theater.</h2>
+      <div class="challenge-grid">
+        <div class="narrative">
+          <p>This is meant to be practical and a little experimental: choose a real thing, run it through n-dx, and show the before-and-after.</p>
+          <p>That could be a real repo, a sample project, a technical workflow, a planning problem, or a product idea. The shared question is simple: did the work get easier to understand, plan, test, or ship?</p>
+        </div>
+        <aside class="quote-panel" aria-label="Challenge prompt">
+          <p>Pick something real. Try n-dx against it. Share what changed.</p>
+          <span>Useful write-ups, screenshots, repo links, task trees, weird findings, and small fixes all count.</span>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-alt" id="loop">
+    <div class="section-inner">
+      <div class="section-kicker">The n-dx loop</div>
+      <h2>Move from codebase understanding to product work to autonomous execution.</h2>
+      <p class="section-lede">n-dx connects SourceVision, Rex, and Hench so teams can turn messy project context into a structured plan and then execute against it with tests.</p>
+      <div class="steps">
+        <article class="step-card">
+          <h3 class="step-name">SourceVision maps it</h3>
+          <span class="step-command">ndx analyze .</span>
+          <p>Inventory the codebase, find rough edges, and create context that a person or agent can use without starting cold.</p>
+        </article>
+        <article class="step-card">
+          <h3 class="step-name">Rex plans it</h3>
+          <span class="step-command">ndx recommend .</span>
+          <p>Turn findings into a real PRD with epics, features, tasks, dependencies, and acceptance criteria.</p>
+        </article>
+        <article class="step-card">
+          <h3 class="step-name">Hench works it</h3>
+          <span class="step-command">ndx work .</span>
+          <p>Pick a task, write tests, write code, and keep the execution grounded in your project standards.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="section-inner">
+      <div class="section-kicker">Bring one thing</div>
+      <h2>Good entries start with something specific.</h2>
+      <p class="section-lede">The challenge is open-ended on purpose. These are starting points, not constraints.</p>
+      <div class="tracks">
+        <article class="track-card">
+          <h3>Real repo</h3>
+          <p>Run n-dx on a codebase you actually care about and show what it surfaced.</p>
+        </article>
+        <article class="track-card">
+          <h3>Sample project</h3>
+          <p>Use a small project to test how the loop behaves on a clean, inspectable target.</p>
+        </article>
+        <article class="track-card">
+          <h3>Technical workflow</h3>
+          <p>Apply n-dx to a repeated process that needs clearer planning or execution.</p>
+        </article>
+        <article class="track-card">
+          <h3>Planning problem</h3>
+          <p>Use Rex to turn ambiguous work into a task tree you would trust.</p>
+        </article>
+        <article class="track-card">
+          <h3>Product idea</h3>
+          <p>Start with an idea and see whether n-dx can shape it into buildable work.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-alt" id="awards">
+    <div class="section-inner">
+      <div class="section-kicker">Award categories</div>
+      <h2>We are looking for changed work, surprising use, and useful relief.</h2>
+      <div class="awards">
+        <article class="award-card">
+          <h3>Biggest Bug</h3>
+          <p>For the rough edge, dependency, failure mode, or hidden assumption that deserved daylight.</p>
+          <span class="award-prize">Prize: En Dash color sweatshirt plus a beanie or cap.</span>
+        </article>
+        <article class="award-card">
+          <h3>Small Change, Great Impact</h3>
+          <p>For the tiny change that removed a disproportionate amount of friction.</p>
+          <span class="award-prize">Prize: En Dash color shirt plus <a href="https://www.amazon.com/Values-Based-Consulting-Field-Guide-Better/dp/B0GDCN1KH4" target="_blank" rel="noopener noreferrer">Values-Based Consulting</a>.</span>
+        </article>
+        <article class="award-card">
+          <h3>Most Unique Project</h3>
+          <p>For the project, workflow, or idea that applies n-dx in the most original useful way.</p>
+          <span class="award-prize">Prize: En Dash color shirt plus a YETI.</span>
+        </article>
+        <article class="award-card">
+          <h3>Participation Prize</h3>
+          <p>For everyone who joins the challenge and shares what they tried.</p>
+          <span class="award-prize">Prize: black En Dash t-shirt.</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="schedule">
+    <div class="section-inner">
+      <div class="section-kicker">Schedule</div>
+      <h2>Kick off together, work async, submit what changed.</h2>
+      <div class="timeline">
+        <article class="timeline-card">
+          <div class="date">June 8, 2026</div>
+          <h3>Kickoff</h3>
+          <p>Join the remote kickoff from 12:00 PM to 1:00 PM. We will frame the challenge, show the loop, and point people to submission channels.</p>
+        </article>
+        <article class="timeline-card">
+          <div class="date">June 8-12, 2026</div>
+          <h3>Build and share</h3>
+          <p>Run n-dx against your chosen project, capture artifacts, and post repo links, screenshots, notes, or results in the GitHub discussion.</p>
+        </article>
+        <article class="timeline-card">
+          <div class="date">More details soon</div>
+          <h3>Review and awards</h3>
+          <p>Final review logistics and follow-up format are still being prepared.</p>
+        </article>
+      </div>
+      <div class="source-row" aria-label="Source links">
+        <a class="source-link" href="https://github.com/en-dash-consulting/n-dx/discussions/221" target="_blank" rel="noopener noreferrer">GitHub discussion 221: submissions and dates</a>
+        <a class="source-link" href="https://www.linkedin.com/events/7462954736745627648/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn event: kickoff signup</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="section-inner cta-panel">
+      <div>
+        <div class="section-kicker">Join in</div>
+        <h2>Bring the work that has been waiting for a better loop.</h2>
+        <p class="section-lede">Sign up for the kickoff, follow the submissions thread, or talk with En Dash about sponsoring, collaborating, or running a challenge with your team.</p>
+        <p class="fine-print">More event details are coming soon. The useful thing now is choosing the real problem you want to try.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://www.linkedin.com/events/7462954736745627648/?viewAsMember=true" target="_blank" rel="noopener noreferrer">Sign up on LinkedIn</a>
+        <a class="btn btn-dark" href="https://github.com/en-dash-consulting/n-dx/discussions/221" target="_blank" rel="noopener noreferrer">Post or watch submissions</a>
+        <a class="btn btn-ghost" href="https://endash.us/toolkit?showContact=true&amp;contactTitle=Re%3A+n-dx+Make+Work+Feel+Better&amp;contactSubtitle=Tell+us+about+the+challenge%2C+sponsorship%2C+or+your+team&amp;contactMessage=Hi%2C+I%27m+interested+in+the+Make+Work+Feel+Better+Challenge.%0A%0A" target="_blank" rel="noopener noreferrer">Sponsor or collaborate</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+  <a class="footer-logo" href="../">
+    <img src="../n-dx-logo.png" alt="" width="28" height="28">
+    <span>n-dx</span>
+  </a>
+  <div class="footer-meta">Open source · Elastic License 2.0</div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <span style="font-size:0.75rem;color:var(--muted-2);font-family:var(--font-body);">Built by</span>
+    <img src="data:image/png;base64,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" alt="En Dash Consulting" style="height:40px;width:auto;border-radius:6px;">
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer">Docs</a>
+    <a href="https://endash.us" target="_blank" rel="noopener noreferrer">En Dash</a>
+  </div>
+</footer>
+</body>
+</html>
