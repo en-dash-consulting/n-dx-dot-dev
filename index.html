@@ -335,6 +335,18 @@
     font-size: 1.05rem;
     border-radius: 10px;
   }
+  .hero-npm-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-top: -44px;
+    margin-bottom: 64px;
+    position: relative;
+    animation: fadeUp 0.6s ease 0.35s both;
+  }
+  .hero-npm-badge img {
+    height: 26px;
+    width: auto;
+  }
   .hero-loop {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1089,6 +1101,10 @@
         <a href="#install" class="btn btn-primary btn-large">Get Started</a>
         <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">View on GitHub ↗</a>
       </div>
+
+      <a class="hero-npm-badge" href="https://www.npmjs.com/package/@n-dx/core" target="_blank" rel="noopener noreferrer">
+        <img alt="NPM Downloads" src="https://img.shields.io/npm/dy/%40n-dx%2Fcore" width="150" height="20">
+      </a>
     </div>
 
     <div class="hero-mascot">
