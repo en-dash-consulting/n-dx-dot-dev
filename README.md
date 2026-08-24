@@ -35,6 +35,7 @@ This repository contains the static marketing site for n-dx, hosted on GitHub Pa
 ### Pages
 
 - **`index.html`** — Landing page (served at the root URL)
+- **`vs/spec-kit/index.html`** — n-dx vs Spec Kit, OpenSpec, and Kiro (served at `/vs/spec-kit/`)
 - **`mwfb2026/index.html`** - Make Work Feel Better Challenge 2026 landing page
 - **`make-work-feel-better-hackathon-2026/index.html`** - Alias route that redirects to `/mwfb2026/`
 - **`hackathon/index.html`** - Short alias route that redirects to `/mwfb2026/`

@@ -11,6 +11,7 @@ Static HTML site with no build step. Each page is a single self-contained HTML f
 ### Files
 
 - `index.html` — Landing page. This is what GitHub Pages serves at the root URL. Contains hero, package cards, problem section, how-it-works terminal demo, use cases, personas, comparison table, install CTA, and contact section.
+- `vs/spec-kit/index.html` — Comparison page: n-dx vs Spec Kit, OpenSpec, and Kiro. Served at `/vs/spec-kit/`.
 - `mwfb2026/index.html` - Make Work Feel Better Challenge 2026 event landing page for the remote async n-dx challenge.
 - `make-work-feel-better-hackathon-2026/index.html` - Long-slug alias route that redirects to `/mwfb2026/`.
 - `hackathon/index.html` - Short alias route that redirects to `/mwfb2026/`.

@@ -10,19 +10,19 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>n-dx — Spec-Driven Development, Automated</title>
-<meta name="description" content="n-dx connects codebase analysis, structured planning, and autonomous task execution into one repeatable loop. Open-source, CLI-first. Built for Claude Code and Codex.">
-<meta name="keywords" content="n-dx, spec-driven development, AI coding, codebase analysis, PRD, autonomous development, CLI tools, sourcevision, rex, hench">
+<title>n-dx vs Spec Kit, OpenSpec, and Kiro for existing codebases</title>
+<meta name="description" content="Compare n-dx with GitHub Spec Kit, OpenSpec, and AWS Kiro. n-dx starts from the repo you already have, keeps a living PRD in sync, and executes the work.">
+<meta name="keywords" content="n-dx, Spec Kit, OpenSpec, Kiro, spec-driven development, existing codebase, brownfield, PRD, sourcevision, rex, hench">
 <meta name="author" content="En Dash Consulting">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://n-dx.dev/">
+<link rel="canonical" href="https://n-dx.dev/vs/spec-kit/">
 <meta name="theme-color" content="#0d1b3e">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://n-dx.dev/">
-<meta property="og:title" content="n-dx — Spec-Driven Development, Automated">
-<meta property="og:description" content="Connect codebase analysis, structured planning, and autonomous task execution into one repeatable loop. Open-source, CLI-first. Built for Claude Code and Codex.">
+<meta property="og:url" content="https://n-dx.dev/vs/spec-kit/">
+<meta property="og:title" content="n-dx vs Spec Kit, OpenSpec, and Kiro for existing codebases">
+<meta property="og:description" content="Compare n-dx with GitHub Spec Kit, OpenSpec, and AWS Kiro. n-dx starts from the repo you already have, keeps a living PRD in sync, and executes the work.">
 <meta property="og:image" content="https://n-dx.dev/n-dx-logo.png">
 <meta property="og:image:width" content="300">
 <meta property="og:image:height" content="300">
@@ -31,40 +31,71 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="n-dx — Spec-Driven Development, Automated">
-<meta name="twitter:description" content="Connect codebase analysis, structured planning, and autonomous task execution into one repeatable loop. Open-source, CLI-first. Built for Claude Code and Codex.">
+<meta name="twitter:title" content="n-dx vs Spec Kit, OpenSpec, and Kiro for existing codebases">
+<meta name="twitter:description" content="Compare n-dx with GitHub Spec Kit, OpenSpec, and AWS Kiro. n-dx starts from the repo you already have, keeps a living PRD in sync, and executes the work.">
 <meta name="twitter:image" content="https://n-dx.dev/n-dx-logo.png">
 <meta name="twitter:image:alt" content="n-dx logo">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="n-dx-logo.png">
-<link rel="apple-touch-icon" href="n-dx-logo.png">
+<link rel="icon" type="image/png" href="/n-dx-logo.png">
+<link rel="apple-touch-icon" href="/n-dx-logo.png">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "n-dx",
-  "url": "https://n-dx.dev",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Cross-platform",
-  "description": "Spec-driven development toolkit that connects codebase analysis, structured planning, and autonomous task execution into one repeatable loop. Built for Claude Code and Codex.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "license": "https://www.elastic.co/licensing/elastic-license",
-  "author": {
-    "@type": "Organization",
-    "name": "En Dash Consulting",
-    "url": "https://endash.us"
-  },
-  "codeRepository": "https://github.com/en-dash-consulting/n-dx",
-  "image": "https://n-dx.dev/n-dx-logo.png"
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "n-dx vs Spec Kit, OpenSpec, and Kiro for existing codebases",
+      "url": "https://n-dx.dev/vs/spec-kit/",
+      "description": "Compare n-dx with GitHub Spec Kit, OpenSpec, and AWS Kiro. n-dx starts from the repo you already have, keeps a living PRD in sync, and executes the work.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "n-dx",
+        "url": "https://n-dx.dev/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is n-dx a Spec Kit alternative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Same category, different start. Spec Kit is spec-first and agent-portable. n-dx is codebase-first and built for Claude Code and Codex. Choose from the jobs on this page, not from invented checkmarks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is n-dx missing from Spec Kit vs OpenSpec vs Kiro lists?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 2026 roundups at Levelop, Augment Code, and thebcms name Spec Kit, OpenSpec, Kiro, and BMAD. n-dx is smaller and newer (16 GitHub stars on 21 Aug 2026). Absence from a list is not a quality score."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use n-dx on a greenfield repo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Quickstart covers an empty project. The product is aimed at existing systems. A blank folder that wants specify, plan, tasks will feel more at home in Spec Kit or Kiro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is n-dx open source the way Spec Kit is?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The code is public. The license is Elastic 2.0, not MIT. ELv2 allows internal use, modification, and distribution, with a hosted-service restriction. Spec Kit is MIT. OpenSpec is commonly cited as MIT; confirm the LICENSE file. Open source on the marketing site is informal. The precise term is source-available."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 <style>
@@ -1043,6 +1074,97 @@
       transition-duration: 0.01ms !important;
     }
   }
+</style><style>
+  /* Comparison page only — homepage CSS is unchanged above */
+  .hero.compact {
+    min-height: auto;
+    padding: 128px 48px 64px;
+  }
+  .hero.compact h1 {
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+  .hero.compact .hero-mascot img { width: 180px; }
+  .hero.compact .hero-sub { margin-bottom: 28px; }
+  .hero.compact .hero-actions { margin-bottom: 0; }
+  .hero.compact .hero-content { max-width: 1100px; }
+  .breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--white); }
+  .breadcrumb span { opacity: 0.5; margin: 0 8px; }
+  .packages-grid.tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .package-card.kiro::before { background: #e879f9; box-shadow: 0 0 12px rgba(232,121,249,0.6); }
+  .package-role.kiro { color: #e879f9; }
+  .kiro .bullet-dot { background: #e879f9; }
+  .package-card.kiro .package-docs-link:hover { color: #e879f9; }
+  .personas-section.four {
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .persona-label.purple { color: var(--purple); }
+  .persona-label.pink { color: #e879f9; }
+  .persona-check.purple { background: var(--purple-subtle); color: var(--purple); border: 1px solid rgba(139,124,248,0.3); }
+  .persona-check.pink { background: rgba(232,121,249,0.12); color: #e879f9; border: 1px solid rgba(232,121,249,0.3); }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 860px;
+    margin: 40px auto 0;
+  }
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+  }
+  .faq-item h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .faq-item p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .compare-note {
+    margin-top: 16px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+  .gap-links {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .gap-links a { color: var(--teal); text-decoration: none; }
+  .gap-links a:hover { color: var(--white); }
+  @media (max-width: 900px) {
+    .packages-grid.tools-grid { grid-template-columns: 1fr; }
+    .personas-section.four { grid-template-columns: 1fr; }
+    .hero.compact { padding: 100px 24px 48px; }
+  }
+  @media (max-width: 480px) {
+    .hero.compact { padding: 88px 16px 40px; }
+    .faq-item { padding: 20px 20px; }
+  }
 </style>
 </head>
 <body>
@@ -1053,7 +1175,7 @@
 <nav role="navigation" aria-label="Main navigation">
   <a href="/" class="nav-logo" aria-label="Home">
     <div class="nav-logo-mark">
-      <img src="n-dx-logo.png" alt="" width="32" height="32">
+      <img src="/n-dx-logo.png" alt="" width="32" height="32">
     </div>
     <span class="nav-logo-text">n-dx</span>
   </a>
@@ -1062,18 +1184,17 @@
   </button>
   <div class="nav-menu" id="nav-menu">
     <ul class="nav-links" role="list">
-      <li><a href="#packages">Packages</a></li>
-      <li><a href="#how">Workflow</a></li>
-      <li><a href="#usecases">Use Cases</a></li>
-      <li><a href="mwfb2026/">Challenge</a></li>
-      <li><a href="#compare">Compare</a></li>
-      <li><a href="vs/spec-kit/">Spec Kit</a></li>
-      <li><a href="#install" class="active">Get Started</a></li>
+      <li><a href="/#packages">Packages</a></li>
+      <li><a href="/#how">Workflow</a></li>
+      <li><a href="/#usecases">Use Cases</a></li>
+      <li><a href="/mwfb2026/">Challenge</a></li>
+      <li><a href="/vs/spec-kit/" class="active">Compare</a></li>
+      <li><a href="/#install">Get Started</a></li>
     </ul>
     <div class="nav-cta">
       <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Docs</a>
       <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub ↗</a>
-      <a href="#install" class="btn btn-primary">Get Started</a>
+      <a href="/#install" class="btn btn-primary">Get Started</a>
     </div>
   </div>
 </nav>
@@ -1081,460 +1202,447 @@
 <main id="main-content">
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero compact">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
 
-  <div class="hero-badge">
-    <span class="badge-dot"></span>
-    Open-source · Built for Claude Code &amp; Codex · CLI-first
-  </div>
-
   <div class="hero-content">
     <div class="hero-text">
-      <h1>Rule your code<br><span class="gradient-text">in the Age of AI.</span></h1>
-
-      <p class="hero-sub">
-        n-dx connects codebase analysis, structured planning, and autonomous task execution into one repeatable loop — CLI-first, with a web dashboard when you need it. The PRD is the source of truth — every cycle begins with understanding what's in the code and ends with shipped work.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#install" class="btn btn-primary btn-large">Get Started</a>
-        <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">View on GitHub ↗</a>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span>Compare<span>/</span>n-dx vs Spec Kit
+      </nav>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Compare
       </div>
-
-      <a class="hero-npm-badge" href="https://www.npmjs.com/package/@n-dx/core" target="_blank" rel="noopener noreferrer">
-        <img alt="NPM Downloads" src="https://img.shields.io/npm/dy/%40n-dx%2Fcore" width="195" height="26">
-      </a>
+      <h1>n-dx vs Spec Kit<br>for the codebase <span class="gradient-text">you already have</span></h1>
+      <p class="hero-sub">
+        Spec Kit, OpenSpec, and Kiro start from intent you write down: specify, plan, task, implement. n-dx starts from the repo. sourcevision maps the tree, rex keeps a living PRD, hench executes the next task.
+      </p>
+      <div class="hero-actions">
+        <a href="#install" class="btn btn-primary btn-large">Install n-dx</a>
+        <a href="#compare-table" class="btn btn-ghost btn-large">See the table</a>
+      </div>
     </div>
-
     <div class="hero-mascot">
       <picture>
-        <source srcset="rex_mascot.webp" type="image/webp">
-        <img src="rex_mascot.png" alt="Rex — the n-dx mascot, a blue dinosaur with glasses holding a wrench and flashlight" width="260" height="385" decoding="async">
+        <source srcset="/rex_mascot.webp" type="image/webp">
+        <img src="/rex_mascot.png" alt="Rex — the n-dx mascot, a blue dinosaur with glasses holding a wrench and flashlight" width="180" height="266" decoding="async">
       </picture>
     </div>
   </div>
-
-    <div class="hero-cards" id="packages">
-  <div class="package-card sv">
-      <div class="package-header">
-        <img class="pkg-icon" src="assets/icon-sourcevision.webp" alt="sourcevision icon" width="300" height="300" loading="lazy" decoding="async">
-        <div class="package-meta">
-          <h2 class="package-name">sourcevision</h2>
-          <div class="package-role sv">Analyze</div>
-        </div>
-      </div>
-      <p class="package-desc">Static analysis engine that maps your codebase into a machine-readable context. File inventory, import graph, architectural zone detection via Louvain community detection, and React component catalog.</p>
-      <ul class="package-bullets sv">
-        <li><span class="bullet-dot"></span>File inventory with roles &amp; metadata</li>
-        <li><span class="bullet-dot"></span>Import dependency graph</li>
-        <li><span class="bullet-dot"></span>Louvain community detection for zones</li>
-        <li><span class="bullet-dot"></span>AI-readable <code>CONTEXT.md</code> output</li>
-      </ul>
-      <div class="package-cmd">ndx analyze .</div>
-      <a href="https://docs.n-dx.dev/packages/sourcevision" target="_blank" rel="noopener noreferrer" class="package-docs-link">View docs &rarr;</a>
-    </div>
-  <div class="package-card rex">
-      <div class="package-header">
-        <img class="pkg-icon" src="assets/icon-rex.webp" alt="rex icon" width="300" height="300" loading="lazy" decoding="async">
-        <div class="package-meta">
-          <h2 class="package-name">rex</h2>
-          <div class="package-role rex">Plan</div>
-        </div>
-      </div>
-      <p class="package-desc">PRD management with hierarchical epics, features, tasks, and subtasks. Scan your project to generate proposals, track progress, and validate dependencies.</p>
-      <ul class="package-bullets rex">
-        <li><span class="bullet-dot"></span>Hierarchical task tree (epic &rarr; subtask)</li>
-        <li><span class="bullet-dot"></span>AI-driven proposal generation</li>
-        <li><span class="bullet-dot"></span>Dependency tracking &amp; validation</li>
-        <li><span class="bullet-dot"></span>MCP server for Claude integration</li>
-      </ul>
-      <div class="package-cmd" style="color:var(--purple)">ndx recommend .</div>
-      <a href="https://docs.n-dx.dev/packages/rex" target="_blank" rel="noopener noreferrer" class="package-docs-link">View docs &rarr;</a>
-    </div>
-  <div class="package-card hench">
-      <div class="package-header">
-        <img class="pkg-icon" src="assets/icon-hench.webp" alt="hench icon" width="300" height="300" loading="lazy" decoding="async">
-        <div class="package-meta">
-          <h2 class="package-name">hench</h2>
-          <div class="package-role hench">Execute</div>
-        </div>
-      </div>
-      <p class="package-desc">Autonomous agent that picks the next task, builds a brief, and drives Claude in a tool-use loop. Records runs with full transcripts.</p>
-      <ul class="package-bullets hench">
-        <li><span class="bullet-dot"></span>Autonomous task execution</li>
-        <li><span class="bullet-dot"></span>Tool-use loop with Claude Code</li>
-        <li><span class="bullet-dot"></span>Run history &amp; transcripts</li>
-        <li><span class="bullet-dot"></span>Configurable model &amp; turn limits</li>
-      </ul>
-      <div class="package-cmd" style="color:var(--amber)">ndx work .</div>
-      <a href="https://docs.n-dx.dev/packages/hench" target="_blank" rel="noopener noreferrer" class="package-docs-link">View docs &rarr;</a>
-    </div>
-</div>
 </div>
 
-
-
-<!-- PROBLEM -->
+<!-- 1. DISCOVERY GAP -->
 <section>
   <div class="problem-section">
     <div>
-      <div class="section-label">The Problem</div>
-      <h2 class="section-title">AI coding tools<br>don't think in projects.</h2>
+      <div class="section-label">Discovery</div>
+      <h2 class="section-title">The 2026 lists name Spec Kit. They do not name n-dx.</h2>
       <p class="section-body">
-        Most AI development tools operate at the file or prompt level. They generate code but don't track what was built, why it was built, or what comes next. The result: fast output, slow progress, and codebases that accumulate debt faster than teams can address it.
-      </p>
-      <br><br>
-      <p class="section-body">
-        n-dx operates at the project level. A living PRD drives every cycle, so work is structured, traceable, and repeatable — regardless of which model or provider is doing the execution.
+        Spec-driven development roundups this year name GitHub Spec Kit, OpenSpec, AWS Kiro, and BMAD. That is a discovery gap, not a ranking. n-dx is smaller and newer: 16 GitHub stars on 21 Aug 2026.
       </p>
     </div>
     <div class="problem-cards">
       <div class="problem-card">
-        <div class="problem-icon red"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2228%22%20height%3D%2228%22%20viewBox%3D%220%200%2028%2028%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M16%203%20L10%2014%20L14%2014%20L12%2025%20L18%2014%20L14%2014%20Z%22%20fill%3D%22%23ef4444%22/%3E%0A%3C/svg%3E" style="width:28px;height:28px;display:block;"></div>
+        <div class="problem-icon orange"><span role="img" aria-label="Lists">📋</span></div>
         <div class="problem-text">
-          <strong>Vibe-coded apps with no structure</strong>
-          <span>Fast iteration without a spec creates codebases that are difficult to reason about, maintain, or hand off. Pattern and anti-pattern detection surfaces the full picture.</span>
+          <strong>Named in 2026 SDD roundups</strong>
+          <span>Levelop, Augment Code, and thebcms cover Spec Kit, OpenSpec, Kiro, and BMAD. Absence from a list is not a quality score.</span>
         </div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon orange"><span role="img" aria-label="Map">🗺</span></div>
+        <div class="problem-icon yellow"><span role="img" aria-label="Agents">🤖</span></div>
         <div class="problem-text">
-          <strong>Onboarding to an unfamiliar codebase</strong>
-          <span>Understanding file inventory, import graphs, and architectural zones takes days without tooling. sourcevision produces a machine-readable map in minutes.</span>
+          <strong>n-dx.dev already compares coding agents</strong>
+          <span>Claude Code, Aider, OpenHands, Goose, MetaGPT, 8090, and Devin are agents. Spec Kit, OpenSpec, and Kiro are the spec layer people now evaluate first.</span>
         </div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon yellow"><span role="img" aria-label="Repeat">🔁</span></div>
+        <div class="problem-icon red"><span role="img" aria-label="Repo">📂</span></div>
         <div class="problem-text">
-          <strong>No memory between AI work sessions</strong>
-          <span>Without a shared source of truth, every AI session starts from scratch. rex maintains a structured PRD across every cycle, keeping state between runs.</span>
+          <strong>The job is the existing repo</strong>
+          <span>If the last six months were vibe-coded, the plan has drifted, or a prototype became production, start from the tree, not a blank spec.</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<div class="how-section" id="how">
+<!-- 2. DIFFERENCE THAT MATTERS -->
+<div class="how-section" id="difference">
   <div class="how-header">
-    <div class="section-label" style="text-align:center;">How it works</div>
-    <h2 class="section-title" style="text-align:center;">A self-cleaning loop from<br>analysis to execution to visualization.</h2>
-    <p class="section-body" style="text-align:center;margin:16px auto 0;">Run the loop once to get started. Run it again to stay current. The PRD reflects the codebase at every step — no manual tracking required.</p>
+    <div class="section-label" style="text-align:center;">The difference that matters</div>
+    <h2 class="section-title" style="text-align:center;">Spec-first is the right loop<br>when you already know what to build.</h2>
+    <p class="section-body" style="text-align:center;margin:16px auto 0;">n-dx is the other start: what is already here, and what to fix or finish. You can still add work in plain language with <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--teal);">ndx add "Add SSO support" .</code></p>
   </div>
   <div class="how-steps">
     <div class="how-step">
       <div class="step-number teal">1</div>
-      <div class="step-title">Analyze</div>
-      <p class="step-body">sourcevision scans your codebase — files, imports, zones, components — and produces a machine-readable context that all downstream tools consume. Run any time the codebase changes.</p>
+      <div class="step-title">Analyze the tree</div>
+      <p class="step-body"><code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--teal);">ndx analyze .</code> runs sourcevision and writes AI-readable context. Files, imports, architectural zones, React catalog.</p>
     </div>
     <div class="how-step">
       <div class="step-number purple">2</div>
-      <div class="step-title">Plan</div>
-      <p class="step-body">rex reads the analysis and generates a structured PRD. Review proposals, accept them, and maintain a live task tree with epics, features, dependencies, and acceptance criteria — updated each cycle.</p>
+      <div class="step-title">Propose a living PRD</div>
+      <p class="step-body"><code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--purple);">ndx recommend .</code> turns findings into epics and tasks. You accept or reject them. The spec is derived from the code.</p>
     </div>
     <div class="how-step">
       <div class="step-number amber">3</div>
-      <div class="step-title">Execute</div>
-      <p class="step-body">hench picks the next task, builds a brief with full codebase context, and ships it — writing code, running tests, committing results. Mark complete. Pick the next. Repeat.</p>
+      <div class="step-title">Execute the next task</div>
+      <p class="step-body"><code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--amber);">ndx work .</code> has hench pick the next task, brief it with codebase context, and run a tool-use loop.</p>
     </div>
     <div class="how-step">
       <div class="step-number pink">4</div>
-      <div class="step-title">Visualize</div>
-      <p class="step-body">Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:#e879f9;">ndx start</code> to launch the web dashboard — interactive zone maps, a live task tree with completion stats, and auto-refresh as data changes. Share it with your team or export a static build.</p>
+      <div class="step-title">Stay current</div>
+      <p class="step-body"><code style="font-family:var(--font-mono);font-size:0.82rem;color:#e879f9;">ndx self-heal</code> re-analyzes, recommends, executes, and acknowledges completed findings so they do not regenerate.</p>
     </div>
   </div>
+  <p class="section-body" style="text-align:center;margin:0 auto;">The useful claim is that the spec can be regenerated from the tree. If the last six months were vibe-coded, use the <a href="https://docs.n-dx.dev/guide/vibe-cleanup.html" style="color:var(--teal);">vibe-cleanup guide</a>.</p>
+</div>
 
-  <div class="terminal-wrap">
-    <div class="terminal-bar">
-      <div class="terminal-dots">
-        <div class="t-dot t-red"></div>
-        <div class="t-dot t-yellow"></div>
-        <div class="t-dot t-green"></div>
+<!-- 3. FOUR TOOLS -->
+<div class="packages-section" id="tools">
+  <div class="packages-header">
+    <div class="section-label">Four tools, four jobs</div>
+    <h2 class="section-title">Same category.<br>Different starting point.</h2>
+    <p class="section-body" style="margin:16px auto 0;text-align:center;">No invented star counts for the other tools. Licenses and product shapes below are from public docs as of 21 Aug 2026. Where we have not verified a file, we say so.</p>
+  </div>
+  <div class="packages-grid tools-grid">
+
+    <div class="package-card sv">
+      <div class="package-header">
+        <div class="package-meta">
+          <h2 class="package-name">n-dx</h2>
+          <div class="package-role sv">Repo-first CLI</div>
+        </div>
       </div>
-      <span class="terminal-title">terminal</span>
-      <span style="font-family:var(--font-mono);font-size:0.68rem;color:var(--muted);opacity:0.5;">n-dx loop</span>
-    </div>
-    <div class="terminal-body">
-      <div><span class="t-prompt">$ </span><span class="t-cmd">npm i -g @n-dx/core</span></div>
-      <div><span class="t-dim">added 1 package in 4s</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx init .</span></div>
-      <div><span class="t-teal">sourcevision initialized</span></div>
-      <div><span class="t-teal">rex initialized</span></div>
-      <div><span class="t-teal">hench initialized</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx analyze .</span></div>
-      <div><span class="t-dim">Analyzing codebase...</span></div>
-      <div><span class="t-teal">142 files · 12 zones · 38 components</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx recommend --accept .</span></div>
-      <div><span class="t-teal">Generated 6 epics, 18 tasks</span></div>
-      <div><span class="t-teal">PRD saved to .rex/prd.json</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx work --auto .</span></div>
-      <div><span class="t-dim">Picking next task...</span></div>
-      <div><span class="t-amber">► "Add user authentication"</span></div>
-      <div><span class="t-dim">Writing code · Running tests · Committing</span></div>
-      <div><span class="t-teal">✓ Task complete — 3 files changed, all tests pass</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx status .</span></div>
-      <div><span class="t-purple">Epic: Auth System        [▓▓▓▓░░░░░░] 40%</span></div>
-      <div><span class="t-purple">Epic: Dashboard          [▓▓░░░░░░░░] 20%</span></div>
-      <div><span class="t-dim">Next: "OAuth provider integration"</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">ndx start</span></div>
-      <div><span class="t-teal">Dashboard running at http://localhost:3117</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- USE CASES -->
-<div class="usecases-section" id="usecases">
-  <div class="usecases-header">
-    <div class="section-label">Use cases</div>
-    <h2 class="section-title">Where n-dx fits in<br>the development workflow.</h2>
-    <p class="section-body">Built for teams working on real codebases — not greenfield prototypes. Each scenario below represents a common inflection point where structured tooling returns measurable value.</p>
-  </div>
-  <div class="usecases-grid">
-
-    <div class="usecase-card">
-      <a href="https://docs.n-dx.dev/guide/onboarding" target="_blank" rel="noopener noreferrer" class="uc-link">
-        <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%228%22%20r%3D%225%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.9%22/%3E%0A%20%20%3Ccircle%20cx%3D%228%22%20cy%3D%2236%22%20r%3D%225%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.7%22/%3E%0A%20%20%3Ccircle%20cx%3D%2240%22%20cy%3D%2236%22%20r%3D%225%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.7%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2228%22%20r%3D%224%22%20fill%3D%22%2300ffb3%22%20opacity%3D%220.5%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2213%22%20x2%3D%2224%22%20y2%3D%2224%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221.5%22%20opacity%3D%220.5%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2213%22%20x2%3D%2210%22%20y2%3D%2231%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221.5%22%20opacity%3D%220.4%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2213%22%20x2%3D%2238%22%20y2%3D%2231%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221.5%22%20opacity%3D%220.4%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2232%22%20x2%3D%2211%22%20y2%3D%2234%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221%22%20opacity%3D%220.3%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2232%22%20x2%3D%2237%22%20y2%3D%2234%22%20stroke%3D%22%2300ffb3%22%20stroke-width%3D%221%22%20opacity%3D%220.3%22/%3E%0A%3C/svg%3E" alt="onboarding">
-        <div class="uc-label">Codebase onboarding</div>
-        <h3 class="uc-title">Understand an unfamiliar repo in minutes, not days.</h3>
-        <p class="uc-body">sourcevision maps file inventory, import graphs, and architectural zones automatically. New contributors get a machine-readable picture of the full codebase on first run — without reading every file.</p>
-      </a>
-    </div>
-
-    <div class="usecase-card">
-      <a href="https://docs.n-dx.dev/guide/vibe-cleanup" target="_blank" rel="noopener noreferrer" class="uc-link">
-        <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Crect%20x%3D%2220%22%20y%3D%226%22%20width%3D%224%22%20height%3D%2222%22%20rx%3D%222%22%20fill%3D%22%23a78bff%22/%3E%0A%20%20%3Cpath%20d%3D%22M12%2028%20L36%2028%20L32%2042%20L16%2042%20Z%22%20fill%3D%22%23a78bff%22%20opacity%3D%220.8%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%2228%22%20x2%3D%2217%22%20y2%3D%2242%22%20stroke%3D%22%237755cc%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2228%22%20x2%3D%2224%22%20y2%3D%2242%22%20stroke%3D%22%237755cc%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Cline%20x1%3D%2230%22%20y1%3D%2228%22%20x2%3D%2231%22%20y2%3D%2242%22%20stroke%3D%22%237755cc%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Ccircle%20cx%3D%2236%22%20cy%3D%2210%22%20r%3D%222%22%20fill%3D%22%23ffaa33%22/%3E%0A%20%20%3Ccircle%20cx%3D%2240%22%20cy%3D%2218%22%20r%3D%221.5%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.7%22/%3E%0A%20%20%3Ccircle%20cx%3D%2233%22%20cy%3D%2217%22%20r%3D%221%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.6%22/%3E%0A%20%20%3Cline%20x1%3D%2234%22%20y1%3D%228%22%20x2%3D%2238%22%20y2%3D%2212%22%20stroke%3D%22%23ffaa33%22%20stroke-width%3D%221%22%20opacity%3D%220.5%22/%3E%0A%3C/svg%3E" alt="cleanup">
-        <div class="uc-label">Vibe-coded app cleanup</div>
-        <h3 class="uc-title">Bring structure to a codebase that was built for speed — position it to scale.</h3>
-        <p class="uc-body">When a prototype becomes a product, code sprawl follows. n-dx detects patterns and anti-patterns across zones, generates a prioritized cleanup backlog in the PRD, and executes fixes autonomously with guardrails.</p>
-      </a>
-    </div>
-
-    <div class="usecase-card">
-      
-      <a href="https://docs.n-dx.dev/guide/spec-driven" target="_blank" rel="noopener noreferrer" class="uc-link">
-        <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Crect%20x%3D%2214%22%20y%3D%224%22%20width%3D%2220%22%20height%3D%2214%22%20rx%3D%223%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.9%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%229%22%20x2%3D%2230%22%20y2%3D%229%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%2213%22%20x2%3D%2227%22%20y2%3D%2213%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Cline%20x1%3D%2224%22%20y1%3D%2218%22%20x2%3D%2224%22%20y2%3D%2226%22%20stroke%3D%22%23ffaa33%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Cline%20x1%3D%2214%22%20y1%3D%2226%22%20x2%3D%2234%22%20y2%3D%2226%22%20stroke%3D%22%23ffaa33%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Crect%20x%3D%226%22%20y%3D%2228%22%20width%3D%2214%22%20height%3D%2212%22%20rx%3D%222%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.6%22/%3E%0A%20%20%3Crect%20x%3D%2228%22%20y%3D%2228%22%20width%3D%2214%22%20height%3D%2212%22%20rx%3D%222%22%20fill%3D%22%23ffaa33%22%20opacity%3D%220.6%22/%3E%0A%20%20%3Cline%20x1%3D%229%22%20y1%3D%2232%22%20x2%3D%2217%22%20y2%3D%2232%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%20%20%3Cline%20x1%3D%229%22%20y1%3D%2235%22%20x2%3D%2215%22%20y2%3D%2235%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%20%20%3Cline%20x1%3D%2231%22%20y1%3D%2232%22%20x2%3D%2239%22%20y2%3D%2232%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%20%20%3Cline%20x1%3D%2231%22%20y1%3D%2235%22%20x2%3D%2237%22%20y2%3D%2235%22%20stroke%3D%22%23020c28%22%20stroke-width%3D%221.2%22/%3E%0A%3C/svg%3E" alt="spec-driven">
-        <div class="uc-label">Spec-driven development</div>
-        <h3 class="uc-title">Let the PRD drive execution, not just document it.</h3>
-        <p class="uc-body">Describe what needs to be built in plain language. rex structures it into epics, features, acceptance criteria, and task dependencies. hench executes from that structure — every run traceable back to the spec.</p>
-      </a>
-    </div>
-
-    <div class="usecase-card">
-      
-      <a href="https://docs.n-dx.dev/guide/change-management" target="_blank" rel="noopener noreferrer" class="uc-link">
-        <img class="uc-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M24%208%20C34%208%2040%2015%2040%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%2240%2C24%2036%2C18%2044%2C18%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Cpath%20d%3D%22M24%2040%20C14%2040%208%2033%208%2024%22%20stroke%3D%22%23e879f9%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%0A%20%20%3Cpolygon%20points%3D%228%2C24%2012%2C30%204%2C30%22%20fill%3D%22%23e879f9%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%225%22%20fill%3D%22%23e879f9%22%20opacity%3D%220.3%22/%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%222.5%22%20fill%3D%22%23e879f9%22/%3E%0A%3C/svg%3E" alt="change management">
-        <div class="uc-label">Ongoing change management</div>
-        <h3 class="uc-title">Keep the plan in sync with a codebase that never stops changing.</h3>
-        <p class="uc-body">Run <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--teal)">ndx self-heal 3 .</code> to automatically re-analyze, accept recommendations, execute tasks, and acknowledge completions — iterating N times. The PRD stays current without manual tracking.</p>
-      </a>
-    </div>
-
-  </div>
-</div>
-
-<!-- PERSONAS -->
-<div class="personas-outer">
-  <div class="personas-section">
-
-    <div class="persona-card">
-      <div class="persona-label dev">For the practitioner</div>
-      <h3 class="persona-title">Run it. Ship it.<br>Let the spec keep score.</h3>
-      <p class="persona-body">n-dx is CLI-first — point it at a directory, run two commands, and the loop starts. When you want to see the big picture, <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx start</code> launches a web dashboard with interactive zone maps, a live task tree, and auto-refresh as data changes.</p>
-      <ul class="persona-points">
-        <li>
-          <div class="persona-check teal">✓</div>
-          <span><code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx analyze . && ndx recommend --accept . && ndx work --auto .</code> — the full workflow in three commands</span>
-        </li>
-        <li>
-          <div class="persona-check teal">✓</div>
-          <span>Already use Claude Code or Codex? n-dx layers on top — log in on first run and you're set</span>
-        </li>
-        <li>
-          <div class="persona-check teal">✓</div>
-          <span>Every run is logged with full transcripts, token usage, and file diffs</span>
-        </li>
-        <li>
-          <div class="persona-check teal">✓</div>
-          <span>PRD state in <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">.rex/prd.json</code> — version controlled, diff-able, readable</span>
-        </li>
-        <li>
-          <div class="persona-check teal">✓</div>
-          <span>Natural language task input: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--teal)">ndx add "user auth with OAuth" .</code></span>
-        </li>
+      <p class="package-desc">CLI-first toolkit from En Dash. Install <code>@n-dx/core</code>, then analyze, recommend, work, and start. Built for Claude Code and Codex. PRD in <code>.rex/</code>. Rex and SourceVision expose MCP.</p>
+      <ul class="package-bullets sv">
+        <li><span class="bullet-dot"></span>Starts from an existing codebase scan</li>
+        <li><span class="bullet-dot"></span>Living PRD, re-derived when the tree changes</li>
+        <li><span class="bullet-dot"></span>Hench executes the next accepted task</li>
+        <li><span class="bullet-dot"></span>Elastic 2.0 (source-available, not OSI)</li>
       </ul>
+      <div class="package-cmd">ndx analyze . &amp;&amp; ndx recommend . &amp;&amp; ndx work .</div>
+      <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="package-docs-link">github.com/en-dash-consulting/n-dx &rarr;</a>
     </div>
 
-    <div class="persona-card">
-      <div class="persona-label leader">For the team lead</div>
-      <h3 class="persona-title">Structured output.<br>Traceable progress.</h3>
-      <p class="persona-body">n-dx gives engineering teams a shared source of truth that doesn't require a separate planning tool. The PRD is generated from the codebase and stays in sync — automatically. The web dashboard makes progress visible to the whole team without status meetings.</p>
-      <ul class="persona-points">
-        <li>
-          <div class="persona-check amber">✓</div>
-          <span>Epics, features, and tasks generated from real codebase structure — not top-down invention</span>
-        </li>
-        <li>
-          <div class="persona-check amber">✓</div>
-          <span>Notion sync keeps the PRD available to non-technical stakeholders without manual updates</span>
-        </li>
-        <li>
-          <div class="persona-check amber">✓</div>
-          <span>CI integration: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--amber)">ndx ci</code> runs analysis and validates PRD health on every push</span>
-        </li>
-        <li>
-          <div class="persona-check amber">✓</div>
-          <span>Open source, zero per-seat cost — works with the Claude Code or Codex subscription your team already has</span>
-        </li>
-        <li>
-          <div class="persona-check amber">✓</div>
-          <span>Token budgets and guardrails configurable per project — cost stays predictable</span>
-        </li>
+    <div class="package-card rex">
+      <div class="package-header">
+        <div class="package-meta">
+          <h2 class="package-name">GitHub Spec Kit</h2>
+          <div class="package-role rex">Spec-first toolkit</div>
+        </div>
+      </div>
+      <p class="package-desc">Portable MIT toolkit. Install <code>specify-cli</code>, write a constitution, then specify, plan, task, and implement through the agent you already use. Specs are markdown in the repo. GitHub documents existing-project adoption. 2026 writeups still treat it as structured and often greenfield-leaning.</p>
+      <ul class="package-bullets rex">
+        <li><span class="bullet-dot"></span>Constitution, then specify / plan / task / implement</li>
+        <li><span class="bullet-dot"></span>Works with Copilot, Claude Code, Gemini, Cursor, and others</li>
+        <li><span class="bullet-dot"></span>Markdown artifacts in the repo</li>
+        <li><span class="bullet-dot"></span>MIT license</li>
       </ul>
+      <div class="package-cmd" style="color:var(--purple)">specify-cli &nbsp;·&nbsp; /speckit.implement</div>
+      <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer" class="package-docs-link">github.com/github/spec-kit &rarr;</a>
+    </div>
+
+    <div class="package-card hench">
+      <div class="package-header">
+        <div class="package-meta">
+          <h2 class="package-name">OpenSpec</h2>
+          <div class="package-role hench">Delta-first CLI</div>
+        </div>
+      </div>
+      <p class="package-desc">Lightweight CLI from Fission-AI, built brownfield-first. Changes are deltas (ADDED, MODIFIED, REMOVED) against a source-of-truth spec. The loop is propose, apply, archive. You spec the slice you are changing. It does not scan a repo into a PRD. License is commonly cited as MIT.</p>
+      <ul class="package-bullets hench">
+        <li><span class="bullet-dot"></span>Change deltas, not a full-tree analyzer</li>
+        <li><span class="bullet-dot"></span>Propose, apply, archive</li>
+        <li><span class="bullet-dot"></span>Agent-agnostic apply step</li>
+        <li><span class="bullet-dot"></span>MIT commonly cited; confirm the LICENSE file</li>
+      </ul>
+      <div class="package-cmd" style="color:var(--amber)">propose &nbsp;·&nbsp; apply &nbsp;·&nbsp; archive</div>
+      <a href="https://openspec.dev" target="_blank" rel="noopener noreferrer" class="package-docs-link">openspec.dev &rarr;</a>
+    </div>
+
+    <div class="package-card kiro">
+      <div class="package-header">
+        <div class="package-meta">
+          <h2 class="package-name">AWS Kiro</h2>
+          <div class="package-role kiro">Agentic IDE</div>
+        </div>
+      </div>
+      <p class="package-desc">An agentic IDE, not a CLI you add to an existing editor. A prompt becomes requirements, design, and tasks, then its agents implement. Typical files: <code>requirements.md</code>, <code>design.md</code>, <code>tasks.md</code>. Commercial AWS product. Formal requirement checks and Agent Hooks are on the public pitch. The workflow lives in Kiro.</p>
+      <ul class="package-bullets kiro">
+        <li><span class="bullet-dot"></span>Prompt to a spec set, then implement</li>
+        <li><span class="bullet-dot"></span>Built-in agents; editor and spec are one product</li>
+        <li><span class="bullet-dot"></span>requirements.md / design.md / tasks.md</li>
+        <li><span class="bullet-dot"></span>AWS commercial license</li>
+      </ul>
+      <div class="package-cmd" style="color:#e879f9">kiro.dev &nbsp;·&nbsp; built-in agents</div>
+      <a href="https://kiro.dev" target="_blank" rel="noopener noreferrer" class="package-docs-link">kiro.dev &rarr;</a>
     </div>
 
   </div>
 </div>
 
-<!-- COMPARE -->
-<div class="compare-section" id="compare">
+<!-- 4. COMPARE TABLE -->
+<div class="compare-section" id="compare-table">
   <div class="compare-header">
-    <div class="section-label">How it compares</div>
-    <h2 class="section-title">The only tool that owns<br>the full loop.</h2>
-    <p class="section-body">Most AI development tools address one layer of the problem. n-dx connects all three — and keeps them in sync.</p>
+    <div class="section-label">Comparison</div>
+    <h2 class="section-title">Short text over fake checkmarks.</h2>
+    <p class="section-body">Qualitative rows stay as words. We do not invent competitor stars, downloads, or win rates. "Unknown" means we have not verified it from public docs.</p>
   </div>
   <div class="compare-table-wrap">
   <table class="compare-table">
     <thead>
       <tr>
-        <th style="width:24%;text-align:left;">Tool</th>
-        <th class="highlight" style="width:10%;text-align:center;">n-dx</th>
-        <th style="width:9%;text-align:center;">Claude Code</th>
-        <th style="width:9%;text-align:center;">Aider</th>
-        <th style="width:9%;text-align:center;">OpenHands</th>
-        <th style="width:9%;text-align:center;">Goose</th>
-        <th style="width:9%;text-align:center;">MetaGPT</th>
-        <th style="width:9%;text-align:center;">8090</th>
-        <th style="width:9%;text-align:center;">Devin</th>
+        <th style="width:18%;text-align:left;"> </th>
+        <th class="highlight" style="width:20.5%;text-align:left;">n-dx</th>
+        <th style="width:20.5%;text-align:left;">Spec Kit</th>
+        <th style="width:20.5%;text-align:left;">OpenSpec</th>
+        <th style="width:20.5%;text-align:left;">Kiro</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="highlight-row">
-        <td class="row-label">Codebase analysis</td>
-        <td class="ndx-col" style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="partial">◐</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="partial">◐</span></td>
+      <tr>
+        <td class="row-label">Form</td>
+        <td class="ndx-col">CLI plus optional dashboard</td>
+        <td>CLI plus agent slash commands</td>
+        <td>CLI</td>
+        <td>Agentic IDE</td>
       </tr>
-      <tr class="highlight-row">
-        <td class="row-label">Structured PRD / task tree</td>
-        <td class="ndx-col" style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
+      <tr>
+        <td class="row-label">License</td>
+        <td class="ndx-col">Elastic 2.0</td>
+        <td>MIT</td>
+        <td>MIT (commonly cited)</td>
+        <td>AWS commercial</td>
       </tr>
       <tr class="highlight-row">
-        <td class="row-label">Autonomous execution loop</td>
-        <td class="ndx-col" style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="partial">◐</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="partial">◐</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
+        <td class="row-label">Starts from</td>
+        <td class="ndx-col">Existing codebase scan</td>
+        <td>Spec and constitution</td>
+        <td>Change delta</td>
+        <td>Prompt to spec set</td>
       </tr>
       <tr>
-        <td class="row-label">Works with existing AI subscription</td>
-        <td class="ndx-col" style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
+        <td class="row-label">Living spec</td>
+        <td class="ndx-col">Rex PRD, re-analyzed each cycle</td>
+        <td>Markdown artifacts. Code auto-sync: unknown</td>
+        <td>Archive merges deltas into the source-of-truth spec</td>
+        <td>Spec then implement. Code auto-sync: unknown</td>
       </tr>
       <tr>
-        <td class="row-label">Persistent state across sessions</td>
-        <td class="ndx-col" style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="partial">◐</span></td>
-        <td style="text-align:center;"><span class="partial">◐</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
+        <td class="row-label">Static analysis</td>
+        <td class="ndx-col">SourceVision: files, imports, zones, React catalog</td>
+        <td>Not the product</td>
+        <td>Not the product</td>
+        <td>Not the product pitch</td>
       </tr>
       <tr>
-        <td class="row-label">Open source</td>
-        <td class="ndx-col" style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
+        <td class="row-label">Execution</td>
+        <td class="ndx-col">Hench tool-use loop</td>
+        <td><code style="font-family:var(--font-mono);font-size:0.75rem;color:var(--teal);">/speckit.implement</code> via your agent</td>
+        <td>Apply via your agent</td>
+        <td>Built-in agents</td>
       </tr>
       <tr>
-        <td class="row-label">CLI-first / local</td>
-        <td class="ndx-col" style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="check">●</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
-        <td style="text-align:center;"><span class="no">○</span></td>
+        <td class="row-label">Agents</td>
+        <td class="ndx-col">Claude Code and Codex</td>
+        <td>Many (Copilot, Claude, Gemini, Cursor, others)</td>
+        <td>Agent-agnostic</td>
+        <td>Built-in</td>
+      </tr>
+      <tr>
+        <td class="row-label">2026 SDD roundups</td>
+        <td class="ndx-col">Not named</td>
+        <td>Named</td>
+        <td>Named</td>
+        <td>Named</td>
       </tr>
     </tbody>
   </table>
   </div>
-  <p style="margin-top:16px;font-size:0.75rem;color:var(--muted);font-family:var(--font-mono);">● Full &nbsp;◐ Partial &nbsp;○ No &nbsp;· Based on public documentation as of Q1 2026.</p>
-  <p class="section-body" style="margin-top:28px;max-width:none;"><a href="vs/spec-kit/" style="color:var(--teal);font-weight:500;text-decoration:none;">Comparing spec-layer tools? See n-dx vs Spec Kit, OpenSpec, and Kiro →</a></p>
+  <p class="compare-note">Public documentation as of 21 Aug 2026. Levelop, Augment Code, and thebcms are the 2026 SDD roundups cited. We do not cite competitor star or download counts.</p>
 </div>
 
-<!-- CTA / INSTALL -->
+<!-- 5. WHO SHOULD PICK WHICH -->
+<div class="personas-outer" id="who">
+  <div style="max-width:1200px;margin:0 auto;padding:80px 48px 0;">
+    <div class="section-label">Who should pick which</div>
+    <h2 class="section-title">Four jobs. Pick the tool that matches the job.</h2>
+    <p class="section-body" style="max-width:640px;">Having people on the repo with you is consulting, not a CLI flag. The picks below are about the product, not the services bench.</p>
+  </div>
+  <div class="personas-section four">
+
+    <div class="persona-card">
+      <div class="persona-label purple">Pick Spec Kit</div>
+      <h3 class="persona-title">You will write the spec before the code.</h3>
+      <p class="persona-body">You want the portable SDD workflow most teams already recognize, you switch agents, and MIT is what most open-source buyers expect.</p>
+      <ul class="persona-points">
+        <li>
+          <div class="persona-check purple">→</div>
+          <span>Agent-portable: Copilot, Claude, Gemini, Cursor, and others</span>
+        </li>
+        <li>
+          <div class="persona-check purple">→</div>
+          <span>Constitution plus specify / plan / task / implement</span>
+        </li>
+        <li>
+          <div class="persona-check purple">→</div>
+          <span>OSI-friendly MIT license</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-label leader">Pick OpenSpec</div>
+      <h3 class="persona-title">You are changing one slice at a time.</h3>
+      <p class="persona-body">You want a thin delta layer on an existing system, not a codebase analyzer or a full PRD tree.</p>
+      <ul class="persona-points">
+        <li>
+          <div class="persona-check amber">→</div>
+          <span>ADDED / MODIFIED / REMOVED against a source-of-truth spec</span>
+        </li>
+        <li>
+          <div class="persona-check amber">→</div>
+          <span>Propose, apply, archive. Agent-agnostic apply.</span>
+        </li>
+        <li>
+          <div class="persona-check amber">→</div>
+          <span>Not a cleanup analyzer and not a living PRD</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-label pink">Pick Kiro</div>
+      <h3 class="persona-title">You want SDD inside an IDE.</h3>
+      <p class="persona-body">You are fine on AWS, and you want agent, editor, and spec as one product.</p>
+      <ul class="persona-points">
+        <li>
+          <div class="persona-check pink">→</div>
+          <span>Prompt becomes requirements, design, and tasks</span>
+        </li>
+        <li>
+          <div class="persona-check pink">→</div>
+          <span>Built-in agents. The workflow lives in Kiro.</span>
+        </li>
+        <li>
+          <div class="persona-check pink">→</div>
+          <span>Commercial AWS product, not a CLI you drop into Cursor</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-label dev">Pick n-dx</div>
+      <h3 class="persona-title">The repo already exists.</h3>
+      <p class="persona-body">The plan has drifted from the code, or a prototype became production without a spec. Analyze the tree, keep a PRD that can be re-derived, then execute.</p>
+      <ul class="persona-points">
+        <li>
+          <div class="persona-check teal">→</div>
+          <span>Existing-codebase scan, not a blank constitution</span>
+        </li>
+        <li>
+          <div class="persona-check teal">→</div>
+          <span>Living PRD in .rex/, re-analyzed each cycle</span>
+        </li>
+        <li>
+          <div class="persona-check teal">→</div>
+          <span>Hench executes. Built for Claude Code and Codex.</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- 6. WHEN NOT -->
+<section id="not-ndx">
+  <div class="section-label amber">When not to pick n-dx</div>
+  <h2 class="section-title">Three real gaps. We will not talk past them.</h2>
+  <p class="section-body" style="margin-bottom:40px;">Do not pick n-dx if you need a large community, an OSI-approved license, or an agent-agnostic install. Those are real gaps.</p>
+  <div class="problem-cards" style="max-width:800px;">
+    <div class="problem-card">
+      <div class="problem-icon red"><span role="img" aria-label="License">&#9878;</span></div>
+      <div class="problem-text">
+        <strong>You need an OSI-approved license</strong>
+        <span>The code is public. The license is Elastic 2.0, not MIT. ELv2 allows internal use, modification, and distribution, with a hosted-service restriction. Spec Kit is MIT. The precise term for n-dx is source-available.</span>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon orange"><span role="img" aria-label="Community">&#128101;</span></div>
+      <div class="problem-text">
+        <strong>You need a large community</strong>
+        <span>n-dx listed 16 GitHub stars on 21 Aug 2026. Spec Kit, OpenSpec, and Kiro are the names in the 2026 lists. If ecosystem size is the buying criterion, pick one of those.</span>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon yellow"><span role="img" aria-label="Agents">&#8644;</span></div>
+      <div class="problem-text">
+        <strong>You need an agent-agnostic install</strong>
+        <span>n-dx is built for Claude Code and Codex. Spec Kit and OpenSpec are written to ride whatever agent you already use. If you switch models every week, start there.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. INSTALL CTA -->
 <div class="cta-outer">
   <div class="cta-section" id="install">
     <div class="section-label" style="text-align:center;">Get started</div>
-    <h2 class="section-title">One command to initialize.<br>Two to run the loop.</h2>
+    <h2 class="section-title">Point it at a directory.<br>Run the loop.</h2>
     <p class="section-body" style="text-align:center;margin:0 auto 40px;">
-      Requires Node.js 18+. Works with Claude Code and Codex — configure your LLM vendor on first run.
+      The package is <code style="font-family:var(--font-mono);font-size:0.9rem;color:var(--teal);">@n-dx/core</code>. Requires Node.js 18+. Works with Claude Code and Codex. Configure your LLM vendor on first run.
     </p>
     <div class="install-block">
       <span class="install-cmd">npm i -g @n-dx/core</span>
       <button class="install-copy" aria-label="Copy install command" onclick="navigator.clipboard.writeText('npm i -g @n-dx/core')">copy</button>
     </div>
+    <p class="section-body" style="text-align:center;margin:0 auto 28px;font-family:var(--font-mono);font-size:0.85rem;color:var(--muted);">
+      ndx init . · ndx analyze . · ndx recommend . · ndx work . · ndx start
+    </p>
     <div class="cta-actions">
       <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Read the Docs</a>
-      <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">View on GitHub ↗</a>
+      <a href="https://docs.n-dx.dev/guide/existing-project.html" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">Existing project</a>
+      <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">View on GitHub &#8599;</a>
     </div>
+    <p class="gap-links" style="text-align:center;">Also: <a href="https://docs.n-dx.dev/guide/vibe-cleanup.html">vibe-coded cleanup</a> · <a href="https://endash.us/toolkit/items/n-dx">toolkit listing</a> · <a href="https://n-dx.dev/">n-dx.dev</a></p>
   </div>
 </div>
 
-<!-- CONTACT -->
+<!-- 8. FAQ -->
+<section id="faq">
+  <div style="text-align:center;">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Four questions we keep getting.</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>Is n-dx a Spec Kit alternative?</h3>
+      <p>Same category, different start. Spec Kit is spec-first and agent-portable. n-dx is codebase-first and built for Claude Code and Codex. Choose from the jobs above, not from invented checkmarks.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why is n-dx missing from Spec Kit vs OpenSpec vs Kiro lists?</h3>
+      <p>The 2026 roundups at Levelop, Augment Code, and thebcms name Spec Kit, OpenSpec, Kiro, and BMAD. n-dx is smaller and newer (16 GitHub stars on 21 Aug 2026). Absence from a list is not a quality score.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I use n-dx on a greenfield repo?</h3>
+      <p>Yes. Quickstart covers an empty project. The product is aimed at existing systems. A blank folder that wants specify, plan, tasks will feel more at home in Spec Kit or Kiro.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is n-dx open source the way Spec Kit is?</h3>
+      <p>The code is public. The license is Elastic 2.0, not MIT. ELv2 allows internal use, modification, and distribution, with a hosted-service restriction. Spec Kit is MIT. OpenSpec is commonly cited as MIT; confirm the LICENSE file. "Open source" on the marketing site is informal. The precise term is source-available.</p>
+    </div>
+  </div>
+</section>
+
 <div class="contact-outer">
   <div class="contact-section">
     <div class="section-label purple" style="text-align:center;">Contact</div>
     <h2 class="section-title" style="text-align:center;">Questions? Let's talk.</h2>
-    <p class="section-body" style="text-align:center;margin:0 auto 32px;">Whether you're evaluating n-dx for your team or want to discuss a specific use case — we'd love to hear from you.</p>
+    <p class="section-body" style="text-align:center;margin:0 auto 32px;">Whether you're evaluating n-dx for your team or want to discuss a specific use case — we'd love to hear from you. Practitioners on a real codebase is consulting, not a CLI flag.</p>
     <div style="text-align:center;">
       <a href="https://endash.us/toolkit?showContact=true&amp;contactTitle=Re%3A+n-dx&amp;contactSubtitle=Tell+us+about+your+project+or+ask+a+question&amp;contactMessage=Hi%2C+I%27m+interested+in+learning+more+about+n-dx.%0A%0A" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Get in Touch</a>
     </div>
@@ -1552,14 +1660,14 @@
   <div style="display:flex;align-items:center;gap:8px;">
     <span style="font-size:0.75rem;color:var(--muted);font-family:var(--font-body);">Built by</span>
     <a href="https://endash.us" target="_blank" rel="noopener noreferrer" aria-label="En Dash Consulting" style="display:inline-flex;">
-      <img src="assets/logo-endash.webp" alt="En Dash Consulting" width="125" height="125" loading="lazy" decoding="async" style="height:40px;width:auto;border-radius:6px;">
+      <img src="/assets/logo-endash.webp" alt="En Dash Consulting" width="125" height="125" loading="lazy" decoding="async" style="height:40px;width:auto;border-radius:6px;">
     </a>
   </div>
   <div class="footer-links">
     <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer">Docs</a>
-    <a href="mwfb2026/">Challenge</a>
-    <a href="vs/spec-kit/">Compare</a>
+    <a href="/mwfb2026/">Challenge</a>
+    <a href="/vs/spec-kit/">Compare</a>
     <a href="https://endash.us" target="_blank" rel="noopener noreferrer">En Dash</a>
   </div>
 </footer>
