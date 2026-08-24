@@ -66,7 +66,7 @@
           "name": "Is n-dx a Spec Kit alternative?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Same category, different start. Spec Kit is spec-first and agent-portable. n-dx is codebase-first and built for Claude Code and Codex. Choose from the jobs on this page, not from invented checkmarks."
+            "text": "Kind of. Spec Kit starts from a spec you write and works with a lot of agents. n-dx starts from the repo and is built for Claude Code and Codex. Use the jobs on this page."
           }
         },
         {
@@ -74,7 +74,7 @@
           "name": "Why is n-dx missing from Spec Kit vs OpenSpec vs Kiro lists?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The 2026 roundups at Levelop, Augment Code, and thebcms name Spec Kit, OpenSpec, Kiro, and BMAD. n-dx is smaller and newer (16 GitHub stars on 21 Aug 2026). Absence from a list is not a quality score."
+            "text": "The 2026 roundups at Levelop, Augment Code, and thebcms name Spec Kit, OpenSpec, Kiro, and BMAD. n-dx is smaller and newer (16 GitHub stars on 21 Aug 2026)."
           }
         },
         {
@@ -82,7 +82,7 @@
           "name": "Can I use n-dx on a greenfield repo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Quickstart covers an empty project. The product is aimed at existing systems. A blank folder that wants specify, plan, tasks will feel more at home in Spec Kit or Kiro."
+            "text": "Yes. Quickstart works on an empty folder. The tool is built for repos that already have code. If you are starting from a blank spec, Spec Kit or Kiro will feel more natural."
           }
         },
         {
@@ -1217,7 +1217,7 @@
       </div>
       <h1>n-dx vs Spec Kit<br>for the codebase <span class="gradient-text">you already have</span></h1>
       <p class="hero-sub">
-        Spec Kit, OpenSpec, and Kiro start from intent you write down: specify, plan, task, implement. n-dx starts from the repo. sourcevision maps the tree, rex keeps a living PRD, hench executes the next task.
+        Those tools start with a spec you write. n-dx starts with the repo you already have. Scan the tree, keep a PRD that can be rebuilt from the code, then run the next task.
       </p>
       <div class="hero-actions">
         <a href="#install" class="btn btn-primary btn-large">Install n-dx</a>
@@ -1238,17 +1238,17 @@
   <div class="problem-section">
     <div>
       <div class="section-label">Discovery</div>
-      <h2 class="section-title">The 2026 lists name Spec Kit. They do not name n-dx.</h2>
+      <h2 class="section-title">If you searched Spec Kit vs OpenSpec, you probably never saw n-dx.</h2>
       <p class="section-body">
-        Spec-driven development roundups this year name GitHub Spec Kit, OpenSpec, AWS Kiro, and BMAD. That is a discovery gap, not a ranking. n-dx is smaller and newer: 16 GitHub stars on 21 Aug 2026.
+        This year's roundups list Spec Kit, OpenSpec, Kiro, and BMAD. n-dx isn't on them. We're smaller: 16 GitHub stars as of 21 Aug 2026. That's why this page exists.
       </p>
     </div>
     <div class="problem-cards">
       <div class="problem-card">
         <div class="problem-icon orange"><span role="img" aria-label="Lists">📋</span></div>
         <div class="problem-text">
-          <strong>Named in 2026 SDD roundups</strong>
-          <span>Levelop, Augment Code, and thebcms cover Spec Kit, OpenSpec, Kiro, and BMAD. Absence from a list is not a quality score.</span>
+          <strong>Named in this year's SDD roundups</strong>
+          <span>Levelop, Augment Code, and thebcms cover Spec Kit, OpenSpec, Kiro, and BMAD. We just aren't in the article.</span>
         </div>
       </div>
       <div class="problem-card">
@@ -1274,7 +1274,7 @@
   <div class="how-header">
     <div class="section-label" style="text-align:center;">The difference that matters</div>
     <h2 class="section-title" style="text-align:center;">Spec-first is the right loop<br>when you already know what to build.</h2>
-    <p class="section-body" style="text-align:center;margin:16px auto 0;">n-dx is the other start: what is already here, and what to fix or finish. You can still add work in plain language with <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--teal);">ndx add "Add SSO support" .</code></p>
+    <p class="section-body" style="text-align:center;margin:16px auto 0;">n-dx is the other start. What's already here, and what to fix or finish. You can still add work in plain language with <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--teal);">ndx add "Add SSO support" .</code></p>
   </div>
   <div class="how-steps">
     <div class="how-step">
@@ -1298,15 +1298,15 @@
       <p class="step-body"><code style="font-family:var(--font-mono);font-size:0.82rem;color:#e879f9;">ndx self-heal</code> re-analyzes, recommends, executes, and acknowledges completed findings so they do not regenerate.</p>
     </div>
   </div>
-  <p class="section-body" style="text-align:center;margin:0 auto;">The useful claim is that the spec can be regenerated from the tree. If the last six months were vibe-coded, use the <a href="https://docs.n-dx.dev/guide/vibe-cleanup.html" style="color:var(--teal);">vibe-cleanup guide</a>.</p>
+  <p class="section-body" style="text-align:center;margin:0 auto;">The spec can be rebuilt from the tree. That's the point. If the last six months were vibe-coded, use the <a href="https://docs.n-dx.dev/guide/vibe-cleanup.html" style="color:var(--teal);">vibe-cleanup guide</a>.</p>
 </div>
 
 <!-- 3. FOUR TOOLS -->
 <div class="packages-section" id="tools">
   <div class="packages-header">
-    <div class="section-label">Four tools, four jobs</div>
-    <h2 class="section-title">Same category.<br>Different starting point.</h2>
-    <p class="section-body" style="margin:16px auto 0;text-align:center;">No invented star counts for the other tools. Licenses and product shapes below are from public docs as of 21 Aug 2026. Where we have not verified a file, we say so.</p>
+    <div class="section-label">Four tools</div>
+    <h2 class="section-title">What each one<br>actually does.</h2>
+    <p class="section-body" style="margin:16px auto 0;text-align:center;">We didn't invent numbers for the other tools. Licenses and shapes below are from public docs as of 21 Aug 2026. If we haven't checked a file, we say so.</p>
   </div>
   <div class="packages-grid tools-grid">
 
@@ -1389,8 +1389,8 @@
 <div class="compare-section" id="compare-table">
   <div class="compare-header">
     <div class="section-label">Comparison</div>
-    <h2 class="section-title">Short text over fake checkmarks.</h2>
-    <p class="section-body">Qualitative rows stay as words. We do not invent competitor stars, downloads, or win rates. "Unknown" means we have not verified it from public docs.</p>
+    <h2 class="section-title">Side by side.</h2>
+    <p class="section-body">Rows stay as words. We didn't invent competitor stars, downloads, or win rates. "Unknown" means we haven't verified it from public docs.</p>
   </div>
   <div class="compare-table-wrap">
   <table class="compare-table">
@@ -1470,7 +1470,7 @@
 <div class="personas-outer" id="who">
   <div style="max-width:1200px;margin:0 auto;padding:80px 48px 0;">
     <div class="section-label">Who should pick which</div>
-    <h2 class="section-title">Four jobs. Pick the tool that matches the job.</h2>
+    <h2 class="section-title">Which one fits what you're doing.</h2>
     <p class="section-body" style="max-width:640px;">Having people on the repo with you is consulting, not a CLI flag. The picks below are about the product, not the services bench.</p>
   </div>
   <div class="personas-section four">
@@ -1561,8 +1561,8 @@
 <!-- 6. WHEN NOT -->
 <section id="not-ndx">
   <div class="section-label amber">When not to pick n-dx</div>
-  <h2 class="section-title">Three real gaps. We will not talk past them.</h2>
-  <p class="section-body" style="margin-bottom:40px;">Do not pick n-dx if you need a large community, an OSI-approved license, or an agent-agnostic install. Those are real gaps.</p>
+  <h2 class="section-title">When n-dx is the wrong pick.</h2>
+  <p class="section-body" style="margin-bottom:40px;">Skip n-dx if you need a large community, an OSI-approved license, or an agent-agnostic install. Those are real gaps.</p>
   <div class="problem-cards" style="max-width:800px;">
     <div class="problem-card">
       <div class="problem-icon red"><span role="img" aria-label="License">&#9878;</span></div>
@@ -1616,20 +1616,20 @@
 <section id="faq">
   <div style="text-align:center;">
     <div class="section-label">FAQ</div>
-    <h2 class="section-title">Four questions we keep getting.</h2>
+    <h2 class="section-title">A few questions.</h2>
   </div>
   <div class="faq-list">
     <div class="faq-item">
       <h3>Is n-dx a Spec Kit alternative?</h3>
-      <p>Same category, different start. Spec Kit is spec-first and agent-portable. n-dx is codebase-first and built for Claude Code and Codex. Choose from the jobs above, not from invented checkmarks.</p>
+      <p>Kind of. Spec Kit starts from a spec you write and works with a lot of agents. n-dx starts from the repo and is built for Claude Code and Codex. Use the jobs above.</p>
     </div>
     <div class="faq-item">
       <h3>Why is n-dx missing from Spec Kit vs OpenSpec vs Kiro lists?</h3>
-      <p>The 2026 roundups at Levelop, Augment Code, and thebcms name Spec Kit, OpenSpec, Kiro, and BMAD. n-dx is smaller and newer (16 GitHub stars on 21 Aug 2026). Absence from a list is not a quality score.</p>
+      <p>The 2026 roundups at Levelop, Augment Code, and thebcms name Spec Kit, OpenSpec, Kiro, and BMAD. n-dx is smaller and newer (16 GitHub stars on 21 Aug 2026).</p>
     </div>
     <div class="faq-item">
       <h3>Can I use n-dx on a greenfield repo?</h3>
-      <p>Yes. Quickstart covers an empty project. The product is aimed at existing systems. A blank folder that wants specify, plan, tasks will feel more at home in Spec Kit or Kiro.</p>
+      <p>Yes. Quickstart works on an empty folder. The tool is built for repos that already have code. If you're starting from a blank spec, Spec Kit or Kiro will feel more natural.</p>
     </div>
     <div class="faq-item">
       <h3>Is n-dx open source the way Spec Kit is?</h3>
@@ -1642,7 +1642,7 @@
   <div class="contact-section">
     <div class="section-label purple" style="text-align:center;">Contact</div>
     <h2 class="section-title" style="text-align:center;">Questions? Let's talk.</h2>
-    <p class="section-body" style="text-align:center;margin:0 auto 32px;">Whether you're evaluating n-dx for your team or want to discuss a specific use case — we'd love to hear from you. Practitioners on a real codebase is consulting, not a CLI flag.</p>
+    <p class="section-body" style="text-align:center;margin:0 auto 32px;">Evaluating this for a team, or stuck on a specific repo? Write us. Putting people on the codebase with you is consulting, not a CLI flag.</p>
     <div style="text-align:center;">
       <a href="https://endash.us/toolkit?showContact=true&amp;contactTitle=Re%3A+n-dx&amp;contactSubtitle=Tell+us+about+your+project+or+ask+a+question&amp;contactMessage=Hi%2C+I%27m+interested+in+learning+more+about+n-dx.%0A%0A" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Get in Touch</a>
     </div>
