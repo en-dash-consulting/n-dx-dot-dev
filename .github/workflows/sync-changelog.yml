@@ -1,0 +1,86 @@
+name: Sync changelog
+
+# Regenerates changelog/index.html and the changelog regions of index.html from
+# the npm registry + the core repo's CHANGELOG.md, then commits only if the
+# output actually changed.
+on:
+  schedule:
+    # 12:00 UTC daily — catches any publish within a day even with no dispatch.
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+  # Fired by the n-dx release pipeline for a near-instant update. See below.
+  repository_dispatch:
+    types: [ndx-release]
+
+permissions:
+  contents: write
+  pages: write
+
+# Never let two syncs race on the same branch.
+concurrency:
+  group: sync-changelog
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history so the rebase in the commit step below has something to
+          # replay onto; the default shallow clone cannot rebase.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Regenerate changelog
+        run: node scripts/sync-changelog.mjs
+
+      - name: Commit if changed
+        id: commit
+        run: |
+          if git diff --quiet -- index.html changelog/; then
+            echo "no changes"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          version=$(node -e "const s=require('fs').readFileSync('index.html','utf8');console.log(s.match(/hero-version-num\">v([^<]+)</)[1])")
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html changelog/
+          git commit -m "Sync changelog for @n-dx/core v${version}"
+
+          # A human may have pushed while we were generating.
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # A push authenticated with GITHUB_TOKEN does not always retrigger the
+      # branch-based Pages build, so ask for one explicitly. Harmless (and
+      # skipped) if the site is published via a Pages Actions workflow instead.
+      - name: Request a Pages build
+        if: steps.commit.outputs.changed == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"
+
+# ── Instant updates on publish (optional) ─────────────────────────────────────
+#
+# The schedule above means the site trails a publish by up to a day. To have it
+# update within seconds, add a step to the release job in
+# en-dash-consulting/n-dx that pokes this workflow:
+#
+#   - name: Refresh n-dx.dev changelog
+#     run: |
+#       gh api --method POST repos/en-dash-consulting/n-dx-dot-dev/dispatches \
+#         -f event_type=ndx-release
+#     env:
+#       GH_TOKEN: ${{ secrets.NDX_DEV_DISPATCH_TOKEN }}
+#
+# GITHUB_TOKEN cannot dispatch across repositories, so NDX_DEV_DISPATCH_TOKEN
+# must be a PAT (or GitHub App token) with `contents: write` on this repo.
