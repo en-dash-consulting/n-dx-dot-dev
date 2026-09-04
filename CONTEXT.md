@@ -12,10 +12,10 @@ Static HTML site with no build step. Each page is a single self-contained HTML f
 
 - `index.html` — Landing page. This is what GitHub Pages serves at the root URL. Contains hero, package cards, problem section, how-it-works terminal demo, use cases, personas, comparison table, changelog teaser, install CTA, and contact section.
 - `changelog/index.html` — Full release history for `@n-dx/core`. **Generated — do not hand-edit.** See "Changelog generation" below.
-- `mwfb2026/index.html` - Make Work Feel Better Challenge 2026 event landing page for the remote async n-dx challenge.
-- `make-work-feel-better-hackathon-2026/index.html` - Long-slug alias route that redirects to `/mwfb2026/`.
-- `hackathon/index.html` - Short alias route that redirects to `/mwfb2026/`.
-- `make-work-feel-better/index.html` - Campaign alias route that redirects to `/mwfb2026/`.
+- `mwfb2026/index.html` - Make Work Feel Better Challenge 2026 event landing page for the remote async n-dx challenge. **Unlinked** — still served at its URL, but no longer reachable from the site nav or footer.
+- `make-work-feel-better-hackathon-2026/index.html` - Long-slug alias route that redirects to `/mwfb2026/`. Unlinked.
+- `hackathon/index.html` - Short alias route that redirects to `/mwfb2026/`. Unlinked.
+- `make-work-feel-better/index.html` - Campaign alias route that redirects to `/mwfb2026/`. Unlinked.
 - `CNAME` — Custom domain configuration pointing to `n-dx.dev`.
 
 ### Design system

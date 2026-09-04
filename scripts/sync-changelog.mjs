@@ -145,19 +145,14 @@ function parseEntry(raw) {
   let body = dedented
   let pr = null
   let prUrl = null
-  let author = null
-  let authorUrl = null
 
+  // The Thanks clause is matched only so it can be stripped — the page credits
+  // the PR, not the author.
   const m = dedented.match(WITH_THANKS) || dedented.match(WITHOUT_THANKS)
   if (m) {
     body = dedented.slice(m[0].length).trim()
     pr = m[1] || null
     prUrl = m[2] || null
-    // Only the WITH_THANKS shape carries an author, in groups 5/6.
-    if (m.length > 5) {
-      author = m[5] || null
-      authorUrl = m[6] || null
-    }
   }
 
   const blocks = splitBlocks(body)
@@ -170,8 +165,6 @@ function parseEntry(raw) {
     isDeps: /^Updated dependencies/i.test(body),
     pr,
     prUrl,
-    author,
-    authorUrl,
     summary: lead === -1 ? '' : blocks[lead].content,
     detail: blocks.filter((_, i) => i !== lead),
   }
@@ -260,35 +253,43 @@ function releaseBump(release) {
 
 // ── page generation ────────────────────────────────────────────────────────
 
-function renderEntry(entry) {
-  const detail = entry.detail.length
-    ? `<details class="cl-detail"><summary>Read more</summary><div class="cl-detail-body">${entry.detail
-        .map(renderBlock)
-        .join('')}</div></details>`
+// Collapse a block's soft line wraps (and any bullet markers) into one line, for
+// use inside a list item where a nested <p> or <ul> would fight the layout.
+const flatten = (md) =>
+  md
+    .split('\n')
+    .map((l) => l.trim().replace(/^[-*]\s+/, ''))
+    .filter(Boolean)
+    .join(' ')
+
+// One release renders as a single item: every change in it becomes a bullet, and
+// the full prose for all of them sits behind one disclosure rather than a stack
+// of per-change cards.
+function renderRelease(release) {
+  const bullets = release.entries
+    .map((entry) => {
+      const pr =
+        entry.pr && entry.prUrl
+          ? ` <a class="cl-pr" href="${esc(entry.prUrl)}" target="_blank" rel="noopener noreferrer">#${esc(entry.pr)}</a>`
+          : ''
+      return `            <li>${inline(flatten(entry.summary))}${pr}</li>`
+    })
+    .join('\n')
+
+  const notes = release.entries
+    .filter((entry) => entry.detail.length)
+    .map(
+      (entry) =>
+        `<div class="cl-note"><p class="cl-note-lead">${inline(flatten(entry.summary))}</p>${entry.detail
+          .map(renderBlock)
+          .join('')}</div>`
+    )
+    .join('')
+
+  const detail = notes
+    ? `<details class="cl-detail"><summary>Full release notes</summary><div class="cl-detail-body">${notes}</div></details>`
     : ''
 
-  const meta = []
-  if (entry.pr && entry.prUrl) {
-    meta.push(
-      `<a class="cl-pr" href="${esc(entry.prUrl)}" target="_blank" rel="noopener noreferrer">#${esc(entry.pr)}</a>`
-    )
-  }
-  if (entry.author && entry.authorUrl) {
-    meta.push(
-      `<a class="cl-author" href="${esc(entry.authorUrl)}" target="_blank" rel="noopener noreferrer">@${esc(entry.author)}</a>`
-    )
-  }
-
-  return `<li class="cl-entry">
-          <div class="cl-entry-head">
-            <span class="cl-bump ${entry.bump ? entry.bump.toLowerCase() : 'patch'}">${esc(entry.bump || 'Patch')}</span>
-            ${meta.length ? `<span class="cl-entry-meta">${meta.join('<span class="cl-sep">·</span>')}</span>` : ''}
-          </div>
-          <div class="cl-entry-body">${renderText(entry.summary)}${detail}</div>
-        </li>`
-}
-
-function renderRelease(release) {
   return `<article class="cl-release" id="${anchor(release.version)}">
         <header class="cl-release-head">
           <h2 class="cl-version">
@@ -298,9 +299,12 @@ function renderRelease(release) {
           <span class="cl-release-bump ${releaseBump(release).toLowerCase()}">${releaseBump(release)}</span>
           <a class="cl-npm-link" href="${NPM_PAGE}/v/${esc(release.version)}" target="_blank" rel="noopener noreferrer">npm ↗</a>
         </header>
-        <ul class="cl-entries" role="list">
-${release.entries.map(renderEntry).join('\n')}
-        </ul>
+        <div class="cl-release-body">
+          <ul class="cl-changes" role="list">
+${bullets}
+          </ul>
+          ${detail}
+        </div>
       </article>`
 }
 
@@ -557,17 +561,17 @@ function buildChangelogPage(releases, early, latest) {
     border-radius: 999px;
     padding: 3px 10px;
   }
-  .cl-release-bump.minor, .cl-bump.minor {
+  .cl-release-bump.minor {
     color: var(--purple);
     background: var(--purple-subtle);
     border: 1px solid rgba(167,139,255,0.3);
   }
-  .cl-release-bump.patch, .cl-bump.patch {
+  .cl-release-bump.patch {
     color: var(--teal);
     background: var(--teal-subtle);
     border: 1px solid rgba(45,212,160,0.25);
   }
-  .cl-release-bump.major, .cl-bump.major {
+  .cl-release-bump.major {
     color: var(--amber);
     background: var(--amber-subtle);
     border: 1px solid rgba(245,158,66,0.3);
@@ -583,48 +587,58 @@ function buildChangelogPage(releases, early, latest) {
   }
   .cl-npm-link:hover { opacity: 1; color: var(--teal); }
 
-  .cl-entries { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-  .cl-entry {
+  /* One card per release, holding every change in it. */
+  .cl-release-body {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px 24px;
+    padding: 22px 26px;
     transition: background 0.2s, border-color 0.2s;
   }
-  .cl-entry:hover { background: var(--card-hover); border-color: rgba(255,255,255,0.16); }
-  .cl-entry-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 12px;
+  .cl-release-body:hover { background: var(--card-hover); border-color: rgba(255,255,255,0.16); }
+
+  .cl-changes { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .cl-changes > li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #edf2ff;
   }
-  .cl-bump {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 2px 9px;
+  .cl-changes > li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 0.68em;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    opacity: 0.65;
   }
-  .cl-entry-meta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  .cl-pr {
     font-family: var(--font-mono);
     font-size: 0.72rem;
+    color: var(--muted);
+    text-decoration: none;
+    opacity: 0.6;
+    white-space: nowrap;
+    transition: opacity 0.2s, color 0.2s;
   }
-  .cl-entry-meta a { color: var(--muted); text-decoration: none; opacity: 0.72; transition: opacity 0.2s, color 0.2s; }
-  .cl-entry-meta a:hover { opacity: 1; color: var(--teal); }
-  .cl-sep { color: var(--muted); opacity: 0.35; }
+  .cl-pr:hover { opacity: 1; color: var(--teal); }
 
-  .cl-entry-body > p:first-child { color: #edf2ff; }
-  .cl-entry-body p { font-size: 0.98rem; line-height: 1.7; }
-  .cl-entry-body p + p { margin-top: 12px; }
-  .cl-entry-body a { color: var(--teal); text-decoration: none; }
-  .cl-entry-body a:hover { text-decoration: underline; }
-  .cl-entry-body code {
+  .cl-note + .cl-note {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .cl-note-lead { color: var(--white); font-weight: 500; }
+
+  .cl-release-body p { font-size: 0.98rem; line-height: 1.7; }
+  .cl-release-body p + p { margin-top: 12px; }
+  .cl-release-body a { color: var(--teal); text-decoration: none; }
+  .cl-release-body a:hover { text-decoration: underline; }
+  .cl-release-body .cl-pr { color: var(--muted); }
+  .cl-release-body .cl-pr:hover { color: var(--teal); text-decoration: none; }
+  .cl-release-body code {
     font-family: var(--font-mono);
     font-size: 0.85em;
     color: var(--teal);
@@ -632,7 +646,7 @@ function buildChangelogPage(releases, early, latest) {
     border-radius: 4px;
     padding: 1px 5px;
   }
-  .cl-entry-body strong { color: var(--white); font-weight: 600; }
+  .cl-release-body strong { color: var(--white); font-weight: 600; }
   .cl-sublist { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
   .cl-sublist li {
     position: relative;
@@ -791,7 +805,7 @@ function buildChangelogPage(releases, early, latest) {
     nav { padding: 0 16px; }
     .cl-hero { padding: 96px 16px 24px; }
     .cl-main { padding: 12px 16px 48px; }
-    .cl-entry { padding: 18px 16px; }
+    .cl-release-body { padding: 18px 16px; }
     .cl-npm-link { margin-left: 0; }
     footer { padding: 24px 16px; }
   }
@@ -846,7 +860,6 @@ function buildChangelogPage(releases, early, latest) {
       <li><a href="/#packages">Packages</a></li>
       <li><a href="/#how">Workflow</a></li>
       <li><a href="/#usecases">Use Cases</a></li>
-      <li><a href="/mwfb2026/">Challenge</a></li>
       <li><a href="/changelog/" class="active" aria-current="page">Changelog</a></li>
       <li><a href="/#compare">Compare</a></li>
     </ul>
@@ -914,7 +927,7 @@ ${early
   <div class="footer-links">
     <a href="${REPO}" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer">Docs</a>
-    <a href="/mwfb2026/">Challenge</a>
+    <a href="/changelog/">Changelog</a>
     <a href="https://endash.us" target="_blank" rel="noopener noreferrer">En Dash</a>
   </div>
 </footer>
