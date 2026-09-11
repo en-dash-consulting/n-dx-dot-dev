@@ -35,10 +35,30 @@ This repository contains the static marketing site for n-dx, hosted on GitHub Pa
 ### Pages
 
 - **`index.html`** — Landing page (served at the root URL)
-- **`mwfb2026/index.html`** - Make Work Feel Better Challenge 2026 landing page
+- **`changelog/index.html`** — Release history for `@n-dx/core` ([n-dx.dev/changelog](https://n-dx.dev/changelog/)) — generated, see below
+- **`mwfb2026/index.html`** - Make Work Feel Better Challenge 2026 landing page (unlinked from the site nav; still live at its URL)
 - **`make-work-feel-better-hackathon-2026/index.html`** - Alias route that redirects to `/mwfb2026/`
 - **`hackathon/index.html`** - Short alias route that redirects to `/mwfb2026/`
 - **`make-work-feel-better/index.html`** - Campaign alias route that redirects to `/mwfb2026/`
+
+### Changelog
+
+The changelog is generated, not written here. `scripts/sync-changelog.mjs` merges the
+npm registry (which versions shipped, and when) with the changeset-authored notes in
+the core repo's `packages/core/CHANGELOG.md`, then rewrites `changelog/index.html` and
+the two `<!-- SYNC:… -->` regions in `index.html`.
+
+```bash
+node scripts/sync-changelog.mjs   # Node 20+, no dependencies
+```
+
+`.github/workflows/sync-changelog.yml` runs it daily and on demand, committing only
+when the output changes. To make the site update within seconds of a publish instead
+of within a day, add a `repository_dispatch` step to the core repo's release job — the
+workflow file documents the exact snippet.
+
+Don't hand-edit `changelog/index.html` or anything between the `SYNC` markers; the
+next run overwrites it. Change the templates in the script instead.
 
 ### Stack
 

@@ -335,18 +335,49 @@
     font-size: 1.05rem;
     border-radius: 10px;
   }
-  .hero-npm-badge {
-    display: inline-flex;
+  .hero-meta {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
     margin-top: -44px;
     margin-bottom: 64px;
     position: relative;
     animation: fadeUp 0.6s ease 0.35s both;
   }
+  .hero-npm-badge {
+    display: inline-flex;
+    align-items: center;
+  }
   .hero-npm-badge img {
     height: 26px;
     width: auto;
   }
+  .hero-version-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 26px;
+    padding: 0 12px;
+    background: var(--purple-subtle);
+    border: 1px solid rgba(167,139,255,0.3);
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--purple);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .hero-version-pill:hover {
+    background: rgba(167,139,255,0.2);
+    border-color: rgba(167,139,255,0.5);
+  }
+  .hero-version-num { color: var(--white); font-weight: 500; }
+  .hero-version-sep { opacity: 0.4; }
+  .hero-version-arrow { transition: transform 0.2s; }
+  .hero-version-pill:hover .hero-version-arrow { transform: translateX(2px); }
   .hero-loop {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -929,6 +960,115 @@
   .install-copy:hover { border-color: rgba(255,255,255,0.2); color: var(--white); }
   .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
+  /* ── CHANGELOG ───────────────────────────────────────────────────── */
+  /* No padding/max-width here — #changelog is a real <section>, so the base
+     `section` rule and its breakpoints already cover it. */
+  .changelog-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+  .release-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .release-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .release-card:hover {
+    background: var(--card-hover);
+    border-color: rgba(167,139,255,0.35);
+    transform: translateY(-2px);
+  }
+  .release-card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2px;
+  }
+  .release-version {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .release-bump {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 2px 9px;
+  }
+  .release-bump.minor {
+    color: var(--purple);
+    background: var(--purple-subtle);
+    border: 1px solid rgba(167,139,255,0.3);
+  }
+  .release-bump.patch {
+    color: var(--teal);
+    background: var(--teal-subtle);
+    border: 1px solid rgba(45,212,160,0.25);
+  }
+  .release-bump.major {
+    color: var(--amber);
+    background: var(--amber-subtle);
+    border: 1px solid rgba(245,158,66,0.3);
+  }
+  .release-date {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    opacity: 0.6;
+    margin-bottom: 16px;
+  }
+  .release-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .release-bullets li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .release-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 0.62em;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--purple);
+    opacity: 0.7;
+  }
+  .release-more {
+    display: block;
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--purple);
+    opacity: 0.8;
+  }
+
   /* ── FOOTER ──────────────────────────────────────────────────────── */
   footer {
     border-top: 1px solid var(--border);
@@ -985,6 +1125,8 @@
     nav { padding: 0 24px; }
     section { padding: 64px 24px; }
     .packages-section, .how-section, .usecases-section, .compare-section, .cta-section, .contact-section { padding: 64px 24px; }
+    .changelog-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .release-grid { grid-template-columns: 1fr; }
     .problem-section { grid-template-columns: 1fr; gap: 40px; }
     .packages-grid { grid-template-columns: 1fr; }
     .how-steps { grid-template-columns: 1fr; }
@@ -1000,6 +1142,7 @@
     .hero { padding: 80px 16px 40px; }
     section { padding: 48px 16px; }
     .packages-section, .how-section, .usecases-section, .compare-section, .cta-section, .contact-section { padding: 48px 16px; }
+    .release-card { padding: 20px; }
     nav { padding: 0 16px; }
     .step-number { width: 48px; height: 48px; font-size: 1.4rem; border-radius: 10px; }
     .terminal-wrap { max-width: 100%; }
@@ -1065,7 +1208,7 @@
       <li><a href="#packages">Packages</a></li>
       <li><a href="#how">Workflow</a></li>
       <li><a href="#usecases">Use Cases</a></li>
-      <li><a href="mwfb2026/">Challenge</a></li>
+      <li><a href="changelog/">Changelog</a></li>
       <li><a href="#compare">Compare</a></li>
       <li><a href="#install" class="active">Get Started</a></li>
     </ul>
@@ -1102,9 +1245,19 @@
         <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">View on GitHub ↗</a>
       </div>
 
-      <a class="hero-npm-badge" href="https://www.npmjs.com/package/@n-dx/core" target="_blank" rel="noopener noreferrer">
-        <img alt="NPM Downloads" src="https://img.shields.io/npm/dy/%40n-dx%2Fcore" width="195" height="26">
+      <div class="hero-meta">
+        <a class="hero-npm-badge" href="https://www.npmjs.com/package/@n-dx/core" target="_blank" rel="noopener noreferrer">
+          <img alt="NPM Downloads" src="https://img.shields.io/npm/dy/%40n-dx%2Fcore" width="195" height="26">
+        </a>
+        <!-- SYNC:HERO_VERSION:START -->
+      <a class="hero-version-pill" href="changelog/">
+        <span class="hero-version-num">v0.5.2</span>
+        <span class="hero-version-sep">·</span>
+        <span>What&rsquo;s new</span>
+        <span class="hero-version-arrow" aria-hidden="true">&rarr;</span>
       </a>
+<!-- SYNC:HERO_VERSION:END -->
+      </div>
     </div>
 
     <div class="hero-mascot">
@@ -1508,6 +1661,62 @@
   <p style="margin-top:16px;font-size:0.75rem;color:var(--muted);font-family:var(--font-mono);">● Full &nbsp;◐ Partial &nbsp;○ No &nbsp;· Based on public documentation as of Q1 2026.</p>
 </div>
 
+<!-- SYNC:LATEST_RELEASES:START -->
+<!-- CHANGELOG -->
+<section id="changelog" class="changelog-section" aria-labelledby="changelog-heading">
+  <div class="changelog-header">
+    <div>
+      <div class="section-label purple">Changelog</div>
+      <h2 class="section-title" id="changelog-heading">Shipping in the open.</h2>
+      <p class="section-body">
+        Every version of <code style="font-family:var(--font-mono);font-size:0.95rem;color:var(--teal)">@n-dx/core</code>
+        ships with notes written by the person who built the change &mdash; not a
+        dependency-bump digest.
+      </p>
+    </div>
+    <a href="changelog/" class="btn btn-ghost">Full changelog &rarr;</a>
+  </div>
+  <div class="release-grid">
+        <a class="release-card" href="changelog/#v0-5-2">
+          <div class="release-card-head">
+            <span class="release-version">0.5.2</span>
+            <span class="release-bump patch">Patch</span>
+          </div>
+          <time class="release-date" datetime="2026-09-04T15:34:49.977Z">Sep 4, 2026</time>
+          <ul class="release-bullets" role="list">
+            <li>Add a distilled repo primer and prefer it over CONTEXT.md as agent startup context.</li>
+            <li>Add .hench/reviews/ to the ndx init ignore template, and retire its stale .rex/prd.json.lock entry.</li>
+          </ul>
+          <span class="release-more">+9 more changes</span>
+        </a>
+        <a class="release-card" href="changelog/#v0-5-1">
+          <div class="release-card-head">
+            <span class="release-version">0.5.1</span>
+            <span class="release-bump patch">Patch</span>
+          </div>
+          <time class="release-date" datetime="2026-08-28T16:23:14.599Z">Aug 28, 2026</time>
+          <ul class="release-bullets" role="list">
+            <li>Assisted skill runs now record what they cost, instead of zero.</li>
+            <li>ndx config &lt;key&gt; no longer lets a same-named directory shadow the key at the pre-dispatch layer.</li>
+          </ul>
+          <span class="release-more">+17 more changes</span>
+        </a>
+        <a class="release-card" href="changelog/#v0-5-0">
+          <div class="release-card-head">
+            <span class="release-version">0.5.0</span>
+            <span class="release-bump minor">Minor</span>
+          </div>
+          <time class="release-date" datetime="2026-08-24T02:25:04.600Z">Aug 24, 2026</time>
+          <ul class="release-bullets" role="list">
+            <li>Surface concise re-authentication guidance when a provider rejects credentials, and stop dumping raw JSON error…</li>
+            <li>Detect the project&#39;s CLI command name from the package.json bin field and record it as cli.name in .n-dx.json during…</li>
+          </ul>
+          <span class="release-more">+31 more changes</span>
+        </a>
+  </div>
+</section>
+<!-- SYNC:LATEST_RELEASES:END -->
+
 <!-- CTA / INSTALL -->
 <div class="cta-outer">
   <div class="cta-section" id="install">
@@ -1556,7 +1765,7 @@
   <div class="footer-links">
     <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer">Docs</a>
-    <a href="mwfb2026/">Challenge</a>
+    <a href="changelog/">Changelog</a>
     <a href="https://endash.us" target="_blank" rel="noopener noreferrer">En Dash</a>
   </div>
 </footer>
