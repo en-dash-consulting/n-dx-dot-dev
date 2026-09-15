@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Final URLs only. /hackathon/, /make-work-feel-better/ and
+  /make-work-feel-better-hackathon-2026/ are all redirects to /mwfb2026/ and
+  are deliberately absent: a sitemap listing a redirect asks Google to index
+  a URL that tells it to go somewhere else.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://n-dx.dev/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://n-dx.dev/changelog/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://n-dx.dev/vs/spec-kit/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://n-dx.dev/mwfb2026/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+</urlset>
