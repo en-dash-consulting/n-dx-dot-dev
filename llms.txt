@@ -28,9 +28,16 @@ Requires Node.js 18+. Works with Claude Code and Codex — configure your LLM ve
 
 This repository contains the static HTML marketing site hosted at n-dx.dev via GitHub Pages. No build step — just HTML with inline CSS.
 
+Pages:
+
+- `/` — Landing page (`index.html`)
+- `/vs/spec-kit/` — n-dx vs Spec Kit, OpenSpec, and Kiro (`vs/spec-kit/index.html`)
+- `/mwfb2026/` — Make Work Feel Better Challenge 2026
+
 ## Links
 
 - Source code: https://github.com/en-dash-consulting/n-dx
 - Website: https://n-dx.dev
+- Comparison: https://n-dx.dev/vs/spec-kit/
 - Built by En Dash Consulting: https://endash.us
 - Contact: https://endash.us/toolkit?showContact=true&contactTitle=Re%3A+n-dx&contactSubtitle=Tell+us+about+your+project+or+ask+a+question&contactMessage=Hi%2C+I%27m+interested+in+learning+more+about+n-dx.%0A%0A
