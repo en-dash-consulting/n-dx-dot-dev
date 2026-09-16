@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GD4SJX7TSY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GD4SJX7TSY');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>n-dx vs Spec Kit, OpenSpec, and Kiro for existing codebases</title>
+<meta name="description" content="Compare n-dx with GitHub Spec Kit, OpenSpec, and AWS Kiro. n-dx starts from the repo you already have, keeps a living PRD in sync, and executes the work.">
+<meta name="keywords" content="n-dx, Spec Kit, OpenSpec, Kiro, spec-driven development, existing codebase, brownfield, PRD, sourcevision, rex, hench">
+<meta name="author" content="En Dash Consulting">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://n-dx.dev/vs/spec-kit/">
+<meta name="theme-color" content="#0d1b3e">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://n-dx.dev/vs/spec-kit/">
+<meta property="og:title" content="n-dx vs Spec Kit, OpenSpec, and Kiro for existing codebases">
+<meta property="og:description" content="Compare n-dx with GitHub Spec Kit, OpenSpec, and AWS Kiro. n-dx starts from the repo you already have, keeps a living PRD in sync, and executes the work.">
+<meta property="og:image" content="https://n-dx.dev/n-dx-logo.png">
+<meta property="og:image:width" content="300">
+<meta property="og:image:height" content="300">
+<meta property="og:image:alt" content="n-dx logo">
+<meta property="og:site_name" content="n-dx">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="n-dx vs Spec Kit, OpenSpec, and Kiro for existing codebases">
+<meta name="twitter:description" content="Compare n-dx with GitHub Spec Kit, OpenSpec, and AWS Kiro. n-dx starts from the repo you already have, keeps a living PRD in sync, and executes the work.">
+<meta name="twitter:image" content="https://n-dx.dev/n-dx-logo.png">
+<meta name="twitter:image:alt" content="n-dx logo">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/n-dx-logo.png">
+<link rel="apple-touch-icon" href="/n-dx-logo.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "n-dx vs Spec Kit, OpenSpec, and Kiro for existing codebases",
+      "url": "https://n-dx.dev/vs/spec-kit/",
+      "description": "Compare n-dx with GitHub Spec Kit, OpenSpec, and AWS Kiro. n-dx starts from the repo you already have, keeps a living PRD in sync, and executes the work.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "n-dx",
+        "url": "https://n-dx.dev/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is n-dx a Spec Kit alternative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kind of. Spec Kit starts from a spec you write and works with a lot of agents. n-dx starts from the repo and is built for Claude Code and Codex. Use the jobs on this page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is n-dx missing from Spec Kit vs OpenSpec vs Kiro lists?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 2026 roundups at Levelop, Augment Code, and thebcms name Spec Kit, OpenSpec, Kiro, and BMAD. n-dx is smaller and newer (16 GitHub stars on 21 Aug 2026)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use n-dx on a greenfield repo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Quickstart works on an empty folder. The tool is built for repos that already have code. If you are starting from a blank spec, Spec Kit or Kiro will feel more natural."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is n-dx open source the way Spec Kit is?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The code is public. The license is Elastic 2.0, not MIT. ELv2 allows internal use, modification, and distribution, with a hosted-service restriction. Spec Kit is MIT. OpenSpec is commonly cited as MIT; confirm the LICENSE file. Open source on the marketing site is informal. The precise term is source-available."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --navy-mid: #132247;
+    --navy-light: #1a2f5a;
+    --teal: #00ffb3;
+    --teal-dim: #1a9970;
+    --teal-subtle: rgba(45,212,160,0.12);
+    --amber: #ffaa33;
+    --amber-subtle: rgba(245,158,66,0.12);
+    --purple: #a78bff;
+    --purple-subtle: rgba(139,124,248,0.12);
+    --white: #ffffff;
+    --muted: #dde6f8;
+    --border: rgba(255,255,255,0.10);
+    --card: rgba(255,255,255,0.05);
+    --card-hover: rgba(255,255,255,0.09);
+    --font-display: 'Montserrat', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: #edf2ff;
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ─────────────────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    background: rgba(13,27,62,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 32px; height: 32px;
+    border-radius: 7px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .nav-logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+  .nav-logo-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+    flex-wrap: nowrap;
+  }
+  .nav-links a { white-space: nowrap; }
+  .nav-logo-text { white-space: nowrap; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a.active { color: var(--teal); }
+  .nav-cta {
+    display: flex; gap: 12px; align-items: center;
+  }
+  .nav-menu { display: contents; }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px; height: 44px;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 100%; height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+  nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    min-height: 44px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: #00ffb3;
+    font-weight: 700;
+    color: #020c28;
+  }
+  .btn-primary:hover { background: #3de8b4; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+
+  /* ── HERO ─────────────────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+    max-width: 1100px;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+  .hero-mascot {
+    flex-shrink: 0;
+    animation: fadeUp 0.6s ease 0.15s both;
+  }
+  .hero-mascot img {
+    width: 260px;
+    height: auto;
+    filter: drop-shadow(0 0 40px rgba(45,212,160,0.2));
+  }
+  @media (max-width: 768px) {
+    .hero-content {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+    .hero-mascot img {
+      width: 180px;
+    }
+  }
+  @media (max-width: 480px) {
+    .hero-mascot img {
+      width: 140px;
+    }
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 800px 500px at 50% 0%, rgba(45,212,160,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 600px 400px at 80% 60%, rgba(139,124,248,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--teal-subtle);
+    border: 1px solid rgba(45,212,160,0.25);
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--teal);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    position: relative;
+    animation: fadeUp 0.6s ease both;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    color: var(--white);
+    margin-bottom: 24px;
+    position: relative;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+  .hero h1 .accent { color: var(--teal); }
+  .hero-sub {
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    color: var(--muted);
+    max-width: 640px;
+    line-height: 1.65;
+    margin-bottom: 40px;
+    position: relative;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+    position: relative;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+  .btn-large {
+    padding: 13px 28px;
+    font-size: 1.05rem;
+    border-radius: 10px;
+  }
+  .hero-npm-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-top: -44px;
+    margin-bottom: 64px;
+    position: relative;
+    animation: fadeUp 0.6s ease 0.35s both;
+  }
+  .hero-npm-badge img {
+    height: 26px;
+    width: auto;
+  }
+  .hero-loop {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    position: relative;
+    animation: fadeUp 0.6s ease 0.4s both;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .loop-arrow { display: none; }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #00ffb3 0%, #a78bff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── HERO CARDS ─────────────────────────────────────────────────────── */
+  .hero-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 48px;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+
+  /* ── SECTION LAYOUT ──────────────────────────────────────────────── */
+  section {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #00ffb3;
+    background: rgba(0,255,179,0.1);
+    border: 1px solid rgba(0,255,179,0.3);
+    border-radius: 999px;
+    padding: 5px 14px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .section-label.amber { color: var(--amber); }
+  .section-label.purple { color: var(--purple); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+  .section-body {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+  .full-width {
+    max-width: 100%;
+  }
+
+  /* ── PROBLEM SECTION ─────────────────────────────────────────────── */
+  .problem-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .problem-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .problem-card {
+    padding: 20px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .problem-icon {
+    width: 64px; height: 64px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .problem-icon.red { background: rgba(239,68,68,0.12); }
+  .problem-icon.orange { background: rgba(245,158,66,0.12); }
+  .problem-icon.yellow { background: rgba(234,179,8,0.12); }
+  .problem-text strong {
+    display: block;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: var(--white);
+  }
+  .problem-text span {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── THREE PACKAGES ──────────────────────────────────────────────── */
+  .packages-outer-grad {
+    background:
+      radial-gradient(ellipse 90% 60% at 20% 50%, rgba(120,60,220,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 50% at 85% 80%, rgba(0,200,150,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 60% 10%, rgba(0,100,255,0.10) 0%, transparent 60%);
+  }
+  .packages-section { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
+  .packages-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .package-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .package-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    opacity: 0.7;
+  }
+  .package-card.sv::before { background: #00ffb3; box-shadow: 0 0 12px rgba(0,255,179,0.6); }
+  .package-card.rex::before { background: #a78bff; box-shadow: 0 0 12px rgba(167,139,255,0.6); }
+  .package-card.hench::before { background: #ffaa33; box-shadow: 0 0 12px rgba(255,170,51,0.6); }
+  .package-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .pkg-icon {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    object-fit: contain;
+  }
+  .package-meta { display: flex; flex-direction: column; gap: 3px; }
+  .package-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--white);
+  }
+  .package-role {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .package-role.sv { color: var(--teal); }
+  .package-role.rex { color: var(--purple); }
+  .package-role.hench { color: var(--amber); }
+  .package-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .package-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .package-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .package-bullets code {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    background: rgba(45,212,160,0.1);
+    color: var(--teal);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  .bullet-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .sv .bullet-dot { background: var(--teal); }
+  .rex .bullet-dot { background: var(--purple); }
+  .hench .bullet-dot { background: var(--amber); }
+  .package-cmd {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--teal);
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+  .package-docs-link {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .package-docs-link:hover { color: var(--white); }
+  .package-card.sv .package-docs-link:hover { color: var(--teal); }
+  .package-card.rex .package-docs-link:hover { color: var(--purple); }
+  .package-card.hench .package-docs-link:hover { color: var(--amber);
+  }
+  .how-header { text-align: center; margin-bottom: 60px; }
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .how-step {
+    background: var(--navy-mid);
+    padding: 40px 32px;
+    position: relative;
+  }
+  .step-number {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 64px; height: 64px;
+    border-radius: 14px;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+  .step-number.teal { background: rgba(0,255,179,0.12); color: #00ffb3; border: 1px solid rgba(0,255,179,0.4); box-shadow: 0 0 16px rgba(0,255,179,0.2); }
+  .step-number.purple { background: rgba(167,139,255,0.12); color: #a78bff; border: 1px solid rgba(167,139,255,0.4); box-shadow: 0 0 16px rgba(167,139,255,0.2); }
+  .step-number.amber { background: rgba(255,170,51,0.12); color: #ffaa33; border: 1px solid rgba(255,170,51,0.4); box-shadow: 0 0 16px rgba(255,170,51,0.2); }
+  .step-number.pink { background: rgba(232,121,249,0.12); color: #e879f9; border: 1px solid rgba(232,121,249,0.4); box-shadow: 0 0 16px rgba(232,121,249,0.2); }
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .step-body {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── TERMINAL ──────────────────────────────────────────────────────  */
+  .terminal-wrap {
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #0a0f1e;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 0 80px rgba(0,255,179,0.12), 0 0 160px rgba(0,255,179,0.06);
+    overflow: hidden;
+  }
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid var(--border);
+  }
+  .terminal-dots { display: flex; gap: 7px; }
+  .t-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .t-red { background: #ff5f56; }
+  .t-yellow { background: #ffbd2e; }
+  .t-green { background: #27c93f; }
+  .terminal-title { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+  .terminal-body {
+    padding: 24px 24px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.9;
+  }
+  .t-prompt { color: var(--muted); }
+  .t-cmd { color: var(--white); }
+  .t-teal { color: var(--teal); }
+  .t-purple { color: var(--purple); }
+  .t-amber { color: var(--amber); }
+  .t-dim { color: #6b7ba0; }
+
+  /* ── USE CASES ────────────────────────────────────────────────────── */
+  .usecases-section { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
+  .usecases-header { margin-bottom: 56px; }
+  .usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .usecase-card {
+    background: #0e1a36;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 16px 16px 0;
+    padding: 32px 32px 28px;
+    position: relative;
+  }
+  .usecase-card:nth-child(2) { border-left-color: var(--purple); }
+  .usecase-card:nth-child(3) { border-left-color: var(--amber); }
+  .usecase-card:nth-child(4) { border-left-color: #e879f9; }
+  .uc-icon {
+    width: 48px;
+    height: 48px;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .uc-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .uc-label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .usecase-card:nth-child(2) .uc-label { color: var(--purple); }
+  .usecase-card:nth-child(3) .uc-label { color: var(--amber); }
+  .usecase-card:nth-child(4) .uc-label { color: #e879f9; }
+  .uc-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .uc-body {
+    font-size: 0.95rem;
+    color: #d8e4f8;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .usecase-card:nth-child(2)
+  .usecase-card:nth-child(3)
+  .usecase-card:nth-child(4)
+
+  /* ── PERSONAS ─────────────────────────────────────────────────────── */
+  .personas-outer {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .personas-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .persona-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+  }
+  .persona-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+  .persona-label.dev { color: var(--teal); }
+  .persona-label.leader { color: var(--amber); }
+  .persona-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .persona-body {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .persona-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .persona-points li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 0.95rem;
+    color: var(--white);
+    line-height: 1.5;
+  }
+  .persona-check {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .persona-check.teal { background: var(--teal-subtle); color: var(--teal); border: 1px solid rgba(45,212,160,0.3); }
+  .persona-check.amber { background: var(--amber-subtle); color: var(--amber); border: 1px solid rgba(245,158,66,0.3); }
+
+  /* ── COMPETITIVE ─────────────────────────────────────────────────── */
+  .compare-section { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
+  .compare-header { margin-bottom: 48px; }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+  .compare-table th {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .compare-table th.highlight {
+    color: var(--teal);
+    background: rgba(45,212,160,0.06);
+    font-size: 0.8rem;
+  }
+  .compare-table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: var(--muted);
+    vertical-align: middle;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .row-label {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  .compare-table .ndx-col {
+    color: var(--white);
+    background: rgba(45,212,160,0.06);
+  }
+  .check { color: var(--teal); font-size: 1.3rem; line-height: 1; }
+  .partial { color: var(--amber); font-size: 1.3rem; line-height: 1; }
+  .no { color: rgba(255,255,255,0.18); font-size: 1.3rem; line-height: 1; }
+  .compare-table tr.highlight-row td {
+    background: rgba(45,212,160,0.03);
+  }
+  .compare-table tr.highlight-row .ndx-col {
+    color: var(--teal);
+    font-weight: 600;
+    background: rgba(45,212,160,0.1);
+  }
+
+  /* ── CTA ─────────────────────────────────────────────────────────── */
+  .cta-outer {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-top: 1px solid var(--border);
+  }
+  .cta-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 120px 48px;
+    text-align: center;
+  }
+  .cta-section .section-title { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 20px; }
+  .cta-section .section-body { max-width: 100%; margin: 0 auto 40px; }
+
+  /* ── CONTACT ──────────────────────────────────────────────────────── */
+  .contact-outer {
+    background: linear-gradient(180deg, var(--navy-mid) 0%, #1a1040 50%, var(--navy) 100%);
+    border-top: 1px solid var(--border);
+  }
+  .contact-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 120px 48px;
+    text-align: center;
+  }
+  .contact-section .section-title { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 20px; }
+  .contact-section .section-body { max-width: 100%; margin: 0 auto 32px; }
+
+  .compare-header .section-body { max-width: 100%; }
+  .install-block {
+    background: #0a0f1e;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .install-cmd {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--teal);
+  }
+  .install-copy {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .install-copy:hover { border-color: rgba(255,255,255,0.2); color: var(--white); }
+  .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ──────────────────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+  .footer-meta {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────────── */
+  @media (max-width: 1199px) {
+    .nav-toggle { display: flex; }
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 64px; left: 0; right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+      padding: 20px 24px 28px;
+      background: rgba(13,27,62,0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav.open .nav-menu { display: flex; }
+    .nav-menu .nav-links { flex-direction: column; gap: 20px; }
+    .nav-menu .nav-cta { flex-direction: column; align-items: stretch; gap: 12px; }
+    .nav-menu .nav-cta .btn { justify-content: center; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    section { padding: 64px 24px; }
+    .packages-section, .how-section, .usecases-section, .compare-section, .cta-section, .contact-section { padding: 64px 24px; }
+    .problem-section { grid-template-columns: 1fr; gap: 40px; }
+    .packages-grid { grid-template-columns: 1fr; }
+    .how-steps { grid-template-columns: 1fr; }
+    .usecases-grid { grid-template-columns: 1fr; }
+    .personas-section { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .compare-table { font-size: 0.75rem; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-cards { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 80px 16px 40px; }
+    section { padding: 48px 16px; }
+    .packages-section, .how-section, .usecases-section, .compare-section, .cta-section, .contact-section { padding: 48px 16px; }
+    nav { padding: 0 16px; }
+    .step-number { width: 48px; height: 48px; font-size: 1.4rem; border-radius: 10px; }
+    .terminal-wrap { max-width: 100%; }
+    .usecases-grid { grid-template-columns: 1fr; }
+    .persona-card { padding: 24px; }
+    .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .personas-section { padding: 48px 16px; }
+    footer { padding: 24px 16px; }
+  }
+
+  /* ── SKIP LINK ──────────────────────────────────────────────────── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 200;
+    padding: 8px 16px;
+    background: var(--teal);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* ── FOCUS STYLES ───────────────────────────────────────────────── */
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  /* ── REDUCED MOTION ─────────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style><style>
+  /* Comparison page only — homepage CSS is unchanged above */
+  .hero.compact {
+    min-height: auto;
+    padding: 128px 48px 64px;
+  }
+  .hero.compact h1 {
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+  .hero.compact .hero-mascot img { width: 180px; }
+  .hero.compact .hero-sub { margin-bottom: 28px; }
+  .hero.compact .hero-actions { margin-bottom: 0; }
+  .hero.compact .hero-content { max-width: 1100px; }
+  .breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--white); }
+  .breadcrumb span { opacity: 0.5; margin: 0 8px; }
+  .packages-grid.tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .package-card.kiro::before { background: #e879f9; box-shadow: 0 0 12px rgba(232,121,249,0.6); }
+  .package-role.kiro { color: #e879f9; }
+  .kiro .bullet-dot { background: #e879f9; }
+  .package-card.kiro .package-docs-link:hover { color: #e879f9; }
+  .personas-section.four {
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .persona-label.purple { color: var(--purple); }
+  .persona-label.pink { color: #e879f9; }
+  .persona-check.purple { background: var(--purple-subtle); color: var(--purple); border: 1px solid rgba(139,124,248,0.3); }
+  .persona-check.pink { background: rgba(232,121,249,0.12); color: #e879f9; border: 1px solid rgba(232,121,249,0.3); }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 860px;
+    margin: 40px auto 0;
+  }
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+  }
+  .faq-item h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .faq-item p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .compare-note {
+    margin-top: 16px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+  .gap-links {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .gap-links a { color: var(--teal); text-decoration: none; }
+  .gap-links a:hover { color: var(--white); }
+  @media (max-width: 900px) {
+    .packages-grid.tools-grid { grid-template-columns: 1fr; }
+    .personas-section.four { grid-template-columns: 1fr; }
+    .hero.compact { padding: 100px 24px 48px; }
+  }
+  @media (max-width: 480px) {
+    .hero.compact { padding: 88px 16px 40px; }
+    .faq-item { padding: 20px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="/" class="nav-logo" aria-label="Home">
+    <div class="nav-logo-mark">
+      <img src="/n-dx-logo.png" alt="" width="32" height="32">
+    </div>
+    <span class="nav-logo-text">n-dx</span>
+  </a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-menu" id="nav-menu">
+    <ul class="nav-links" role="list">
+      <li><a href="/#packages">Packages</a></li>
+      <li><a href="/#how">Workflow</a></li>
+      <li><a href="/#usecases">Use Cases</a></li>
+      <li><a href="/mwfb2026/">Challenge</a></li>
+      <li><a href="/vs/spec-kit/" class="active">Compare</a></li>
+      <li><a href="/#install">Get Started</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Docs</a>
+      <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub ↗</a>
+      <a href="/#install" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- HERO -->
+<div class="hero compact">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span>Compare<span>/</span>n-dx vs Spec Kit
+      </nav>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Compare
+      </div>
+      <h1>n-dx vs Spec Kit<br>for the codebase <span class="gradient-text">you already have</span></h1>
+      <p class="hero-sub">
+        Those tools start with a spec you write. n-dx starts with the repo you already have. Scan the tree, keep a PRD that can be rebuilt from the code, then run the next task.
+      </p>
+      <div class="hero-actions">
+        <a href="#install" class="btn btn-primary btn-large">Install n-dx</a>
+        <a href="#compare-table" class="btn btn-ghost btn-large">See the table</a>
+      </div>
+    </div>
+    <div class="hero-mascot">
+      <picture>
+        <source srcset="/rex_mascot.webp" type="image/webp">
+        <img src="/rex_mascot.png" alt="Rex — the n-dx mascot, a blue dinosaur with glasses holding a wrench and flashlight" width="180" height="266" decoding="async">
+      </picture>
+    </div>
+  </div>
+</div>
+
+<!-- 1. DISCOVERY GAP -->
+<section>
+  <div class="problem-section">
+    <div>
+      <div class="section-label">Discovery</div>
+      <h2 class="section-title">If you searched Spec Kit vs OpenSpec, you probably never saw n-dx.</h2>
+      <p class="section-body">
+        This year's roundups list Spec Kit, OpenSpec, Kiro, and BMAD. n-dx isn't on them. We're smaller: 16 GitHub stars as of 21 Aug 2026. That's why this page exists.
+      </p>
+    </div>
+    <div class="problem-cards">
+      <div class="problem-card">
+        <div class="problem-icon orange"><span role="img" aria-label="Lists">📋</span></div>
+        <div class="problem-text">
+          <strong>Named in this year's SDD roundups</strong>
+          <span>Levelop, Augment Code, and thebcms cover Spec Kit, OpenSpec, Kiro, and BMAD. We just aren't in the article.</span>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon yellow"><span role="img" aria-label="Agents">🤖</span></div>
+        <div class="problem-text">
+          <strong>n-dx.dev already compares coding agents</strong>
+          <span>Claude Code, Aider, OpenHands, Goose, MetaGPT, 8090, and Devin are agents. Spec Kit, OpenSpec, and Kiro are the spec layer people now evaluate first.</span>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon red"><span role="img" aria-label="Repo">📂</span></div>
+        <div class="problem-text">
+          <strong>The job is the existing repo</strong>
+          <span>If the last six months were vibe-coded, the plan has drifted, or a prototype became production, start from the tree, not a blank spec.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. DIFFERENCE THAT MATTERS -->
+<div class="how-section" id="difference">
+  <div class="how-header">
+    <div class="section-label" style="text-align:center;">The difference that matters</div>
+    <h2 class="section-title" style="text-align:center;">Spec-first is the right loop<br>when you already know what to build.</h2>
+    <p class="section-body" style="text-align:center;margin:16px auto 0;">n-dx is the other start. What's already here, and what to fix or finish. You can still add work in plain language with <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--teal);">ndx add "Add SSO support" .</code></p>
+  </div>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-number teal">1</div>
+      <div class="step-title">Analyze the tree</div>
+      <p class="step-body"><code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--teal);">ndx analyze .</code> runs sourcevision and writes AI-readable context. Files, imports, architectural zones, React catalog.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-number purple">2</div>
+      <div class="step-title">Propose a living PRD</div>
+      <p class="step-body"><code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--purple);">ndx recommend .</code> turns findings into epics and tasks. You accept or reject them. The spec is derived from the code.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-number amber">3</div>
+      <div class="step-title">Execute the next task</div>
+      <p class="step-body"><code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--amber);">ndx work .</code> has hench pick the next task, brief it with codebase context, and run a tool-use loop.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-number pink">4</div>
+      <div class="step-title">Stay current</div>
+      <p class="step-body"><code style="font-family:var(--font-mono);font-size:0.82rem;color:#e879f9;">ndx self-heal</code> re-analyzes, recommends, executes, and acknowledges completed findings so they do not regenerate.</p>
+    </div>
+  </div>
+  <p class="section-body" style="text-align:center;margin:0 auto;">The spec can be rebuilt from the tree. That's the point. If the last six months were vibe-coded, use the <a href="https://docs.n-dx.dev/guide/vibe-cleanup.html" style="color:var(--teal);">vibe-cleanup guide</a>.</p>
+</div>
+
+<!-- 3. FOUR TOOLS -->
+<div class="packages-section" id="tools">
+  <div class="packages-header">
+    <div class="section-label">Four tools</div>
+    <h2 class="section-title">What each one<br>actually does.</h2>
+    <p class="section-body" style="margin:16px auto 0;text-align:center;">We didn't invent numbers for the other tools. Licenses and shapes below are from public docs as of 21 Aug 2026. If we haven't checked a file, we say so.</p>
+  </div>
+  <div class="packages-grid tools-grid">
+
+    <div class="package-card sv">
+      <div class="package-header">
+        <div class="package-meta">
+          <h2 class="package-name">n-dx</h2>
+          <div class="package-role sv">Repo-first CLI</div>
+        </div>
+      </div>
+      <p class="package-desc">CLI-first toolkit from En Dash. Install <code>@n-dx/core</code>, then analyze, recommend, work, and start. Built for Claude Code and Codex. PRD in <code>.rex/</code>. Rex and SourceVision expose MCP.</p>
+      <ul class="package-bullets sv">
+        <li><span class="bullet-dot"></span>Starts from an existing codebase scan</li>
+        <li><span class="bullet-dot"></span>Living PRD, re-derived when the tree changes</li>
+        <li><span class="bullet-dot"></span>Hench executes the next accepted task</li>
+        <li><span class="bullet-dot"></span>Elastic 2.0 (source-available, not OSI)</li>
+      </ul>
+      <div class="package-cmd">ndx analyze . &amp;&amp; ndx recommend . &amp;&amp; ndx work .</div>
+      <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="package-docs-link">github.com/en-dash-consulting/n-dx &rarr;</a>
+    </div>
+
+    <div class="package-card rex">
+      <div class="package-header">
+        <div class="package-meta">
+          <h2 class="package-name">GitHub Spec Kit</h2>
+          <div class="package-role rex">Spec-first toolkit</div>
+        </div>
+      </div>
+      <p class="package-desc">Portable MIT toolkit. Install <code>specify-cli</code>, write a constitution, then specify, plan, task, and implement through the agent you already use. Specs are markdown in the repo. GitHub documents existing-project adoption. 2026 writeups still treat it as structured and often greenfield-leaning.</p>
+      <ul class="package-bullets rex">
+        <li><span class="bullet-dot"></span>Constitution, then specify / plan / task / implement</li>
+        <li><span class="bullet-dot"></span>Works with Copilot, Claude Code, Gemini, Cursor, and others</li>
+        <li><span class="bullet-dot"></span>Markdown artifacts in the repo</li>
+        <li><span class="bullet-dot"></span>MIT license</li>
+      </ul>
+      <div class="package-cmd" style="color:var(--purple)">specify-cli &nbsp;·&nbsp; /speckit.implement</div>
+      <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer" class="package-docs-link">github.com/github/spec-kit &rarr;</a>
+    </div>
+
+    <div class="package-card hench">
+      <div class="package-header">
+        <div class="package-meta">
+          <h2 class="package-name">OpenSpec</h2>
+          <div class="package-role hench">Delta-first CLI</div>
+        </div>
+      </div>
+      <p class="package-desc">Lightweight CLI from Fission-AI, built brownfield-first. Changes are deltas (ADDED, MODIFIED, REMOVED) against a source-of-truth spec. The loop is propose, apply, archive. You spec the slice you are changing. It does not scan a repo into a PRD. License is commonly cited as MIT.</p>
+      <ul class="package-bullets hench">
+        <li><span class="bullet-dot"></span>Change deltas, not a full-tree analyzer</li>
+        <li><span class="bullet-dot"></span>Propose, apply, archive</li>
+        <li><span class="bullet-dot"></span>Agent-agnostic apply step</li>
+        <li><span class="bullet-dot"></span>MIT commonly cited; confirm the LICENSE file</li>
+      </ul>
+      <div class="package-cmd" style="color:var(--amber)">propose &nbsp;·&nbsp; apply &nbsp;·&nbsp; archive</div>
+      <a href="https://openspec.dev" target="_blank" rel="noopener noreferrer" class="package-docs-link">openspec.dev &rarr;</a>
+    </div>
+
+    <div class="package-card kiro">
+      <div class="package-header">
+        <div class="package-meta">
+          <h2 class="package-name">AWS Kiro</h2>
+          <div class="package-role kiro">Agentic IDE</div>
+        </div>
+      </div>
+      <p class="package-desc">An agentic IDE, not a CLI you add to an existing editor. A prompt becomes requirements, design, and tasks, then its agents implement. Typical files: <code>requirements.md</code>, <code>design.md</code>, <code>tasks.md</code>. Commercial AWS product. Formal requirement checks and Agent Hooks are on the public pitch. The workflow lives in Kiro.</p>
+      <ul class="package-bullets kiro">
+        <li><span class="bullet-dot"></span>Prompt to a spec set, then implement</li>
+        <li><span class="bullet-dot"></span>Built-in agents; editor and spec are one product</li>
+        <li><span class="bullet-dot"></span>requirements.md / design.md / tasks.md</li>
+        <li><span class="bullet-dot"></span>AWS commercial license</li>
+      </ul>
+      <div class="package-cmd" style="color:#e879f9">kiro.dev &nbsp;·&nbsp; built-in agents</div>
+      <a href="https://kiro.dev" target="_blank" rel="noopener noreferrer" class="package-docs-link">kiro.dev &rarr;</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- 4. COMPARE TABLE -->
+<div class="compare-section" id="compare-table">
+  <div class="compare-header">
+    <div class="section-label">Comparison</div>
+    <h2 class="section-title">Side by side.</h2>
+    <p class="section-body">Rows stay as words. We didn't invent competitor stars, downloads, or win rates. "Unknown" means we haven't verified it from public docs.</p>
+  </div>
+  <div class="compare-table-wrap">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th style="width:18%;text-align:left;"> </th>
+        <th class="highlight" style="width:20.5%;text-align:left;">n-dx</th>
+        <th style="width:20.5%;text-align:left;">Spec Kit</th>
+        <th style="width:20.5%;text-align:left;">OpenSpec</th>
+        <th style="width:20.5%;text-align:left;">Kiro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-label">Form</td>
+        <td class="ndx-col">CLI plus optional dashboard</td>
+        <td>CLI plus agent slash commands</td>
+        <td>CLI</td>
+        <td>Agentic IDE</td>
+      </tr>
+      <tr>
+        <td class="row-label">License</td>
+        <td class="ndx-col">Elastic 2.0</td>
+        <td>MIT</td>
+        <td>MIT (commonly cited)</td>
+        <td>AWS commercial</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="row-label">Starts from</td>
+        <td class="ndx-col">Existing codebase scan</td>
+        <td>Spec and constitution</td>
+        <td>Change delta</td>
+        <td>Prompt to spec set</td>
+      </tr>
+      <tr>
+        <td class="row-label">Living spec</td>
+        <td class="ndx-col">Rex PRD, re-analyzed each cycle</td>
+        <td>Markdown artifacts. Code auto-sync: unknown</td>
+        <td>Archive merges deltas into the source-of-truth spec</td>
+        <td>Spec then implement. Code auto-sync: unknown</td>
+      </tr>
+      <tr>
+        <td class="row-label">Static analysis</td>
+        <td class="ndx-col">SourceVision: files, imports, zones, React catalog</td>
+        <td>Not the product</td>
+        <td>Not the product</td>
+        <td>Not the product pitch</td>
+      </tr>
+      <tr>
+        <td class="row-label">Execution</td>
+        <td class="ndx-col">Hench tool-use loop</td>
+        <td><code style="font-family:var(--font-mono);font-size:0.75rem;color:var(--teal);">/speckit.implement</code> via your agent</td>
+        <td>Apply via your agent</td>
+        <td>Built-in agents</td>
+      </tr>
+      <tr>
+        <td class="row-label">Agents</td>
+        <td class="ndx-col">Claude Code and Codex</td>
+        <td>Many (Copilot, Claude, Gemini, Cursor, others)</td>
+        <td>Agent-agnostic</td>
+        <td>Built-in</td>
+      </tr>
+      <tr>
+        <td class="row-label">2026 SDD roundups</td>
+        <td class="ndx-col">Not named</td>
+        <td>Named</td>
+        <td>Named</td>
+        <td>Named</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="compare-note">Public documentation as of 21 Aug 2026. Levelop, Augment Code, and thebcms are the 2026 SDD roundups cited. We do not cite competitor star or download counts.</p>
+</div>
+
+<!-- 5. WHO SHOULD PICK WHICH -->
+<div class="personas-outer" id="who">
+  <div style="max-width:1200px;margin:0 auto;padding:80px 48px 0;">
+    <div class="section-label">Who should pick which</div>
+    <h2 class="section-title">Which one fits what you're doing.</h2>
+    <p class="section-body" style="max-width:640px;">Having people on the repo with you is consulting, not a CLI flag. The picks below are about the product, not the services bench.</p>
+  </div>
+  <div class="personas-section four">
+
+    <div class="persona-card">
+      <div class="persona-label purple">Pick Spec Kit</div>
+      <h3 class="persona-title">You will write the spec before the code.</h3>
+      <p class="persona-body">You want the portable SDD workflow most teams already recognize, you switch agents, and MIT is what most open-source buyers expect.</p>
+      <ul class="persona-points">
+        <li>
+          <div class="persona-check purple">→</div>
+          <span>Agent-portable: Copilot, Claude, Gemini, Cursor, and others</span>
+        </li>
+        <li>
+          <div class="persona-check purple">→</div>
+          <span>Constitution plus specify / plan / task / implement</span>
+        </li>
+        <li>
+          <div class="persona-check purple">→</div>
+          <span>OSI-friendly MIT license</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-label leader">Pick OpenSpec</div>
+      <h3 class="persona-title">You are changing one slice at a time.</h3>
+      <p class="persona-body">You want a thin delta layer on an existing system, not a codebase analyzer or a full PRD tree.</p>
+      <ul class="persona-points">
+        <li>
+          <div class="persona-check amber">→</div>
+          <span>ADDED / MODIFIED / REMOVED against a source-of-truth spec</span>
+        </li>
+        <li>
+          <div class="persona-check amber">→</div>
+          <span>Propose, apply, archive. Agent-agnostic apply.</span>
+        </li>
+        <li>
+          <div class="persona-check amber">→</div>
+          <span>Not a cleanup analyzer and not a living PRD</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-label pink">Pick Kiro</div>
+      <h3 class="persona-title">You want SDD inside an IDE.</h3>
+      <p class="persona-body">You are fine on AWS, and you want agent, editor, and spec as one product.</p>
+      <ul class="persona-points">
+        <li>
+          <div class="persona-check pink">→</div>
+          <span>Prompt becomes requirements, design, and tasks</span>
+        </li>
+        <li>
+          <div class="persona-check pink">→</div>
+          <span>Built-in agents. The workflow lives in Kiro.</span>
+        </li>
+        <li>
+          <div class="persona-check pink">→</div>
+          <span>Commercial AWS product, not a CLI you drop into Cursor</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-label dev">Pick n-dx</div>
+      <h3 class="persona-title">The repo already exists.</h3>
+      <p class="persona-body">The plan has drifted from the code, or a prototype became production without a spec. Analyze the tree, keep a PRD that can be re-derived, then execute.</p>
+      <ul class="persona-points">
+        <li>
+          <div class="persona-check teal">→</div>
+          <span>Existing-codebase scan, not a blank constitution</span>
+        </li>
+        <li>
+          <div class="persona-check teal">→</div>
+          <span>Living PRD in .rex/, re-analyzed each cycle</span>
+        </li>
+        <li>
+          <div class="persona-check teal">→</div>
+          <span>Hench executes. Built for Claude Code and Codex.</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- 6. WHEN NOT -->
+<section id="not-ndx">
+  <div class="section-label amber">When not to pick n-dx</div>
+  <h2 class="section-title">When n-dx is the wrong pick.</h2>
+  <p class="section-body" style="margin-bottom:40px;">Skip n-dx if you need a large community, an OSI-approved license, or an agent-agnostic install. Those are real gaps.</p>
+  <div class="problem-cards" style="max-width:800px;">
+    <div class="problem-card">
+      <div class="problem-icon red"><span role="img" aria-label="License">&#9878;</span></div>
+      <div class="problem-text">
+        <strong>You need an OSI-approved license</strong>
+        <span>The code is public. The license is Elastic 2.0, not MIT. ELv2 allows internal use, modification, and distribution, with a hosted-service restriction. Spec Kit is MIT. The precise term for n-dx is source-available.</span>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon orange"><span role="img" aria-label="Community">&#128101;</span></div>
+      <div class="problem-text">
+        <strong>You need a large community</strong>
+        <span>n-dx listed 16 GitHub stars on 21 Aug 2026. Spec Kit, OpenSpec, and Kiro are the names in the 2026 lists. If ecosystem size is the buying criterion, pick one of those.</span>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon yellow"><span role="img" aria-label="Agents">&#8644;</span></div>
+      <div class="problem-text">
+        <strong>You need an agent-agnostic install</strong>
+        <span>n-dx is built for Claude Code and Codex. Spec Kit and OpenSpec are written to ride whatever agent you already use. If you switch models every week, start there.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. INSTALL CTA -->
+<div class="cta-outer">
+  <div class="cta-section" id="install">
+    <div class="section-label" style="text-align:center;">Get started</div>
+    <h2 class="section-title">Point it at a directory.<br>Run the loop.</h2>
+    <p class="section-body" style="text-align:center;margin:0 auto 40px;">
+      The package is <code style="font-family:var(--font-mono);font-size:0.9rem;color:var(--teal);">@n-dx/core</code>. Requires Node.js 18+. Works with Claude Code and Codex. Configure your LLM vendor on first run.
+    </p>
+    <div class="install-block">
+      <span class="install-cmd">npm i -g @n-dx/core</span>
+      <button class="install-copy" aria-label="Copy install command" onclick="navigator.clipboard.writeText('npm i -g @n-dx/core')">copy</button>
+    </div>
+    <p class="section-body" style="text-align:center;margin:0 auto 28px;font-family:var(--font-mono);font-size:0.85rem;color:var(--muted);">
+      ndx init . · ndx analyze . · ndx recommend . · ndx work . · ndx start
+    </p>
+    <div class="cta-actions">
+      <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Read the Docs</a>
+      <a href="https://docs.n-dx.dev/guide/existing-project.html" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">Existing project</a>
+      <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-large">View on GitHub &#8599;</a>
+    </div>
+    <p class="gap-links" style="text-align:center;">Also: <a href="https://docs.n-dx.dev/guide/vibe-cleanup.html">vibe-coded cleanup</a> · <a href="https://endash.us/toolkit/items/n-dx">toolkit listing</a> · <a href="https://n-dx.dev/">n-dx.dev</a></p>
+  </div>
+</div>
+
+<!-- 8. FAQ -->
+<section id="faq">
+  <div style="text-align:center;">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">A few questions.</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>Is n-dx a Spec Kit alternative?</h3>
+      <p>Kind of. Spec Kit starts from a spec you write and works with a lot of agents. n-dx starts from the repo and is built for Claude Code and Codex. Use the jobs above.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why is n-dx missing from Spec Kit vs OpenSpec vs Kiro lists?</h3>
+      <p>The 2026 roundups at Levelop, Augment Code, and thebcms name Spec Kit, OpenSpec, Kiro, and BMAD. n-dx is smaller and newer (16 GitHub stars on 21 Aug 2026).</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I use n-dx on a greenfield repo?</h3>
+      <p>Yes. Quickstart works on an empty folder. The tool is built for repos that already have code. If you're starting from a blank spec, Spec Kit or Kiro will feel more natural.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is n-dx open source the way Spec Kit is?</h3>
+      <p>The code is public. The license is Elastic 2.0, not MIT. ELv2 allows internal use, modification, and distribution, with a hosted-service restriction. Spec Kit is MIT. OpenSpec is commonly cited as MIT; confirm the LICENSE file. "Open source" on the marketing site is informal. The precise term is source-available.</p>
+    </div>
+  </div>
+</section>
+
+<div class="contact-outer">
+  <div class="contact-section">
+    <div class="section-label purple" style="text-align:center;">Contact</div>
+    <h2 class="section-title" style="text-align:center;">Questions? Let's talk.</h2>
+    <p class="section-body" style="text-align:center;margin:0 auto 32px;">Evaluating this for a team, or stuck on a specific repo? Write us. Putting people on the codebase with you is consulting, not a CLI flag.</p>
+    <div style="text-align:center;">
+      <a href="https://endash.us/toolkit?showContact=true&amp;contactTitle=Re%3A+n-dx&amp;contactSubtitle=Tell+us+about+your+project+or+ask+a+question&amp;contactMessage=Hi%2C+I%27m+interested+in+learning+more+about+n-dx.%0A%0A" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <a href="/" class="footer-logo">
+    <span style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--white);">n-dx</span>
+  </a>
+  <div class="footer-meta">Open source · Elastic License 2.0</div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <span style="font-size:0.75rem;color:var(--muted);font-family:var(--font-body);">Built by</span>
+    <a href="https://endash.us" target="_blank" rel="noopener noreferrer" aria-label="En Dash Consulting" style="display:inline-flex;">
+      <img src="/assets/logo-endash.webp" alt="En Dash Consulting" width="125" height="125" loading="lazy" decoding="async" style="height:40px;width:auto;border-radius:6px;">
+    </a>
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer">Docs</a>
+    <a href="/mwfb2026/">Challenge</a>
+    <a href="/vs/spec-kit/">Compare</a>
+    <a href="https://endash.us" target="_blank" rel="noopener noreferrer">En Dash</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var nav = document.querySelector('nav');
+    var btn = nav && nav.querySelector('.nav-toggle');
+    if (!btn) return;
+    function close() {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open menu');
+    }
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    nav.querySelectorAll('.nav-menu a').forEach(function (a) {
+      a.addEventListener('click', close);
+    });
+  })();
+</script>
+</body>
+</html>

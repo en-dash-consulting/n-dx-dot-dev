@@ -1,0 +1,11 @@
+# n-dx.dev
+#
+# Everything is public and everything is welcome, including the AI crawlers
+# that increasingly decide whether a tool gets mentioned at all. They are not
+# listed individually on purpose: a named allow-list goes stale every time a
+# new one appears, and the default here is already yes.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://n-dx.dev/sitemap.xml
