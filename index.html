@@ -1252,7 +1252,7 @@
         </a>
         <!-- SYNC:HERO_VERSION:START -->
       <a class="hero-version-pill" href="changelog/">
-        <span class="hero-version-num">v0.5.2</span>
+        <span class="hero-version-num">v0.7.0</span>
         <span class="hero-version-sep">·</span>
         <span>What&rsquo;s new</span>
         <span class="hero-version-arrow" aria-hidden="true">&rarr;</span>
@@ -1679,6 +1679,30 @@
     <a href="changelog/" class="btn btn-ghost">Full changelog &rarr;</a>
   </div>
   <div class="release-grid">
+        <a class="release-card" href="changelog/#v0-7-0">
+          <div class="release-card-head">
+            <span class="release-version">0.7.0</span>
+            <span class="release-bump minor">Minor</span>
+          </div>
+          <time class="release-date" datetime="2026-09-18T15:35:41.410Z">Sep 18, 2026</time>
+          <ul class="release-bullets" role="list">
+            <li>New ndx mcp &lt;server&gt; [dir]: one MCP command that works whether or not the hub is running. When a hub is up and the…</li>
+            <li>ndx start now registers the repository with the per-user hub by default and serves it at http://localhost:3117/p/&lt;id&gt;/…</li>
+          </ul>
+          <span class="release-more">+25 more changes</span>
+        </a>
+        <a class="release-card" href="changelog/#v0-6-0">
+          <div class="release-card-head">
+            <span class="release-version">0.6.0</span>
+            <span class="release-bump minor">Minor</span>
+          </div>
+          <time class="release-date" datetime="2026-09-12T16:39:11.492Z">Sep 12, 2026</time>
+          <ul class="release-bullets" role="list">
+            <li>.codex/config.toml now uses cwd-relative stdio commands ({&quot;command&quot;:&quot;n-dx&quot;,&quot;args&quot;:[&quot;rex&quot;,&quot;mcp&quot;,&quot;.&quot;]}) instead of…</li>
+            <li>ndx init no longer registers Claude MCP servers via claude mcp add --scope local by default — it relies solely on the…</li>
+          </ul>
+          <span class="release-more">+23 more changes</span>
+        </a>
         <a class="release-card" href="changelog/#v0-5-2">
           <div class="release-card-head">
             <span class="release-version">0.5.2</span>
@@ -1690,30 +1714,6 @@
             <li>Add .hench/reviews/ to the ndx init ignore template, and retire its stale .rex/prd.json.lock entry.</li>
           </ul>
           <span class="release-more">+9 more changes</span>
-        </a>
-        <a class="release-card" href="changelog/#v0-5-1">
-          <div class="release-card-head">
-            <span class="release-version">0.5.1</span>
-            <span class="release-bump patch">Patch</span>
-          </div>
-          <time class="release-date" datetime="2026-08-28T16:23:14.599Z">Aug 28, 2026</time>
-          <ul class="release-bullets" role="list">
-            <li>Assisted skill runs now record what they cost, instead of zero.</li>
-            <li>ndx config &lt;key&gt; no longer lets a same-named directory shadow the key at the pre-dispatch layer.</li>
-          </ul>
-          <span class="release-more">+17 more changes</span>
-        </a>
-        <a class="release-card" href="changelog/#v0-5-0">
-          <div class="release-card-head">
-            <span class="release-version">0.5.0</span>
-            <span class="release-bump minor">Minor</span>
-          </div>
-          <time class="release-date" datetime="2026-08-24T02:25:04.600Z">Aug 24, 2026</time>
-          <ul class="release-bullets" role="list">
-            <li>Surface concise re-authentication guidance when a provider rejects credentials, and stop dumping raw JSON error…</li>
-            <li>Detect the project&#39;s CLI command name from the package.json bin field and record it as cli.name in .n-dx.json during…</li>
-          </ul>
-          <span class="release-more">+31 more changes</span>
         </a>
   </div>
 </section>
