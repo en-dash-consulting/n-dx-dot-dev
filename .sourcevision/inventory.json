@@ -1,0 +1,40 @@
+{
+  "files": [
+    {
+      "path": "scripts/sync-changelog.mjs",
+      "size": 38941,
+      "language": "JavaScript",
+      "lineCount": 1115,
+      "hash": "6b40773962e5a4370d8b763ecdc342940009cf6122d1b7d7773901c0cad39188",
+      "role": "build",
+      "category": "scripts",
+      "lastModified": 1790482839089
+    }
+  ],
+  "summary": {
+    "totalFiles": 1,
+    "totalLines": 1115,
+    "byLanguage": {
+      "JavaScript": 1
+    },
+    "byRole": {
+      "build": 1
+    },
+    "byCategory": {
+      "scripts": 1
+    },
+    "skippedExtensions": {
+      ".html": 7,
+      ".json": 1,
+      ".md": 2,
+      ".png": 2,
+      ".txt": 2,
+      ".webp": 5,
+      ".xml": 1,
+      ".yml": 1
+    },
+    "analysedLanguages": [
+      "JavaScript"
+    ]
+  }
+}

@@ -1,0 +1,2226 @@
+{
+  "functions": [
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "get",
+      "line": 35,
+      "column": 0,
+      "qualifiedName": "get",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "esc",
+      "line": 43,
+      "column": 6,
+      "qualifiedName": "esc",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "inline",
+      "line": 59,
+      "column": 0,
+      "qualifiedName": "inline",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "renderText",
+      "line": 82,
+      "column": 0,
+      "qualifiedName": "renderText",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "renderBlock",
+      "line": 94,
+      "column": 0,
+      "qualifiedName": "renderBlock",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "splitBlocks",
+      "line": 104,
+      "column": 0,
+      "qualifiedName": "splitBlocks",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "pushText",
+      "line": 108,
+      "column": 8,
+      "qualifiedName": "pushText",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "parseEntry",
+      "line": 137,
+      "column": 0,
+      "qualifiedName": "parseEntry",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "parseChangelog",
+      "line": 173,
+      "column": 0,
+      "qualifiedName": "parseChangelog",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "flush",
+      "line": 179,
+      "column": 8,
+      "qualifiedName": "flush",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "formatDate",
+      "line": 218,
+      "column": 0,
+      "qualifiedName": "formatDate",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "anchor",
+      "line": 223,
+      "column": 6,
+      "qualifiedName": "anchor",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "plain",
+      "line": 226,
+      "column": 0,
+      "qualifiedName": "plain",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "truncate",
+      "line": 234,
+      "column": 0,
+      "qualifiedName": "truncate",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "releaseBump",
+      "line": 245,
+      "column": 0,
+      "qualifiedName": "releaseBump",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "flatten",
+      "line": 258,
+      "column": 6,
+      "qualifiedName": "flatten",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "renderRelease",
+      "line": 268,
+      "column": 0,
+      "qualifiedName": "renderRelease",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "buildChangelogPage",
+      "line": 311,
+      "column": 0,
+      "qualifiedName": "buildChangelogPage",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "buildHeroPill",
+      "line": 962,
+      "column": 0,
+      "qualifiedName": "buildHeroPill",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "buildLatestSection",
+      "line": 971,
+      "column": 0,
+      "qualifiedName": "buildLatestSection",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "eolOf",
+      "line": 1017,
+      "column": 6,
+      "qualifiedName": "eolOf",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "toEol",
+      "line": 1019,
+      "column": 6,
+      "qualifiedName": "toEol",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "replaceRegion",
+      "line": 1023,
+      "column": 0,
+      "qualifiedName": "replaceRegion",
+      "isExported": false
+    },
+    {
+      "file": "scripts/sync-changelog.mjs",
+      "name": "main",
+      "line": 1045,
+      "column": 0,
+      "qualifiedName": "main",
+      "isExported": false
+    }
+  ],
+  "edges": [
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "direct",
+      "line": 19,
+      "column": 13
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": null,
+      "callee": "dirname",
+      "type": "direct",
+      "line": 19,
+      "column": 18
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": null,
+      "callee": "fileURLToPath",
+      "type": "direct",
+      "line": 19,
+      "column": 26
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": null,
+      "callee": "encodeURIComponent",
+      "type": "direct",
+      "line": 22,
+      "column": 47
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": null,
+      "callee": "String.fromCharCode",
+      "type": "method",
+      "line": 51,
+      "column": 17
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": null,
+      "callee": "String.fromCharCode",
+      "type": "method",
+      "line": 52,
+      "column": 12
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": null,
+      "callee": "catch",
+      "type": "method",
+      "line": 1112,
+      "column": 0
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "main",
+      "type": "direct",
+      "line": 1112,
+      "column": 0
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": null,
+      "callee": "console.error",
+      "type": "method",
+      "line": 1113,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "<module>",
+      "calleeFile": null,
+      "callee": "process.exit",
+      "type": "method",
+      "line": 1114,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "anchor",
+      "calleeFile": null,
+      "callee": "version.replace",
+      "type": "method",
+      "line": 223,
+      "column": 32
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "truncate",
+      "type": "direct",
+      "line": 312,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "plain",
+      "type": "direct",
+      "line": 312,
+      "column": 28
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 327,
+      "column": 75
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 327,
+      "column": 92
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 337,
+      "column": 82
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 337,
+      "column": 99
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 347,
+      "column": 83
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 881,
+      "column": 42
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 881,
+      "column": 76
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "formatDate",
+      "type": "direct",
+      "line": 881,
+      "column": 80
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 891,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": null,
+      "callee": "releases.map",
+      "type": "method",
+      "line": 891,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": null,
+      "callee": "early.map",
+      "type": "method",
+      "line": 903,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 903,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 906,
+      "column": 46
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 906,
+      "column": 123
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 906,
+      "column": 163
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildChangelogPage",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "formatDate",
+      "type": "direct",
+      "line": 906,
+      "column": 167
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildHeroPill",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 964,
+      "column": 42
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 972,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": null,
+      "callee": "map",
+      "type": "method",
+      "line": 972,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": null,
+      "callee": "releases.slice",
+      "type": "method",
+      "line": 972,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 975,
+      "column": 22
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": null,
+      "callee": "map",
+      "type": "method",
+      "line": 975,
+      "column": 22
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": null,
+      "callee": "release.entries.slice",
+      "type": "property-chain",
+      "line": 975,
+      "column": 22
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 977,
+      "column": 27
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "truncate",
+      "type": "direct",
+      "line": 977,
+      "column": 31
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "plain",
+      "type": "direct",
+      "line": 977,
+      "column": 40
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "anchor",
+      "type": "direct",
+      "line": 980,
+      "column": 65
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 982,
+      "column": 44
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "releaseBump",
+      "type": "direct",
+      "line": 983,
+      "column": 40
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": null,
+      "callee": "toLowerCase",
+      "type": "method",
+      "line": 983,
+      "column": 40
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "releaseBump",
+      "type": "direct",
+      "line": 983,
+      "column": 79
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 985,
+      "column": 49
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 985,
+      "column": 76
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "buildLatestSection",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "formatDate",
+      "type": "direct",
+      "line": 985,
+      "column": 80
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "eolOf",
+      "calleeFile": null,
+      "callee": "text.includes",
+      "type": "method",
+      "line": 1017,
+      "column": 25
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "esc",
+      "calleeFile": null,
+      "callee": "String",
+      "type": "direct",
+      "line": 44,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "esc",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 44,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "esc",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 44,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "esc",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 44,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "esc",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 44,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "esc",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 44,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "flatten",
+      "calleeFile": null,
+      "callee": "filter",
+      "type": "method",
+      "line": 259,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "flatten",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 259,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "flatten",
+      "calleeFile": null,
+      "callee": "map",
+      "type": "method",
+      "line": 259,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "flatten",
+      "calleeFile": null,
+      "callee": "md.split",
+      "type": "method",
+      "line": 259,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "flatten",
+      "calleeFile": null,
+      "callee": "l.trim",
+      "type": "method",
+      "line": 261,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "flatten",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 261,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "flush",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "parseEntry",
+      "type": "direct",
+      "line": 181,
+      "column": 20
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "flush",
+      "calleeFile": null,
+      "callee": "release.entries.push",
+      "type": "property-chain",
+      "line": 182,
+      "column": 42
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "formatDate",
+      "calleeFile": null,
+      "callee": "d.getUTCMonth",
+      "type": "method",
+      "line": 220,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "formatDate",
+      "calleeFile": null,
+      "callee": "d.getUTCDate",
+      "type": "method",
+      "line": 220,
+      "column": 39
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "formatDate",
+      "calleeFile": null,
+      "callee": "d.getUTCFullYear",
+      "type": "method",
+      "line": 220,
+      "column": 58
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "get",
+      "calleeFile": null,
+      "callee": "fetch",
+      "type": "direct",
+      "line": 36,
+      "column": 20
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "get",
+      "calleeFile": null,
+      "callee": "res.json",
+      "type": "method",
+      "line": 38,
+      "column": 25
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "get",
+      "calleeFile": null,
+      "callee": "res.text",
+      "type": "method",
+      "line": 38,
+      "column": 38
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "inline",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 61,
+      "column": 12
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "inline",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 61,
+      "column": 12
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "inline",
+      "calleeFile": null,
+      "callee": "code.push",
+      "type": "method",
+      "line": 63,
+      "column": 26
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "inline",
+      "calleeFile": null,
+      "callee": "out.replace",
+      "type": "method",
+      "line": 66,
+      "column": 8
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "inline",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 66,
+      "column": 8
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "inline",
+      "calleeFile": null,
+      "callee": "out.replace",
+      "type": "method",
+      "line": 74,
+      "column": 9
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "inline",
+      "calleeFile": null,
+      "callee": "Number",
+      "type": "direct",
+      "line": 76,
+      "column": 28
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "Promise.all",
+      "type": "method",
+      "line": 1046,
+      "column": 37
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "get",
+      "type": "direct",
+      "line": 1047,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "get",
+      "type": "direct",
+      "line": 1048,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "parseChangelog",
+      "type": "direct",
+      "line": 1055,
+      "column": 17
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "Object.keys",
+      "type": "method",
+      "line": 1059,
+      "column": 18
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "filter",
+      "type": "method",
+      "line": 1059,
+      "column": 18
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "sort",
+      "type": "method",
+      "line": 1059,
+      "column": 18
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "test",
+      "type": "method",
+      "line": 1060,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "map",
+      "type": "method",
+      "line": 1066,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "parsed.filter",
+      "type": "method",
+      "line": 1066,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "shipped.indexOf",
+      "type": "method",
+      "line": 1071,
+      "column": 24
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "console.warn",
+      "type": "method",
+      "line": 1076,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "releases.map",
+      "type": "method",
+      "line": 1081,
+      "column": 29
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "Object.keys",
+      "type": "method",
+      "line": 1082,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "filter",
+      "type": "method",
+      "line": 1082,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "map",
+      "type": "method",
+      "line": 1082,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "sort",
+      "type": "method",
+      "line": 1082,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "test",
+      "type": "method",
+      "line": 1083,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "documented.has",
+      "type": "method",
+      "line": 1083,
+      "column": 49
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "direct",
+      "line": 1089,
+      "column": 20
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "readFile",
+      "type": "direct",
+      "line": 1090,
+      "column": 20
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "eolOf",
+      "type": "direct",
+      "line": 1091,
+      "column": 14
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "replaceRegion",
+      "type": "direct",
+      "line": 1093,
+      "column": 10
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "buildHeroPill",
+      "type": "direct",
+      "line": 1093,
+      "column": 47
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "replaceRegion",
+      "type": "direct",
+      "line": 1094,
+      "column": 10
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "buildLatestSection",
+      "type": "direct",
+      "line": 1094,
+      "column": 50
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "writeFile",
+      "type": "direct",
+      "line": 1095,
+      "column": 8
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "mkdir",
+      "type": "direct",
+      "line": 1098,
+      "column": 8
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "direct",
+      "line": 1098,
+      "column": 14
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "writeFile",
+      "type": "direct",
+      "line": 1099,
+      "column": 8
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "direct",
+      "line": 1100,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "toEol",
+      "type": "direct",
+      "line": 1101,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "buildChangelogPage",
+      "type": "direct",
+      "line": 1101,
+      "column": 10
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "console.log",
+      "type": "method",
+      "line": 1105,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "main",
+      "calleeFile": null,
+      "callee": "releases.reduce",
+      "type": "method",
+      "line": 1107,
+      "column": 28
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": null,
+      "callee": "md.split",
+      "type": "method",
+      "line": 187,
+      "column": 21
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": null,
+      "callee": "line.match",
+      "type": "method",
+      "line": 188,
+      "column": 20
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "flush",
+      "type": "direct",
+      "line": 190,
+      "column": 6
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": null,
+      "callee": "releases.push",
+      "type": "method",
+      "line": 192,
+      "column": 6
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": null,
+      "callee": "line.match",
+      "type": "method",
+      "line": 196,
+      "column": 20
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "flush",
+      "type": "direct",
+      "line": 198,
+      "column": 6
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": null,
+      "callee": "test",
+      "type": "method",
+      "line": 202,
+      "column": 8
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "flush",
+      "type": "direct",
+      "line": 203,
+      "column": 6
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": null,
+      "callee": "line.slice",
+      "type": "method",
+      "line": 204,
+      "column": 15
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "flush",
+      "type": "direct",
+      "line": 209,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": null,
+      "callee": "releases.filter",
+      "type": "method",
+      "line": 211,
+      "column": 9
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseChangelog",
+      "calleeFile": null,
+      "callee": "test",
+      "type": "method",
+      "line": 211,
+      "column": 32
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 139,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "map",
+      "type": "method",
+      "line": 139,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "raw.split",
+      "type": "method",
+      "line": 139,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "trim",
+      "type": "method",
+      "line": 139,
+      "column": 19
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "l.replace",
+      "type": "method",
+      "line": 141,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "dedented.match",
+      "type": "method",
+      "line": 151,
+      "column": 12
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "dedented.match",
+      "type": "method",
+      "line": 151,
+      "column": 43
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "dedented.slice",
+      "type": "method",
+      "line": 153,
+      "column": 11
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "trim",
+      "type": "method",
+      "line": 153,
+      "column": 11
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "splitBlocks",
+      "type": "direct",
+      "line": 158,
+      "column": 17
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "blocks.findIndex",
+      "type": "method",
+      "line": 161,
+      "column": 15
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "test",
+      "type": "method",
+      "line": 165,
+      "column": 12
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "parseEntry",
+      "calleeFile": null,
+      "callee": "blocks.filter",
+      "type": "method",
+      "line": 169,
+      "column": 12
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "plain",
+      "calleeFile": null,
+      "callee": "md.replace",
+      "type": "method",
+      "line": 227,
+      "column": 9
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "plain",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 227,
+      "column": 9
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "plain",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 227,
+      "column": 9
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "plain",
+      "calleeFile": null,
+      "callee": "trim",
+      "type": "method",
+      "line": 227,
+      "column": 9
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "pushText",
+      "calleeFile": null,
+      "callee": "chunk.split",
+      "type": "method",
+      "line": 109,
+      "column": 20
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "pushText",
+      "calleeFile": null,
+      "callee": "p.trim",
+      "type": "method",
+      "line": 110,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "pushText",
+      "calleeFile": null,
+      "callee": "blocks.push",
+      "type": "method",
+      "line": 111,
+      "column": 13
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "releaseBump",
+      "calleeFile": null,
+      "callee": "map",
+      "type": "method",
+      "line": 248,
+      "column": 17
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "releaseBump",
+      "calleeFile": null,
+      "callee": "map",
+      "type": "method",
+      "line": 248,
+      "column": 52
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "releaseBump",
+      "calleeFile": null,
+      "callee": "v.split",
+      "type": "method",
+      "line": 248,
+      "column": 52
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderBlock",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 96,
+      "column": 41
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderBlock",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "renderText",
+      "type": "direct",
+      "line": 98,
+      "column": 9
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 269,
+      "column": 18
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": null,
+      "callee": "release.entries.map",
+      "type": "property-chain",
+      "line": 269,
+      "column": 18
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 273,
+      "column": 39
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 273,
+      "column": 103
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "inline",
+      "type": "direct",
+      "line": 275,
+      "column": 32
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "flatten",
+      "type": "direct",
+      "line": 275,
+      "column": 39
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 279,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": null,
+      "callee": "map",
+      "type": "method",
+      "line": 279,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": null,
+      "callee": "release.entries.filter",
+      "type": "property-chain",
+      "line": 279,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "inline",
+      "type": "direct",
+      "line": 283,
+      "column": 56
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "flatten",
+      "type": "direct",
+      "line": 283,
+      "column": 63
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": null,
+      "callee": "entry.detail.map",
+      "type": "property-chain",
+      "line": 283,
+      "column": 93
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 283,
+      "column": 93
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "anchor",
+      "type": "direct",
+      "line": 293,
+      "column": 44
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "anchor",
+      "type": "direct",
+      "line": 296,
+      "column": 24
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 296,
+      "column": 77
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 296,
+      "column": 102
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 298,
+      "column": 44
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 298,
+      "column": 71
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "formatDate",
+      "type": "direct",
+      "line": 298,
+      "column": 75
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "releaseBump",
+      "type": "direct",
+      "line": 299,
+      "column": 41
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": null,
+      "callee": "toLowerCase",
+      "type": "method",
+      "line": 299,
+      "column": 41
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "releaseBump",
+      "type": "direct",
+      "line": 299,
+      "column": 80
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderRelease",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "esc",
+      "type": "direct",
+      "line": 300,
+      "column": 55
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": null,
+      "callee": "filter",
+      "type": "method",
+      "line": 83,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": null,
+      "callee": "paragraph.split",
+      "type": "method",
+      "line": 83,
+      "column": 16
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": null,
+      "callee": "l.trim",
+      "type": "method",
+      "line": 83,
+      "column": 52
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": null,
+      "callee": "lines.every",
+      "type": "method",
+      "line": 84,
+      "column": 39
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": null,
+      "callee": "test",
+      "type": "method",
+      "line": 84,
+      "column": 58
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": null,
+      "callee": "join",
+      "type": "method",
+      "line": 86,
+      "column": 18
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": null,
+      "callee": "lines.map",
+      "type": "method",
+      "line": 86,
+      "column": 18
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "inline",
+      "type": "direct",
+      "line": 87,
+      "column": 25
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": null,
+      "callee": "l.replace",
+      "type": "method",
+      "line": 87,
+      "column": 32
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "inline",
+      "type": "direct",
+      "line": 91,
+      "column": 15
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "renderText",
+      "calleeFile": null,
+      "callee": "lines.join",
+      "type": "method",
+      "line": 91,
+      "column": 22
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "replaceRegion",
+      "calleeFile": null,
+      "callee": "html.indexOf",
+      "type": "method",
+      "line": 1026,
+      "column": 15
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "replaceRegion",
+      "calleeFile": null,
+      "callee": "html.indexOf",
+      "type": "method",
+      "line": 1027,
+      "column": 13
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "replaceRegion",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "eolOf",
+      "type": "direct",
+      "line": 1033,
+      "column": 14
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "replaceRegion",
+      "calleeFile": null,
+      "callee": "html.slice",
+      "type": "method",
+      "line": 1035,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "replaceRegion",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "toEol",
+      "type": "direct",
+      "line": 1037,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "replaceRegion",
+      "calleeFile": null,
+      "callee": "html.slice",
+      "type": "method",
+      "line": 1039,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "splitBlocks",
+      "calleeFile": null,
+      "callee": "BACKTICK.repeat",
+      "type": "method",
+      "line": 106,
+      "column": 33
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "splitBlocks",
+      "calleeFile": null,
+      "callee": "BACKTICK.repeat",
+      "type": "method",
+      "line": 106,
+      "column": 80
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "splitBlocks",
+      "calleeFile": null,
+      "callee": "fence.exec",
+      "type": "method",
+      "line": 117,
+      "column": 14
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "splitBlocks",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "pushText",
+      "type": "direct",
+      "line": 118,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "splitBlocks",
+      "calleeFile": null,
+      "callee": "body.slice",
+      "type": "method",
+      "line": 118,
+      "column": 13
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "splitBlocks",
+      "calleeFile": null,
+      "callee": "blocks.push",
+      "type": "method",
+      "line": 119,
+      "column": 4
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "splitBlocks",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 119,
+      "column": 59
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "splitBlocks",
+      "calleeFile": "scripts/sync-changelog.mjs",
+      "callee": "pushText",
+      "type": "direct",
+      "line": 122,
+      "column": 2
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "splitBlocks",
+      "calleeFile": null,
+      "callee": "body.slice",
+      "type": "method",
+      "line": 122,
+      "column": 11
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "toEol",
+      "calleeFile": null,
+      "callee": "text.replace",
+      "type": "method",
+      "line": 1019,
+      "column": 29
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "truncate",
+      "calleeFile": null,
+      "callee": "text.slice",
+      "type": "method",
+      "line": 236,
+      "column": 14
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "truncate",
+      "calleeFile": null,
+      "callee": "cut.lastIndexOf",
+      "type": "method",
+      "line": 237,
+      "column": 13
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "truncate",
+      "calleeFile": null,
+      "callee": "cut.slice",
+      "type": "method",
+      "line": 238,
+      "column": 12
+    },
+    {
+      "callerFile": "scripts/sync-changelog.mjs",
+      "caller": "truncate",
+      "calleeFile": null,
+      "callee": "replace",
+      "type": "method",
+      "line": 238,
+      "column": 12
+    }
+  ],
+  "summary": {
+    "totalFunctions": 24,
+    "totalCalls": 202,
+    "filesWithCalls": 1,
+    "mostCalled": [
+      {
+        "qualifiedName": "join",
+        "file": "<external>",
+        "callerCount": 8
+      },
+      {
+        "qualifiedName": "esc",
+        "file": "scripts/sync-changelog.mjs",
+        "callerCount": 6
+      },
+      {
+        "qualifiedName": "map",
+        "file": "<external>",
+        "callerCount": 6
+      },
+      {
+        "qualifiedName": "replace",
+        "file": "<external>",
+        "callerCount": 6
+      },
+      {
+        "qualifiedName": "test",
+        "file": "<external>",
+        "callerCount": 4
+      },
+      {
+        "qualifiedName": "filter",
+        "file": "<external>",
+        "callerCount": 3
+      },
+      {
+        "qualifiedName": "formatDate",
+        "file": "scripts/sync-changelog.mjs",
+        "callerCount": 3
+      },
+      {
+        "qualifiedName": "anchor",
+        "file": "scripts/sync-changelog.mjs",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "blocks.push",
+        "file": "<external>",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "eolOf",
+        "file": "scripts/sync-changelog.mjs",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "inline",
+        "file": "scripts/sync-changelog.mjs",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "l.replace",
+        "file": "<external>",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "l.trim",
+        "file": "<external>",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "md.split",
+        "file": "<external>",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "plain",
+        "file": "scripts/sync-changelog.mjs",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "releaseBump",
+        "file": "scripts/sync-changelog.mjs",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "releases.map",
+        "file": "<external>",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "toEol",
+        "file": "scripts/sync-changelog.mjs",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "toLowerCase",
+        "file": "<external>",
+        "callerCount": 2
+      },
+      {
+        "qualifiedName": "trim",
+        "file": "<external>",
+        "callerCount": 2
+      }
+    ],
+    "mostCalling": [
+      {
+        "qualifiedName": "main",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 25
+      },
+      {
+        "qualifiedName": "renderRelease",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 12
+      },
+      {
+        "qualifiedName": "buildLatestSection",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 11
+      },
+      {
+        "qualifiedName": "parseEntry",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 11
+      },
+      {
+        "qualifiedName": "renderText",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 10
+      },
+      {
+        "qualifiedName": "<module>",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 9
+      },
+      {
+        "qualifiedName": "buildChangelogPage",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 7
+      },
+      {
+        "qualifiedName": "parseChangelog",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 7
+      },
+      {
+        "qualifiedName": "flatten",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 6
+      },
+      {
+        "qualifiedName": "splitBlocks",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 6
+      },
+      {
+        "qualifiedName": "inline",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 5
+      },
+      {
+        "qualifiedName": "replaceRegion",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 4
+      },
+      {
+        "qualifiedName": "truncate",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 4
+      },
+      {
+        "qualifiedName": "formatDate",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 3
+      },
+      {
+        "qualifiedName": "get",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 3
+      },
+      {
+        "qualifiedName": "plain",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 3
+      },
+      {
+        "qualifiedName": "pushText",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 3
+      },
+      {
+        "qualifiedName": "esc",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 2
+      },
+      {
+        "qualifiedName": "flush",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 2
+      },
+      {
+        "qualifiedName": "releaseBump",
+        "file": "scripts/sync-changelog.mjs",
+        "calleeCount": 2
+      }
+    ],
+    "cycleCount": 0
+  }
+}

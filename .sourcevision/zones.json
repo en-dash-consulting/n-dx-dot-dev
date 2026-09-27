@@ -1,0 +1,53 @@
+{
+  "zones": [
+    {
+      "id": "scripts",
+      "name": "Scripts",
+      "description": "1 files, primarily JavaScript",
+      "files": [
+        "scripts/sync-changelog.mjs"
+      ],
+      "entryPoints": [],
+      "cohesion": 1,
+      "coupling": 0,
+      "insights": [
+        "High cohesion (1) — files are tightly interconnected",
+        "Contains 100% of project files (1/1) — may be too broad, consider splitting",
+        "[call graph] 67 internal calls, 0 outgoing, 0 incoming (cohesion: 1, coupling: 0)"
+      ],
+      "riskMetrics": {
+        "cohesion": 1,
+        "coupling": 0,
+        "riskScore": 0,
+        "riskLevel": "healthy",
+        "failsThreshold": false
+      }
+    }
+  ],
+  "crossings": [],
+  "unzoned": [],
+  "findings": [
+    {
+      "type": "observation",
+      "pass": 0,
+      "scope": "scripts",
+      "text": "Contains 100% of project files (1/1) — may be too broad, consider splitting",
+      "severity": "warning",
+      "confidence": 0.32
+    },
+    {
+      "type": "observation",
+      "pass": 0,
+      "scope": "scripts",
+      "text": "High cohesion (1) — files are tightly interconnected",
+      "severity": "info"
+    }
+  ],
+  "structureHash": "914940702ec25bf8",
+  "inputFingerprint": "ea8fdd8c1b89e9c6",
+  "zoneContentHashes": {
+    "scripts": "141846b54b2c28de"
+  },
+  "algorithmVersion": 5,
+  "insights": []
+}

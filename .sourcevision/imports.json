@@ -1,0 +1,12 @@
+{
+  "edges": [],
+  "external": [],
+  "summary": {
+    "totalEdges": 0,
+    "totalExternal": 0,
+    "circularCount": 0,
+    "circulars": [],
+    "mostImported": [],
+    "avgImportsPerFile": 0
+  }
+}

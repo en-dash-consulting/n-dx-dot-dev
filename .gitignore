@@ -6,3 +6,18 @@
 # Editor / OS noise
 *~
 Thumbs.db
+.n-dx.local.json
+ndx-export/
+.rex/n-dx_workflow.md
+.rex/execution-log*.jsonl
+.hench/runs/
+.hench/locks/
+.hench/usage-cursors/
+.hench/reviews/
+.hench/recovery/
+.hench/session-cache.json
+.hench-commit-msg.txt
+# machine-local
+.claude/settings.local.json
+claude_commands.log
+.sourcevision/.cache/

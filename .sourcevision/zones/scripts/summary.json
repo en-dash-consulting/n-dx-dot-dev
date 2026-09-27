@@ -1,0 +1,20 @@
+{
+  "id": "scripts",
+  "name": "Scripts",
+  "description": "1 files, primarily JavaScript",
+  "files": [
+    "scripts/sync-changelog.mjs"
+  ],
+  "entryPoints": [],
+  "cohesion": 1,
+  "coupling": 0,
+  "fileCount": 1,
+  "lineCount": 1115,
+  "riskMetrics": {
+    "cohesion": 1,
+    "coupling": 0,
+    "riskScore": 0,
+    "riskLevel": "healthy",
+    "failsThreshold": false
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0.0",
+  "primaryLanguage": "javascript",
+  "languages": [
+    "javascript"
+  ],
+  "frameworks": [],
+  "releaseInfrastructure": [],
+  "buildSurfaces": [],
+  "ciSurfaces": [
+    {
+      "path": ".github/workflows/sync-changelog.yml",
+      "kind": "GitHub Actions"
+    }
+  ],
+  "importGraphQuality": "absent"
+}

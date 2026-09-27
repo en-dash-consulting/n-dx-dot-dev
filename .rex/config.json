@@ -1,0 +1,6 @@
+{
+  "schema": "rex/v1",
+  "project": "n-dx-dot-dev",
+  "adapter": "file",
+  "sourcevision": "auto"
+}
