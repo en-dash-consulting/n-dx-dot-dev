@@ -549,37 +549,55 @@
     }
   })()
 
-  // ═════════════ MINI DASHBOARD MAP ═════════════
-  document.querySelectorAll('.dash-map').forEach(function (cv) {
-    var zones = [
-      { id: 'app-shell', n: 220 }, { id: 'note-editor', n: 180 }, { id: 'note-store', n: 140 },
-      { id: 'editor-hooks', n: 80 }, { id: 'build-config', n: 90 }, { id: 'editor-hooks-tests', n: 120 },
-    ]
-    var cols2 = ['#6a3df0', '#00c49a', '#ffb020', '#3d7bff', '#ff4d1f', '#8e8c96']
-    var built = null
-    animate(cv, function (t) {
-      var g = fit(cv)
-      var tl = Math.max(4, Math.round(8 * g.dpr))
-      var cols = Math.floor(g.w / tl), rows = Math.floor(g.h / tl)
-      if (!built || built.cols !== cols || built.rows !== rows) {
-        var zz = zones.map(function (z) { return Object.assign({}, z) })
-        layoutZones(zz, cols, rows, 3, 0.55)
-        built = { cols: cols, rows: rows, zones: zz }
-      }
-      var c = g.ctx
-      c.clearRect(0, 0, g.w, g.h)
-      var sweep = ((t / 1000) % 4) / 4
-      built.zones.forEach(function (z, zi) {
-        c.fillStyle = cols2[zi]
-        z.tiles.forEach(function (i) {
-          var x = i % cols, y = (i / cols) | 0
-          c.globalAlpha = Math.abs(x / cols - sweep) < 0.05 ? 1 : 0.75
-          c.fillRect(x * tl, y * tl, tl - 1, tl - 1)
-        })
+  // ═════════════ ISO MAP PANEL (loop level 1-4) ═════════════
+  // Blocks rise layer by layer when the level opens, then the selection walks
+  // through zones with warnings, filling the dossier from the real model.
+  var isoView = document.querySelector('.isoview')
+  if (isoView && window.NDXIso) (function () {
+    var I = window.NDXIso
+    var canvas = isoView.querySelector('.iso-canvas')
+    var lv = isoView.closest('.lv')
+    var els = {
+      stage: isoView.querySelector('.iso-stage'), name: isoView.querySelector('.iso-name'), sub: isoView.querySelector('.iso-sub'),
+      chips: isoView.querySelector('.iso-chips'), findings: isoView.querySelector('.iso-findings'),
+    }
+    // Production zones with something to say; test zones import everything,
+    // so their arcs would fill the screen.
+    var tour = I.data.nodes.filter(function (n) { return n.findings.length && n.kind !== 'tests' }).sort(function (a, b) { return b.files - a.files }).slice(0, 8)
+    var maxCol = I.data.nodes.reduce(function (m, n) { return Math.max(m, n.u) }, 1)
+    var opened = -1, step = -1
+    function dossier(n) {
+      var kind = I.data.kinds.filter(function (k) { return k.id === n.kind })[0]
+      els.stage.textContent = (kind ? kind.glyph + ' ' : '') + n.stage + ' · ' + (kind ? kind.label : n.kind)
+      els.name.textContent = n.id
+      els.sub.textContent = n.files.toLocaleString('en-US') + ' files · ' + n.lines.toLocaleString('en-US') + ' lines'
+      els.chips.innerHTML = '<span>cohesion <b>' + n.cohesion + '</b></span><span>coupling <b>' + n.coupling + '</b></span>'
+      els.findings.innerHTML = ''
+      ;(n.findings.length ? n.findings.slice(0, 2) : [{ text: 'No warnings.', severity: 'none' }]).forEach(function (f) {
+        var li = document.createElement('li')
+        li.className = f.severity
+        li.textContent = f.text.length > 120 ? f.text.slice(0, f.text.lastIndexOf(' ', 118)) + '…' : f.text
+        els.findings.appendChild(li)
       })
-      c.globalAlpha = 1
+    }
+    animate(canvas, function (t, dt, still) {
+      var g = fit(canvas)
+      var isOn = !lv || lv.classList.contains('on')
+      if (isOn && opened < 0) opened = t
+      if (!isOn) opened = -1
+      var el = still ? 99 : (t - (opened < 0 ? t : opened)) / 1000
+      var focusStep = el < 2.2 ? -1 : Math.floor((el - 2.2) / 3.2) % tour.length
+      if (focusStep !== step) { step = focusStep; dossier(focusStep < 0 ? tour[0] : tour[focusStep]) }
+      I.draw(g.ctx, g.w, g.h, {
+        dpr: g.dpr,
+        zoom: 1.1,
+        rise: function (n) { var start = (n.u / maxCol) * 1.1; return Math.min(1, Math.max(0, (el - start) / 0.5)) },
+        flow: el > 1.6 ? el : null,
+        focus: focusStep >= 0 ? tour[focusStep].id : null,
+        labels: function (n) { return n.files >= 40 || (focusStep >= 0 && n.id === tour[focusStep].id) },
+      })
     })
-  })
+  })()
 
   // ═════════════ BENTO: PRD tree ═════════════
   var treeEl = document.querySelector('.tree-viz')
@@ -778,100 +796,63 @@
     })
     set(0)
 
-    // Scene tiles: a fixed pseudo-random field reused by every scene.
-    var field = []
-    for (var k = 0; k < 220; k++) field.push({ h: hash(k), h2: hash(k + 999), z: k % 6 })
-    var zc = ['#6a3df0', '#00c49a', '#ffb020', '#3d7bff', '#ff4d1f', '#aeacb5']
+    // Every scene is the same real iso map, animated to tell its case.
+    var I = window.NDXIso
+    if (!I) return
+    var nodes = I.data.nodes
+    var maxU = nodes.reduce(function (m, n) { return Math.max(m, n.u) }, 1)
+    var ease = function (x) { x = Math.max(0, Math.min(1, x)); return 1 - Math.pow(1 - x, 3) }
+    var byWork = nodes.slice().sort(function (a, b) { return b.lines - a.lines })
+    var grey = '#3a3960'
 
     animate(canvas, function (t, dt, still) {
       var g = fit(canvas)
-      var c = g.ctx
-      var el = still ? 3 : (performance.now() - t0) / 1000
-      c.clearRect(0, 0, g.w, g.h)
-      var tl = Math.max(6, Math.round(12 * g.dpr))
-      var cols = Math.floor(g.w / tl), rows = Math.floor(g.h / tl)
-      var ease = function (x) { x = Math.max(0, Math.min(1, x)); return 1 - Math.pow(1 - x, 3) }
+      var el = still ? 6 : (performance.now() - t0) / 1000
+      var o = { dpr: g.dpr, pad: 22, labels: function (n) { return n.files >= 90 } }
 
       if (active === 0) {
-        // Chaos sorts itself into zones.
-        var cyc = el % 7
-        var p = ease((cyc - 0.4) / 2.2) * (cyc > 6.2 ? 1 - (cyc - 6.2) / 0.8 : 1)
-        field.forEach(function (f, i) {
-          var sx = f.h * (cols - 1), sy = f.h2 * (rows - 1)
-          var per = Math.ceil(field.length / 6)
-          var zi = f.z, idx = Math.floor(i / 6)
-          var bx = 2 + (zi % 3) * Math.floor((cols - 4) / 3), by = 2 + Math.floor(zi / 3) * Math.floor((rows - 4) / 2)
-          var bw = Math.max(3, Math.floor((cols - 4) / 3) - 2)
-          var tx = bx + (idx % bw), ty = by + Math.floor(idx / bw)
-          var x = Math.round(sx + (tx - sx) * p), y = Math.round(sy + (ty - sy) * p)
-          c.fillStyle = p < 0.99 && f.h > 0.85 ? '#ff4d1f' : zc[zi]
-          c.fillRect(x * tl, y * tl, tl - 2, tl - 2)
-        })
+        // Cleanup: a scattered, flagged codebase settles into its layers.
+        var cyc = el % 8
+        var p = ease((cyc - 0.6) / 2.6) * (cyc > 7.3 ? 1 - (cyc - 7.3) / 0.7 : 1)
+        o.offset = function (n) { return { u: (hash(n.i) - 0.5) * 50 * (1 - p), v: (hash(n.i + 50) - 0.5) * 30 * (1 - p) } }
+        o.rise = function (n) { return 0.35 + 0.65 * (p + (1 - p) * hash(n.i + 9)) }
+        o.badge = function (n) { return p < 0.9 && n.findings.some(function (f) { return f.severity === 'warning' }) && hash(n.i + 3) > 0.45 ? 'warn' : null }
+        o.labels = function (n) { return p > 0.95 && n.files >= 90 }
       } else if (active === 1) {
-        // Fog of war lifts under a moving lens.
-        var lx = cols * (0.5 + 0.35 * Math.sin(el * 0.9)), ly = rows * (0.5 + 0.3 * Math.sin(el * 1.4))
-        for (var y = 0; y < rows; y++) for (var x = 0; x < cols; x++) {
-          var i = y * cols + x, h = hash(i)
-          var zi = Math.floor((x / cols) * 3) + Math.floor((y / rows) * 2) * 3
-          var d = Math.hypot(x - lx, y - ly)
-          var seen = d < 5 || h < Math.min(1, el / 5)
-          c.fillStyle = seen ? zc[zi % 6] : 'rgba(255,255,255,' + (0.05 + h * 0.08) + ')'
-          if ((x + 1) % Math.ceil(cols / 3) === 0 || (y + 1) % Math.ceil(rows / 2) === 0) continue
-          c.fillRect(x * tl, y * tl, tl - 2, tl - 2)
-        }
-        P.draw(c, 'eye', lx * tl - 8 * 3, ly * tl - 8 * 3, 3, false)
+        // Onboarding: the map assembles layer by layer, then comes alive.
+        var cyc1 = el % 9
+        o.rise = function (n) { return ease((cyc1 - (n.u / maxU) * 2.4) / 0.6) }
+        o.flow = cyc1 > 3 ? el : null
+        o.labels = function (n) { return n.files >= 40 && cyc1 > (n.u / maxU) * 2.4 + 0.5 }
       } else if (active === 2) {
-        // A plan tree grows: epic → features → tasks.
-        var levels = [1, 3, 7]
-        var shown = Math.floor(el * 4)
-        var n = 0
-        var s = Math.max(2, Math.round(2 * g.dpr))
-        levels.forEach(function (count, lv) {
-          for (var k = 0; k < count; k++) {
-            if (n++ > shown) return
-            var bw = Math.min(g.w / (count + 1) * 0.7, 130 * g.dpr)
-            var x = (g.w / (count + 1)) * (k + 1) - bw / 2
-            var y = 24 * g.dpr + lv * (g.h - 60 * g.dpr) / 2.4
-            c.fillStyle = ['#6a3df0', '#00c49a', '#ffb020'][lv]
-            c.fillRect(x, y, bw, 26 * g.dpr)
-            c.fillStyle = 'rgba(0,0,0,.25)'
-            c.fillRect(x, y + 22 * g.dpr, bw, 4 * g.dpr)
-            if (lv > 0) {
-              c.fillStyle = 'rgba(255,255,255,.3)'
-              c.fillRect(x + bw / 2 - s / 2, y - 16 * g.dpr, s, 16 * g.dpr)
-            }
-          }
-        })
-        var fr = Math.floor(el * 8) % 2 ? 'rex_walk0' : 'rex_walk1'
-        P.draw(c, fr, ((el * 60 * g.dpr) % (g.w + 80)) - 60, g.h - 19 * s * 1.5 - 4, s * 1.5, false)
+        // Spec-driven: work lands zone by zone, each one checked off.
+        var done = Math.floor(el / 0.9) % (byWork.length + 3)
+        var visited = {}
+        byWork.slice(0, done).forEach(function (n) { visited[n.id] = true })
+        var cur = byWork[done]
+        o.alpha = function (n) { return visited[n.id] || (cur && n.id === cur.id) ? 1 : 0.35 }
+        o.badge = function (n) { return visited[n.id] ? 'ok' : null }
+        o.labels = function (n) { return cur && n.id === cur.id }
       } else if (active === 3) {
-        // Churn: tiles flip as code changes; a sweep re-derives them.
-        var sweep = (el % 3) / 3
-        for (var y2 = 0; y2 < rows; y2++) for (var x2 = 0; x2 < cols; x2++) {
-          var i2 = y2 * cols + x2
-          var h2 = hash(i2 + Math.floor(el * 2) * 13)
-          var churn = h2 > 0.93 && x2 / cols > sweep
-          c.fillStyle = churn ? '#ff4d1f' : zc[(Math.floor(x2 / 5) + Math.floor(y2 / 4)) % 6]
-          c.globalAlpha = x2 / cols < sweep ? 1 : 0.55
-          c.fillRect(x2 * tl, y2 * tl, tl - 2, tl - 2)
+        // Keeping current: code churns ahead of the sweep; behind it the map is
+        // re-derived and settled.
+        var sw = (el % 4) / 4
+        var B = I.data.bounds
+        o.sweep = sw
+        o.rise = function (n) {
+          var ahead = (n.u - B.uMin) / (B.uMax - B.uMin) > sw
+          return ahead && hash(n.i + 7) > 0.6 ? 0.75 + 0.25 * Math.sin(el * 3 + n.i) : 1
         }
-        c.globalAlpha = 1
-        c.fillStyle = '#00e0b0'
-        c.fillRect(sweep * g.w, 0, 3 * g.dpr, g.h)
+        o.color = function (n) { return (n.u - B.uMin) / (B.uMax - B.uMin) > sw && hash(n.i + 7) > 0.6 ? '#e0a33e' : null }
       } else {
-        // Progress rising, CI badges ticking green.
-        var epics = [0.85, 0.6, 0.35, 0.72]
-        var bw2 = g.w / (epics.length * 1.6)
-        epics.forEach(function (v, k) {
-          var hgt = (g.h - 50 * g.dpr) * v * ease(el / 1.6 - k * 0.1)
-          var x = bw2 * 0.4 + k * bw2 * 1.6
-          for (var yy = 0; yy < hgt; yy += tl) {
-            c.fillStyle = yy > hgt - tl ? '#00e0b0' : '#6a3df0'
-            c.fillRect(x, g.h - 20 * g.dpr - yy - tl, bw2, tl - 2)
-          }
-          if (el > 1 + k * 0.4) P.draw(c, 'check', x + bw2 / 2 - 8 * g.dpr, 8 * g.dpr, Math.round(2 * g.dpr), false)
-        })
+        // Team leads: progress fills the map layer by layer, checked in CI.
+        var cyc4 = el % 8
+        var filled = function (n) { return cyc4 > 0.5 + (n.u / maxU) * 4 }
+        o.color = function (n) { return filled(n) ? null : grey }
+        o.badge = function (n) { return filled(n) && n.files >= 90 ? 'ok' : null }
+        o.flow = el
       }
+      I.draw(g.ctx, g.w, g.h, o)
     })
   })()
 

@@ -156,23 +156,29 @@ section { padding: clamp(72px, 9vw, 140px) 0; }
   .track { display: none; }
 }
 
-/* mini dashboard */
-.dash .dash-body { display: grid; grid-template-columns: 130px 1fr; height: calc(100% - 37px); min-height: 380px; }
-.dash-side { border-right: 1px solid var(--crt-line); padding: 14px; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #8f89a8; }
-.dash-side b { color: #fff; font-weight: 400; font-size: 16px; margin-bottom: 8px; }
-.dash-side .on { color: #fff; }
-.dash-side .on::before { content: '▸ '; color: var(--teal); }
-.dash-main { padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.dash-row { display: grid; grid-template-columns: minmax(0, 1fr) 110px 40px; gap: 10px; align-items: center; font-size: 12px; }
-.dash-row span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.dash-row i { height: 10px; background: repeating-linear-gradient(90deg, #2e2a3b 0 8px, transparent 8px 10px); position: relative; }
-.dash-row i::after { content: ''; position: absolute; inset: 0; width: calc(var(--p) * 100%); background: repeating-linear-gradient(90deg, var(--teal) 0 8px, transparent 8px 10px); }
-.dash-row em { font-style: normal; color: var(--teal); text-align: right; }
-.dash-zones { flex: 1; min-height: 120px; border: 1px solid var(--crt-line); position: relative; }
-.dash-map { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
-.dash-urls { display: flex; flex-direction: column; gap: 2px; font-size: 11px; color: #8f89a8; }
-.dash-urls b { color: var(--purple); background: #fff; padding: 0 4px; font-weight: 500; margin-right: 6px; font-size: 10px; }
-@media (max-width: 560px) { .dash .dash-body { grid-template-columns: 1fr; } .dash-side { display: none; } .dash-row { grid-template-columns: minmax(0, 1fr) 70px 34px; } }
+/* iso map panel — mirrors the real `ndx iso` page (its palette, not ours) */
+.isoview { --iso-bg: #12122b; --iso-panel: #1a1940; --iso-line: #2c2b60; --iso-ink: #efeff7; --iso-muted: #9b9bc4; background: var(--iso-bg); color: var(--iso-ink); font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; display: flex; flex-direction: column; overflow: hidden; }
+.iso-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; background: var(--iso-panel); border-bottom: 1px solid var(--iso-line); }
+.iso-ttl { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-size: 12px; color: var(--iso-muted); }
+.iso-ttl b { font-size: 15px; color: var(--iso-ink); margin-right: 4px; }
+.iso-tools { display: flex; gap: 5px; }
+.iso-tools span { background: #232253; border: 1px solid var(--iso-line); border-radius: 5px; padding: 3px 8px; font-size: 11px; }
+.iso-body { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 230px; min-height: 0; }
+.iso-stagewrap { position: relative; min-height: 260px; }
+.iso-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.iso-dossier { background: var(--iso-panel); border-left: 1px solid var(--iso-line); padding: 14px; font-size: 12.5px; overflow: hidden; }
+.iso-stage { margin: 0; color: var(--iso-muted); font-size: 11.5px; }
+.iso-name { margin: 2px 0 2px; font-size: 16px; font-weight: 650; letter-spacing: -0.01em; }
+.iso-sub { margin: 0 0 10px; color: var(--iso-muted); }
+.iso-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.iso-chips span { background: #232253; border: 1px solid var(--iso-line); border-radius: 5px; padding: 3px 7px; font-size: 11.5px; color: var(--iso-muted); }
+.iso-chips b { color: var(--iso-ink); font-weight: 600; }
+.iso-h { margin: 14px 0 6px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--iso-muted); }
+.iso-findings { margin: 0; padding-left: 14px; overflow-wrap: anywhere; color: #e0a33e; display: flex; flex-direction: column; gap: 6px; line-height: 1.4; }
+.iso-findings li.critical { color: #e36262; }
+.iso-findings li.none { color: var(--iso-muted); list-style: none; margin-left: -14px; }
+@media (max-width: 1200px) { .iso-body { grid-template-columns: 1fr; } .iso-dossier { border-left: 0; border-top: 1px solid var(--iso-line); max-height: 150px; } }
+@media (max-width: 960px) { .isoview { height: 460px; } .iso-tools { display: none; } }
 
 /* ── tools / character select ────────────────────────────────────── */
 .chars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }

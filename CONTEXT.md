@@ -6,7 +6,7 @@ This is the marketing website for [n-dx](https://github.com/en-dash-consulting/n
 
 ## Architecture
 
-Static HTML site with no build step and no framework. Pages share `assets/css/site.css` and `assets/js/{sprites,pixel,site}.js`; the landing page adds `home.css`, `home.js`, and the generated `map-data.js`.
+Static HTML site with no build step and no framework. Pages share `assets/css/site.css` and `assets/js/{sprites,pixel,site}.js`; the landing page adds `home.css`, `home.js`, `iso.js`, and the generated `map-data.js` / `iso-data.js`.
 
 ### Files
 
@@ -26,6 +26,7 @@ indices, boot counter, text scramble, scroll-lit statements).
 
 - Colors (`site.css` `:root`): `--paper` background, `--ink` text, `--purple` (n-dx brand) and `--teal` (the en-dash) as signals, `--signal`/`--amber` for findings, `--crt` for terminal panels
 - Fonts: Geist (uppercase display, body), Geist Mono (labels, code), Silkscreen (pixel accents)
+- The isometric views (loop level 1-4, use-case scenes) deliberately use `ndx iso`'s own navy palette and archetype colours, not the site tokens, so they read as the real product
 - Pixel art is drawn on `<canvas>` from `assets/js/sprites.js` — never exported images. Add a sprite there and use `<canvas data-sprite="name" data-scale="6">` (optional `data-frames`, `data-fps`, `data-bob`, `data-flip`)
 - Motion hooks: `data-reveal`, `data-stagger`, `data-scramble`, `data-count`, `.sweep`, `data-copy`; set `window.ndxCursorLabel` to show a pointer tag (the hero map does)
 - Every animation is gated on visibility and disabled under `prefers-reduced-motion`; content is visible without JS

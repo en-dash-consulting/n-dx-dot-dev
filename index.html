@@ -370,28 +370,27 @@ Actionable tasks (by priority):
         <!-- 1-4 -->
         <article class="lv" data-lv="3">
           <div class="lv-copy">
-            <p class="lv-world pixel">World 1-4 · dashboard</p>
+            <p class="lv-world pixel">World 1-4 · iso map</p>
             <h3 class="display h-md">See</h3>
-            <p>A local dashboard for zone maps, the live PRD tree, run transcripts, and token spend per task. The same hub serves both MCP servers to your agent, one URL per repo.</p>
-            <p><span class="cmd">ndx start .</span></p>
+            <p>Render the architecture as an isometric map: a block per zone, sized by files and lines, coloured by what it does, wired by its imports. One standalone HTML file to open, commit, or attach to a review.</p>
+            <p><span class="cmd">ndx iso .</span> <span class="cmd">ndx start .</span></p>
           </div>
-          <div class="crt lv-crt dash">
-            <div class="crt-head"><span class="dots"><i></i><i></i><i></i></span>localhost:3117/p/notes-app/</div>
-            <div class="dash-body">
-              <div class="dash-side">
-                <b class="pixel">n-dx</b>
-                <span class="on">PRD</span><span>Zones</span><span>Import graph</span><span>Runs</span><span>Tokens</span>
-              </div>
-              <div class="dash-main">
-                <div class="dash-row"><span>Core Note Management</span><i style="--p:.75"></i><em>75%</em></div>
-                <div class="dash-row"><span>LLM-Powered Auto-Tagging</span><i style="--p:.4"></i><em>40%</em></div>
-                <div class="dash-row"><span>Note Relationships</span><i style="--p:.15"></i><em>15%</em></div>
-                <div class="dash-zones" aria-hidden="true"><canvas class="dash-map"></canvas></div>
-                <div class="dash-urls">
-                  <span><b>MCP</b> /p/notes-app/mcp/rex</span>
-                  <span><b>MCP</b> /p/notes-app/mcp/sourcevision</span>
-                </div>
-              </div>
+          <!-- Mirrors the real `ndx iso` screen; drawn from assets/js/iso-data.js. -->
+          <div class="lv-crt isoview" aria-label="Isometric map of the n-dx monorepo: 27 zones, 1,957 files">
+            <div class="iso-top">
+              <div class="iso-ttl"><b>n-dx</b><span>27 of 27 zones</span><span>1,957 files</span><span>584,686 lines</span><span>sourcevision analysis</span></div>
+              <div class="iso-tools" aria-hidden="true"><span>−</span><span>+</span><span>Reset view</span></div>
+            </div>
+            <div class="iso-body">
+              <div class="iso-stagewrap"><canvas class="iso-canvas" aria-hidden="true"></canvas></div>
+              <aside class="iso-dossier">
+                <p class="iso-stage"></p>
+                <h4 class="iso-name"></h4>
+                <p class="iso-sub"></p>
+                <div class="iso-chips"></div>
+                <p class="iso-h">Findings</p>
+                <ul class="iso-findings"></ul>
+              </aside>
             </div>
           </div>
         </article>
@@ -578,7 +577,7 @@ Actionable tasks (by priority):
         <li class="case" data-case="4"><button type="button" aria-expanded="false"><span class="idx">05</span><span class="display h-sm">Team leads</span><span class="plus" aria-hidden="true"></span></button>
           <div class="case-body"><p>A shared source of truth without another planning tool. <span class="cmd">ndx ci</span> checks PRD health on every push; Notion sync shows progress to people who never open a terminal.</p></div></li>
       </ol>
-      <div class="case-screen crt" aria-hidden="true">
+      <div class="case-screen crt isocase" aria-hidden="true">
         <div class="crt-head"><span class="dots"><i></i><i></i><i></i></span><span data-case-title>vibe-coded cleanup</span></div>
         <div class="case-art"><canvas class="case-canvas"></canvas></div>
         <pre class="crt-body case-cmd" data-case-cmd></pre>
@@ -750,6 +749,8 @@ Actionable tasks (by priority):
 <script src="assets/js/sprites.js"></script>
 <script src="assets/js/pixel.js"></script>
 <script src="assets/js/map-data.js"></script>
+<script src="assets/js/iso-data.js"></script>
+<script src="assets/js/iso.js"></script>
 <script src="assets/js/site.js"></script>
 <script src="assets/js/home.js"></script>
 </body>
