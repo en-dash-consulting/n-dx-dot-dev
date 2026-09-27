@@ -8,5 +8,8 @@
     // /changelog/ → changelog/index.html, as on GitHub Pages.
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "none"
-  }
+  },
+  // Required by `wrangler preview` (Worker Previews), which the dashboard's
+  // preview-branch builds run. Empty: previews use the settings above.
+  "previews": {}
 }
