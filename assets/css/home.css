@@ -311,3 +311,9 @@ section { padding: clamp(72px, 9vw, 140px) 0; }
 @media (max-width: 800px) { .contact-in { grid-template-columns: 1fr; } }
 .scan-run.done { opacity: 1; background: var(--teal); color: var(--ink); border-color: var(--ink); }
 html:not(.js) .scan-run, html:not(.js) .game { display: none; }
+
+/* "Free play" price callout in the hero */
+.hero-free { display: flex; align-items: center; gap: 14px; margin: -4px 0 0; padding: 12px 16px; border: 1px solid var(--ink); background: var(--tint); max-width: 36em; }
+.hero-free canvas { flex: none; width: 32px; height: 32px; image-rendering: pixelated; }
+.hero-free p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+.hero-free b { font-weight: 400; color: var(--purple); margin-right: 4px; }
