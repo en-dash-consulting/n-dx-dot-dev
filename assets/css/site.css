@@ -1,29 +1,46 @@
 /* n-dx.dev — shared design system.
-   Blueprint paper, one ink, two signal colours (n-dx purple, en-dash teal), and
-   an 8-bit layer drawn on canvas by assets/js/pixel.js. Used by every page;
-   changelog/index.html links it from the template in scripts/sync-changelog.mjs. */
+   Light and dark themes, one ink, two signal colours (n-dx purple, en-dash
+   teal), and an 8-bit layer drawn on canvas by assets/js/pixel.js. Used by
+   every page; changelog/index.html links it from the template in
+   scripts/sync-changelog.mjs.
+
+   Theme: dark follows prefers-color-scheme unless <html data-theme> says
+   otherwise — the head script on each page sets it from localStorage before
+   first paint, and the nav toggle (site.js) writes it. The dark token block is
+   repeated for both routes because CSS cannot share a rule between them. */
 
 :root {
-  --paper: #e8e6df;
-  --paper-2: #dfddd5;
-  --paper-3: #d4d2c9;
+  color-scheme: light;
+  --paper: #fafafa;
+  --paper-2: #f1f1f3;
+  --paper-3: #e4e4e8;
   --ink: #16151c;
   --ink-2: #34333b;
-  --mute: #6d6c73;
-  --line: rgba(22, 21, 28, 0.16);
-  --line-2: rgba(22, 21, 28, 0.32);
+  --mute: #66656d;
+  --line: rgba(22, 21, 28, 0.14);
+  --line-2: rgba(22, 21, 28, 0.3);
   --purple: #6a3df0;
   --purple-2: #4522b8;
+  --on-purple: #ffffff;
   --lav: #b9a7ff;
   --teal: #00e0b0;
   --teal-ink: #007a60;
-  --signal: #ff4d1f;
+  --signal: #c2360b;
   --amber: #ffb020;
   --crt: #121019;
   --crt-2: #1c1926;
   --crt-line: rgba(255, 255, 255, 0.1);
   --crt-text: #d9d4ee;
-
+  --crt-edge: transparent;
+  /* Surfaces that stay dark in both themes: footer, ticker, callouts, chips. */
+  --night: #16151c;
+  --on-night: #f4f3f8;
+  --shadow: #16151c;
+  --nav-bg: rgba(250, 250, 250, 0.86);
+  --hover: rgba(22, 21, 28, 0.06);
+  --dot: rgba(22, 21, 28, 0.09);
+  --sweep-dim: rgba(22, 21, 28, 0.16);
+  --tint: rgba(106, 61, 240, 0.08);
   --f-display: 'Geist', 'Helvetica Neue', Arial, sans-serif;
   --f-body: 'Geist', 'Helvetica Neue', Arial, sans-serif;
   --f-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -33,6 +50,59 @@
   --max: 1440px;
   --nav-h: 60px;
   --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --paper: #0e0d13;
+    --paper-2: #17161f;
+    --paper-3: #24222e;
+    --ink: #ecebf2;
+    --ink-2: #c4c2d0;
+    --mute: #9896a6;
+    --line: rgba(255, 255, 255, 0.12);
+    --line-2: rgba(255, 255, 255, 0.26);
+    --purple: #8f72ff;
+    --purple-2: #b3a0ff;
+    --on-purple: #0e0d13;
+    --teal-ink: #2fe6bd;
+    --signal: #ff6a3d;
+    --crt-edge: rgba(255, 255, 255, 0.12);
+    --night: #1b1924;
+    --on-night: #f4f3f8;
+    --shadow: #2e2b3c;
+    --nav-bg: rgba(14, 13, 19, 0.86);
+    --hover: rgba(255, 255, 255, 0.07);
+    --dot: rgba(255, 255, 255, 0.07);
+    --sweep-dim: rgba(255, 255, 255, 0.16);
+    --tint: rgba(143, 114, 255, 0.14);
+  }
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #0e0d13;
+  --paper-2: #17161f;
+  --paper-3: #24222e;
+  --ink: #ecebf2;
+  --ink-2: #c4c2d0;
+  --mute: #9896a6;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-2: rgba(255, 255, 255, 0.26);
+  --purple: #8f72ff;
+  --purple-2: #b3a0ff;
+  --on-purple: #0e0d13;
+  --teal-ink: #2fe6bd;
+  --signal: #ff6a3d;
+  --crt-edge: rgba(255, 255, 255, 0.12);
+  --night: #1b1924;
+  --on-night: #f4f3f8;
+  --shadow: #2e2b3c;
+  --nav-bg: rgba(14, 13, 19, 0.86);
+  --hover: rgba(255, 255, 255, 0.07);
+  --dot: rgba(255, 255, 255, 0.07);
+  --sweep-dim: rgba(255, 255, 255, 0.16);
+  --tint: rgba(143, 114, 255, 0.14);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -57,7 +127,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: radial-gradient(rgba(22, 21, 28, 0.11) 1px, transparent 1.2px);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1.2px);
   background-size: 24px 24px;
   background-position: 12px 12px;
 }
@@ -110,13 +180,13 @@ button { font: inherit; color: inherit; }
 .cmd {
   font-family: var(--f-mono);
   font-size: 0.86em;
-  background: var(--ink);
+  background: var(--night);
   color: var(--teal);
   padding: 0.12em 0.5em;
   white-space: nowrap;
 }
 .cmd::before { content: '$ '; color: var(--mute); }
-.path { font-family: var(--f-mono); font-size: 0.88em; background: rgba(106, 61, 240, 0.1); color: var(--purple-2); padding: 0.08em 0.4em; }
+.path { font-family: var(--f-mono); font-size: 0.88em; background: var(--tint); color: var(--purple-2); padding: 0.08em 0.4em; }
 
 /* ── registration marks & rulers (the blueprint furniture) ────────── */
 .reg { position: relative; }
@@ -207,7 +277,7 @@ button { font: inherit; color: inherit; }
   align-items: center;
   gap: 24px;
   padding: 0 var(--gutter);
-  background: rgba(232, 230, 223, 0.86);
+  background: var(--nav-bg);
   backdrop-filter: blur(10px) saturate(1.2);
   -webkit-backdrop-filter: blur(10px) saturate(1.2);
   border-bottom: 1px solid var(--line);
@@ -228,7 +298,7 @@ button { font: inherit; color: inherit; }
   text-decoration: none;
   color: var(--ink-2);
 }
-.nav-links a:hover, .nav-links a[aria-current] { color: var(--ink); background: rgba(22, 21, 28, 0.07); }
+.nav-links a:hover, .nav-links a[aria-current] { color: var(--ink); background: var(--hover); }
 .nav-links a[aria-current]::before { content: '▸ '; color: var(--purple); }
 .nav-cta { display: flex; gap: 8px; }
 .nav-toggle { display: none; margin-left: auto; width: 44px; height: 44px; background: none; border: 1px solid var(--ink); cursor: pointer; }
@@ -266,8 +336,8 @@ button { font: inherit; color: inherit; }
   font-family: var(--f-mono);
   font-size: 11px;
   line-height: 1.3;
-  color: var(--paper);
-  background: var(--ink);
+  color: var(--on-night);
+  background: var(--night);
   padding: 3px 6px;
   white-space: nowrap;
   box-shadow: 2px 2px 0 var(--purple);
@@ -309,6 +379,7 @@ button { font: inherit; color: inherit; }
   position: relative;
   background: var(--crt);
   color: var(--crt-text);
+  box-shadow: inset 0 0 0 1px var(--crt-edge);
   font-family: var(--f-mono);
   font-size: 13px;
   line-height: 1.65;
@@ -361,7 +432,7 @@ button { font: inherit; color: inherit; }
   transition: background 0.2s;
 }
 .hero-version-pill:hover { background: var(--ink); color: var(--paper); }
-.hero-version-num { background: var(--purple); color: #fff; padding: 3px 7px; }
+.hero-version-num { background: var(--purple); color: var(--on-purple); padding: 3px 7px; }
 .hero-version-sep { color: var(--mute); }
 .hero-version-arrow { transition: transform 0.25s steps(3); }
 .hero-version-pill:hover .hero-version-arrow { transform: translateX(3px); }
@@ -401,12 +472,12 @@ button { font: inherit; color: inherit; }
 @media (max-width: 900px) { .release-grid { grid-template-columns: 1fr; } .release-card { min-height: 0; } }
 
 /* ── footer ──────────────────────────────────────────────────────── */
-.foot { position: relative; z-index: 1; background: var(--ink); color: var(--paper); overflow: hidden; }
+.foot { position: relative; z-index: 1; background: var(--night); color: var(--on-night); overflow: hidden; box-shadow: inset 0 1px 0 var(--crt-edge); }
 .foot a { text-decoration: none; }
 .foot-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; padding: 72px 0 40px; }
 .foot h4 { font-family: var(--f-mono); font-size: 11px; font-weight: 400; text-transform: uppercase; color: #8d8a99; margin: 0 0 14px; letter-spacing: 0.05em; }
 .foot ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
-.foot ul a { color: var(--paper); opacity: 0.85; font-size: 15px; }
+.foot ul a { color: var(--on-night); opacity: 0.85; font-size: 15px; }
 .foot ul a:hover { opacity: 1; color: var(--teal); }
 .foot-blurb { color: #a9a6b5; font-size: 15px; max-width: 26em; }
 .foot-word { position: relative; width: 100%; height: clamp(120px, 24vw, 340px); }
@@ -430,7 +501,7 @@ button { font: inherit; color: inherit; }
 .js [data-stagger].in > *:nth-child(8) { transition-delay: 0.49s; }
 
 /* Word-by-word ink sweep for statement paragraphs (site.js splits words). */
-.sweep .w { color: rgba(22, 21, 28, 0.16); transition: color 0.25s; }
+.sweep .w { color: var(--sweep-dim); transition: color 0.25s; }
 .sweep .w.lit { color: var(--ink); }
 .sweep .w.hl.lit { color: var(--purple); }
 
@@ -441,3 +512,16 @@ button { font: inherit; color: inherit; }
   .sweep .w { color: var(--ink) !important; }
   .sweep .w.hl { color: var(--purple) !important; }
 }
+
+/* ── theme toggle ────────────────────────────────────────────────── */
+.theme-toggle { display: inline-grid; place-items: center; width: 36px; height: 36px; margin-left: 8px; padding: 0; background: none; border: 1px solid var(--line-2); cursor: pointer; }
+.theme-toggle:hover { border-color: var(--ink); background: var(--hover); }
+.theme-toggle canvas { width: 18px; height: 18px; }
+.theme-toggle .i-sun { display: none; }
+:root[data-theme='dark'] .theme-toggle .i-sun { display: block; }
+:root[data-theme='dark'] .theme-toggle .i-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .theme-toggle .i-sun { display: block; }
+  :root:not([data-theme]) .theme-toggle .i-moon { display: none; }
+}
+@media (max-width: 1060px) { .theme-toggle { width: 44px; height: 44px; } }

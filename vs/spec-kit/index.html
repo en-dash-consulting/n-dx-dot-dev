@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  // Apply a saved theme before first paint, so there is no flash of the other
+  // one. With nothing saved, CSS follows prefers-color-scheme.
+  try { var t = localStorage.getItem('ndx-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD4SJX7TSY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -17,7 +22,9 @@
 <meta name="author" content="En Dash Consulting">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://n-dx.dev/vs/spec-kit/">
-<meta name="theme-color" content="#e8e6df">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0d13" media="(prefers-color-scheme: dark)">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://n-dx.dev/vs/spec-kit/">
@@ -116,12 +123,12 @@
   .vs-table { width: 100%; border-collapse: collapse; min-width: 760px; font-size: 14.5px; }
   .vs-table th, .vs-table td { padding: 14px 12px; border-bottom: 1px solid var(--line-2); text-align: left; vertical-align: top; }
   .vs-table thead th { font-family: var(--f-mono); font-size: 11px; font-weight: 400; text-transform: uppercase; color: var(--mute); }
-  .vs-table thead th.me { background: var(--purple); color: #fff; font-family: var(--f-pixel); font-size: 13px; }
-  .vs-table td.me { background: rgba(106, 61, 240, 0.08); font-weight: 500; }
+  .vs-table thead th.me { background: var(--purple); color: var(--on-purple); font-family: var(--f-pixel); font-size: 13px; }
+  .vs-table td.me { background: var(--tint); font-weight: 500; }
   .vs-table tbody th { font-family: var(--f-mono); font-size: 12px; font-weight: 400; text-transform: uppercase; color: var(--ink-2); }
   .picks { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line-2); }
   .pick { padding: 22px; border-right: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
-  .pick.me { background: var(--ink); color: var(--paper); }
+  .pick.me { background: var(--night); color: var(--on-night); }
   .pick.me .abil li::before { background: var(--purple); box-shadow: none; }
   .pick .kind { font-family: var(--f-pixel); font-size: 12px; color: var(--purple); }
   .pick.me .kind { color: var(--teal); }
@@ -165,6 +172,10 @@
       <a class="btn btn-sm" href="#install">Get started <span class="arr">→</span></a>
     </div>
   </div>
+  <button class="theme-toggle" type="button" aria-label="Switch theme">
+    <canvas class="i-moon" data-sprite="moon" data-scale="2" aria-hidden="true"></canvas>
+    <canvas class="i-sun" data-sprite="sun" data-scale="2" aria-hidden="true"></canvas>
+  </button>
 </nav>
 
 <main id="main-content">

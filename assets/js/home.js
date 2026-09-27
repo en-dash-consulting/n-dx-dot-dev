@@ -9,6 +9,10 @@
   var PAL = P.PALETTE
 
   // ── helpers ───────────────────────────────────────────────────────
+  // Current theme colours (site.js reads them from the CSS tokens).
+  var FALLBACK = { dark: false, ink: '#16151c', ink2: '#34333b', mute: '#66656d', paper: '#fafafa', purple: '#6a3df0', night: '#16151c', onNight: '#f4f3f8' }
+  function TH() { return window.ndxTheme ? window.ndxTheme() : FALLBACK }
+  function A(hex, a) { return window.ndxAlpha ? window.ndxAlpha(hex, a) : hex }
   function rng(seed) {
     return function () {
       seed |= 0; seed = (seed + 0x6d2b79f5) | 0
@@ -34,7 +38,10 @@
     loops.push(st)
     if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { st.on = e[0].isIntersecting }, { rootMargin: '100px' }).observe(el)
     else st.on = true
-    if (reduce) requestAnimationFrame(function (t) { fn(t, 0, true) })
+    if (reduce) {
+      requestAnimationFrame(function (t) { fn(t, 0, true) })
+      document.addEventListener('ndx:theme', function () { fn(performance.now(), 0, true) })
+    }
     return st
   }
   if (!reduce) requestAnimationFrame(function frame(t) {
@@ -280,6 +287,7 @@
 
     function draw(t, dt, still) {
       if (!G.ctx) return
+      var T = TH()
       var c = G.ctx
       var now = t / 1000
 
@@ -318,7 +326,7 @@
           var zi = owner[i]
           var d2 = (x + 0.5 - lx) * (x + 0.5 - lx) + (y + 0.5 - ly) * (y + 0.5 - ly)
           if (zi < 0) {
-            if ((x + y) % 3 === 0 && (x * 7 + y) % 5 === 0) { c.fillStyle = 'rgba(22,21,28,.18)'; c.fillRect(x * tile + tile / 2 - gap, y * tile + tile / 2 - gap, gap * 2, gap * 2) }
+            if ((x + y) % 3 === 0 && (x * 7 + y) % 5 === 0) { c.fillStyle = A(T.ink, 0.18); c.fillRect(x * tile + tile / 2 - gap, y * tile + tile / 2 - gap, gap * 2, gap * 2) }
             continue
           }
           if (full < 1) {
@@ -330,7 +338,7 @@
           var h = hash(i)
           if (v < 0.05) {
             // Unscanned: ink dither.
-            c.fillStyle = 'rgba(22,21,28,' + (0.1 + h * 0.14).toFixed(3) + ')'
+            c.fillStyle = A(T.ink, (0.1 + h * 0.14).toFixed(3))
           } else {
             c.fillStyle = zones[zi].color
             c.globalAlpha = Math.min(1, 0.18 + v * 0.82)
@@ -343,7 +351,7 @@
 
       // Import crossings, once the whole graph is known.
       if (full >= 1) {
-        c.fillStyle = 'rgba(22,21,28,.55)'
+        c.fillStyle = A(T.ink, 0.55)
         MAP.crossings.slice(0, 12).forEach(function (x, k) {
           var a = zones[byId[x.from]], b = zones[byId[x.to]]
           if (!a || !b) return
@@ -375,12 +383,12 @@
         if (!visible) return
         var col = p.f.severity === 'critical' ? '#ff4d1f' : '#ffb020'
         var bx = p.x * tile, by = p.y * tile - tile * 3
-        c.fillStyle = '#16151c'
+        c.fillStyle = T.ink
         c.fillRect(bx - tile * 0.5, by - tile * 0.5, tile * 2, tile * 3.2)
-        c.fillStyle = blink || near ? col : '#fff'
+        c.fillStyle = blink || near ? col : T.paper
         c.fillRect(bx, by, tile, tile * 1.4)
         c.fillRect(bx, by + tile * 1.8, tile, tile * 0.6)
-        c.fillStyle = '#16151c'
+        c.fillStyle = T.ink
         c.fillRect(bx + tile * 0.25, by + tile * 2.7, tile * 0.5, tile * 0.9)
         if (near && !idle) showCallout(p)
         else if (!(full >= 1 && cycle.i % pins.length === pins.indexOf(p))) hideCallout(p.k)
@@ -393,9 +401,9 @@
             if (z.tiles.length < (G.cw < 500 ? 60 : 26)) return
             var tw = c.measureText(z.id).width + 8 * G.dpr
             var zx = z.cx * tile - tw / 2, zy = z.cy * tile - 8 * G.dpr
-            c.fillStyle = 'rgba(232,230,223,.94)'
+            c.fillStyle = A(T.paper, 0.94)
             c.fillRect(zx, zy, tw, 16 * G.dpr)
-            c.fillStyle = '#16151c'
+            c.fillStyle = T.ink
             c.fillText(z.id, zx + 4 * G.dpr, zy + 8.5 * G.dpr)
           })
       }
@@ -408,7 +416,7 @@
       }
 
       // Lens: a pixel circle with crosshair ticks.
-      c.fillStyle = '#16151c'
+      c.fillStyle = T.ink
       var steps2 = 64
       for (var a = 0; a < steps2; a++) {
         var ang = (a / steps2) * Math.PI * 2
@@ -433,7 +441,7 @@
         if (Math.abs(dx) > 4) rex.face = dx > 0 ? 1 : -1
       }
       var frame = rex.walking ? (Math.floor(now * 9) % 2 ? 'rex_walk0' : 'rex_walk1') : (Math.floor(now * 1.5) % 5 === 0 ? 'rex_idle1' : 'rex_idle0')
-      c.fillStyle = 'rgba(22,21,28,.18)'
+      c.fillStyle = A(T.ink, 0.18)
       c.fillRect(rex.x + sc * 5, rex.y + rh - sc, rw - sc * 10, sc * 2)
       P.draw(c, frame, rex.x, rex.y, sc, rex.face < 0)
 
@@ -511,12 +519,13 @@
     if (trackC) {
       var rx = 0, lastRx = 0, walkT = 0
       animate(trackC, function (t, dt) {
+        var T = TH()
         var g = fit(trackC)
         var c = g.ctx, s = Math.max(2, Math.round(3 * g.dpr))
         c.clearRect(0, 0, g.w, g.h)
         var ground = g.h - s * 4
         for (var x = 0; x < g.w; x += s * 4) {
-          c.fillStyle = (x / (s * 4)) % 2 ? '#16151c' : '#34333b'
+          c.fillStyle = (x / (s * 4)) % 2 ? T.ink : T.ink2
           c.fillRect(x, ground, s * 4, s * 2)
         }
         var pad = 40 * g.dpr
@@ -528,7 +537,7 @@
           var fx = pad + span * ((k + 0.5) / 4)
           var reached = progress >= (k + 0.02) / 4
           P.draw(c, 'flag', fx, ground - 10 * s, s, false)
-          c.fillStyle = reached ? '#6a3df0' : '#6d6c73'
+          c.fillStyle = reached ? T.purple : T.mute
           c.fillText(labels[k], fx + 9 * s, ground - 6 * s)
           // Coins between flags, collected as Rex passes.
           for (var j = 1; j < 4; j++) {
@@ -652,6 +661,7 @@
     ]
     var next = 3
     animate(lanesC, function (t, dt) {
+      var T = TH()
       var g = fit(lanesC)
       var c = g.ctx, s = Math.max(1, Math.round(1.6 * g.dpr))
       c.clearRect(0, 0, g.w, g.h)
@@ -659,16 +669,16 @@
       c.font = Math.round(10 * g.dpr) + 'px "Geist Mono", monospace'
       lanes.forEach(function (l, i) {
         var base = lh * (i + 1) - 6 * g.dpr
-        c.fillStyle = 'rgba(22,21,28,.25)'
+        c.fillStyle = A(T.ink, 0.25)
         for (var x = 0; x < g.w; x += 6 * g.dpr) c.fillRect(x, base, 3 * g.dpr, 1 * g.dpr)
-        c.fillStyle = '#6d6c73'
+        c.fillStyle = T.mute
         c.fillText(l.name, 0, base - lh + 20 * g.dpr)
         var goal = g.w - 40 * g.dpr
         l.x += l.speed * g.dpr * (dt || 0.016)
         var fx = goal
         if (l.x > goal - 34 * g.dpr) { l.x = 0; l.done++; l.task = next++ }
         P.draw(c, 'flag', fx, base - 10 * s, s, false)
-        c.fillStyle = '#6a3df0'
+        c.fillStyle = T.purple
         c.fillText('task #' + (l.task + 1) + ' · claimed', fx - 108 * g.dpr, base - lh + 20 * g.dpr)
         var fr = Math.floor(t / 110) % 2 ? 'rex_walk0' : 'rex_walk1'
         P.draw(c, fr, l.x, base - 19 * s, s, false)
@@ -693,6 +703,7 @@
     var items = [['note editor', 0.92], ['data model', 0.55], ['llm api', 0.74], ['review ui', 0.4], ['timeline', 0.22]]
     var grow = 0
     animate(tokC, function (t, dt, still) {
+      var T = TH()
       var g = fit(tokC)
       var c = g.ctx
       grow = still ? 1 : Math.min(1, grow + (dt || 0) * 0.6)
@@ -704,12 +715,12 @@
       c.textBaseline = 'middle'
       items.forEach(function (it, i) {
         var y = i * bh + 4 * g.dpr
-        c.fillStyle = '#34333b'
+        c.fillStyle = T.ink2
         c.fillText(it[0], 0, y + bh / 2)
         var maxCells = Math.floor((g.w - lw) / (cell + 2 * g.dpr))
         var n = Math.floor(maxCells * it[1] * Math.min(1, grow * 1.4 - i * 0.08))
         for (var k = 0; k < maxCells; k++) {
-          c.fillStyle = k < n ? (k > maxCells * 0.8 ? '#ff4d1f' : k % 2 ? '#6a3df0' : '#4522b8') : 'rgba(22,21,28,.08)'
+          c.fillStyle = k < n ? (k > maxCells * 0.8 ? '#ff4d1f' : k % 2 ? '#6a3df0' : '#4522b8') : A(T.ink, 0.08)
           c.fillRect(lw + k * (cell + 2 * g.dpr), y + bh / 2 - cell, cell, cell * 2 - 2 * g.dpr)
         }
       })
@@ -722,12 +733,13 @@
     var nodes = ['analyze', 'recommend', 'execute', 'acknowledge']
     var a = 0, iter = 1
     animate(healC, function (t, dt) {
+      var T = TH()
       var g = fit(healC)
       var c = g.ctx
       c.clearRect(0, 0, g.w, g.h)
       var cx = g.w / 2, cy = g.h / 2, R = Math.min(g.w * 0.38, g.h * 0.36)
       var tl = Math.max(3, Math.round(4 * g.dpr))
-      c.fillStyle = 'rgba(22,21,28,.3)'
+      c.fillStyle = A(T.ink, 0.3)
       for (var k = 0; k < 90; k++) {
         if (k % 2) continue
         var an = (k / 90) * Math.PI * 2
@@ -742,15 +754,15 @@
         var an = (i / 4) * Math.PI * 2 - Math.PI / 2
         var x = cx + Math.cos(an) * R, y = cy + Math.sin(an) * R
         var hot = Math.abs(((a - Math.PI / 2 - an + Math.PI * 4) % (Math.PI * 2)) - Math.PI) > Math.PI - 0.5
-        c.fillStyle = hot ? '#6a3df0' : '#16151c'
+        c.fillStyle = hot ? T.purple : T.ink
         c.fillRect(x - tl * 2, y - tl * 2, tl * 4, tl * 4)
-        c.fillStyle = '#34333b'
+        c.fillStyle = T.ink2
         c.fillText(n, x, y + (Math.sin(an) >= 0 ? tl * 5 : -tl * 5))
       })
       var ra = a - Math.PI / 2
       P.draw(c, 'coin', cx + Math.cos(ra) * R - 4 * tl / 2, cy + Math.sin(ra) * R - 4 * tl / 2, Math.max(1, tl / 2), false)
       c.font = Math.round(18 * g.dpr) + 'px Silkscreen, monospace'
-      c.fillStyle = '#16151c'
+      c.fillStyle = T.ink
       c.fillText('ITER ' + iter + '/3', cx, cy)
       c.textAlign = 'left'
     })

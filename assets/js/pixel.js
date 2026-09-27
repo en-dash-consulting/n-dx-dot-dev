@@ -107,6 +107,18 @@
     requestAnimationFrame(tick)
   }
 
+  // Sprite outlines are ink-dark; on the dark theme they would disappear into
+  // the page, so they lighten. Cached renders are dropped and every mounted
+  // sprite redraws.
+  var OUTLINE = { light: '#16151c', dark: '#8f8ba6' }
+  document.addEventListener('ndx:theme', function (e) {
+    var k = e.detail && e.detail.dark ? OUTLINE.dark : OUTLINE.light
+    if (S.PALETTE.k === k) return
+    S.PALETTE.k = k
+    cache = {}
+    mounted.forEach(function (st) { st.f = -1; render(st, 0) })
+  })
+
   function init() {
     document.querySelectorAll('canvas[data-sprite]').forEach(mount)
     if (!reduce) requestAnimationFrame(tick)

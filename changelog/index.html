@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  // Apply a saved theme before first paint, so there is no flash of the other
+  // one. With nothing saved, CSS follows prefers-color-scheme.
+  try { var t = localStorage.getItem('ndx-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD4SJX7TSY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -15,7 +20,9 @@
 <meta name="author" content="En Dash Consulting">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://n-dx.dev/changelog/">
-<meta name="theme-color" content="#e8e6df">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0d13" media="(prefers-color-scheme: dark)">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -65,7 +72,7 @@
   .cl-changes > li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; background: var(--purple); box-shadow: inset -2px -2px 0 var(--purple-2); }
   .cl-pr { font-family: var(--f-mono); font-size: 12px; color: var(--mute); text-decoration: none; white-space: nowrap; }
   .cl-pr:hover { color: var(--purple); }
-  .cl-release-body code { font-family: var(--f-mono); font-size: 0.86em; background: rgba(106, 61, 240, 0.1); color: var(--purple-2); padding: 0.05em 0.35em; }
+  .cl-release-body code { font-family: var(--f-mono); font-size: 0.86em; background: var(--tint); color: var(--purple-2); padding: 0.05em 0.35em; }
   .cl-release-body a:not(.cl-pr) { color: var(--purple-2); }
   .cl-release-body strong { font-weight: 600; }
   .cl-release-body p { margin: 0; }
@@ -124,6 +131,10 @@
       <a class="btn btn-sm" href="/#install">Get started <span class="arr">→</span></a>
     </div>
   </div>
+  <button class="theme-toggle" type="button" aria-label="Switch theme">
+    <canvas class="i-moon" data-sprite="moon" data-scale="2" aria-hidden="true"></canvas>
+    <canvas class="i-sun" data-sprite="sun" data-scale="2" aria-hidden="true"></canvas>
+  </button>
 </nav>
 
 <header class="cl-hero">

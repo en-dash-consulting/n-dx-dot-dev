@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  // Apply a saved theme before first paint, so there is no flash of the other
+  // one. With nothing saved, CSS follows prefers-color-scheme.
+  try { var t = localStorage.getItem('ndx-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD4SJX7TSY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -28,7 +33,9 @@
 <meta name="author" content="En Dash Consulting">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://n-dx.dev/">
-<meta name="theme-color" content="#e8e6df">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0d13" media="(prefers-color-scheme: dark)">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://n-dx.dev/">
@@ -116,6 +123,10 @@
       <a class="btn btn-sm" href="#install">Get started <span class="arr">→</span></a>
     </div>
   </div>
+  <button class="theme-toggle" type="button" aria-label="Switch theme">
+    <canvas class="i-moon" data-sprite="moon" data-scale="2" aria-hidden="true"></canvas>
+    <canvas class="i-sun" data-sprite="sun" data-scale="2" aria-hidden="true"></canvas>
+  </button>
 </nav>
 
 <main id="main">

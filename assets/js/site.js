@@ -8,6 +8,44 @@
   var hasGsap = !!(window.gsap && window.ScrollTrigger)
   if (hasGsap) gsap.registerPlugin(ScrollTrigger)
 
+  // ── theme ─────────────────────────────────────────────────────────
+  // CSS owns the colours; canvases read them from here and redraw on
+  // 'ndx:theme'. The head script has already applied any saved choice.
+  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
+  function isDark() {
+    var t = doc.getAttribute('data-theme')
+    return t ? t === 'dark' : darkQuery.matches
+  }
+  function readTheme() {
+    var cs = getComputedStyle(doc)
+    var v = function (n) { return cs.getPropertyValue(n).trim() }
+    return { dark: isDark(), ink: v('--ink'), ink2: v('--ink-2'), mute: v('--mute'), paper: v('--paper'), purple: v('--purple'), night: v('--night'), onNight: v('--on-night') }
+  }
+  var theme = readTheme()
+  window.ndxTheme = function () { return theme }
+  // '#16151c' + alpha → 'rgba(…)', for canvas fills that need transparency.
+  window.ndxAlpha = function (hex, a) {
+    var n = parseInt(hex.replace('#', ''), 16)
+    return 'rgba(' + (n >> 16) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + a + ')'
+  }
+  function themeChanged() {
+    theme = readTheme()
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', theme.paper) })
+    var b = document.querySelector('.theme-toggle')
+    if (b) b.setAttribute('aria-label', theme.dark ? 'Switch to light theme' : 'Switch to dark theme')
+    document.dispatchEvent(new CustomEvent('ndx:theme', { detail: theme }))
+  }
+  darkQuery.addEventListener('change', function () { if (!doc.getAttribute('data-theme')) themeChanged() })
+  document.querySelectorAll('.theme-toggle').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark'
+      doc.setAttribute('data-theme', next)
+      try { localStorage.setItem('ndx-theme', next) } catch (e) {}
+      themeChanged()
+    })
+  })
+  themeChanged()
+
   // ── nav ───────────────────────────────────────────────────────────
   var nav = document.querySelector('.nav')
   if (nav) {
@@ -224,7 +262,8 @@
     for (var y = 0; y < rows; y++) for (var x = 0; x < cols; x++) cells.push({ x: x, y: y, t: (x / cols + (rows - y) / rows) / 2 + Math.random() * 0.22 })
     var ctx = c.getContext('2d')
     var t0 = performance.now(), d = 720
-    var colors = ['#e8e6df', '#e8e6df', '#e8e6df', '#6a3df0', '#16151c', '#00e0b0']
+    var bg = theme.paper
+    var colors = [bg, bg, bg, theme.purple, theme.ink, '#00e0b0']
     ;(function f(now) {
       var p = (now - t0) / d
       ctx.clearRect(0, 0, W, H)
@@ -232,7 +271,7 @@
         var cl = cells[i]
         var local = cl.t * 0.8
         if (p > local + 0.12) continue
-        ctx.fillStyle = p > local ? colors[(i * 7) % colors.length] : '#e8e6df'
+        ctx.fillStyle = p > local ? colors[(i * 7) % colors.length] : bg
         ctx.fillRect(cl.x * sz, cl.y * sz, sz, sz)
       }
       if (p < 1.2) requestAnimationFrame(f)
@@ -283,7 +322,7 @@
         p.y += p.vy
         if (Math.abs(p.vx) + Math.abs(p.vy) > 0.05 || Math.abs(p.x - p.hx) + Math.abs(p.y - p.hy) > 0.5) moving = true
         var off = Math.abs(p.x - p.hx) + Math.abs(p.y - p.hy)
-        fctx.fillStyle = p.dash ? '#00e0b0' : off > cell * 0.6 ? '#6a3df0' : '#e8e6df'
+        fctx.fillStyle = p.dash ? '#00e0b0' : off > cell * 0.6 ? theme.purple : theme.onNight
         fctx.fillRect(Math.round(p.x), Math.round(p.y), cell - Math.max(1, cell * 0.08), cell - Math.max(1, cell * 0.08))
       }
       running = moving
@@ -297,6 +336,7 @@
     })
     fw.addEventListener('pointerleave', function () { pw.x = pw.y = -9999; if (!running) { running = true; requestAnimationFrame(frame) } })
     layout()
+    document.addEventListener('ndx:theme', function () { if (!running) { running = true; requestAnimationFrame(frame) } })
     var rt
     window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(layout, 150) })
   }
