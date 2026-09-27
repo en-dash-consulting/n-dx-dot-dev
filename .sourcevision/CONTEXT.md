@@ -6,10 +6,12 @@
 <architecture>
 
 Project: n-dx-dot-dev
-Git: feature/redesign @ 53fac6c
-Files: 1, Lines: 1115
-Languages: JavaScript(1)
-Zones: 1, Described: 1
+Git: feature/redesign @ 63be05f
+Files: 9, Lines: 2673
+Languages: JavaScript(9)
+Zones: 2, Described: 2
+Weighted avg cohesion: 0.00, coupling: 0.00 (1 zones with ≥5 files)
+Unweighted avg cohesion: 0.00, coupling: 0.00
 Small zones excluded from averages: 1 (<5 files, unreliable metrics)
 Import edges: 0, External packages: 0
 
@@ -17,9 +19,12 @@ Import edges: 0, External packages: 0
 
 <zones>
 
-[scripts] Scripts (1 files, coh=1.00 coup=0.00)
-  1 files, primarily JavaScript
-  files: scripts/sync-changelog.mjs
+[assets] Assets Assets (7 files, coh=0.00 coup=0.00)
+  Bundle assets and resources: home.js, iso-data.js, iso.js (+4 more)
+  files: assets/js/home.js, assets/js/iso-data.js, assets/js/iso.js, assets/js/map-data.js, assets/js/pixel.js, assets/js/site.js, assets/js/sprites.js
+[scripts] Build & CI Scripts (2 files, coh=0.00 coup=0.00)
+  Build, packaging, and CI scripts: build-map-data.mjs, sync-changelog.mjs
+  files: scripts/build-map-data.mjs, scripts/sync-changelog.mjs
 
 Detailed zone context: .sourcevision/zones/{id}/context.md
 
@@ -27,14 +32,20 @@ Detailed zone context: .sourcevision/zones/{id}/context.md
 
 <findings>
 
-[warning] Contains 100% of project files (1/1) — may be too broad, consider splitting [scripts]
+[warning] Contains 78% of project files (7/9) — may be too broad, consider splitting [assets]
+[critical] God function: <module> in assets/js/home.js calls 100 unique functions — consider decomposing into smaller, focused functions
+[warning] God function: <module> in scripts/build-map-data.mjs calls 32 unique functions — consider decomposing into smaller, focused functions
 
 </findings>
 
 <next-steps>
 
+[high] <module> in assets/js/home.js calls 100 unique functions
+  category: fix
+[medium] <module> in scripts/build-map-data.mjs calls 32 unique functions
+  category: refactor
 [medium] May be too broad, consider splitting
-  files: scripts/sync-changelog.mjs
+  files: assets/js/home.js, assets/js/iso-data.js, assets/js/iso.js
   category: refactor
 
 </next-steps>

@@ -1,35 +1,118 @@
 {
   "files": [
     {
-      "path": "scripts/sync-changelog.mjs",
-      "size": 38941,
+      "path": "assets/js/home.js",
+      "size": 44313,
       "language": "JavaScript",
-      "lineCount": 1115,
-      "hash": "6b40773962e5a4370d8b763ecdc342940009cf6122d1b7d7773901c0cad39188",
+      "lineCount": 980,
+      "hash": "5a81562c5de7a91c465430f94f78b87d90284a142208bd013a2fc551e973ecf5",
+      "role": "asset",
+      "category": "assets",
+      "lastModified": 1790485886059
+    },
+    {
+      "path": "assets/js/iso-data.js",
+      "size": 38666,
+      "language": "JavaScript",
+      "lineCount": 3,
+      "hash": "33d659f334faa195cf56bcc538606db36414c2a2e011ce2c86a335b6e627d594",
+      "role": "asset",
+      "category": "assets",
+      "lastModified": 1790485569200
+    },
+    {
+      "path": "assets/js/iso.js",
+      "size": 9533,
+      "language": "JavaScript",
+      "lineCount": 204,
+      "hash": "9b0c3644374b8834c699e675316925e3e9c314b80a1c13d68e18c6271db10f7c",
+      "role": "asset",
+      "category": "assets",
+      "lastModified": 1790485787957
+    },
+    {
+      "path": "assets/js/map-data.js",
+      "size": 25978,
+      "language": "JavaScript",
+      "lineCount": 3,
+      "hash": "276c2757d7d3e3ce4c25c0228fa3b6e1be90eef9c88c4c68a1798d058028579e",
+      "role": "asset",
+      "category": "assets",
+      "lastModified": 1790485568929
+    },
+    {
+      "path": "assets/js/pixel.js",
+      "size": 4956,
+      "language": "JavaScript",
+      "lineCount": 118,
+      "hash": "29ea6fc56562adedc228aadfaf642a37fa2675149637fb0b6a63f49c03b2a325",
+      "role": "asset",
+      "category": "assets",
+      "lastModified": 1790485287565
+    },
+    {
+      "path": "assets/js/site.js",
+      "size": 13506,
+      "language": "JavaScript",
+      "lineCount": 303,
+      "hash": "7c444c34c4686436c40ec5359a52905d69a2e6530369730e115ce654bb4e4ac9",
+      "role": "asset",
+      "category": "assets",
+      "lastModified": 1790485224228
+    },
+    {
+      "path": "assets/js/sprites.js",
+      "size": 5852,
+      "language": "JavaScript",
+      "lineCount": 238,
+      "hash": "dac61285be42090cca68beec3aa5975f0bb0407191490a54287551dccf73ec6d",
+      "role": "asset",
+      "category": "assets",
+      "lastModified": 1790483498716
+    },
+    {
+      "path": "scripts/build-map-data.mjs",
+      "size": 6512,
+      "language": "JavaScript",
+      "lineCount": 154,
+      "hash": "f9773a4b26d4e5b0f8eeba91cc66ddfc45be30c1df929ae278d17e8bf9ea6df5",
       "role": "build",
       "category": "scripts",
-      "lastModified": 1790482839089
+      "lastModified": 1790485568894
+    },
+    {
+      "path": "scripts/sync-changelog.mjs",
+      "size": 29455,
+      "language": "JavaScript",
+      "lineCount": 670,
+      "hash": "46b47191ac59df2136bf7309b0ca8086d25a084e82e4c81514e8ad7630f98f19",
+      "role": "build",
+      "category": "scripts",
+      "lastModified": 1790485313154
     }
   ],
   "summary": {
-    "totalFiles": 1,
-    "totalLines": 1115,
+    "totalFiles": 9,
+    "totalLines": 2673,
     "byLanguage": {
-      "JavaScript": 1
+      "JavaScript": 9
     },
     "byRole": {
-      "build": 1
+      "asset": 7,
+      "build": 2
     },
     "byCategory": {
-      "scripts": 1
+      "assets": 7,
+      "scripts": 2
     },
     "skippedExtensions": {
+      ".css": 2,
       ".html": 7,
-      ".json": 1,
-      ".md": 2,
-      ".png": 2,
+      ".json": 2,
+      ".md": 14,
+      ".png": 1,
       ".txt": 2,
-      ".webp": 5,
+      ".webp": 2,
       ".xml": 1,
       ".yml": 1
     },

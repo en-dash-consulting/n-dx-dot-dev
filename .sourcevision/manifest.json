@@ -1,90 +1,107 @@
 {
   "schemaVersion": "1.0.0",
   "toolVersion": "0.1.0",
-  "analyzedAt": "2026-09-27T04:21:09.523Z",
-  "gitSha": "53fac6c214dbd1fdd6321d926e42c64f2c6e4ed7",
+  "analyzedAt": "2026-09-27T05:28:39.238Z",
+  "gitSha": "63be05fb17d8570e960dd4fa80559fe5df81a94d",
   "gitBranch": "feature/redesign",
   "targetPath": "/Users/nick/development/endash/n-dx-dot-dev",
   "modules": {
     "inventory": {
       "status": "complete",
-      "startedAt": "2026-09-27T04:21:09.054Z",
-      "completedAt": "2026-09-27T04:21:09.079Z"
+      "startedAt": "2026-09-27T05:28:38.520Z",
+      "completedAt": "2026-09-27T05:28:38.550Z"
     },
     "imports": {
       "status": "complete",
-      "startedAt": "2026-09-27T04:21:09.079Z",
-      "completedAt": "2026-09-27T04:21:09.111Z"
+      "startedAt": "2026-09-27T05:28:38.550Z",
+      "completedAt": "2026-09-27T05:28:38.618Z"
     },
     "classifications": {
       "status": "complete",
-      "startedAt": "2026-09-27T04:21:09.112Z",
-      "completedAt": "2026-09-27T04:21:09.130Z"
+      "startedAt": "2026-09-27T05:28:38.618Z",
+      "completedAt": "2026-09-27T05:28:38.641Z"
     },
     "zones": {
       "status": "complete",
-      "startedAt": "2026-09-27T04:21:09.130Z",
-      "completedAt": "2026-09-27T04:21:09.458Z"
+      "startedAt": "2026-09-27T05:28:38.641Z",
+      "completedAt": "2026-09-27T05:28:39.133Z"
     },
     "components": {
       "status": "complete",
-      "startedAt": "2026-09-27T04:21:09.459Z",
-      "completedAt": "2026-09-27T04:21:09.486Z"
+      "startedAt": "2026-09-27T05:28:39.135Z",
+      "completedAt": "2026-09-27T05:28:39.161Z"
     },
     "callgraph": {
       "status": "complete",
-      "startedAt": "2026-09-27T04:21:09.486Z",
-      "completedAt": "2026-09-27T04:21:09.523Z"
+      "startedAt": "2026-09-27T05:28:39.161Z",
+      "completedAt": "2026-09-27T05:28:39.238Z"
     }
   },
   "language": "typescript",
   "languages": [
     "typescript"
   ],
-  "analysisFingerprint": "05014ccd3e2c8170",
+  "analysisFingerprint": "9e8ae09a26fe863f",
   "zoneOutputs": true,
   "tokenUsage": {
     "calls": 1,
-    "inputTokens": 568,
+    "inputTokens": 924,
     "outputTokens": 21,
     "vendor": "claude",
     "model": "claude-sonnet-5"
   },
   "lastAnalysis": {
-    "at": "2026-09-27T04:21:09.053Z",
-    "mode": "fast",
-    "durationMs": 35349,
+    "at": "2026-09-27T05:28:38.519Z",
+    "mode": "cascade",
+    "durationMs": 767,
     "phases": {
-      "inventory": 26,
-      "imports": 32,
-      "classifications": 19,
-      "zones": 329,
-      "components": 27,
-      "callgraph": 38
+      "inventory": 30,
+      "imports": 68,
+      "classifications": 23,
+      "zones": 494,
+      "components": 26,
+      "callgraph": 80
     },
     "llm": {
       "byTaskClass": {
-        "finding.judge": {
+        "zone.judge": {
           "calls": 1,
-          "inputTokens": 568,
-          "outputTokens": 21,
-          "durationMs": 294,
+          "inputTokens": 392,
+          "outputTokens": 20,
+          "durationMs": 298,
           "vendor": "typesafe",
           "model": "jev-1.13.0"
         },
-        "context.distill": {
+        "finding.judge": {
           "calls": 1,
-          "inputTokens": 0,
-          "outputTokens": 0,
-          "durationMs": 34835,
-          "vendor": "claude",
-          "model": "claude-sonnet-5"
+          "inputTokens": 924,
+          "outputTokens": 21,
+          "durationMs": 153,
+          "vendor": "typesafe",
+          "model": "jev-1.13.0"
         }
       },
       "judgmentCache": {
         "hits": 0,
-        "misses": 1
+        "misses": 2
       }
+    },
+    "partition": {
+      "fingerprint": "1789679462181fb4",
+      "health": {
+        "zones": 1,
+        "smallZones": 1,
+        "smallShare": 1,
+        "numericIds": 0,
+        "largestShare": 1,
+        "verdict": "borderline",
+        "reasons": [
+          "1 zone over 30% of files without a balanced subdivision"
+        ]
+      },
+      "rejected": false,
+      "mapProbability": 0.62,
+      "reused": false
     }
   }
 }

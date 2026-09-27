@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "snapshots": [
+    {
+      "zoneId": "assets",
+      "zoneName": "Assets Assets",
+      "cohesion": 0,
+      "coupling": 0,
+      "riskScore": 0.5,
+      "fileCount": 7,
+      "timestamp": "2026-09-27T05:28:39.133Z",
+      "gitSha": "63be05fb17d8570e960dd4fa80559fe5df81a94d"
+    },
+    {
+      "zoneId": "scripts",
+      "zoneName": "Build & CI Scripts",
+      "cohesion": 0,
+      "coupling": 0,
+      "riskScore": 0.5,
+      "fileCount": 2,
+      "timestamp": "2026-09-27T05:28:39.133Z",
+      "gitSha": "63be05fb17d8570e960dd4fa80559fe5df81a94d"
+    }
+  ],
+  "analyzedAt": "2026-09-27T05:28:39.133Z",
+  "gitSha": "63be05fb17d8570e960dd4fa80559fe5df81a94d"
+}

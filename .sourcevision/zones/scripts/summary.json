@@ -1,20 +1,21 @@
 {
   "id": "scripts",
-  "name": "Scripts",
-  "description": "1 files, primarily JavaScript",
+  "name": "Build & CI Scripts",
+  "description": "Build, packaging, and CI scripts: build-map-data.mjs, sync-changelog.mjs",
   "files": [
+    "scripts/build-map-data.mjs",
     "scripts/sync-changelog.mjs"
   ],
   "entryPoints": [],
-  "cohesion": 1,
+  "cohesion": 0,
   "coupling": 0,
-  "fileCount": 1,
-  "lineCount": 1115,
+  "fileCount": 2,
+  "lineCount": 824,
   "riskMetrics": {
-    "cohesion": 1,
+    "cohesion": 0,
     "coupling": 0,
-    "riskScore": 0,
-    "riskLevel": "healthy",
+    "riskScore": 0.5,
+    "riskLevel": "at-risk",
     "failsThreshold": false
   }
 }
