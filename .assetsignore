@@ -1,0 +1,21 @@
+# Files in the repo that are not part of the site. Read by wrangler when it
+# uploads ./ as static assets (see wrangler.jsonc).
+.git
+.github
+.claude
+.hench
+.rex
+.sourcevision
+.wrangler
+node_modules
+scripts
+*.md
+.mcp.json
+.n-dx.json
+.gitignore
+.gitattributes
+.assetsignore
+wrangler.jsonc
+CNAME
+.DS_Store
+claude_commands.log
