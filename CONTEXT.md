@@ -6,11 +6,11 @@ This is the marketing website for [n-dx](https://github.com/en-dash-consulting/n
 
 ## Architecture
 
-Static HTML site with no build step. Each page is a single self-contained HTML file with inline CSS and no JavaScript framework.
+Static HTML site with no build step and no framework. Pages share `assets/css/site.css` and `assets/js/{sprites,pixel,site}.js`; the landing page adds `home.css`, `home.js`, and the generated `map-data.js`.
 
 ### Files
 
-- `index.html` — Landing page. This is what GitHub Pages serves at the root URL. Contains hero, package cards, problem section, how-it-works terminal demo, use cases, personas, comparison table, changelog teaser, install CTA, and contact section.
+- `index.html` — Landing page. Boot sequence, hero with the interactive scan map, problems, the pinned four-level loop, tools (character select), feature bento, use cases, comparison table, changelog teaser, install + mini game, contact.
 - `changelog/index.html` — Full release history for `@n-dx/core`. **Generated — do not hand-edit.** See "Changelog generation" below.
 - `vs/spec-kit/index.html` — Comparison page: n-dx vs Spec Kit, OpenSpec, and Kiro. Served at `/vs/spec-kit/`.
 - `mwfb2026/index.html` - Make Work Feel Better Challenge 2026 event landing page for the remote async n-dx challenge. **Unlinked** — still served at its URL, but no longer reachable from the site nav or footer.
@@ -21,10 +21,15 @@ Static HTML site with no build step. Each page is a single self-contained HTML f
 
 ### Design system
 
-CSS custom properties define the visual language:
-- Colors: `--navy` (background), `--teal` (primary accent), `--purple` (secondary), `--amber` (tertiary)
-- Fonts: Montserrat (display), DM Sans (body), DM Mono (code/labels)
-- Responsive breakpoints at 900px (tablet) and 480px (phone)
+Blueprint paper plus an 8-bit layer, after the motion language of heronaiapp.com (rulers, `[01]`
+indices, boot counter, text scramble, scroll-lit statements).
+
+- Colors (`site.css` `:root`): `--paper` background, `--ink` text, `--purple` (n-dx brand) and `--teal` (the en-dash) as signals, `--signal`/`--amber` for findings, `--crt` for terminal panels
+- Fonts: Geist (uppercase display, body), Geist Mono (labels, code), Silkscreen (pixel accents)
+- Pixel art is drawn on `<canvas>` from `assets/js/sprites.js` — never exported images. Add a sprite there and use `<canvas data-sprite="name" data-scale="6">` (optional `data-frames`, `data-fps`, `data-bob`, `data-flip`)
+- Motion hooks: `data-reveal`, `data-stagger`, `data-scramble`, `data-count`, `.sweep`, `data-copy`; set `window.ndxCursorLabel` to show a pointer tag (the hero map does)
+- Every animation is gated on visibility and disabled under `prefers-reduced-motion`; content is visible without JS
+- Responsive breakpoints around 1100px, 960px (loop stops pinning), and 560px
 
 ### Third-party integrations
 

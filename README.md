@@ -6,7 +6,7 @@ Marketing site for [n-dx](https://github.com/en-dash-consulting/n-dx) — the sp
 
 ## What is n-dx?
 
-n-dx is an open-source CLI toolkit for spec-driven development. It closes the loop between understanding a codebase and shipping work against a structured plan.
+n-dx is a source-available (Elastic License 2.0) CLI toolkit for spec-driven development. It closes the loop between understanding a codebase and shipping work against a structured plan.
 
 Three packages, three commands:
 
@@ -63,10 +63,30 @@ next run overwrites it. Change the templates in the script instead.
 
 ### Stack
 
-- Static HTML with inline CSS — no build step, no dependencies
-- Google Fonts (Montserrat, DM Sans, DM Mono)
+- Static HTML — no build step, no npm dependencies
+- `assets/css/site.css` — shared design system (every page); `assets/css/home.css` — landing page (also used by `/vs/spec-kit/`)
+- `assets/js/sprites.js` + `pixel.js` — the 8-bit sprite sheet and canvas renderer (Rex, package icons, logo mark, pixel font)
+- `assets/js/site.js` — shared motion: boot sequence, map pointer label, text scramble, reveals, word sweep, footer wordmark
+- `assets/js/home.js` — landing page: hero scan map, pinned loop, bento animations, use-case scenes, mini game
+- `assets/js/map-data.js` — **generated** hero-map data (see below)
+- GSAP + ScrollTrigger from jsDelivr, landing page only, for the pinned loop section; without it the loop simply stacks. Scrolling is always native — no scroll-jacking library
+- Google Fonts (Geist, Geist Mono, Silkscreen)
 - Google Analytics (gtag.js)
 - Hosted via GitHub Pages with custom domain
+
+### Hero map data
+
+The landing-page hero is a real sourcevision analysis of the n-dx monorepo — 1,957 files in 27 zones,
+with nine of its actual findings pinned to the map. `scripts/build-map-data.mjs` reads a checkout's
+`.sourcevision/` and writes `assets/js/map-data.js`:
+
+```bash
+(cd ../n-dx && ndx analyze --deep .)
+node scripts/build-map-data.mjs ../n-dx
+```
+
+Optional — the committed file is what the site serves. If you regenerate it, update the numbers in
+the hero stats row in `index.html` to match.
 
 ## Links
 

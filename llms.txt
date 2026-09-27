@@ -6,10 +6,10 @@ n-dx connects codebase analysis, structured planning, and autonomous task execut
 
 ## What is n-dx?
 
-n-dx is an open-source, CLI-first toolkit for spec-driven development. Built for Claude Code and Codex — layer it on top of the AI coding tools you already use. It consists of three packages:
+n-dx is a source-available (Elastic License 2.0), CLI-first toolkit for spec-driven development. Built for Claude Code and Codex — layer it on top of the AI coding tools you already use. It consists of three packages:
 
 - **sourcevision** (`ndx analyze .`) — Static analysis engine that maps a codebase into machine-readable context: file inventory, import graph, architectural zone detection via Louvain community detection, and React component catalog.
-- **rex** (`ndx recommend .`) — PRD management with hierarchical epics, features, tasks, and subtasks. Scans your project to generate proposals, tracks progress, and validates dependencies.
+- **rex** (`ndx recommend .`) — PRD management with hierarchical epics, features, tasks, and subtasks, stored in git as a folder of markdown (`.rex/prd_tree/`). Scans your project to generate proposals, tracks progress, and validates dependencies.
 - **hench** (`ndx work .`) — Autonomous agent that picks the next task, builds a brief with full codebase context, and drives Claude in a tool-use loop. Records runs with full transcripts.
 
 ## Quick start
@@ -22,15 +22,16 @@ ndx recommend --accept .
 ndx work --auto .
 ```
 
-Requires Node.js 18+. Works with Claude Code and Codex — configure your LLM vendor on first run.
+Requires Node.js 22+ (macOS, Linux, WSL2). Built for Claude Code and Codex; Gemini and local models (LM Studio, Ollama) are also supported. Configure your LLM vendor on first run.
 
 ## About this site
 
-This repository contains the static HTML marketing site hosted at n-dx.dev via GitHub Pages. No build step — just HTML with inline CSS.
+This repository contains the static HTML marketing site hosted at n-dx.dev via GitHub Pages. No build step — HTML, a shared stylesheet and scripts under `assets/`.
 
 Pages:
 
 - `/` — Landing page (`index.html`)
+- `/changelog/` — Release notes for @n-dx/core (`changelog/index.html`, generated)
 - `/vs/spec-kit/` — n-dx vs Spec Kit, OpenSpec, and Kiro (`vs/spec-kit/index.html`)
 - `/mwfb2026/` — Make Work Feel Better Challenge 2026
 
