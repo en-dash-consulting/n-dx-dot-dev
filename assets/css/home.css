@@ -136,15 +136,12 @@ section { padding: clamp(72px, 9vw, 140px) 0; }
 .track-canvas { width: 100%; height: 100%; image-rendering: pixelated; }
 
 /* Pinned mode (desktop, GSAP present): levels stack and swap. */
-.loop.pinned .loop-pin { height: 100vh; display: flex; align-items: flex-start; }
+.loop.pinned .loop-pin { height: 100vh; display: flex; align-items: center; }
 .loop.pinned .loop-stage { width: 100%; padding-top: calc(var(--nav-h) - 20px); padding-bottom: 0; }
-/* Fill the pinned viewport (nav padding + levels + track ≈ 100vh) so no band
-   of empty space shows above or below the stage. */
-.loop.pinned .levels { display: block; position: relative; height: var(--lv-h); }
-.loop.pinned { --lv-h: clamp(420px, calc(100vh - var(--nav-h) - 136px), 680px); }
+.loop.pinned .levels { display: block; position: relative; height: min(60vh, 520px); }
 .loop.pinned .lv { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity 0.3s steps(3), visibility 0s 0.3s; }
 .loop.pinned .lv.on { opacity: 1; visibility: visible; transition: opacity 0.3s steps(3); }
-.loop.pinned .lv-crt { height: var(--lv-h); min-height: 0; }
+.loop.pinned .lv-crt { height: min(60vh, 520px); min-height: 0; }
 .loop.pinned .track { margin-top: 28px; }
 .crt-body[data-type] .ln { display: block; }
 .crt-body[data-type].typing .ln { visibility: hidden; }
