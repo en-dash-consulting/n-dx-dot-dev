@@ -20,11 +20,12 @@
   }
 
   // Rex, facing right — traced from the Rex-F mascot art. Teal belly and
-  // teeth, ink eye on row 2.
+  // teeth, eye on row 2. Notches are filled with shade rather than left
+  // transparent so the card behind never shows through.
   var REX_BODY = [
     '.......ppppp....',
     '.....ppppppppppp',
-    '.....pppkppppppp',
+    '.....pppwbpppppp',
     '....pppppppppppp',
     '....ppptptpppppp',
     '....ppttttttttt.',
@@ -33,8 +34,8 @@
     '....pppptttpppp.',
     'ppppppppptttpp..',
     'ppppppppptttp...',
-    'ppppppp..tttp...',
-    '.pppppp.ttt.p...',
+    'pppppppddtttp...',
+    '.ppppppdtttdp...',
   ]
   var LEGS = {
     stand: ['..ppppptttppp...', '..ppppptttppp...', '....pppt.ppttt..'],
@@ -44,7 +45,7 @@
   }
   function rex(legs, blink) {
     var body = REX_BODY.slice()
-    if (blink) body[2] = '.....pppdppppppp'
+    if (blink) body[2] = '.....pppddpppppp'
     return body.concat(LEGS[legs])
   }
 
