@@ -14,16 +14,8 @@
   gtag('config', 'G-GD4SJX7TSY');
 </script>
 <script>
-  // Mark JS early so reveal styles apply before first paint. The boot screen
-  // only exists with JS, plays once per session, and never under reduced motion.
-  (function (d) {
-    d.classList.add('js');
-    var seen = false;
-    try { seen = sessionStorage.getItem('ndx-boot') === '1'; } catch (e) {}
-    if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    d.classList.add('booting');
-    setTimeout(function () { d.classList.remove('booting'); }, 3500);
-  })(document.documentElement);
+  // Mark JS early so reveal styles apply before first paint.
+  document.documentElement.classList.add('js');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,28 +73,6 @@
 <a href="#main" class="skip-link">Skip to content</a>
 
 <!-- BOOT: plays once per session (site.js) -->
-<div class="boot" aria-hidden="true">
-  <div class="boot-inner">
-    <ul class="boot-list">
-      <li>001 Read file inventory</li>
-      <li>002 Build import graph</li>
-      <li>003 Detect zones (Louvain)</li>
-      <li>004 Catalog components</li>
-      <li>005 Trace call graph</li>
-      <li>006 Write CONTEXT.md</li>
-      <li>007 Propose PRD items</li>
-      <li>008 Pick next task</li>
-      <li>009 Brief the agent</li>
-      <li>010 Start the loop</li>
-    </ul>
-    <button class="boot-skip" type="button">Skip ▸</button>
-    <div class="boot-meta">n-dx.dev<br>Map · Plan · Ship</div>
-    <div class="boot-pct"><span>0</span><small>%</small></div>
-  </div>
-  <canvas class="boot-rex" data-sprite="rex_walk0" data-frames="rex_walk0,rex_walk1" data-fps="8" data-scale="8"></canvas>
-  <div class="boot-bar"><i></i></div>
-</div>
-
 <nav class="nav" aria-label="Main">
   <a href="/" class="logo" aria-label="n-dx home">
     <img src="n-dx-logo.png" alt="" width="30" height="30">

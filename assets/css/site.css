@@ -344,34 +344,6 @@ button { font: inherit; color: inherit; }
 }
 .ptag.on { opacity: 1; }
 
-/* ── boot loader ─────────────────────────────────────────────────── */
-.boot {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: var(--paper);
-  display: none;
-  font-family: var(--f-mono);
-  font-size: 12px;
-  text-transform: uppercase;
-}
-.booting .boot { display: block; }
-.booting body { overflow: hidden; }
-.boot-inner { position: absolute; inset: 0; padding: calc(var(--gutter) + 8px) var(--gutter); display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr auto; }
-.boot-list { list-style: none; margin: 0; padding: 0; line-height: 1.9; color: var(--mute); }
-.boot-list li { opacity: 0.25; }
-.boot-list li.on { opacity: 1; color: var(--ink); }
-.boot-list li.on::after { content: ' ··· OK'; color: var(--teal-ink); }
-.boot-list li.cur { opacity: 1; color: var(--purple); }
-.boot-list li.cur::after { content: ' █'; animation: blink 0.6s steps(1) infinite; }
-.boot-rex { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -60%); width: 184px; height: 152px; }
-.boot-pct { grid-column: 2; grid-row: 3; align-self: end; font-family: var(--f-display); font-weight: 600; font-size: clamp(5rem, 14vw, 12rem); line-height: 0.8; letter-spacing: -0.05em; text-transform: none; }
-.boot-pct small { font-size: 0.35em; vertical-align: top; margin-left: 0.05em; }
-.boot-meta { grid-column: 1; grid-row: 3; align-self: end; color: var(--mute); line-height: 1.7; }
-.boot-bar { position: absolute; left: var(--gutter); right: var(--gutter); bottom: calc(var(--gutter) - 14px); height: 6px; background: var(--paper-3); }
-.boot-bar i { display: block; height: 100%; width: 0; background: var(--ink); }
-.boot-skip { grid-column: 2; grid-row: 1; justify-self: end; align-self: start; background: none; border: 1px solid var(--ink); padding: 6px 10px; font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; cursor: pointer; }
-.boot-wipe { position: fixed; inset: 0; z-index: 10000; pointer-events: none; width: 100%; height: 100%; }
 @keyframes blink { 50% { opacity: 0; } }
 
 /* ── CRT screen (terminal panels) ────────────────────────────────── */
