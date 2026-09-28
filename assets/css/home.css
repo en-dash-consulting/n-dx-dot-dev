@@ -108,7 +108,7 @@ section { padding: clamp(72px, 9vw, 140px) 0; }
 .prob:hover { background: var(--paper-2); }
 .prob-top { display: flex; justify-content: space-between; font-size: 11px; }
 .prob-top .mono { color: var(--signal); }
-.prob canvas { width: 72px; height: auto; margin: 18px 0 auto; }
+.prob canvas { width: 72px; height: auto; margin: 44px 0 auto; }
 .prob h3 { max-width: 12em; }
 .prob p { margin: 0; font-size: 15px; color: var(--ink-2); }
 @media (max-width: 1000px) { .prob-grid { grid-template-columns: 1fr 1fr; } .prob { min-height: 300px; } }

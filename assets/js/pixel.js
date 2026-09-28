@@ -79,10 +79,14 @@
     var scale = +el.dataset.scale || 4
     var sz = size(frames[0])
     var pad = +el.dataset.pad || 0
+    var bob = el.dataset.bob === '1'
+    // Bobbing lifts the sprite one pixel, so give it a row of headroom or the
+    // top row is clipped on alternate frames.
+    var head = bob ? 1 : 0
     el.width = (sz.w + pad * 2) * scale
-    el.height = (sz.h + pad * 2) * scale
+    el.height = (sz.h + pad * 2 + head) * scale
     el.classList.add('pixelated')
-    var st = { el: el, frames: frames, scale: scale, pad: pad, fps: +el.dataset.fps || 4, t: 0, f: -1, flip: el.dataset.flip === '1', visible: true, bob: el.dataset.bob === '1' }
+    var st = { el: el, frames: frames, scale: scale, pad: pad, head: head, fps: +el.dataset.fps || 4, t: 0, f: -1, flip: el.dataset.flip === '1', visible: true, bob: bob }
     el._px = st
     mounted.push(st)
     render(st, 0)
@@ -94,7 +98,7 @@
     var ctx = st.el.getContext('2d')
     ctx.clearRect(0, 0, st.el.width, st.el.height)
     var yoff = st.bob && f % 2 ? -1 : 0
-    draw(ctx, st.frames[f % st.frames.length], st.pad * st.scale, (st.pad + yoff) * st.scale, st.scale, st.flip)
+    draw(ctx, st.frames[f % st.frames.length], st.pad * st.scale, (st.pad + st.head + yoff) * st.scale, st.scale, st.flip)
   }
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches
   function tick(now) {
