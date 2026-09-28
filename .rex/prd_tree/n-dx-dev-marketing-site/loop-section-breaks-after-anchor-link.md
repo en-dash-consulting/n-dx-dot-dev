@@ -2,7 +2,7 @@
 id: "2583b400-27e9-4194-a6d6-50b7707365f9"
 level: "task"
 title: "Loop section breaks after anchor-link jump: pin mis-measured, blank stage and overlapping content when scrolling back up"
-status: "pending"
+status: "completed"
 priority: "high"
 tags:
   - "bug"
@@ -10,12 +10,17 @@ tags:
   - "scroll"
   - "gsap"
 source: "ndx-capture"
+startedAt: "2026-09-28T21:29:05.842Z"
+completedAt: "2026-09-28T21:29:05.842Z"
+endedAt: "2026-09-28T21:29:05.842Z"
+resolutionType: "code-change"
+resolutionDetail: "assets/js/home.js: the ScrollTrigger refreshInit handler now flushes styles after setting scroll-behavior:auto so Chromium's scrollTo(0,0) fast path jumps instantly instead of animating (pin offsets were off by the current scrollY on every refresh made while scrolled); ResizeObserver and fonts.ready re-measures use ScrollTrigger.refresh(true) so they wait for in-flight anchor scrolls to end. Verified headlessly: Get started click + scroll up, resize at y=9000, nav #loop link all keep start/end at the true .loop-pin offset."
 acceptanceCriteria:
   - "After clicking the hero \"Get started\" link (href=\"#install\") at a >=961px viewport and scrolling back up, the loop section is pinned and scrubs through levels 1-4 exactly as on a fresh load, with no blank viewport-height gap above the Tools section."
   - "ScrollTrigger.getAll()[0].start and .end for the loop pin stay within a few px of the values measured on initial load after any refresh that happens while the page is scrolled (ResizeObserver-triggered, font-ready, or a manual ScrollTrigger.refresh())."
   - "The same holds for the other in-page anchors that cross the pinned section (nav links The loop / Tools / Features / Compare and the footer links)."
   - "No regression on viewports below 961px or with prefers-reduced-motion, where the pin is not used and all four levels render stacked."
 description: "On the landing page (index.html) at a desktop viewport, click the hero \"Get started\" button (an anchor to #install). The page smooth-scrolls down past the pinned \"The loop\" section. Scrolling back up afterwards, the loop section is broken: a viewport-height block of empty dotted background where the loop stage should be pinned, the level track and nav sitting in the wrong place, and the stage stuck on level 1-4 (or overlapping the Tools section) instead of scrubbing back through the levels.\n\nRoot cause (reproduced headlessly with Playwright at 1440x900): the GSAP ScrollTrigger pin for `.loop-pin` gets re-measured by `ScrollTrigger.refresh()` while the page is scrolled (the ResizeObserver in assets/js/home.js calls refresh whenever body height changes, and sprite canvases / the boot canvas change height a couple of px after the click). Any refresh made while scrollY != 0 records start/end offsets that are wrong by exactly the current scroll position (e.g. start 3143 -> -6136 when refreshed at y=9279; a manual refresh at a static y=9000 gives start -5857). ScrollTrigger's refresh scrolls the window to 0 to measure and then restores; that jump is not taking effect before measurement because of the site's `html { scroll-behavior: smooth }` interaction with the inline `scroll-behavior: auto` toggling in home.js. With negative start/end the trigger thinks the scroll is always past its end, so the pin stays released at the bottom of its spacer and the spacer's padding shows as blank space.\n\nRepro: serve the repo root, open / at >= 961px wide, click \"Get started\" in the hero, wait for the scroll to finish, then scroll up with the wheel. Compare `ScrollTrigger.getAll()[0].start` before and after: it should still be ~3143 (the top of `.loop-pin`)."
-lastModified: "2026-09-28T21:26:17.932Z"
+lastModified: "2026-09-28T21:29:05.855Z"
 lastModifiedBy: "Nick Daniel <nick@endash.us>"
 ---
