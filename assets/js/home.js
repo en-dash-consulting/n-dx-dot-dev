@@ -311,7 +311,7 @@
         for (var i = 0; i < row * cols; i++) if (owner[i] >= 0) rev[i] = 1
         if (full >= 1) {
           sweeping = false
-          runBtn.textContent = '✓ 27 zones · 124 findings'; runBtn.classList.add('done')
+          runBtn.textContent = '✓ ' + MAP.totals.zones + ' zones · ' + MAP.totals.findings + ' findings'; runBtn.classList.add('done')
         }
       }
 
@@ -455,7 +455,7 @@
 
     build()
     onResize.push(function () { build() })
-    if (reduce) { full = 1; rev.fill(1); runBtn.textContent = '✓ 27 zones · 124 findings'; runBtn.disabled = true; runBtn.classList.add('done') }
+    if (reduce) { full = 1; rev.fill(1); runBtn.textContent = '✓ ' + MAP.totals.zones + ' zones · ' + MAP.totals.findings + ' findings'; runBtn.disabled = true; runBtn.classList.add('done') }
     animate(canvas, draw)
     if (reduce) draw(0, 0)
   })()
