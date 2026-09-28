@@ -497,6 +497,14 @@
     var desktop = window.matchMedia('(min-width: 961px)').matches
     if (desktop && window.gsap && window.ScrollTrigger && !reduce) {
       loopEl.classList.add('pinned')
+      // site.css sets `scroll-behavior: smooth`; refresh() jumps the scroll
+      // position to measure and then restores it, and smooth scrolling turns
+      // those jumps into animations, so the pin gets measured at the wrong
+      // offset. Switch it off for the duration of every refresh.
+      var root = document.documentElement
+      root.style.scrollBehavior = 'auto'
+      ScrollTrigger.addEventListener('refreshInit', function () { root.style.scrollBehavior = 'auto' })
+      ScrollTrigger.addEventListener('refresh', function () { root.style.scrollBehavior = '' })
       ScrollTrigger.create({
         trigger: loopEl.querySelector('.loop-pin'),
         start: 'top top',
