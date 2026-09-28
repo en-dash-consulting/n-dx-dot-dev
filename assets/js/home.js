@@ -2,9 +2,9 @@
 // loop, bento tile animations, use-case scenes, and the ship-it mini game.
 ;(function () {
   var P = window.NDXPixel
-  var REX = P.size('rex_idle0')
   var MAP = window.NDX_MAP
   if (!P) return
+  var REX = P.size('rex_idle0')
   var reduce = P.reduce
   var DPR = Math.min(2, window.devicePixelRatio || 1)
   var PAL = P.PALETTE
@@ -509,6 +509,20 @@
         },
       })
       setStep(0)
+      // The pin is measured now, but sprite canvases (sized on DOMContentLoaded)
+      // and web fonts can still change the height of everything above it. Stale
+      // start/end points make the pinned block release in the wrong place and
+      // overlay other sections on the way back up, so re-measure on any change.
+      var lastH = 0, rt
+      var remeasure = function () {
+        var h = document.documentElement.scrollHeight
+        if (h === lastH) return
+        lastH = h
+        clearTimeout(rt)
+        rt = setTimeout(function () { ScrollTrigger.refresh() }, 120)
+      }
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh() })
+      if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.body)
     } else {
       levels.forEach(function (l) { l.classList.add('on') })
       if ('IntersectionObserver' in window && !reduce) {
