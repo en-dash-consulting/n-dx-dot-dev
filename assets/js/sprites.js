@@ -39,8 +39,8 @@
   var LEGS = {
     stand: ['..ppppptttppp...', '..ppppptttppp...', '....pppt.ppttt..'],
     walkA: ['..ppppptttppp...', '..ppppptttppp...', '...pppt...ppttt.'],
-    walkB: ['..ppppptttppp...', '..ppppptttppp...', '.....ppptpptt...'],
-    jump:  ['..ppppptttppp...', '..pppt....ptt...', '..ppt......tt...'],
+    walkB: ['..ppppptttppp...', '..ppppptttppp...', '.....pppt.ppttt.'],
+    jump:  ['..ppppptttppp...', '...pppt..ppttt..', '................'],
   }
   function rex(legs, blink) {
     var body = REX_BODY.slice()

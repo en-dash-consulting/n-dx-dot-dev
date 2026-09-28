@@ -430,6 +430,10 @@
       // Rex follows the lens at a walk.
       var sc = Math.max(2, Math.round(tile / 3.2))
       var rw = REX.w * sc, rh = REX.h * sc
+      // Face the lens, with a dead zone so he doesn't flip-flop beside it
+      // (his target spot depends on which way he faces).
+      var ahead = lens.x - (rex.x + rw / 2)
+      if (Math.abs(ahead) > rw * 0.75) rex.face = ahead > 0 ? 1 : -1
       var gx = Math.min(G.w - rw, Math.max(0, lens.x - rw / 2 - lens.r * tile * 0.9 * rex.face))
       var gy = Math.min(G.h - rh, Math.max(0, lens.y + lens.r * tile * 0.5 - rh))
       var dx = gx - rex.x, dy = gy - rex.y
@@ -439,7 +443,6 @@
         var sp = Math.min(dist, 110 * G.dpr * dt)
         rex.x += (dx / dist) * sp
         rex.y += (dy / dist) * sp
-        if (Math.abs(dx) > 4) rex.face = dx > 0 ? 1 : -1
       }
       var frame = rex.walking ? (Math.floor(now * 9) % 2 ? 'rex_walk0' : 'rex_walk1') : (Math.floor(now * 1.5) % 5 === 0 ? 'rex_idle1' : 'rex_idle0')
       c.fillStyle = A(T.ink, 0.18)
