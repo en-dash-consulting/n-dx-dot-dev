@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0.0",
+  "snapshots": [
+    {
+      "zoneId": "scripts",
+      "zoneName": "Scripts",
+      "cohesion": 1,
+      "coupling": 0,
+      "riskScore": 0,
+      "fileCount": 1,
+      "timestamp": "2026-09-27T04:21:09.458Z",
+      "gitSha": "53fac6c214dbd1fdd6321d926e42c64f2c6e4ed7"
+    }
+  ],
+  "analyzedAt": "2026-09-27T04:21:09.458Z",
+  "gitSha": "53fac6c214dbd1fdd6321d926e42c64f2c6e4ed7"
+}

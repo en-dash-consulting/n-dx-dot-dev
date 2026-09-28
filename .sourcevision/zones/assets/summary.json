@@ -1,0 +1,26 @@
+{
+  "id": "assets",
+  "name": "Assets Assets",
+  "description": "Bundle assets and resources: home.js, iso-data.js, iso.js (+4 more)",
+  "files": [
+    "assets/js/home.js",
+    "assets/js/iso-data.js",
+    "assets/js/iso.js",
+    "assets/js/map-data.js",
+    "assets/js/pixel.js",
+    "assets/js/site.js",
+    "assets/js/sprites.js"
+  ],
+  "entryPoints": [],
+  "cohesion": 0,
+  "coupling": 0,
+  "fileCount": 7,
+  "lineCount": 1849,
+  "riskMetrics": {
+    "cohesion": 0,
+    "coupling": 0,
+    "riskScore": 0.5,
+    "riskLevel": "at-risk",
+    "failsThreshold": false
+  }
+}

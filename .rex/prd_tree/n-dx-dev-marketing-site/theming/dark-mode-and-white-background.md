@@ -1,0 +1,23 @@
+---
+id: "96d3c544-0b04-4245-9f71-b6b703d4b0b2"
+level: "task"
+title: "Dark mode and white background"
+status: "completed"
+priority: "high"
+source: "ndx-capture"
+startedAt: "2026-09-27T05:42:25.568Z"
+completedAt: "2026-09-27T05:48:54.505Z"
+endedAt: "2026-09-27T05:48:54.505Z"
+acceptanceCriteria:
+  - "Light theme background is an off-white or pure white, not the warm paper tone"
+  - "Dark theme is applied by default when the OS prefers dark (prefers-color-scheme)"
+  - "A toggle in the nav switches theme, and the choice persists across visits (localStorage)"
+  - "No flash of the wrong theme on page load"
+  - "Landing, /vs/spec-kit/ and /changelog/ are all themed; the changelog through the sync-changelog.mjs templates"
+  - "Canvas art reads correctly in both themes: hero pixel map, sprites, footer wordmark, level track, bento canvases, mini game"
+  - "Body and label text meet WCAG AA contrast in both themes"
+  - "Iso map panels keep the ndx iso palette in both themes"
+description: "Replace the warm paper background with an off-white light theme and add a dark theme. Colours are tokens in assets/css/site.css; the theme follows the OS setting by default, with a manual toggle whose choice persists."
+lastModified: "2026-09-27T05:48:54.521Z"
+lastModifiedBy: "Nick Daniel <nick@endash.us>"
+---

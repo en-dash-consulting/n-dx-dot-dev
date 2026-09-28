@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  // Apply a saved theme before first paint, so there is no flash of the other
+  // one. With nothing saved, CSS follows prefers-color-scheme.
+  try { var t = localStorage.getItem('ndx-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD4SJX7TSY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -15,7 +20,9 @@
 <meta name="author" content="En Dash Consulting">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://n-dx.dev/changelog/">
-<meta name="theme-color" content="#0d1b3e">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0d13" media="(prefers-color-scheme: dark)">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -37,493 +44,66 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/n-dx-logo.png">
 <link rel="apple-touch-icon" href="/n-dx-logo.png">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-  :root {
-    --navy: #0d1b3e;
-    --navy-mid: #132247;
-    --navy-light: #1a2f5a;
-    --teal: #00ffb3;
-    --teal-dim: #1a9970;
-    --teal-subtle: rgba(45,212,160,0.12);
-    --amber: #ffaa33;
-    --amber-subtle: rgba(245,158,66,0.12);
-    --purple: #a78bff;
-    --purple-subtle: rgba(139,124,248,0.12);
-    --white: #ffffff;
-    --muted: #dde6f8;
-    --border: rgba(255,255,255,0.10);
-    --card: rgba(255,255,255,0.05);
-    --card-hover: rgba(255,255,255,0.09);
-    --font-display: 'Montserrat', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--navy);
-    color: #edf2ff;
-    font-family: var(--font-body);
-    font-weight: 400;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ─────────────────────────────────────────────────────────── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 48px;
-    height: 64px;
-    background: rgba(13,27,62,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo-mark { width: 32px; height: 32px; border-radius: 7px; overflow: hidden; flex-shrink: 0; }
-  .nav-logo-mark img { width: 100%; height: 100%; object-fit: cover; }
-  .nav-logo-text {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--white);
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-  }
-  .nav-links { display: flex; gap: 32px; list-style: none; flex-wrap: nowrap; }
-  .nav-links a {
-    white-space: nowrap;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--white); }
-  .nav-links a.active { color: var(--teal); }
-  .nav-cta { display: flex; gap: 12px; align-items: center; }
-  .nav-menu { display: contents; }
-  .nav-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 44px; height: 44px;
-    padding: 10px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  .nav-toggle span {
-    display: block;
-    width: 100%; height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: transform 0.2s, opacity 0.2s;
-  }
-  nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
-  nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 20px;
-    min-height: 44px;
-    border-radius: 8px;
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.95rem;
-    text-decoration: none;
-    white-space: nowrap;
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s;
-  }
-  .btn-primary { background: #00ffb3; font-weight: 700; color: #020c28; }
-  .btn-primary:hover { background: #3de8b4; }
-  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
-  .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
-
-  /* ── PAGE HEADER ─────────────────────────────────────────────────── */
-  .cl-hero {
-    position: relative;
-    padding: 140px 48px 48px;
-    max-width: 900px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .cl-hero-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 700px 400px at 30% 0%, rgba(45,212,160,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .section-label {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #00ffb3;
-    background: rgba(0,255,179,0.1);
-    border: 1px solid rgba(0,255,179,0.3);
-    border-radius: 999px;
-    padding: 5px 14px;
-    margin-bottom: 20px;
-    font-weight: 600;
-    position: relative;
-  }
-  .cl-hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--white);
-    margin-bottom: 16px;
-    position: relative;
-  }
-  .cl-hero p {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 640px;
-    line-height: 1.7;
-    position: relative;
-  }
-  .cl-hero-links {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 28px;
-    position: relative;
-  }
-
-  /* ── RELEASE LIST ────────────────────────────────────────────────── */
-  .cl-main { max-width: 900px; margin: 0 auto; padding: 24px 48px 100px; }
-  .cl-release {
-    border-top: 1px solid var(--border);
-    padding: 40px 0;
-    scroll-margin-top: 84px;
-  }
-  .cl-release:first-child { border-top: none; padding-top: 8px; }
-  .cl-release-head {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
-  .cl-version {
-    font-family: var(--font-display);
-    font-size: 1.9rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .cl-version a { color: var(--white); text-decoration: none; }
-  .cl-version a:hover { color: var(--teal); }
-  .cl-date {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--muted);
-    opacity: 0.75;
-  }
-  .cl-release-bump {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 3px 10px;
-  }
-  .cl-release-bump.minor {
-    color: var(--purple);
-    background: var(--purple-subtle);
-    border: 1px solid rgba(167,139,255,0.3);
-  }
-  .cl-release-bump.patch {
-    color: var(--teal);
-    background: var(--teal-subtle);
-    border: 1px solid rgba(45,212,160,0.25);
-  }
-  .cl-release-bump.major {
-    color: var(--amber);
-    background: var(--amber-subtle);
-    border: 1px solid rgba(245,158,66,0.3);
-  }
-  .cl-npm-link {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--muted);
-    text-decoration: none;
-    opacity: 0.7;
-    margin-left: auto;
-    transition: opacity 0.2s, color 0.2s;
-  }
-  .cl-npm-link:hover { opacity: 1; color: var(--teal); }
-
-  /* One card per release, holding every change in it. */
-  .cl-release-body {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px 26px;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .cl-release-body:hover { background: var(--card-hover); border-color: rgba(255,255,255,0.16); }
-
-  .cl-changes { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .cl-changes > li {
-    position: relative;
-    padding-left: 20px;
-    font-size: 0.98rem;
-    line-height: 1.7;
-    color: #edf2ff;
-  }
-  .cl-changes > li::before {
-    content: '';
-    position: absolute;
-    left: 2px; top: 0.68em;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--teal);
-    opacity: 0.65;
-  }
-  .cl-pr {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--muted);
-    text-decoration: none;
-    opacity: 0.6;
-    white-space: nowrap;
-    transition: opacity 0.2s, color 0.2s;
-  }
-  .cl-pr:hover { opacity: 1; color: var(--teal); }
-
-  .cl-note + .cl-note {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-  .cl-note-lead { color: var(--white); font-weight: 500; }
-
-  .cl-release-body p { font-size: 0.98rem; line-height: 1.7; }
+  /* Changelog page. Tokens, nav, footer and badges come from /assets/css/site.css. */
+  .cl-hero { padding: calc(var(--nav-h) + 56px) 0 40px; }
+  .cl-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; margin-top: 28px; }
+  .cl-hero h1 { font-size: clamp(3rem, 8vw, 7.4rem); }
+  .cl-hero p { margin: 24px 0 0; }
+  .cl-hero code { font-family: var(--f-mono); font-size: 0.9em; color: var(--purple-2); }
+  .cl-hero-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+  .cl-hero-art { width: 184px; height: 152px; }
+  .cl-main { padding-bottom: 120px; }
+  .cl-release { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; padding: 40px 0; border-top: 1px solid var(--ink); scroll-margin-top: 80px; }
+  .cl-release-head { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; position: sticky; top: calc(var(--nav-h) + 20px); align-self: start; }
+  .cl-version { font-family: var(--f-display); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 600; letter-spacing: -0.045em; line-height: 0.9; }
+  .cl-version a { text-decoration: none; }
+  .cl-version a:hover { color: var(--purple); }
+  .cl-date { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; color: var(--mute); }
+  .cl-npm-link { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; text-decoration: none; color: var(--purple); }
+  .cl-npm-link:hover { text-decoration: underline; }
+  .cl-changes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .cl-changes > li { position: relative; padding-left: 22px; line-height: 1.6; }
+  .cl-changes > li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; background: var(--purple); box-shadow: inset -2px -2px 0 var(--purple-2); }
+  .cl-pr { font-family: var(--f-mono); font-size: 12px; color: var(--mute); text-decoration: none; white-space: nowrap; }
+  .cl-pr:hover { color: var(--purple); }
+  .cl-release-body code { font-family: var(--f-mono); font-size: 0.86em; background: var(--tint); color: var(--purple-2); padding: 0.05em 0.35em; }
+  .cl-release-body a:not(.cl-pr) { color: var(--purple-2); }
+  .cl-release-body strong { font-weight: 600; }
+  .cl-release-body p { margin: 0; }
   .cl-release-body p + p { margin-top: 12px; }
-  .cl-release-body a { color: var(--teal); text-decoration: none; }
-  .cl-release-body a:hover { text-decoration: underline; }
-  .cl-release-body .cl-pr { color: var(--muted); }
-  .cl-release-body .cl-pr:hover { color: var(--teal); text-decoration: none; }
-  .cl-release-body code {
-    font-family: var(--font-mono);
-    font-size: 0.85em;
-    color: var(--teal);
-    background: rgba(0,255,179,0.08);
-    border-radius: 4px;
-    padding: 1px 5px;
-  }
-  .cl-release-body strong { color: var(--white); font-weight: 600; }
-  .cl-sublist { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
-  .cl-sublist li {
-    position: relative;
-    padding-left: 18px;
-    font-size: 0.95rem;
-    color: var(--muted);
-  }
-  .cl-sublist li::before {
-    content: '';
-    position: absolute;
-    left: 2px; top: 0.72em;
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--teal);
-    opacity: 0.6;
-  }
-
-  .cl-code {
-    margin-top: 14px;
-    padding: 14px 16px;
-    background: rgba(2,12,40,0.6);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .cl-code code {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    line-height: 1.6;
-    color: var(--muted);
-    background: none;
-    padding: 0;
-    white-space: pre;
-  }
-
-  .cl-detail { margin-top: 14px; }
-  .cl-detail summary {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--teal);
-    cursor: pointer;
-    display: inline-block;
-    padding: 4px 0;
-    list-style: none;
-  }
+  .cl-note + .cl-note { margin-top: 22px; padding-top: 22px; border-top: 1px dashed var(--line-2); }
+  .cl-note-lead { font-weight: 600; }
+  .cl-sublist { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; color: var(--ink-2); }
+  .cl-sublist li { position: relative; padding-left: 18px; font-size: 15.5px; }
+  .cl-sublist li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; background: var(--teal-ink); }
+  .cl-code { margin: 14px 0 0; padding: 14px 16px; background: var(--crt); color: var(--crt-text); overflow-x: auto; font-size: 12.5px; line-height: 1.6; }
+  .cl-code code { background: none !important; color: inherit !important; padding: 0 !important; white-space: pre; }
+  .cl-detail { margin-top: 18px; }
+  .cl-detail summary { display: inline-flex; gap: 8px; align-items: center; cursor: pointer; list-style: none; font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--ink); }
   .cl-detail summary::-webkit-details-marker { display: none; }
-  .cl-detail summary::after { content: ' ↓'; }
-  .cl-detail[open] summary::after { content: ' ↑'; }
-  .cl-detail summary:hover { text-decoration: underline; }
-  .cl-detail-body {
-    margin-top: 10px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-  }
-
-  /* ── EARLY RELEASES ──────────────────────────────────────────────── */
-  .cl-early {
-    border-top: 1px solid var(--border);
-    padding-top: 40px;
-    margin-top: 8px;
-  }
-  .cl-early h2 {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
-  .cl-early p { font-size: 0.95rem; color: var(--muted); margin-bottom: 20px; max-width: 620px; }
-  .cl-early-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    list-style: none;
-  }
-  .cl-early-grid a {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--muted);
-    text-decoration: none;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 7px 12px;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-  }
-  .cl-early-grid a:hover { background: var(--card-hover); border-color: rgba(45,212,160,0.3); color: var(--white); }
-  .cl-early-grid .v { color: var(--teal); }
-  .cl-early-grid .d { opacity: 0.6; }
-
-  /* ── FOOTER ──────────────────────────────────────────────────────── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 40px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .footer-logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-  }
-  .footer-meta { font-size: 0.875rem; color: var(--muted); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-size: 0.875rem;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--white); }
-
-  /* ── RESPONSIVE ──────────────────────────────────────────────────── */
-  @media (max-width: 1199px) {
-    .nav-toggle { display: flex; }
-    .nav-menu {
-      display: none;
-      position: absolute;
-      top: 64px; left: 0; right: 0;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 20px;
-      padding: 20px 24px 28px;
-      background: rgba(13,27,62,0.98);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav.open .nav-menu { display: flex; }
-    .nav-menu .nav-links { flex-direction: column; gap: 20px; }
-    .nav-menu .nav-cta { flex-direction: column; align-items: stretch; gap: 12px; }
-    .nav-menu .nav-cta .btn { justify-content: center; }
-  }
-
-  @media (max-width: 900px) {
-    nav { padding: 0 24px; }
-    .cl-hero { padding: 110px 24px 32px; }
-    .cl-main { padding: 16px 24px 64px; }
-    footer { flex-direction: column; gap: 24px; text-align: center; }
-  }
-
-  @media (max-width: 480px) {
-    nav { padding: 0 16px; }
-    .cl-hero { padding: 96px 16px 24px; }
-    .cl-main { padding: 12px 16px 48px; }
-    .cl-release-body { padding: 18px 16px; }
-    .cl-npm-link { margin-left: 0; }
-    footer { padding: 24px 16px; }
-  }
-
-  /* ── SKIP LINK ──────────────────────────────────────────────────── */
-  .skip-link {
-    position: absolute;
-    top: -100%;
-    left: 16px;
-    z-index: 200;
-    padding: 8px 16px;
-    background: var(--teal);
-    color: var(--navy);
-    font-weight: 700;
-    font-size: 0.875rem;
-    border-radius: 0 0 8px 8px;
-    text-decoration: none;
-    transition: top 0.2s;
-  }
-  .skip-link:focus { top: 0; }
-
-  /* ── FOCUS STYLES ───────────────────────────────────────────────── */
-  :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-
-  /* ── REDUCED MOTION ─────────────────────────────────────────────── */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
+  .cl-detail summary::after { content: '+'; }
+  .cl-detail[open] summary::after { content: '−'; }
+  .cl-detail summary:hover { background: var(--ink); color: var(--paper); }
+  .cl-detail-body { margin-top: 18px; padding: 20px; background: var(--paper-2); border-left: 3px solid var(--purple); color: var(--ink-2); }
+  .cl-early { border-top: 1px solid var(--ink); padding-top: 40px; }
+  .cl-early h2 { font-family: var(--f-display); text-transform: uppercase; letter-spacing: -0.03em; font-size: 2rem; }
+  .cl-early p { color: var(--ink-2); max-width: 40em; margin: 10px 0 20px; }
+  .cl-early-grid { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .cl-early-grid a { display: inline-flex; gap: 8px; font-family: var(--f-mono); font-size: 12px; text-decoration: none; border: 1px solid var(--line-2); padding: 6px 10px; }
+  .cl-early-grid a:hover { border-color: var(--ink); background: var(--paper-2); }
+  .cl-early-grid .v { color: var(--purple); }
+  .cl-early-grid .d { color: var(--mute); }
+  @media (max-width: 800px) {
+    .cl-hero-grid { grid-template-columns: 1fr; }
+    .cl-hero-art { display: none; }
+    .cl-release { grid-template-columns: 1fr; gap: 18px; }
+    .cl-release-head { position: static; flex-direction: row; flex-wrap: wrap; align-items: center; }
   }
 </style>
 </head>
@@ -531,50 +111,53 @@
 
 <a href="#main-content" class="skip-link">Skip to content</a>
 
-<!-- NAV -->
-<nav role="navigation" aria-label="Main navigation">
-  <a href="/" class="nav-logo" aria-label="Home">
-    <div class="nav-logo-mark">
-      <img src="/n-dx-logo.png" alt="" width="32" height="32">
-    </div>
-    <span class="nav-logo-text">n-dx</span>
+<nav class="nav" aria-label="Main">
+  <a href="/" class="logo" aria-label="n-dx home">
+    <img src="/n-dx-logo.png" alt="" width="30" height="30">
+    <span class="logo-word">n-dx</span>
   </a>
-  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
   <div class="nav-menu" id="nav-menu">
-    <ul class="nav-links" role="list">
-      <li><a href="/#packages">Packages</a></li>
-      <li><a href="/#how">Workflow</a></li>
-      <li><a href="/#usecases">Use Cases</a></li>
-      <li><a href="/changelog/" class="active" aria-current="page">Changelog</a></li>
+    <ul class="nav-links">
+      <li><a href="/#loop">The loop</a></li>
+      <li><a href="/#tools">Tools</a></li>
+      <li><a href="/#features">Features</a></li>
       <li><a href="/#compare">Compare</a></li>
+      <li><a href="/changelog/" aria-current="page">Changelog</a></li>
+      <li><a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer">Docs</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Docs</a>
-      <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub ↗</a>
-      <a href="/#install" class="btn btn-primary">Get Started</a>
+      <a class="btn btn-ghost btn-sm" href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a class="btn btn-sm" href="/#install">Get started <span class="arr">→</span></a>
     </div>
   </div>
+  <button class="theme-toggle" type="button" aria-label="Switch theme">
+    <canvas class="i-moon" data-sprite="moon" data-scale="2" aria-hidden="true"></canvas>
+    <canvas class="i-sun" data-sprite="sun" data-scale="2" aria-hidden="true"></canvas>
+  </button>
 </nav>
 
-<div class="cl-hero">
-  <div class="cl-hero-bg"></div>
-  <div class="section-label">Changelog</div>
-  <h1>Every release,<br>in its own words.</h1>
-  <p>
-    Release notes for <code style="font-family:var(--font-mono);font-size:0.95rem;color:var(--teal)">@n-dx/core</code> —
-    generated from the changesets that shipped each version. Currently on
-    <strong style="color:var(--white)">v0.7.1</strong>, released Sep 25, 2026.
-  </p>
-  <div class="cl-hero-links">
-    <a href="https://www.npmjs.com/package/@n-dx/core" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">View on npm ↗</a>
-    <a href="https://github.com/en-dash-consulting/n-dx/releases" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub releases ↗</a>
-    <a href="/#install" class="btn btn-primary">Get Started</a>
+<header class="cl-hero">
+  <div class="wrap">
+    <div class="bar"><span class="idx">CL</span><span>Changelog</span><span class="ticks"></span><span>v0.7.1</span></div>
+    <div class="cl-hero-grid">
+      <div>
+        <h1 class="display" data-reveal>Every release,<br>in its own words.</h1>
+        <p class="lede">
+          Release notes for <code>@n-dx/core</code>, generated from the changesets that shipped each
+          version. Currently on <strong>v0.7.1</strong>, released Sep 25, 2026.
+        </p>
+        <div class="cl-hero-links">
+          <a href="https://www.npmjs.com/package/@n-dx/core" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">View on npm ↗</a>
+          <a href="https://github.com/en-dash-consulting/n-dx/releases" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub releases ↗</a>
+          <a href="/#install" class="btn">Get started <span class="arr">→</span></a>
+        </div>
+      </div>
+      <canvas class="cl-hero-art" data-sprite="rex_idle0" data-frames="rex_idle0,rex_idle0,rex_idle0,rex_idle1" data-fps="3" data-scale="8" aria-hidden="true"></canvas>
+    </div>
   </div>
-</div>
-
-<main id="main-content" class="cl-main">
+</header>
+<main id="main-content" class="cl-main wrap">
 <article class="cl-release" id="v0-7-1">
         <header class="cl-release-head">
           <h2 class="cl-version">
@@ -1057,45 +640,27 @@ try { killGroup(-child.pid, &quot;SIGKILL&quot;); }      // escalation for the g
       </section>
 </main>
 
-<!-- FOOTER -->
-<footer role="contentinfo">
-  <a href="/" class="footer-logo">
-    <span style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--white);">n-dx</span>
-  </a>
-  <div class="footer-meta">Open source · Elastic License 2.0</div>
-  <div style="display:flex;align-items:center;gap:8px;">
-    <span style="font-size:0.75rem;color:var(--muted);font-family:var(--font-body);">Built by</span>
-    <a href="https://endash.us" target="_blank" rel="noopener noreferrer" aria-label="En Dash Consulting" style="display:inline-flex;">
-      <img src="/assets/logo-endash.webp" alt="En Dash Consulting" width="125" height="125" loading="lazy" decoding="async" style="height:40px;width:auto;border-radius:6px;">
-    </a>
-  </div>
-  <div class="footer-links">
-    <a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer">Docs</a>
-    <a href="/changelog/">Changelog</a>
-    <a href="https://endash.us" target="_blank" rel="noopener noreferrer">En Dash</a>
+<footer class="foot" role="contentinfo">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="/" class="logo" aria-label="n-dx home"><img src="/n-dx-logo.png" alt="" width="30" height="30"><span class="logo-word">n-dx</span></a>
+        <p class="foot-blurb" style="margin-top:16px">Map it. Plan it. Ship it. A CLI toolkit that closes the loop between understanding a codebase and shipping work against a plan.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="/#loop">The loop</a></li><li><a href="/#tools">Tools</a></li><li><a href="/#features">Features</a></li><li><a href="/changelog/">Changelog</a></li></ul></div>
+      <div><h4>Compare</h4><ul><li><a href="/#compare">vs coding agents</a></li><li><a href="/vs/spec-kit/">vs Spec Kit, OpenSpec, Kiro</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="https://docs.n-dx.dev" target="_blank" rel="noopener noreferrer">Docs</a></li><li><a href="https://github.com/en-dash-consulting/n-dx" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.npmjs.com/package/@n-dx/core" target="_blank" rel="noopener noreferrer">npm</a></li><li><a href="https://endash.us" target="_blank" rel="noopener noreferrer">En Dash</a></li></ul></div>
+    </div>
+    <div class="foot-word" aria-hidden="true"><canvas></canvas></div>
+    <div class="foot-bottom">
+      <span>© 2026 En Dash Consulting · Elastic License 2.0</span>
+      <a class="foot-endash" href="https://endash.us" target="_blank" rel="noopener noreferrer"><span>Built by</span><img src="/assets/logo-endash.webp" alt="En Dash Consulting" width="125" height="125" loading="lazy" decoding="async"></a>
+    </div>
   </div>
 </footer>
 
-<script>
-  (function () {
-    var nav = document.querySelector('nav');
-    var btn = nav && nav.querySelector('.nav-toggle');
-    if (!btn) return;
-    function close() {
-      nav.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.setAttribute('aria-label', 'Open menu');
-    }
-    btn.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    });
-    nav.querySelectorAll('.nav-menu a').forEach(function (a) {
-      a.addEventListener('click', close);
-    });
-  })();
-</script>
+<script src="/assets/js/sprites.js"></script>
+<script src="/assets/js/pixel.js"></script>
+<script src="/assets/js/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "1.0.0",
+  "toolVersion": "0.1.0",
+  "analyzedAt": "2026-09-27T05:28:39.238Z",
+  "gitSha": "63be05fb17d8570e960dd4fa80559fe5df81a94d",
+  "gitBranch": "feature/redesign",
+  "targetPath": "/Users/nick/development/endash/n-dx-dot-dev",
+  "modules": {
+    "inventory": {
+      "status": "complete",
+      "startedAt": "2026-09-27T05:28:38.520Z",
+      "completedAt": "2026-09-27T05:28:38.550Z"
+    },
+    "imports": {
+      "status": "complete",
+      "startedAt": "2026-09-27T05:28:38.550Z",
+      "completedAt": "2026-09-27T05:28:38.618Z"
+    },
+    "classifications": {
+      "status": "complete",
+      "startedAt": "2026-09-27T05:28:38.618Z",
+      "completedAt": "2026-09-27T05:28:38.641Z"
+    },
+    "zones": {
+      "status": "complete",
+      "startedAt": "2026-09-27T05:28:38.641Z",
+      "completedAt": "2026-09-27T05:28:39.133Z"
+    },
+    "components": {
+      "status": "complete",
+      "startedAt": "2026-09-27T05:28:39.135Z",
+      "completedAt": "2026-09-27T05:28:39.161Z"
+    },
+    "callgraph": {
+      "status": "complete",
+      "startedAt": "2026-09-27T05:28:39.161Z",
+      "completedAt": "2026-09-27T05:28:39.238Z"
+    }
+  },
+  "language": "typescript",
+  "languages": [
+    "typescript"
+  ],
+  "analysisFingerprint": "9e8ae09a26fe863f",
+  "zoneOutputs": true,
+  "tokenUsage": {
+    "calls": 1,
+    "inputTokens": 924,
+    "outputTokens": 21,
+    "vendor": "claude",
+    "model": "claude-sonnet-5"
+  },
+  "lastAnalysis": {
+    "at": "2026-09-27T05:28:38.519Z",
+    "mode": "cascade",
+    "durationMs": 767,
+    "phases": {
+      "inventory": 30,
+      "imports": 68,
+      "classifications": 23,
+      "zones": 494,
+      "components": 26,
+      "callgraph": 80
+    },
+    "llm": {
+      "byTaskClass": {
+        "zone.judge": {
+          "calls": 1,
+          "inputTokens": 392,
+          "outputTokens": 20,
+          "durationMs": 298,
+          "vendor": "typesafe",
+          "model": "jev-1.13.0"
+        },
+        "finding.judge": {
+          "calls": 1,
+          "inputTokens": 924,
+          "outputTokens": 21,
+          "durationMs": 153,
+          "vendor": "typesafe",
+          "model": "jev-1.13.0"
+        }
+      },
+      "judgmentCache": {
+        "hits": 0,
+        "misses": 2
+      }
+    },
+    "partition": {
+      "fingerprint": "1789679462181fb4",
+      "health": {
+        "zones": 1,
+        "smallZones": 1,
+        "smallShare": 1,
+        "numericIds": 0,
+        "largestShare": 1,
+        "verdict": "borderline",
+        "reasons": [
+          "1 zone over 30% of files without a balanced subdivision"
+        ]
+      },
+      "rejected": false,
+      "mapProbability": 0.62,
+      "reused": false
+    }
+  }
+}

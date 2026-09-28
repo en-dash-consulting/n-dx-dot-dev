@@ -1,0 +1,15 @@
+// Cloudflare Workers config: serves this repo as static assets, for PR
+// preview deploys. Production stays on GitHub Pages (main → n-dx.dev).
+{
+  "name": "n-dx-dot-dev",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./",
+    // /changelog/ → changelog/index.html, as on GitHub Pages.
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  // Required by `wrangler preview` (Worker Previews), which the dashboard's
+  // preview-branch builds run. Empty: previews use the settings above.
+  "previews": {}
+}

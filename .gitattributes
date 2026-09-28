@@ -1,0 +1,19 @@
+# n-dx tools write these files with LF. Pin them so Windows checkouts
+# (core.autocrlf=true) don't show line-ending-only churn on every tool write.
+.rex/**/*.md    text eol=lf
+.rex/**/*.json  text eol=lf
+.rex/**/*.jsonl text eol=lf
+.hench/**/*.md   text eol=lf
+.hench/**/*.json text eol=lf
+.sourcevision/**/*.md   text eol=lf
+.sourcevision/**/*.json text eol=lf
+.sourcevision/**/*.txt  text eol=lf
+.n-dx.json text eol=lf
+AGENTS.md  text eol=lf
+CLAUDE.md  text eol=lf
+.agents/**/*.md text eol=lf
+.claude/skills/**/*.md text eol=lf
+.codex/config.toml text eol=lf
+# PRD tree markdown merges through the rex-prd driver (three-way,
+# frontmatter-aware). The driver is registered in git config by 'ndx init'.
+.rex/prd_tree/** merge=rex-prd
