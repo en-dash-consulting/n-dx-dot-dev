@@ -218,7 +218,10 @@
     var items = boot.querySelectorAll('.boot-list li')
     var pct = boot.querySelector('.boot-pct span')
     var bar = boot.querySelector('.boot-bar i')
-    var total = 1900, t0 = performance.now(), finished = false
+    // ~1s of progress, minus whatever the visitor already spent staring at
+    // the static 0% while scripts loaded (credit up to half the timeline).
+    var total = 1000, finished = false
+    var t0 = performance.now() - Math.min(performance.now(), total / 2)
     var finish = function () {
       if (finished) return
       finished = true
@@ -240,7 +243,7 @@
         li.classList.toggle('cur', i === k)
       })
       if (p < 1) requestAnimationFrame(step)
-      else setTimeout(finish, 220)
+      else setTimeout(finish, 120)
     })(t0)
   } else {
     doc.classList.remove('booting')
@@ -261,7 +264,7 @@
     var cells = []
     for (var y = 0; y < rows; y++) for (var x = 0; x < cols; x++) cells.push({ x: x, y: y, t: (x / cols + (rows - y) / rows) / 2 + Math.random() * 0.22 })
     var ctx = c.getContext('2d')
-    var t0 = performance.now(), d = 720
+    var t0 = performance.now(), d = 450
     var bg = theme.paper
     var colors = [bg, bg, bg, theme.purple, theme.ink, '#00e0b0']
     ;(function f(now) {

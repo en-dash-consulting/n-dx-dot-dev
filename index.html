@@ -22,7 +22,7 @@
     try { seen = sessionStorage.getItem('ndx-boot') === '1'; } catch (e) {}
     if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     d.classList.add('booting');
-    setTimeout(function () { d.classList.remove('booting'); }, 6000);
+    setTimeout(function () { d.classList.remove('booting'); }, 3500);
   })(document.documentElement);
 </script>
 <meta charset="UTF-8">
