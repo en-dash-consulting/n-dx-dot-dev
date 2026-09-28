@@ -2,6 +2,7 @@
 // loop, bento tile animations, use-case scenes, and the ship-it mini game.
 ;(function () {
   var P = window.NDXPixel
+  var REX = P.size('rex_idle0')
   var MAP = window.NDX_MAP
   if (!P) return
   var reduce = P.reduce
@@ -428,7 +429,7 @@
 
       // Rex follows the lens at a walk.
       var sc = Math.max(2, Math.round(tile / 3.2))
-      var rw = 23 * sc, rh = 19 * sc
+      var rw = REX.w * sc, rh = REX.h * sc
       var gx = Math.min(G.w - rw, Math.max(0, lens.x - rw / 2 - lens.r * tile * 0.9 * rex.face))
       var gy = Math.min(G.h - rh, Math.max(0, lens.y + lens.r * tile * 0.5 - rh))
       var dx = gx - rex.x, dy = gy - rex.y
@@ -442,7 +443,7 @@
       }
       var frame = rex.walking ? (Math.floor(now * 9) % 2 ? 'rex_walk0' : 'rex_walk1') : (Math.floor(now * 1.5) % 5 === 0 ? 'rex_idle1' : 'rex_idle0')
       c.fillStyle = A(T.ink, 0.18)
-      c.fillRect(rex.x + sc * 5, rex.y + rh - sc, rw - sc * 10, sc * 2)
+      c.fillRect(rex.x + sc * 2, rex.y + rh - sc, rw - sc * 4, sc * 2)
       P.draw(c, frame, rex.x, rex.y, sc, rex.face < 0)
 
       var pct = Math.round((discovered / Math.max(1, zoneTiles)) * 100)
@@ -553,7 +554,7 @@
         lastRx = rx
         walkT += dt
         var fr = moving ? (Math.floor(walkT * 10) % 2 ? 'rex_walk0' : 'rex_walk1') : 'rex_idle0'
-        P.draw(c, fr, rx - 16 * s, ground - 19 * s, s, false)
+        P.draw(c, fr, rx - 10 * s, ground - REX.h * s, s, false)
       })
     }
   })()
@@ -681,7 +682,7 @@
         c.fillStyle = T.purple
         c.fillText('task #' + (l.task + 1) + ' · claimed', fx - 108 * g.dpr, base - lh + 20 * g.dpr)
         var fr = Math.floor(t / 110) % 2 ? 'rex_walk0' : 'rex_walk1'
-        P.draw(c, fr, l.x, base - 19 * s, s, false)
+        P.draw(c, fr, l.x, base - REX.h * s, s, false)
       })
     })
   })()
@@ -880,20 +881,20 @@
     function sizeLow(g) {
       var k = Math.max(2, Math.floor(g.h / 110))
       var h = Math.floor(g.h / k), w = Math.floor(g.w / k)
-      if (w !== W || h !== H) { W = low.width = w; H = low.height = h; GROUND = H - 22; if (st) st.y = Math.min(st.y, GROUND - 19) }
+      if (w !== W || h !== H) { W = low.width = w; H = low.height = h; GROUND = H - 22; if (st) st.y = Math.min(st.y, GROUND - REX.h) }
       return k
     }
     var lc = low.getContext('2d')
     var st
     function reset(demo) {
-      st = { demo: demo, over: false, started: !demo, y: GROUND - 19, vy: 0, speed: 70, obs: [], coins: [], spawn: 1.2, cspawn: 0.8, score: 0, dist: 0, t: 0, clouds: [[30, 20], [120, 34], [200, 16]] }
+      st = { demo: demo, over: false, started: !demo, y: GROUND - REX.h, vy: 0, speed: 70, obs: [], coins: [], spawn: 1.2, cspawn: 0.8, score: 0, dist: 0, t: 0, clouds: [[30, 20], [120, 34], [200, 16]] }
     }
     reset(true)
     var best = 0
     try { best = +localStorage.getItem('ndx-ship-best') || 0 } catch (e) {}
     function jump() {
       if (st.demo || st.over) { reset(false); return }
-      if (st.y >= GROUND - 19 - 0.5) st.vy = -150
+      if (st.y >= GROUND - REX.h - 0.5) st.vy = -150
     }
     gameC.addEventListener('pointerdown', function (e) { e.preventDefault(); gameC.focus({ preventScroll: true }); jump() })
     gameC.addEventListener('keydown', function (e) {
@@ -911,20 +912,20 @@
         st.dist += st.speed * dt
         st.speed = Math.min(170, 70 + st.t * 2.2)
         st.vy += 420 * dt
-        st.y = Math.min(GROUND - 19, st.y + st.vy * dt)
-        if (st.y >= GROUND - 19) st.vy = 0
+        st.y = Math.min(GROUND - REX.h, st.y + st.vy * dt)
+        if (st.y >= GROUND - REX.h) st.vy = 0
         st.spawn -= dt
         if (st.spawn <= 0) { st.obs.push({ x: W + 4, y: GROUND - 10, w: 12, h: 10 }); st.spawn = 1.1 + Math.random() * 1.3 - Math.min(0.5, st.t / 60) }
         st.cspawn -= dt
         if (st.cspawn <= 0) { st.coins.push({ x: W + 4, y: GROUND - 44 - Math.random() * 18, w: 8, h: 8 }); st.cspawn = 1.4 + Math.random() * 1.6 }
-        var rexBox = { x: 22, y: st.y + 3, w: 15, h: 15 }
+        var rexBox = { x: 17, y: st.y + 2, w: 13, h: 13 }
         st.obs.forEach(function (o) { o.x -= st.speed * dt })
         st.coins.forEach(function (o) { o.x -= st.speed * dt })
         st.obs = st.obs.filter(function (o) { return o.x > -20 })
         // Demo mode plays itself.
         if (st.demo) {
           var nx = st.obs.filter(function (o) { return o.x > 20 })[0]
-          if (nx && nx.x - 38 < st.speed * 0.22 && st.y >= GROUND - 19) st.vy = -150
+          if (nx && nx.x - 38 < st.speed * 0.22 && st.y >= GROUND - REX.h) st.vy = -150
         }
         st.coins = st.coins.filter(function (o) {
           if (hit(rexBox, o)) { st.score++; return false }
@@ -962,7 +963,7 @@
       }
       st.coins.forEach(function (o) { P.draw(lc, 'coin', o.x, o.y, 1, false) })
       st.obs.forEach(function (o) { P.draw(lc, 'bug', o.x, o.y, 1, false) })
-      var airborne = st.y < GROUND - 19 - 0.5
+      var airborne = st.y < GROUND - REX.h - 0.5
       var fr = st.over ? 'rex_idle1' : airborne ? 'rex_jump' : Math.floor(st.t * 10) % 2 ? 'rex_walk0' : 'rex_walk1'
       P.draw(lc, fr, 16, Math.round(st.y), 1, false)
       lc.font = '8px Silkscreen, monospace'

@@ -19,40 +19,33 @@
     b: '#2a2733', // crt
   }
 
-  // Rex, facing right. Glasses are the teal lens on row 3.
-  var REX_HEAD = [
-    '.............kkkkkkk..',
-    '............kpppppppk.',
-    '............kpkkkkppk.',
-    '............kpktwkpppk',
-    '............kpkkkkpppk',
-    '............kpppppppppk',
-    '............kppppppkkk.',
-    '............kpppppk....',
-  ]
+  // Rex, facing right — traced from the Rex-F mascot art. Teal belly and
+  // teeth, ink eye on row 2.
   var REX_BODY = [
-    '.....k.....kppppkkkk..',
-    '.....kk...kpppppk.....',
-    '.....kpk.kpppppppkk...',
-    '.....kppkppppppppkpk..',
-    '.....kpppppppppppk.k..',
-    '......kpppppllllpk....',
-    '.......kpppplllldk....',
-    '........kdppllldk.....',
+    '.......ppppp....',
+    '.....ppppppppppp',
+    '.....pppkppppppp',
+    '....pppppppppppp',
+    '....ppptptpppppp',
+    '....ppttttttttt.',
+    '.....ppttttttt..',
+    '.....ppptpptppp.',
+    '....pppptttpppp.',
+    'ppppppppptttpp..',
+    'ppppppppptttp...',
+    'ppppppp..tttp...',
+    '.pppppp.ttt.p...',
   ]
   var LEGS = {
-    stand: ['.........kpk.kpk......', '.........kpk.kpk......', '.........kkk.kkkk.....'],
-    walkA: ['.........kpk..kpk.....', '........kpk....kpk....', '........kkk....kkkk...'],
-    walkB: ['..........kpkkpk......', '..........kpkkpk......', '..........kkkkkkk.....'],
-    jump:  ['........kpk...kpk.....', '.......kpk.....kk.....', '.......kk.............'],
+    stand: ['..ppppptttppp...', '..ppppptttppp...', '....pppt.ppttt..'],
+    walkA: ['..ppppptttppp...', '..ppppptttppp...', '...pppt...ppttt.'],
+    walkB: ['..ppppptttppp...', '..ppppptttppp...', '.....ppptpptt...'],
+    jump:  ['..ppppptttppp...', '..pppt....ptt...', '..ppt......tt...'],
   }
   function rex(legs, blink) {
-    var head = REX_HEAD.slice()
-    if (blink) head[3] = '............kpkkkkpppk'
-    return head.concat(REX_BODY, LEGS[legs]).map(function (r) {
-      while (r.length < 23) r += '.'
-      return r.slice(0, 23)
-    })
+    var body = REX_BODY.slice()
+    if (blink) body[2] = '.....pppdppppppp'
+    return body.concat(LEGS[legs])
   }
 
   var SPRITES = {
@@ -150,10 +143,10 @@
       '..kkkk..',
     ],
     heart: [
-      '.kk..kk.',
-      'kook kook',
+      '.kkk.kkk.',
+      'koookoook',
       'kowoooook',
-      'kooooooook',
+      'koooooook',
       '.koooook.',
       '..koook..',
       '...kok...',
@@ -237,14 +230,14 @@
     ghost: [
       '...kkkk...',
       '..kssssk..',
-      '.ksssssk..',
-      'kswkswkssk',
-      'kskkskksk.',
+      '.kssssssk.',
+      'kswksswksk',
+      'kskksskksk',
       'kssssssssk',
       'kssssssssk',
       'kssssssssk',
-      'ksksskssk.',
-      'k.k..k..k.',
+      'kskssssksk',
+      'kk.kkkk.kk',
     ],
   }
 
