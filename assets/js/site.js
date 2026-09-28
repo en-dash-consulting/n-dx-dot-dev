@@ -1,4 +1,4 @@
-// Shared behaviour for every n-dx.dev page: boot sequence,
+// Shared behaviour for every n-dx.dev page:
 // pointer label, text scramble, reveals, word sweep, counters, copy buttons,
 // nav, and the interactive pixel wordmark in the footer.
 ;(function () {
@@ -204,80 +204,6 @@
       else done()
     })
   })
-
-  // ── boot sequence (landing page, once per session) ────────────────
-  var boot = document.querySelector('.boot')
-  var seen = false
-  try { seen = sessionStorage.getItem('ndx-boot') === '1' } catch (e) {}
-  function bootDone() {
-    doc.classList.remove('booting')
-    document.dispatchEvent(new CustomEvent('ndx:ready'))
-  }
-  if (boot && doc.classList.contains('booting') && !seen && !reduce) {
-    try { sessionStorage.setItem('ndx-boot', '1') } catch (e) {}
-    var items = boot.querySelectorAll('.boot-list li')
-    var pct = boot.querySelector('.boot-pct span')
-    var bar = boot.querySelector('.boot-bar i')
-    var total = 1900, t0 = performance.now(), finished = false
-    var finish = function () {
-      if (finished) return
-      finished = true
-      wipe()
-      bootDone()
-    }
-    boot.querySelector('.boot-skip').addEventListener('click', finish)
-    ;(function step(now) {
-      if (finished) return
-      var p = Math.min(1, (now - t0) / total)
-      // Stalls and bursts read as real work, not a CSS transition.
-      var shown = Math.min(100, Math.floor(100 * (p < 0.5 ? p * 1.3 : 0.65 + (p - 0.5) * 0.7)))
-      if (p === 1) shown = 100
-      pct.textContent = shown
-      bar.style.width = shown + '%'
-      var k = Math.min(items.length, Math.floor(p * (items.length + 0.6)))
-      items.forEach(function (li, i) {
-        li.classList.toggle('on', i < k)
-        li.classList.toggle('cur', i === k)
-      })
-      if (p < 1) requestAnimationFrame(step)
-      else setTimeout(finish, 220)
-    })(t0)
-  } else {
-    doc.classList.remove('booting')
-    // Let page scripts start after this tick either way.
-    setTimeout(bootDone, 0)
-  }
-
-  // Pixel dissolve: cover the screen in paper blocks, then knock them out on
-  // a diagonal with jitter — the 8-bit version of a page transition.
-  function wipe(cb) {
-    var c = document.createElement('canvas')
-    c.className = 'boot-wipe'
-    document.body.appendChild(c)
-    var dpr = 1
-    var W = (c.width = innerWidth * dpr), H = (c.height = innerHeight * dpr)
-    var sz = Math.max(18, Math.round(Math.min(W, H) / 22))
-    var cols = Math.ceil(W / sz), rows = Math.ceil(H / sz)
-    var cells = []
-    for (var y = 0; y < rows; y++) for (var x = 0; x < cols; x++) cells.push({ x: x, y: y, t: (x / cols + (rows - y) / rows) / 2 + Math.random() * 0.22 })
-    var ctx = c.getContext('2d')
-    var t0 = performance.now(), d = 720
-    var bg = theme.paper
-    var colors = [bg, bg, bg, theme.purple, theme.ink, '#00e0b0']
-    ;(function f(now) {
-      var p = (now - t0) / d
-      ctx.clearRect(0, 0, W, H)
-      for (var i = 0; i < cells.length; i++) {
-        var cl = cells[i]
-        var local = cl.t * 0.8
-        if (p > local + 0.12) continue
-        ctx.fillStyle = p > local ? colors[(i * 7) % colors.length] : bg
-        ctx.fillRect(cl.x * sz, cl.y * sz, sz, sz)
-      }
-      if (p < 1.2) requestAnimationFrame(f)
-      else { c.remove(); cb && cb() }
-    })(t0)
-  }
 
   // ── footer pixel wordmark: blocks scatter from the pointer ────────
   var fw = document.querySelector('.foot-word canvas')

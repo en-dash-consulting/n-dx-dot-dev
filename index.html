@@ -14,16 +14,8 @@
   gtag('config', 'G-GD4SJX7TSY');
 </script>
 <script>
-  // Mark JS early so reveal styles apply before first paint. The boot screen
-  // only exists with JS, plays once per session, and never under reduced motion.
-  (function (d) {
-    d.classList.add('js');
-    var seen = false;
-    try { seen = sessionStorage.getItem('ndx-boot') === '1'; } catch (e) {}
-    if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    d.classList.add('booting');
-    setTimeout(function () { d.classList.remove('booting'); }, 6000);
-  })(document.documentElement);
+  // Mark JS early so reveal styles apply before first paint.
+  document.documentElement.classList.add('js');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,28 +73,6 @@
 <a href="#main" class="skip-link">Skip to content</a>
 
 <!-- BOOT: plays once per session (site.js) -->
-<div class="boot" aria-hidden="true">
-  <div class="boot-inner">
-    <ul class="boot-list">
-      <li>001 Read file inventory</li>
-      <li>002 Build import graph</li>
-      <li>003 Detect zones (Louvain)</li>
-      <li>004 Catalog components</li>
-      <li>005 Trace call graph</li>
-      <li>006 Write CONTEXT.md</li>
-      <li>007 Propose PRD items</li>
-      <li>008 Pick next task</li>
-      <li>009 Brief the agent</li>
-      <li>010 Start the loop</li>
-    </ul>
-    <button class="boot-skip" type="button">Skip ▸</button>
-    <div class="boot-meta">n-dx.dev<br>Map · Plan · Ship</div>
-    <div class="boot-pct"><span>0</span><small>%</small></div>
-  </div>
-  <canvas class="boot-rex" data-sprite="rex_walk0" data-frames="rex_walk0,rex_walk1" data-fps="8" data-scale="8"></canvas>
-  <div class="boot-bar"><i></i></div>
-</div>
-
 <nav class="nav" aria-label="Main">
   <a href="/" class="logo" aria-label="n-dx home">
     <img src="n-dx-logo.png" alt="" width="30" height="30">
@@ -196,7 +166,7 @@
         </span>
       </div>
       <figcaption id="scan-cap" class="sr-only">
-        An interactive pixel map of the n-dx monorepo: 1,957 files grouped into 27 architectural zones by
+        An interactive pixel map of the n-dx monorepo: 2,067 files grouped into 42 architectural zones by
         sourcevision, with nine of its real findings pinned to the zones they concern.
       </figcaption>
     </figure>
@@ -204,12 +174,12 @@
 
   <div class="wrap">
     <ul class="stats" data-stagger>
-      <li><b data-count="1957">1,957</b><span>files</span></li>
-      <li><b data-count="584686">584,686</b><span>lines</span></li>
-      <li><b data-count="27">27</b><span>zones</span></li>
-      <li><b data-count="2027">2,027</b><span>zone crossings</span></li>
-      <li><b data-count="124">124</b><span>findings</span></li>
-      <li class="stats-note mono">n-dx on its own monorepo.<br>Sep 22, 2026.</li>
+      <li><b data-count="2067">2,067</b><span>files</span></li>
+      <li><b data-count="620046">620,046</b><span>lines</span></li>
+      <li><b data-count="42">42</b><span>zones</span></li>
+      <li><b data-count="2884">2,884</b><span>zone crossings</span></li>
+      <li><b data-count="106">106</b><span>findings</span></li>
+      <li class="stats-note mono">n-dx on its own monorepo.<br>Sep 28, 2026.</li>
     </ul>
   </div>
 </header>

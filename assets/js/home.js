@@ -311,7 +311,7 @@
         for (var i = 0; i < row * cols; i++) if (owner[i] >= 0) rev[i] = 1
         if (full >= 1) {
           sweeping = false
-          runBtn.textContent = '✓ 27 zones · 124 findings'; runBtn.classList.add('done')
+          runBtn.textContent = '✓ ' + MAP.totals.zones + ' zones · ' + MAP.totals.findings + ' findings'; runBtn.classList.add('done')
         }
       }
 
@@ -455,7 +455,7 @@
 
     build()
     onResize.push(function () { build() })
-    if (reduce) { full = 1; rev.fill(1); runBtn.textContent = '✓ 27 zones · 124 findings'; runBtn.disabled = true; runBtn.classList.add('done') }
+    if (reduce) { full = 1; rev.fill(1); runBtn.textContent = '✓ ' + MAP.totals.zones + ' zones · ' + MAP.totals.findings + ' findings'; runBtn.disabled = true; runBtn.classList.add('done') }
     animate(canvas, draw)
     if (reduce) draw(0, 0)
   })()
@@ -498,12 +498,20 @@
     if (desktop && window.gsap && window.ScrollTrigger && !reduce) {
       loopEl.classList.add('pinned')
       // site.css sets `scroll-behavior: smooth`; refresh() jumps the scroll
-      // position to measure and then restores it, and smooth scrolling turns
-      // those jumps into animations, so the pin gets measured at the wrong
-      // offset. Switch it off for the duration of every refresh.
+      // position to 0 to measure and then restores it, and smooth scrolling
+      // turns those jumps into animations, so the pin gets measured at the
+      // wrong offset. Switch it off for the duration of every refresh, and
+      // flush styles right away: Chromium skips the style update on the
+      // scrollTo(0, 0) fast path, so without the flush the jump still runs
+      // under the stylesheet's `smooth` and a refresh made while the page is
+      // scrolled lands start/end off by exactly the scroll position (blank
+      // spacer where the loop stage should be after any anchor jump).
       var root = document.documentElement
       root.style.scrollBehavior = 'auto'
-      ScrollTrigger.addEventListener('refreshInit', function () { root.style.scrollBehavior = 'auto' })
+      ScrollTrigger.addEventListener('refreshInit', function () {
+        root.style.scrollBehavior = 'auto'
+        void getComputedStyle(root).scrollBehavior
+      })
       ScrollTrigger.addEventListener('refresh', function () { root.style.scrollBehavior = '' })
       ScrollTrigger.create({
         trigger: loopEl.querySelector('.loop-pin'),
@@ -521,15 +529,17 @@
       // and web fonts can still change the height of everything above it. Stale
       // start/end points make the pinned block release in the wrong place and
       // overlay other sections on the way back up, so re-measure on any change.
+      // refresh(true) is the "safe" refresh: it waits for any scroll in flight
+      // (an anchor jump, say) to end instead of yanking the page mid-animation.
       var lastH = 0, rt
       var remeasure = function () {
         var h = document.documentElement.scrollHeight
         if (h === lastH) return
         lastH = h
         clearTimeout(rt)
-        rt = setTimeout(function () { ScrollTrigger.refresh() }, 120)
+        rt = setTimeout(function () { ScrollTrigger.refresh(true) }, 120)
       }
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh() })
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(true) })
       if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.body)
     } else {
       levels.forEach(function (l) { l.classList.add('on') })
