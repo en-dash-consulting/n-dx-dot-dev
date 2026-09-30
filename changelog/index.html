@@ -44,7 +44,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Merriweather:ital,opsz,wght@0,18..144,300..700;1,18..144,300..700&family=Geist+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/n-dx-logo.png">
 <link rel="apple-touch-icon" href="/n-dx-logo.png">
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -53,7 +53,7 @@
   /* Changelog page. Tokens, nav, footer and badges come from /assets/css/site.css. */
   .cl-hero { padding: calc(var(--nav-h) + 56px) 0 40px; }
   .cl-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; margin-top: 28px; }
-  .cl-hero h1 { font-size: clamp(3rem, 8vw, 7.4rem); }
+  .cl-hero h1 { font-size: clamp(2.6rem, 6.4vw, 6rem); }
   .cl-hero p { margin: 24px 0 0; }
   .cl-hero code { font-family: var(--f-mono); font-size: 0.9em; color: var(--purple-2); }
   .cl-hero-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
@@ -61,16 +61,16 @@
   .cl-main { padding-bottom: 120px; }
   .cl-release { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; padding: 40px 0; border-top: 1px solid var(--ink); scroll-margin-top: 80px; }
   .cl-release-head { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; position: sticky; top: calc(var(--nav-h) + 20px); align-self: start; }
-  .cl-version { font-family: var(--f-display); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 600; letter-spacing: -0.045em; line-height: 0.9; }
+  .cl-version { font-family: var(--f-display); font-size: clamp(2.1rem, 3.4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 0.9; }
   .cl-version a { text-decoration: none; }
   .cl-version a:hover { color: var(--purple); }
-  .cl-date { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; color: var(--mute); }
-  .cl-npm-link { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; text-decoration: none; color: var(--purple); }
+  .cl-date { font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+  .cl-npm-link { font-family: var(--f-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--purple); }
   .cl-npm-link:hover { text-decoration: underline; }
   .cl-changes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
   .cl-changes > li { position: relative; padding-left: 22px; line-height: 1.6; }
   .cl-changes > li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; background: var(--purple); box-shadow: inset -2px -2px 0 var(--purple-2); }
-  .cl-pr { font-family: var(--f-mono); font-size: 12px; color: var(--mute); text-decoration: none; white-space: nowrap; }
+  .cl-pr { font-family: var(--f-ui); font-size: 12px; font-weight: 600; color: var(--mute); text-decoration: none; white-space: nowrap; }
   .cl-pr:hover { color: var(--purple); }
   .cl-release-body code { font-family: var(--f-mono); font-size: 0.86em; background: var(--tint); color: var(--purple-2); padding: 0.05em 0.35em; }
   .cl-release-body a:not(.cl-pr) { color: var(--purple-2); }
@@ -85,17 +85,17 @@
   .cl-code { margin: 14px 0 0; padding: 14px 16px; background: var(--crt); color: var(--crt-text); overflow-x: auto; font-size: 12.5px; line-height: 1.6; }
   .cl-code code { background: none !important; color: inherit !important; padding: 0 !important; white-space: pre; }
   .cl-detail { margin-top: 18px; }
-  .cl-detail summary { display: inline-flex; gap: 8px; align-items: center; cursor: pointer; list-style: none; font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--ink); }
+  .cl-detail summary { display: inline-flex; gap: 8px; align-items: center; cursor: pointer; list-style: none; font-family: var(--f-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--ink); }
   .cl-detail summary::-webkit-details-marker { display: none; }
   .cl-detail summary::after { content: '+'; }
   .cl-detail[open] summary::after { content: '−'; }
   .cl-detail summary:hover { background: var(--ink); color: var(--paper); }
   .cl-detail-body { margin-top: 18px; padding: 20px; background: var(--paper-2); border-left: 3px solid var(--purple); color: var(--ink-2); }
   .cl-early { border-top: 1px solid var(--ink); padding-top: 40px; }
-  .cl-early h2 { font-family: var(--f-display); text-transform: uppercase; letter-spacing: -0.03em; font-size: 2rem; }
+  .cl-early h2 { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; font-size: 2rem; }
   .cl-early p { color: var(--ink-2); max-width: 40em; margin: 10px 0 20px; }
   .cl-early-grid { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  .cl-early-grid a { display: inline-flex; gap: 8px; font-family: var(--f-mono); font-size: 12px; text-decoration: none; border: 1px solid var(--line-2); padding: 6px 10px; }
+  .cl-early-grid a { display: inline-flex; gap: 8px; font-family: var(--f-ui); font-size: 12px; font-weight: 600; text-decoration: none; border: 1px solid var(--line-2); padding: 6px 10px; }
   .cl-early-grid a:hover { border-color: var(--ink); background: var(--paper-2); }
   .cl-early-grid .v { color: var(--purple); }
   .cl-early-grid .d { color: var(--mute); }
