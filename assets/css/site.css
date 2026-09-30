@@ -41,8 +41,12 @@
   --dot: rgba(22, 21, 28, 0.09);
   --sweep-dim: rgba(22, 21, 28, 0.16);
   --tint: rgba(106, 61, 240, 0.08);
-  --f-display: 'Geist', 'Helvetica Neue', Arial, sans-serif;
-  --f-body: 'Geist', 'Helvetica Neue', Arial, sans-serif;
+  /* Type: Montserrat sets headlines and UI labels, Merriweather sets reading
+     text, Geist Mono is reserved for code and terminals, Silkscreen for the
+     8-bit accents. */
+  --f-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --f-ui: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --f-body: 'Merriweather', Georgia, 'Times New Roman', serif;
   --f-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --f-pixel: 'Silkscreen', 'Geist Mono', monospace;
 
@@ -115,10 +119,15 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--f-body);
-  font-size: 17px;
-  line-height: 1.55;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 /* Blueprint grain: a faint dot grid under everything. */
 body::before {
@@ -135,8 +144,9 @@ main, header, footer, section { position: relative; }
 main { z-index: 1; }
 img, canvas, svg { display: block; max-width: 100%; }
 a { color: inherit; }
-p { margin: 0 0 1em; }
-h1, h2, h3, h4 { margin: 0; font-weight: 600; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--f-display); font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance; }
+strong, b { font-weight: 700; }
 code, kbd, pre { font-family: var(--f-mono); }
 ::selection { background: var(--purple); color: #fff; }
 button { font: inherit; color: inherit; }
@@ -144,7 +154,7 @@ button { font: inherit; color: inherit; }
 .skip-link {
   position: absolute; left: 16px; top: -100px; z-index: 1000;
   background: var(--ink); color: var(--paper); padding: 10px 16px;
-  font-family: var(--f-mono); font-size: 13px; text-decoration: none;
+  font-family: var(--f-ui); font-size: 13px; font-weight: 600; text-decoration: none;
 }
 .skip-link:focus { top: 8px; }
 :focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
@@ -154,25 +164,27 @@ button { font: inherit; color: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ── type ─────────────────────────────────────────────────────────── */
+/* Montserrat caps run wide, so display sizes sit a step below a grotesk's. */
 .display {
   font-family: var(--f-display);
-  font-weight: 600;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: -0.035em;
-  line-height: 0.9;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
 }
-.h-xl { font-size: clamp(3rem, 9.2vw, 9.4rem); }
-.h-lg { font-size: clamp(2.4rem, 5.6vw, 5.4rem); }
-.h-md { font-size: clamp(1.9rem, 3.6vw, 3.4rem); }
-.h-sm { font-size: clamp(1.35rem, 2vw, 1.8rem); line-height: 1; }
-.mono { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; }
+.h-xl { font-size: clamp(2.6rem, 7.4vw, 7.6rem); }
+.h-lg { font-size: clamp(2.1rem, 4.6vw, 4.4rem); }
+.h-md { font-size: clamp(1.7rem, 3vw, 2.8rem); line-height: 1; }
+.h-sm { font-size: clamp(1.2rem, 1.7vw, 1.5rem); line-height: 1.1; letter-spacing: -0.015em; }
+/* UI label: small tracked caps. Code keeps Geist Mono via code/.cmd/.crt. */
+.mono { font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
 .pixel { font-family: var(--f-pixel); text-transform: uppercase; letter-spacing: 0.02em; }
-.lede { font-size: clamp(1.05rem, 1.35vw, 1.28rem); line-height: 1.5; color: var(--ink-2); max-width: 36em; }
+.lede { font-size: clamp(1.05rem, 1.3vw, 1.2rem); font-weight: 300; line-height: 1.65; color: var(--ink-2); max-width: 36em; }
 .muted { color: var(--mute); }
 .accent { color: var(--purple); }
 .t-teal { color: var(--teal-ink); }
 .t-signal { color: var(--signal); }
-.idx { font-family: var(--f-mono); font-size: 12px; color: var(--mute); }
+.idx { font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: var(--mute); font-variant-numeric: tabular-nums; }
 .idx::before { content: '['; }
 .idx::after { content: ']'; }
 
@@ -212,10 +224,11 @@ button { font: inherit; color: inherit; }
   gap: 14px;
   padding: 14px 0;
   border-top: 1px solid var(--ink);
-  font-family: var(--f-mono);
-  font-size: 12px;
+  font-family: var(--f-ui);
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
 }
 .bar .ticks {
   flex: 1;
@@ -238,10 +251,11 @@ button { font: inherit; color: inherit; }
   background: var(--bg);
   color: var(--fg);
   border: 1px solid var(--bg);
-  font-family: var(--f-mono);
-  font-size: 13px;
+  font-family: var(--f-ui);
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
@@ -265,7 +279,7 @@ button { font: inherit; color: inherit; }
 .btn-ghost:hover { color: var(--paper); }
 .btn-teal { --bg: var(--teal); --fg: var(--ink); --hv: var(--ink); border-color: var(--teal); }
 .btn-teal:hover { color: var(--teal); }
-.btn-sm { min-height: 36px; padding: 0 14px; font-size: 12px; }
+.btn-sm { min-height: 36px; padding: 0 14px; font-size: 11px; }
 
 /* ── nav ──────────────────────────────────────────────────────────── */
 .nav {
@@ -286,15 +300,16 @@ button { font: inherit; color: inherit; }
 .nav.hide { transform: translateY(-100%); }
 .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo img { width: 30px; height: 30px; border-radius: 6px; }
-.logo-word { font-family: var(--f-display); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: -0.05em; }
+.logo-word { font-family: var(--f-display); font-weight: 800; font-size: 21px; line-height: 1; letter-spacing: -0.03em; }
 .nav-links { display: flex; gap: 2px; list-style: none; margin: 0 0 0 auto; padding: 0; }
 .nav-links a {
   display: block;
   padding: 8px 12px;
-  font-family: var(--f-mono);
-  font-size: 12px;
+  font-family: var(--f-ui);
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
   text-decoration: none;
   color: var(--ink-2);
 }
@@ -318,7 +333,7 @@ button { font: inherit; color: inherit; }
   }
   .nav.open .nav-menu { display: flex; }
   .nav-links { flex-direction: column; margin: 0; }
-  .nav-links a { padding: 12px 0; font-size: 14px; border-bottom: 1px dashed var(--line-2); }
+  .nav-links a { padding: 12px 0; font-size: 13px; border-bottom: 1px dashed var(--line-2); }
   .nav-cta .btn { flex: 1; justify-content: center; }
 }
 @media (min-width: 1061px) {
@@ -333,7 +348,9 @@ button { font: inherit; color: inherit; }
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s;
-  font-family: var(--f-mono);
+  font-family: var(--f-ui);
+  font-weight: 600;
+  letter-spacing: 0.04em;
   font-size: 11px;
   line-height: 1.3;
   color: var(--on-night);
@@ -395,10 +412,11 @@ button { font: inherit; color: inherit; }
   gap: 8px;
   padding: 6px 12px 6px 6px;
   border: 1px solid var(--ink);
-  font-family: var(--f-mono);
-  font-size: 12px;
+  font-family: var(--f-ui);
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.08em;
   text-decoration: none;
   background: var(--paper);
   transition: background 0.2s;
@@ -429,32 +447,32 @@ button { font: inherit; color: inherit; }
 .release-card:hover { background: var(--paper-2); }
 .release-card:hover .release-version { color: var(--purple); }
 .release-card-head { display: flex; align-items: center; justify-content: space-between; }
-.release-version { font-family: var(--f-display); font-size: 2.6rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; transition: color 0.2s; }
+.release-version { font-family: var(--f-display); font-size: 2.3rem; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 1; transition: color 0.2s; }
 .release-bump, .cl-release-bump { font-family: var(--f-pixel); font-size: 11px; text-transform: uppercase; padding: 3px 8px; border: 1px solid currentColor; }
 .release-bump.minor, .cl-release-bump.minor { color: var(--purple); }
 .release-bump.patch, .cl-release-bump.patch { color: var(--teal-ink); }
 .release-bump.major, .cl-release-bump.major { color: var(--signal); }
-.release-date { font-family: var(--f-mono); font-size: 12px; color: var(--mute); text-transform: uppercase; }
-.release-bullets { margin: 6px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14.5px; color: var(--ink-2); }
+.release-date { font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--mute); text-transform: uppercase; }
+.release-bullets { margin: 6px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.6; color: var(--ink-2); }
 .release-bullets li { position: relative; padding-left: 16px; }
 .release-bullets li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; background: var(--purple); }
-.release-more { margin-top: auto; font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; color: var(--purple); }
-.section-label { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; color: var(--mute); }
-.section-title { font-family: var(--f-display); font-weight: 600; text-transform: uppercase; letter-spacing: -0.035em; line-height: 0.9; font-size: clamp(2.4rem, 5.6vw, 5.4rem); }
+.release-more { margin-top: auto; font-family: var(--f-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); }
+.section-label { font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+.section-title { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.95; font-size: clamp(2.1rem, 4.6vw, 4.4rem); }
 @media (max-width: 900px) { .release-grid { grid-template-columns: 1fr; } .release-card { min-height: 0; } }
 
 /* ── footer ──────────────────────────────────────────────────────── */
 .foot { position: relative; z-index: 1; background: var(--night); color: var(--on-night); overflow: hidden; box-shadow: inset 0 1px 0 var(--crt-edge); }
 .foot a { text-decoration: none; }
 .foot-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; padding: 72px 0 40px; }
-.foot h4 { font-family: var(--f-mono); font-size: 11px; font-weight: 400; text-transform: uppercase; color: #8d8a99; margin: 0 0 14px; letter-spacing: 0.05em; }
+.foot h4 { font-family: var(--f-ui); font-size: 11px; font-weight: 600; text-transform: uppercase; color: #8d8a99; margin: 0 0 14px; letter-spacing: 0.1em; }
 .foot ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
-.foot ul a { color: var(--on-night); opacity: 0.85; font-size: 15px; }
+.foot ul a { font-family: var(--f-ui); font-weight: 500; color: var(--on-night); opacity: 0.85; font-size: 14px; }
 .foot ul a:hover { opacity: 1; color: var(--teal); }
-.foot-blurb { color: #a9a6b5; font-size: 15px; max-width: 26em; }
+.foot-blurb { color: #a9a6b5; font-size: 14px; line-height: 1.7; max-width: 26em; }
 .foot-word { position: relative; width: 100%; height: clamp(120px, 24vw, 340px); }
 .foot-word canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-.foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 20px 0 28px; border-top: 1px solid rgba(255, 255, 255, 0.14); font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; color: #8d8a99; }
+.foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 20px 0 28px; border-top: 1px solid rgba(255, 255, 255, 0.14); font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #8d8a99; }
 .foot-bottom img { height: 34px; width: auto; }
 .foot-endash { display: inline-flex; align-items: center; gap: 10px; }
 @media (max-width: 800px) { .foot-top { grid-template-columns: 1fr 1fr; } .foot-top > :first-child { grid-column: 1 / -1; } }
