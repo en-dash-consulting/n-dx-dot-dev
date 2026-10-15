@@ -2,6 +2,7 @@
 // loop, bento tile animations, use-case scenes, and the ship-it mini game.
 ;(function () {
   var P = window.NDXPixel
+  var S = window.NDX_SPRITES
   var MAP = window.NDX_MAP
   if (!P) return
   var REX = P.size('rex_idle0')
@@ -444,7 +445,7 @@
         rex.x += (dx / dist) * sp
         rex.y += (dy / dist) * sp
       }
-      var frame = rex.walking ? (Math.floor(now * 9) % 2 ? 'rex_walk0' : 'rex_walk1') : (Math.floor(now * 1.5) % 5 === 0 ? 'rex_idle1' : 'rex_idle0')
+      var frame = rex.walking ? S.rexWalk(Math.floor(now * 9)) : (Math.floor(now * 1.5) % 5 === 0 ? 'rex_idle1' : 'rex_idle0')
       c.fillStyle = A(T.ink, 0.18)
       c.fillRect(rex.x + sc * 2, rex.y + rh - sc, rw - sc * 4, sc * 2)
       P.draw(c, frame, rex.x, rex.y, sc, rex.face < 0)
@@ -578,7 +579,7 @@
         var moving = Math.abs(rx - lastRx) > 0.4
         lastRx = rx
         walkT += dt
-        var fr = moving ? (Math.floor(walkT * 10) % 2 ? 'rex_walk0' : 'rex_walk1') : 'rex_idle0'
+        var fr = moving ? S.rexWalk(Math.floor(walkT * 10)) : 'rex_idle0'
         P.draw(c, fr, rx - 10 * s, ground - REX.h * s, s, false)
       })
     }
@@ -706,7 +707,7 @@
         P.draw(c, 'flag', fx, base - 10 * s, s, false)
         c.fillStyle = T.purple
         c.fillText('task #' + (l.task + 1) + ' · claimed', fx - 108 * g.dpr, base - lh + 20 * g.dpr)
-        var fr = Math.floor(t / 110) % 2 ? 'rex_walk0' : 'rex_walk1'
+        var fr = S.rexWalk(Math.floor(t / 110))
         P.draw(c, fr, l.x, base - REX.h * s, s, false)
       })
     })
@@ -989,7 +990,7 @@
       st.coins.forEach(function (o) { P.draw(lc, 'coin', o.x, o.y, 1, false) })
       st.obs.forEach(function (o) { P.draw(lc, 'bug', o.x, o.y, 1, false) })
       var airborne = st.y < GROUND - REX.h - 0.5
-      var fr = st.over ? 'rex_idle1' : airborne ? 'rex_jump' : Math.floor(st.t * 10) % 2 ? 'rex_walk0' : 'rex_walk1'
+      var fr = st.over ? 'rex_idle1' : airborne ? 'rex_jump' : S.rexWalk(Math.floor(st.t * 10))
       P.draw(lc, fr, 16, Math.round(st.y), 1, false)
       lc.font = '8px Silkscreen, monospace'
       lc.textBaseline = 'top'

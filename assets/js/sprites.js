@@ -37,10 +37,17 @@
     'pppppppddtttp...',
     '.ppppppdtttdp...',
   ]
+  // Four-frame walk cycle. Each frame is [thigh, shin, feet]. A lifted foot is
+  // drawn on the shin row, one pixel up, so the leg reads as swinging rather
+  // than sliding. The back leg (left) and front leg (right) alternate:
+  //   0 both planted, spread      1 front lifted, back under the body
+  //   2 both planted, closer      3 back lifted, front under the body
   var LEGS = {
     stand: ['..ppppptttppp...', '..ppppptttppp...', '....pppt.ppttt..'],
-    walkA: ['..ppppptttppp...', '..ppppptttppp...', '...pppt...ppttt.'],
-    walkB: ['..ppppptttppp...', '..ppppptttppp...', '.....pppt.ppttt.'],
+    walk0: ['..ppppptttppp...', '..ppppptttppp...', '...pppt...ppttt.'],
+    walk1: ['..ppppptttppp...', '..ppppptttppttt.', '.....pppt.......'],
+    walk2: ['..ppppptttppp...', '..ppppptttppp...', '....pppt.ppttt..'],
+    walk3: ['..ppppptttppp...', 'pppt.pptttppp...', '.........ppttt..'],
     jump:  ['..ppppptttppp...', '...pppt..ppttt..', '................'],
   }
   function rex(legs, blink) {
@@ -52,8 +59,10 @@
   var SPRITES = {
     rex_idle0: rex('stand', false),
     rex_idle1: rex('stand', true),
-    rex_walk0: rex('walkA', false),
-    rex_walk1: rex('walkB', false),
+    rex_walk0: rex('walk0', false),
+    rex_walk1: rex('walk1', false),
+    rex_walk2: rex('walk2', false),
+    rex_walk3: rex('walk3', false),
     rex_jump: rex('jump', false),
 
     // sourcevision — the scanning eye
@@ -249,7 +258,11 @@
     SPRITES[name] = rows.map(function (r) { while (r.length < w) r += '.'; return r })
   }
 
-  var api = { PALETTE: PALETTE, SPRITES: SPRITES }
+  // Walk-cycle frame for a phase counter (any monotonically increasing integer).
+  var REX_WALK = ['rex_walk0', 'rex_walk1', 'rex_walk2', 'rex_walk3']
+  function rexWalk(n) { return REX_WALK[((n % 4) + 4) % 4] }
+
+  var api = { PALETTE: PALETTE, SPRITES: SPRITES, REX_WALK: REX_WALK, rexWalk: rexWalk }
   if (typeof module !== 'undefined' && module.exports) module.exports = api
   else root.NDX_SPRITES = api
 })(typeof window !== 'undefined' ? window : this)
