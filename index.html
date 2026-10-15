@@ -14,16 +14,8 @@
   gtag('config', 'G-GD4SJX7TSY');
 </script>
 <script>
-  // Mark JS early so reveal styles apply before first paint. The boot screen
-  // only exists with JS, plays once per session, and never under reduced motion.
-  (function (d) {
-    d.classList.add('js');
-    var seen = false;
-    try { seen = sessionStorage.getItem('ndx-boot') === '1'; } catch (e) {}
-    if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    d.classList.add('booting');
-    setTimeout(function () { d.classList.remove('booting'); }, 6000);
-  })(document.documentElement);
+  // Mark JS early so reveal styles apply before first paint.
+  document.documentElement.classList.add('js');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +46,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Merriweather:ital,opsz,wght@0,18..144,300..700;1,18..144,300..700&family=Geist+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="n-dx-logo.png">
 <link rel="apple-touch-icon" href="n-dx-logo.png">
 <link rel="stylesheet" href="assets/css/site.css">
@@ -81,28 +73,6 @@
 <a href="#main" class="skip-link">Skip to content</a>
 
 <!-- BOOT: plays once per session (site.js) -->
-<div class="boot" aria-hidden="true">
-  <div class="boot-inner">
-    <ul class="boot-list">
-      <li>001 Read file inventory</li>
-      <li>002 Build import graph</li>
-      <li>003 Detect zones (Louvain)</li>
-      <li>004 Catalog components</li>
-      <li>005 Trace call graph</li>
-      <li>006 Write CONTEXT.md</li>
-      <li>007 Propose PRD items</li>
-      <li>008 Pick next task</li>
-      <li>009 Brief the agent</li>
-      <li>010 Start the loop</li>
-    </ul>
-    <button class="boot-skip" type="button">Skip ▸</button>
-    <div class="boot-meta">n-dx.dev<br>Map · Plan · Ship</div>
-    <div class="boot-pct"><span>0</span><small>%</small></div>
-  </div>
-  <canvas class="boot-rex" data-sprite="rex_walk0" data-frames="rex_walk0,rex_walk1,rex_walk2,rex_walk3" data-fps="8" data-scale="8"></canvas>
-  <div class="boot-bar"><i></i></div>
-</div>
-
 <nav class="nav" aria-label="Main">
   <a href="/" class="logo" aria-label="n-dx home">
     <img src="n-dx-logo.png" alt="" width="30" height="30">
@@ -167,7 +137,7 @@
       <div class="hero-pill" data-reveal>
 <!-- SYNC:HERO_VERSION:START -->
       <a class="hero-version-pill" href="changelog/">
-        <span class="hero-version-num">v0.7.1</span>
+        <span class="hero-version-num">v0.9.0</span>
         <span class="hero-version-sep">·</span>
         <span>What&rsquo;s new</span>
         <span class="hero-version-arrow" aria-hidden="true">&rarr;</span>
@@ -196,7 +166,7 @@
         </span>
       </div>
       <figcaption id="scan-cap" class="sr-only">
-        An interactive pixel map of the n-dx monorepo: 1,957 files grouped into 27 architectural zones by
+        An interactive pixel map of the n-dx monorepo: 2,067 files grouped into 42 architectural zones by
         sourcevision, with nine of its real findings pinned to the zones they concern.
       </figcaption>
     </figure>
@@ -204,12 +174,12 @@
 
   <div class="wrap">
     <ul class="stats" data-stagger>
-      <li><b data-count="1957">1,957</b><span>files</span></li>
-      <li><b data-count="584686">584,686</b><span>lines</span></li>
-      <li><b data-count="27">27</b><span>zones</span></li>
-      <li><b data-count="2027">2,027</b><span>zone crossings</span></li>
-      <li><b data-count="124">124</b><span>findings</span></li>
-      <li class="stats-note mono">n-dx on its own monorepo.<br>Sep 22, 2026.</li>
+      <li><b data-count="2067">2,067</b><span>files</span></li>
+      <li><b data-count="620046">620,046</b><span>lines</span></li>
+      <li><b data-count="42">42</b><span>zones</span></li>
+      <li><b data-count="2884">2,884</b><span>zone crossings</span></li>
+      <li><b data-count="106">106</b><span>findings</span></li>
+      <li class="stats-note mono">n-dx on its own monorepo.<br>Sep 28, 2026.</li>
     </ul>
   </div>
 </header>
@@ -650,6 +620,30 @@ Actionable tasks (by priority):
       <a href="changelog/" class="btn btn-ghost">Full changelog <span class="arr">&rarr;</span></a>
     </div>
     <div class="release-grid">
+        <a class="release-card" href="changelog/#v0-9-0">
+          <div class="release-card-head">
+            <span class="release-version">0.9.0</span>
+            <span class="release-bump minor">Minor</span>
+          </div>
+          <time class="release-date" datetime="2026-10-09T19:26:38.283Z">Oct 9, 2026</time>
+          <ul class="release-bullets" role="list">
+            <li>Release 0.8.0 · Find your way — a minor release.</li>
+            <li>AGENTS.md now tells Codex and other assistants that a task can carry saved run settings.</li>
+          </ul>
+          <span class="release-more">+34 more changes</span>
+        </a>
+        <a class="release-card" href="changelog/#v0-8-0">
+          <div class="release-card-head">
+            <span class="release-version">0.8.0</span>
+            <span class="release-bump minor">Minor</span>
+          </div>
+          <time class="release-date" datetime="2026-10-02T21:32:48.166Z">Oct 2, 2026</time>
+          <ul class="release-bullets" role="list">
+            <li>0.8.0 — Find your way</li>
+            <li>Add Claude Opus 5.5, Sonnet 5.5 and Fable 5.1, and move the Claude defaults onto them</li>
+          </ul>
+          <span class="release-more">+20 more changes</span>
+        </a>
         <a class="release-card" href="changelog/#v0-7-1">
           <div class="release-card-head">
             <span class="release-version">0.7.1</span>
@@ -661,30 +655,6 @@ Actionable tasks (by priority):
             <li>ndx claim accepts its directory argument from outside the project</li>
           </ul>
           <span class="release-more">+12 more changes</span>
-        </a>
-        <a class="release-card" href="changelog/#v0-7-0">
-          <div class="release-card-head">
-            <span class="release-version">0.7.0</span>
-            <span class="release-bump minor">Minor</span>
-          </div>
-          <time class="release-date" datetime="2026-09-18T15:35:41.410Z">Sep 18, 2026</time>
-          <ul class="release-bullets" role="list">
-            <li>New ndx mcp &lt;server&gt; [dir]: one MCP command that works whether or not the hub is running. When a hub is up and the…</li>
-            <li>ndx start now registers the repository with the per-user hub by default and serves it at http://localhost:3117/p/&lt;id&gt;/…</li>
-          </ul>
-          <span class="release-more">+25 more changes</span>
-        </a>
-        <a class="release-card" href="changelog/#v0-6-0">
-          <div class="release-card-head">
-            <span class="release-version">0.6.0</span>
-            <span class="release-bump minor">Minor</span>
-          </div>
-          <time class="release-date" datetime="2026-09-12T16:39:11.492Z">Sep 12, 2026</time>
-          <ul class="release-bullets" role="list">
-            <li>.codex/config.toml now uses cwd-relative stdio commands ({&quot;command&quot;:&quot;n-dx&quot;,&quot;args&quot;:[&quot;rex&quot;,&quot;mcp&quot;,&quot;.&quot;]}) instead of…</li>
-            <li>ndx init no longer registers Claude MCP servers via claude mcp add --scope local by default — it relies solely on the…</li>
-          </ul>
-          <span class="release-more">+23 more changes</span>
         </a>
     </div>
   </div>

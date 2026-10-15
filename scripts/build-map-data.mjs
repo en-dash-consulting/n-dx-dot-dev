@@ -28,15 +28,15 @@ const read = async (f) => JSON.parse(await readFile(join(SV, f), 'utf8'))
 // text so the copy stays sourcevision's own; `title` is the short label only.
 // `at` pins a repo-wide ("global") finding to the zone it is about.
 const CALLOUTS = [
-  { match: 'The 109 imports from rex-prd-management', title: 'Inverted boundary' },
-  { match: 'Zone-level circular dependency between scripts', title: 'Circular dependency', at: 'scripts' },
-  { match: 'packages/hench/tests/helpers/index.ts imports PRDStore', title: 'Gateway bypass' },
-  { match: 'The hub queue contract is duplicated by hand', title: 'Duplicated contract', at: 'web-hub' },
-  { match: 'build.js copies sibling-package brand assets', title: 'Silent asset drop' },
-  { match: 'Gateway erosion at the web-viewer', title: 'Gateway erosion' },
-  { match: 'The golden format carries provenance', title: 'Unchecked provenance' },
-  { match: 'Leaky file-format boundary with the web zone', title: 'Leaky file format' },
-  { match: 'config.js is the single point', title: 'Invisible contract' },
+  { match: 'God function: Graph in packages/web/src/viewer/views/graph.ts', title: 'God function', at: 'web-viewer' },
+  { match: 'CRITICAL — runtime circular dependency between `components/prd-tree/`', title: 'Hidden cycle' },
+  { match: 'WARNING (leaky abstraction, unenforced rule) — the rex gateway is bypassed', title: 'Gateway bypass' },
+  { match: 'WARNING — `routes-commands.ts` (1,791 lines) is a service hub', title: 'Service hub' },
+  { match: 'WARNING — layering inversion: `analyze/guided.ts:16`', title: 'Layering inversion' },
+  { match: 'Bidirectional coupling: "rex" ↔ "rex-cli"', title: 'Bidirectional coupling', at: 'rex' },
+  { match: 'God function: buildZoneIsoModel in packages/sourcevision/src/export/iso-model.ts', title: 'Oversized builder', at: 'sourcevision' },
+  { match: 'Tightly coupled modules: packages/hench/src/agent/lifecycle/shared.ts', title: 'Tight coupling', at: 'hench' },
+  { match: '31 entry points — wide API surface', title: 'Wide API surface' },
 ]
 
 const [zonesDoc, inventory, manifest] = await Promise.all([

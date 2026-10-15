@@ -77,7 +77,7 @@ next run overwrites it. Change the templates in the script instead.
 
 ### Map data
 
-The landing page draws a real sourcevision analysis of the n-dx monorepo — 1,957 files in 27 zones.
+The landing page draws a real sourcevision analysis of the n-dx monorepo — 2,067 files in 42 zones.
 The hero pixel map pins nine of its actual findings; the isometric views use the exact layout model
 `ndx iso` produces. `scripts/build-map-data.mjs` reads a checkout's `.sourcevision/`, runs that
 checkout's own `.claude/skills/iso-map/scripts/iso-map.mjs --json`, and writes

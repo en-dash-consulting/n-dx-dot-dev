@@ -43,7 +43,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Merriweather:ital,opsz,wght@0,18..144,300..700;1,18..144,300..700&family=Geist+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/n-dx-logo.png">
 <link rel="apple-touch-icon" href="/n-dx-logo.png">
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -91,8 +91,8 @@
 <style>
   /* Comparison page. Shared system: site.css + home.css. */
   .vs-hero { padding: calc(var(--nav-h) + 56px) 0 0; }
-  .vs-hero h1 { font-size: clamp(2.8rem, 7vw, 7rem); margin: 28px 0 28px; }
-  .vs-hero h1 small { display: block; font-size: 0.42em; color: var(--mute); letter-spacing: -0.03em; margin-top: 0.3em; }
+  .vs-hero h1 { font-size: clamp(2.4rem, 5.8vw, 5.8rem); margin: 28px 0 28px; }
+  .vs-hero h1 small { display: block; font-size: 0.42em; color: var(--mute); letter-spacing: -0.015em; margin-top: 0.3em; }
   .vs-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: end; }
   .vs-hero-art { display: flex; align-items: end; gap: 10px; padding-bottom: 8px; }
   .vs-hero-art canvas { image-rendering: pixelated; }
@@ -114,7 +114,7 @@
   .tools4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
   .tool { border: 1px solid var(--ink); padding: 18px; display: flex; flex-direction: column; gap: 12px; background: var(--paper); }
   .tool.me { box-shadow: 8px 8px 0 var(--purple); }
-  .tool .kind { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; color: var(--mute); }
+  .tool .kind { font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
   .tool h3 { text-transform: none; letter-spacing: -0.04em; }
   .tool p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
   .tool .abil { font-size: 14px; }
@@ -122,10 +122,10 @@
   .tool .sig a { display: block; margin-top: 8px; color: var(--purple-2); }
   .vs-table { width: 100%; border-collapse: collapse; min-width: 760px; font-size: 14.5px; }
   .vs-table th, .vs-table td { padding: 14px 12px; border-bottom: 1px solid var(--line-2); text-align: left; vertical-align: top; }
-  .vs-table thead th { font-family: var(--f-mono); font-size: 11px; font-weight: 400; text-transform: uppercase; color: var(--mute); }
+  .vs-table thead th { font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
   .vs-table thead th.me { background: var(--purple); color: var(--on-purple); font-family: var(--f-pixel); font-size: 13px; }
   .vs-table td.me { background: var(--tint); font-weight: 500; }
-  .vs-table tbody th { font-family: var(--f-mono); font-size: 12px; font-weight: 400; text-transform: uppercase; color: var(--ink-2); }
+  .vs-table tbody th { font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
   .picks { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line-2); }
   .pick { padding: 22px; border-right: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
   .pick.me { background: var(--night); color: var(--on-night); }
@@ -140,7 +140,7 @@
   .faq details { border-bottom: 1px solid var(--line-2); }
   .faq summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr 24px; gap: 16px; align-items: center; padding: 22px 0; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; font-family: var(--f-mono); font-size: 22px; }
+  .faq summary::after { content: '+'; font-family: var(--f-ui); font-size: 22px; font-weight: 500; }
   .faq details[open] summary::after { content: '−'; }
   .faq details[open] summary .h-sm { color: var(--purple); }
   .faq details p { margin: 0 0 22px; max-width: 46em; color: var(--ink-2); }
