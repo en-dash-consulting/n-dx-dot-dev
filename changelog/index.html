@@ -16,7 +16,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Changelog — n-dx</title>
-<meta name="description" content="Release notes for @n-dx/core. Latest: v0.10.0 — 0.10.0 is the v2 migration release. ndx migrate moves a v1 PRD (prdtree/) to the v2 product and change layers, ndx init starts new projects on v2…">
+<meta name="description" content="Release notes for @n-dx/core. Latest: v0.10.2 — Escalate a task that keeps failing to a stronger vendor or model before it is skipped as stuck. New settings, off by default…">
 <meta name="author" content="En Dash Consulting">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://n-dx.dev/changelog/">
@@ -28,7 +28,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://n-dx.dev/changelog/">
 <meta property="og:title" content="Changelog — n-dx">
-<meta property="og:description" content="Release notes for @n-dx/core. Latest: v0.10.0 — 0.10.0 is the v2 migration release. ndx migrate moves a v1 PRD (prdtree/) to the v2 product and change layers, ndx init starts new projects on v2…">
+<meta property="og:description" content="Release notes for @n-dx/core. Latest: v0.10.2 — Escalate a task that keeps failing to a stronger vendor or model before it is skipped as stuck. New settings, off by default…">
 <meta property="og:image" content="https://n-dx.dev/n-dx-logo.png">
 <meta property="og:image:width" content="300">
 <meta property="og:image:height" content="300">
@@ -38,7 +38,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Changelog — n-dx">
-<meta name="twitter:description" content="Release notes for @n-dx/core. Latest: v0.10.0">
+<meta name="twitter:description" content="Release notes for @n-dx/core. Latest: v0.10.2">
 <meta name="twitter:image" content="https://n-dx.dev/n-dx-logo.png">
 <meta name="twitter:image:alt" content="n-dx logo">
 
@@ -139,13 +139,13 @@
 
 <header class="cl-hero">
   <div class="wrap">
-    <div class="bar"><span class="idx">CL</span><span>Changelog</span><span class="ticks"></span><span>v0.10.0</span></div>
+    <div class="bar"><span class="idx">CL</span><span>Changelog</span><span class="ticks"></span><span>v0.10.2</span></div>
     <div class="cl-hero-grid">
       <div>
         <h1 class="display" data-reveal>Every release,<br>in its own words.</h1>
         <p class="lede">
           Release notes for <code>@n-dx/core</code>, generated from the changesets that shipped each
-          version. Currently on <strong>v0.10.0</strong>, released Oct 26, 2026.
+          version. Currently on <strong>v0.10.2</strong>, released Nov 2, 2026.
         </p>
         <div class="cl-hero-links">
           <a href="https://www.npmjs.com/package/@n-dx/core" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">View on npm ↗</a>
@@ -158,6 +158,26 @@
   </div>
 </header>
 <main id="main-content" class="cl-main wrap">
+<article class="cl-release" id="v0-10-2">
+        <header class="cl-release-head">
+          <h2 class="cl-version">
+            <a href="#v0-10-2" aria-label="Permalink to 0.10.2">0.10.2</a>
+          </h2>
+          <time class="cl-date" datetime="2026-11-02T16:55:31.023Z">Nov 2, 2026</time>
+          <span class="cl-release-bump patch">Patch</span>
+          <a class="cl-npm-link" href="https://www.npmjs.com/package/@n-dx/core/v/0.10.2" target="_blank" rel="noopener noreferrer">npm ↗</a>
+        </header>
+        <div class="cl-release-body">
+          <ul class="cl-changes" role="list">
+            <li>Escalate a task that keeps failing to a stronger vendor or model before it is skipped as stuck. New settings, off by default: <code>hench.escalation.enabled</code> (false), <code>hench.escalation.after</code> (2 consecutive failures), <code>hench.escalation.vendor</code>, an optional <code>hench.escalation.model</code>, and <code>hench.escalation.maxAttempts</code> (1). When a task reaches <code>after</code> failures (or <code>hench.maxFailedAttempts</code>, if lower), its next attempt runs on the escalation vendor and model through the per-task settings resolution, on that vendor&#39;s CLI when it has one; an explicit <code>--model</code> flag and a task&#39;s saved <code>run</code> block keep their precedence. Hench logs one line per escalated attempt, records <code>escalation</code> on the run record, and <code>ndx work --resolve</code> reports it. Only when the escalated attempts also fail is the task skipped as stuck. <code>ndx config</code>, <code>hench config</code> and the dashboard offer the new keys. <a class="cl-pr" href="https://github.com/en-dash-consulting/n-dx/pull/931" target="_blank" rel="noopener noreferrer">#931</a></li>
+            <li>Retry a transient Windows EPERM, EACCES or EBUSY when reading <code>extensions.json</code> while another <code>ndx</code> process replaces it, as the rename already does, so concurrent approvals and discovery no longer fail. <a class="cl-pr" href="https://github.com/en-dash-consulting/n-dx/pull/891" target="_blank" rel="noopener noreferrer">#891</a></li>
+            <li>API and local agents edit files without rewriting them whole. hench&#39;s tool set for the API, local and Gemini loops gains <code>edit_file</code> (replace an exact <code>old_string</code> with <code>new_string</code>; it must match once unless <code>replace_all</code> is set, the error names the count, and CRLF files keep their line endings), and the system prompt tells those agents to use it for existing files. <code>write_file</code> now refuses to replace an existing file larger than <code>hench.guard.writeShrinkMinBytes</code> (default 1024) with content under <code>hench.guard.writeShrinkRatio</code> of its size (default 0.5, 0 disables) unless the call passes <code>rewrite: true</code>, and points the model at <code>edit_file</code>. Livelock, plan-only and completion checks, run summaries and run events count <code>edit_file</code> as a file change. Both keys are documented in <code>ndx config --help</code>, offered by <code>hench config</code> and the dashboard, and checked by the repository trust review. <a class="cl-pr" href="https://github.com/en-dash-consulting/n-dx/pull/931" target="_blank" rel="noopener noreferrer">#931</a></li>
+            <li>Local-model runs survive a dropped LM Studio connection. A refused or dropped connection to the local server (<code>fetch failed</code>, <code>ECONNREFUSED</code>, <code>ECONNRESET</code>, <code>UND_ERR_SOCKET</code>, …) is retried with capped exponential backoff on the provider&#39;s blocking and streaming paths and in hench&#39;s local tool loop, configured by the new <code>llm.local.maxRetries</code> (default 6), <code>llm.local.retryBaseDelayMs</code> (default 2000) and <code>llm.local.retryMaxDelayMs</code> (default 60000) — about two minutes, long enough for a model reload. When those run out the error is a retryable <code>ClaudeClientError</code> with the new reason <code>&quot;network&quot;</code>, naming the server, the attempts made and the settings to raise, and hench&#39;s local loop retries the turn again on <code>hench.retry.*</code> before failing the task. A request that hits <code>llm.local.timeoutMs</code> still fails without a retry. The settings are listed and validated by <code>ndx config</code>. <a class="cl-pr" href="https://github.com/en-dash-consulting/n-dx/pull/931" target="_blank" rel="noopener noreferrer">#931</a></li>
+            <li>Local-model runs no longer die on a slow turn or a malformed reply. Node&#39;s fetch waits at most 300 s for response headers, and LM Studio sends none for a non-streamed completion until generation finishes, so a slow model&#39;s turn failed with <code>UND_ERR_HEADERS_TIMEOUT</code> whatever <code>llm.local.timeoutMs</code> said — and the connection retries then resent the same slow request. Local completions (the provider&#39;s blocking path, and hench&#39;s local tool loop, context summarizer and verifier) are now requested with <code>stream: true</code> and <code>stream_options.include_usage</code>, so the headers arrive at once, and the server-sent chunks are assembled back into the non-streamed response — content and reasoning concatenated, tool calls merged by index, the finish reason and the usage chunk — so tool-call parsing and token accounting read the same shape as before. <code>llm.local.timeoutMs</code> still bounds the whole request (0 = no limit), and a connection dropped mid-stream is retried like a refused one. No new dependency. A 400/500 from the local server saying the model produced malformed output (LM Studio: &quot;The model produced output that does not match the expected … format&quot;, and similar) — or the same error arriving inside the stream as an error event — is now resent up to the new <code>llm.local.maxFormatRetries</code> times (default 3; 0 disables), one log line per resend; ordinary 400s such as a context-length error, streamed or not, are not resent. When the resends run out the error says what happened and names the setting. <code>parseLmStudioError</code> reads LM Studio&#39;s string-valued <code>error</code>. <code>ndx config</code> validates and documents <code>llm.local.maxFormatRetries</code>, and the dashboard&#39;s Local server settings gain a Retries row for it and the three connection-retry settings. <a class="cl-pr" href="https://github.com/en-dash-consulting/n-dx/pull/931" target="_blank" rel="noopener noreferrer">#931</a></li>
+          </ul>
+          <details class="cl-detail"><summary>Full release notes</summary><div class="cl-detail-body"><div class="cl-note"><p class="cl-note-lead">Escalate a task that keeps failing to a stronger vendor or model before it is skipped as stuck. New settings, off by default: <code>hench.escalation.enabled</code> (false), <code>hench.escalation.after</code> (2 consecutive failures), <code>hench.escalation.vendor</code>, an optional <code>hench.escalation.model</code>, and <code>hench.escalation.maxAttempts</code> (1). When a task reaches <code>after</code> failures (or <code>hench.maxFailedAttempts</code>, if lower), its next attempt runs on the escalation vendor and model through the per-task settings resolution, on that vendor&#39;s CLI when it has one; an explicit <code>--model</code> flag and a task&#39;s saved <code>run</code> block keep their precedence. Hench logs one line per escalated attempt, records <code>escalation</code> on the run record, and <code>ndx work --resolve</code> reports it. Only when the escalated attempts also fail is the task skipped as stuck. <code>ndx config</code>, <code>hench config</code> and the dashboard offer the new keys.</p><p>Stuck and forced-advancement exclusions now also apply when selecting from a v1 PRD, where they had stopped taking effect.</p></div></div></details>
+        </div>
+      </article>
 <article class="cl-release" id="v0-10-0">
         <header class="cl-release-head">
           <h2 class="cl-version">
